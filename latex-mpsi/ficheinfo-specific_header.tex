@@ -1,0 +1,241 @@
+\usepackage[%
+a4paper,includeheadfoot,top=1.0cm,%
+bottom=1.0cm,left=1.2cm,headsep=0pt,%
+footskip=0pt,right=1.2cm,footskip=1cm]{geometry}
+\input{fiche-specific_header}
+\usepackage[newfloat]{minted}
+\tcbuselibrary{minted}
+
+\newif\ifinlisting
+\tcbset{%
+  reset@minted/.style={%
+    minted language=latex,
+    minted options={tabsize=2,fontsize=\small},
+    minted style=,
+    listing engine=minted,
+    in listing/.is if=inlisting,
+    in listing/.initial=false,
+  },
+  initialize@reset=reset@minted,
+}
+
+\newtcblisting{pythoncode}[2][]{%
+  before skip=1em,
+  after skip=1em,
+  title={\ifx\relax#2\relax\else #2\fi},
+  halign title=center,
+  boxsep=1mm,
+  left=0mm,
+  right=0mm,
+  breakable,
+  listing engine=minted,
+  listing only,
+  minted language={python},
+  % minted options={breaklines, autogobble},
+  in listing = true,
+  #1
+}
+
+\newtcblisting{sqlcode}[2][]{%
+  before skip=0.5em,
+  after skip=0.5em,
+  title={#2},
+  halign title=center,
+  boxsep=0mm,
+  left=0mm,
+  right=0mm,
+  breakable,
+  listing engine=minted,
+  listing only,
+  minted language={sql},
+  % minted options={breaklines=true, autogobble=true, stripnl=true},
+  in listing = true,
+  #1}
+
+
+\tcbset{
+  crossedout/.style={
+    overlay={
+      \path[draw=red!50!white,line width=1mm] (title.south east) --
+      ($ (frame.south west) +(0,0.15)$);
+      \path[draw=red!50!white,line width=1mm]
+      ($ (frame.south east) +(0,0.15)$)--
+      (title.south west);
+    },
+    overlay middle and last={
+      \path[draw=red!50!white,line width=1mm] (frame.north east) --
+      ($ (frame.south west) +(0,0.15)$);
+      \path[draw=red!50!white,line width=1mm] (frame.north west) --
+      ($ (frame.south east) +(0,0.15)$);
+    },
+  }
+}
+\newtcblisting{crossedpythoncode}[2][]{%
+  enhanced,
+  before skip=1em,
+  after skip=1em,
+  title={\ifx\relax#2\relax Code bogué\else #2\fi},
+  colbacktitle=red!40!white,
+  halign title=center,
+  boxsep=1mm,
+  left=0mm,
+  right=0mm,
+  breakable,
+  listing engine=minted,
+  listing only,
+  minted language={python},
+  minted options={breaklines, autogobble},
+  crossedout,
+  #1
+}
+
+
+\newtcblisting{pycon}[2][]{%
+  before skip=1em,
+  after skip=1em,
+  title={\ifx\relax#2\relax Code\else #2\fi},
+  halign title=center,
+  boxsep=1mm,
+  left=0mm,
+  right=0mm,
+  breakable,
+  listing engine=minted,
+  listing only,
+  minted language={pycon},
+  minted options={breaklines, autogobble},
+  #1
+}
+\newtcblisting{pythoncode*}[2][]{%
+  before skip=1em,
+  after skip=1em,
+  title={\ifx\relax#1\relax Code\else #2\fi},
+  halign title=center,
+  boxsep=2mm,
+  breakable,
+  listing engine=minted,
+  listing only,
+  minted language={python},
+  minted options={breaklines, autogobble,linenos},
+  #1
+}
+\newtcblisting{pythoninterp}{%
+  before skip=1em,
+  after skip=1em,
+  blanker,
+  halign title=center,
+  boxsep=2mm,
+  borderline north={1mm}{0pt}{thin, gray},
+  borderline south={1mm}{0pt}{thin, gray},
+  breakable,
+  listing engine=minted,
+  listing only,
+  minted language={pycon},
+  minted options={breaklines, autogobble}
+}
+
+\tcbset{%
+  theorem style/theoremlike/.style={%
+    separator sign none,%
+    description delimiters={\og}{\fg},%
+    terminator sign colon,%
+    theorem name and number,%
+    attach title to upper={\ },%
+    %
+    before lower={Preuve:~},
+    breakable=true,%
+    blank,%
+    fonttitle=\bfseries,%
+    coltitle=ocre,%
+    enhanced,%
+    left=0pt,%
+    right=0pt%
+  },%
+  theorem style/definitionlike/.style={%
+    separator sign none,%
+    description delimiters={\og}{\fg},%
+    terminator sign colon,%
+    theorem name and number,%
+    attach title to upper={\ },%
+    %
+    breakable=true,%
+    blank,%
+    fonttitle=\bfseries,%
+    coltitle=lightgreen,%
+    enhanced,%
+    left=0pt,%
+    right=0pt%
+  },%
+  theorem style/exercicelike/.style={%
+    separator sign none,%
+    description delimiters={\og}{\fg},%
+    terminator sign colon,%
+    theorem name and number,%
+    attach title to upper={\ },%
+    breakable=true,%
+    blank,%
+    fonttitle=\bfseries,%
+    coltitle=brown,%
+    enhanced%
+  },%
+    theorem style/savoirfairestyle/.style={%
+    separator sign none,%
+    description delimiters={\og}{\fg},%
+    terminator sign colon,%
+    theorem name and number,%
+    attach title to upper={\ },%
+    breakable=true,%
+    blank,%
+    fonttitle=\bfseries,%
+    coltitle=red,%
+    enhanced,%
+    lowerbox=visible,
+    before lower={Preuve:~},
+    after lower={\hfill{}\square}
+  }%
+}
+
+\newif\ifnowrite
+\def\tcbcollerecorddata{}
+\tcbset{%
+  nowrite/.is if=nowrite,
+  nowrite=false,
+  nowrite/.default=true,
+  qcours/.default={%
+    \descriptiontext%
+  },%
+  qcours/.code={%
+    \tcbset{before title={\llap{\textcolor{red}{Q}}}}
+    \def\questype{qcours}%
+    \def\tcbcollerecorddata{%
+      \tcbcollerecord{#1}}%
+  },%
+  qcours append/.default=,%
+  qcours add/.code={%
+    \def\questype{qcours}%
+    \def\tcbcollerecorddata{%
+      \tcbcollerecord{\descriptiontext{} (#1)}}%
+  }
+}
+% \newtcbtheorem[number within=section]{remarque}{Remarque}{%
+%   new/crefname={remarque}{remarques},%
+%   new/Crefname={Remarques}{Remarques},%
+%   theorem style=exercicelike,%
+%   nowrite
+% }{rmq}
+
+
+
+\newtcbtheorem[number within=section]{rappel}{Rappel}{%
+  new/crefname={rappel}{rappels},%
+  new/Crefname={Rappel}{Rappels},%
+  theorem style=exercicelike,%
+  nowrite
+}{rap}
+
+
+\AtBeginEnvironment{pythoncode}{%
+  \renewcommand{\fcolorbox}[4][]{#4}
+}
+\AtBeginEnvironment{pythoninterp}{%
+  \renewcommand{\fcolorbox}[4][]{#4}
+}

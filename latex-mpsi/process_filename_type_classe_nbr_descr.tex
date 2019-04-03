@@ -1,0 +1,55 @@
+\ExplSyntaxOn
+\cs_generate_variant:Nn \regex_extract_once:nnNTF {VVNTF}
+\cs_generate_variant:Nn \tl_upper_case:n {V}
+\tl_new:N \g_adam_spaced_job_name_tl
+\tl_new:N \g_adam_spaced_jobtype
+\tl_new:N \g_adam_spaced_jobclasse
+\tl_new:N \g_adam_spaced_jobnbr
+\tl_new:N \g_adam_spaced_jobclasse_upper
+\tl_new:N \g_adam_spaced_jobdescr
+
+\seq_new:N \g_adam_job_name_seq
+% rescan \jobname
+\tl_gset_rescan:Nnx \g_adam_spaced_job_name_tl { } { \c_sys_jobname_str }
+\seq_gset_split:NnV \g_adam_job_name_seq { _ } \g_adam_spaced_job_name_tl
+% replace hyphens by spaces
+\tl_greplace_all:Nnn \g_adam_spaced_job_name_tl { _ } { ~ }
+% \g_adam_job_name_seq
+\seq_gpop_left:NN \g_adam_job_name_seq \g_adam_spaced_jobtype
+\seq_gpop_left:NN \g_adam_job_name_seq \g_adam_spaced_jobclasse
+\seq_gpop_left:NN \g_adam_job_name_seq \g_adam_spaced_jobnbr
+\tl_gset:Nx \g_adam_spaced_jobclasse_upper {
+  \tl_upper_case:V {\g_adam_spaced_jobclasse}
+  }
+\tl_gset:Nn \g_adam_spaced_jobdescr {
+  \seq_use:Nn \g_adam_job_name_seq {~}
+}
+
+\NewDocumentCommand{\doctitle}{}
+ {
+  % just print the (spaced) file name
+  \tl_use:N \g_adam_spaced_jobdescr
+ }
+\NewDocumentCommand{\doctype}{}
+ {
+  \tl_to_str:N \g_adam_spaced_jobtype
+ }
+\NewDocumentCommand{\docclasse}{}
+ {
+  \tl_to_str:N \g_adam_spaced_jobclasse
+}
+\NewDocumentCommand{\docnbr}{}
+ {
+  \tl_to_str:N \g_adam_spaced_jobnbr
+ }
+
+\NewDocumentCommand{\docclasseupper}{}
+ {
+  \tl_to_str:N \g_adam_spaced_jobclasse_upper
+ }
+
+\NewDocumentCommand{\spacedfilename}{}
+ {
+  \tl_use:N \g_adam_spaced_job_name_tl
+ }
+\ExplSyntaxOff

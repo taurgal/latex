@@ -1,0 +1,81 @@
+\usepackage[a4paper,includeheadfoot,top=1.2cm,bottom=1.2cm,left=1.2cm,right=1.2cm]{geometry}
+\input{header_common}
+
+\everymath{\displaystyle}
+
+\fancypagestyle{DLcor}{
+  % Set the date for the datenumber package (\datedate macro)
+  \setdatenumber{2067}{01}{02}
+  % Export some more doc information in macros
+  \def\docdayname{\datedayname}
+  \def\docmonthname{\datemonthname}
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \fancyhead[L]{\docclasse{} --- \etablissement}
+  \fancyhead[RO,LE]{Corrigé du DL~\no\docnbrintype}
+  \fancyfoot[RO,LE]{\thepage/\pageref{LastPage}}
+  \fancyfoot[LO,RE]{Corrigé du DL~\no\docnbrintype}
+}
+\pagestyle{DLcor}
+
+\fancypagestyle{DLcorfirstpage}{
+  % Set the date for the datenumber package (\datedate macro)
+  \setdatenumber{2067}{01}{02}
+  % Export some more doc information in macros
+  \def\docdayname{\datedayname}
+  \def\docmonthname{\datemonthname}
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \fancyhead[L]{\docclasse{} --- \etablissement}
+  \fancyhead[RO,LE]{Pour le \docdayname~\datedate}
+  \fancyfoot[RO,LE]{\thepage/\pageref{LastPage}}
+  \fancyfoot[LO,RE]{Corrigé du DL~\no\docnbrintype}
+}
+\thispagestyle{DLcorfirstpage}
+
+
+\newcommand{\upperRomannumeral}[1]{\uppercase\expandafter{\romannumeral#1}}
+\AtBeginDocument{
+  \everymath{\displaystyle}
+  \begin{Center}
+    \begin{minipage}{0.8\linewidth}
+      \begin{Center}
+        \Large
+        \bfseries
+        Corrigé du DL~\no\docnbrintype{} DE MATHÉMATIQUES
+        \bigbreak
+        \hrule
+        \bigbreak        
+      \end{Center}
+    \end{minipage}
+  \end{Center}
+  \bigbreak
+  \bigbreak
+}
+
+\newlist{exrccp}{enumerate}{4}
+
+\setlist[exrccp,1]{
+  topsep=2em,
+  itemsep=2em,
+  align=left,
+  labelindent=0pt,
+  itemindent=2cm,
+  labelsep=2em,
+  leftmargin=*,labelindent=1em,
+  label={Exercice~\Roman*},
+  font={\normalfont\normalsize\bfseries\Large},
+}
+
+
+\setlist[exrccp,2]{ label={\arabic*)},
+  font={\normalfont\normalsize\bfseries}}
+\setlist[exrccp,3]{label={\alph*.},
+  font={\normalfont\normalsize\bfseries}}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "dm_mpsi_01_2017-12-03"
+%%% End:

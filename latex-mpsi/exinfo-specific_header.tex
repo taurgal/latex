@@ -1,0 +1,80 @@
+\input{ex-specific_header}
+
+\usepackage{menukeys}
+% \usepackage[newfloat]{minted}
+\tcbuselibrary{minted}
+
+\newif\ifinlisting
+\tcbset{%
+  reset@minted/.style={%
+    minted language=latex,
+    minted options={tabsize=2,fontsize=\small},
+    minted style=,
+    listing engine=minted,
+    in listing/.is if=inlisting,
+    in listing/.initial=false,
+  },
+  initialize@reset=reset@minted,
+}
+
+\newtcblisting{pythoncode}[2][]{%
+  before skip=1em,
+  after skip=1em,
+  title={\ifx\relax#2\relax\else #2\fi},
+  halign title=center,
+  boxsep=1mm,
+  left=0mm,
+  right=0mm,
+  breakable,
+  listing engine=minted,
+  listing only,
+  minted language={python},
+  % minted options={breaklines, autogobble},
+  in listing = true,
+  #1
+}
+
+\newtcblisting{sqlcode}[2][]{%
+  before skip=0.5em,
+  after skip=0.5em,
+  title={#2},
+  halign title=center,
+  boxsep=0mm,
+  left=0mm,
+  right=0mm,
+  breakable,
+  listing engine=minted,
+  listing only,
+  minted language={sql},
+  % minted options={breaklines=true, autogobble=true, stripnl=true},
+  in listing = true,
+  #1}
+
+
+\usepackage{algpseudocode}
+\algrenewcommand\algorithmicend{\textbf{fin}}
+\algrenewcommand\algorithmicdo{\textbf{faire}}
+\algrenewcommand\algorithmicwhile{\textbf{tant que}}
+% 
+\algnewcommand\algorithmicto{\textbf{à}}
+\algrenewcommand\algorithmicfor{\textbf{pour}}
+\algnewcommand\algorithmicallantde{\textbf{allant de}}
+\algrenewtext{For}[3]%
+{\algorithmicfor{} #1 \algorithmicallantde{} #2 \algorithmicto{} #3 \algorithmicdo}
+\algrenewtext{For}[3]%
+{\algorithmicfor{} #1 \algorithmicallantde{} #2 \algorithmicto{} #3 \algorithmicdo}
+\algblockdefx[ForEach]{ForEach}{EndForEach}[2]{\textbf{pour} #1 \textbf{ dans } #2}{\textbf{fin pour}}
+% 
+\algrenewcommand\algorithmicforall{\textbf{pour tout}}
+\algrenewcommand\algorithmicloop{\textbf{boucle}}
+\algrenewcommand\algorithmicrepeat{\textbf{répéter}}
+\algrenewcommand\algorithmicuntil{\textbf{jusqu'à}}
+\algrenewcommand\algorithmicprocedure{\textbf{procédure}}
+\algrenewcommand\algorithmicfunction{\textbf{fonction}}
+\algrenewcommand\algorithmicif{\textbf{si}}
+\algrenewcommand\algorithmicthen{\textbf{alors}}
+\algrenewcommand\algorithmicelse{\textbf{sinon}}
+\algrenewcommand\algorithmicrequire{\textbf{Entrées:}}
+\algrenewcommand\algorithmicensure{\textbf{Sortie:}}
+\algrenewcommand\algorithmicreturn{\State \textbf{retourner}}
+\algrenewcommand\textproc{\textsc}

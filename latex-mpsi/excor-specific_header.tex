@@ -1,0 +1,162 @@
+\usepackage[a4paper,includeheadfoot,headsep=1em,top=1.2cm,bottom=1.2cm,left=1.2cm,right=1.2cm,footskip=0pt]{geometry}
+\input{header_common}
+\setlength{\columnsep}{3em}
+\usepackage{fontawesome}
+\usepackage{refcount}
+
+\input{process_filename_type_classe_nbr_descr}
+
+\setlist[enumerate]{nosep,%
+  topsep=6pt plus 2pt minus 2pt,
+  itemsep=1pt plus 0.6pt minus 0.6pt
+}
+\setlist[enumerate,2]{%
+  topsep=2.0pt plus 0.6pt minus 0.6pt
+}
+\setlist[itemize]{partopsep=0pt}
+\titlespacing\section{0pt}{0pt}{\the\dimexpr-\parskip+1ex\relax}
+
+\newlength\stextwidth
+\settowidth{\stextwidth}{\Lightning\!\Lightning}
+\newcommand\makesamewidth[2][c]{%
+  \makebox[\stextwidth][#1]{#2}%
+}
+
+\makeatletter{}
+\renewcommand\tcbtitle{%
+  \ifx\tcbtitletext\@empty%
+  \else%
+  \leavevmode%
+  \tikz (0,0) \node[inner sep=0pt, anchor=base]%(mytitle\thetcbcounter)
+  {\llap{\smash{\rotatebox[origin=c]{90}{\small\extypechar\exdiffchar}~}}%
+    \color {tcbcol@title}%
+    \kvtcb@fonttitle%
+    \kvtcb@haligntitle%
+    \kvtcb@before@title%
+    \tcbtitletext%
+    \pgfkeys{/tcb/source/.print}%
+    \kvtcb@after@title%
+    :%
+  };
+  \fi
+}
+\makeatother{}
+
+\def\extypechar{\relax}
+\def\exdiffchar{\relax}
+\def\sourcename{\relax}
+\def\sourceyear{\relax}
+
+
+\pgfkeysdef{/tcb/source/.print}{%
+  \if\relax\sourcename%
+  \edef\tmp{}%
+  \else%
+  \edef\tmp{\sourcename}%
+  \fi
+  \if\relax\sourceyear%
+  \edef\tmp{\tmp}%
+  \else%
+  \edef\tmp{~(\tmp,~\sourceyear)}%
+  \fi
+  \tmp
+}
+
+\tcbset{%
+  type/.is choice,
+  type/classic/.code={\def\extypechar{\Heart}},
+  type/fun/.code={\def\extypechar{\Football}},
+  type/important/.code={\def\extypechar{\faStarO}},
+  type/training/.code={\def\extypechar{\Bicycle}},
+  %
+  difficulty/.is choice,
+  difficulty/easy/.code={\def\exdiffchar{%
+      \makesamewidth[c]{}%
+    }},
+  difficulty/hard/.code={\def\exdiffchar{%
+      \makesamewidth[c]{\Lightning}%
+    }},
+  difficulty/vhard/.code={\def\exdiffchar{%
+      \makesamewidth[c]{\Lightning\!\Lightning}%
+    }},
+  %
+  source/name/.is choice,
+  source/name/xens/.code={\def\sourcename{X-ENS-ESPCI}},
+  source/name/centrale/.code={\def\sourcename{Centrale-Supélec}},
+  source/name/ccp/.code={\def\sourcename{CCP}},
+  source/name/minestelecom/.code={\def\sourcename{Mines-Télécom}},
+  source/name/minesponts/.code={\def\sourcename{Mines-Ponts}},
+  source/year/.code={\def\sourceyear{#1}}
+}
+
+\newcommand\tcbsolution[2]{%
+  \IfFileExists{#2}{\tcbsolutionb{#1}{#2}}{}%
+}
+
+\newtcbtheorem{exercice}{Exercice}{%
+  description delimiters={\og}{\fg},
+  theorem style=plain,
+  lowerbox=ignored,
+  savelowerto=Solutions/\jobname-sol-\thetcbcounter.tex,
+  record={\string\tcbsolution{%
+      \thetcbcounter%
+    }{%
+      Solutions/\jobname-sol-\thetcbcounter.tex%
+    }
+  },
+  code={\tcbset{label={ex-\thetcbcounter}}},%
+  detach title,
+  terminator sign none,
+  separator sign none,
+  breakable, blank, new/crefname={exercice}{exercices},
+  new/Crefname={Exercice}{Exercices}, description
+  delimiters={\og}{\fg}, fonttitle=\bfseries,coltitle=ocre, enhanced,%
+  before skip=1em, after skip=1em, left=0pt, right=0pt,
+  fonttitle=\bfseries%
+}{ex}
+
+\NewTotalTColorBox{\tcbsolutionb}{mm}{%
+  blank,
+  coltitle=ocre,
+  breakable,
+  fonttitle=\bfseries,
+  title={Solution de l'exercice~\ref{ex-#1}:},
+  phantomlabel={solution@#1},
+  attach title to upper=\par,
+}{\input{#2}}
+
+\makeatletter{}
+\renewcommand{\new@tcbtheorem}[5][]{%
+  \@@newtcolorbox[auto counter,#1]{#2}[3][]{#4,%
+    title={\tcb@theo@title{#3}{\thetcbcounter}{##2}},%
+    list entry={\protect\numberline{\thetcbcounter}##2},%
+    nameref={##2},%
+    ##1}%
+  \@@newtcolorbox[#1,no counter,list inside=]{#2*}[2][]{#4,%
+    title={\tcb@theo@title{#3}{\@empty}{##2}},%
+    ##1}%
+}
+\makeatother{}
+
+\everymath{\displaystyle}
+
+
+\fancypagestyle{ex}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \fancyhead[L]{\docclasseupper{} --- \etablissement}
+  \fancyhead[C]{\doctitle}
+  \fancyfoot[C]{\thepage/\getpagerefnumber{TrueLastPage}}
+  \fancyhead[R]{Exercices}
+}
+\pagestyle{ex}
+
+\AtBeginDocument{%
+  \tcbstartrecording%
+}
+
+\AtEndDocument{%
+  \tcbstoprecording%
+  \tcbinputrecords%
+  \label{TrueLastPage}%
+}

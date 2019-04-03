@@ -1,0 +1,125 @@
+\usepackage[a4paper,includeheadfoot,top=1.2cm,bottom=1.0cm,left=1.2cm,right=1.2cm]{geometry}
+\input{header_common}
+\usepackage[titles]{tocloft}
+\setlength\cftbeforetoctitleskip{1em}
+\setlength\cftaftertoctitleskip{1em}
+\renewcommand\cfttoctitlefont{\large\bfseries}
+\renewcommand\cftaftertoctitle{}
+\cftpagenumbersoff{section}
+
+
+\input{process_filename_type_classe_nbr_datespan}
+
+\newcommand\tcbsolution[2]{%
+  \IfFileExists{#2}{\tcbsolutionb{#1}{#2}}{}%
+}
+\NewTotalTColorBox{\tcbsolutionb}{mm}{%
+  blank,
+  coltitle=ocre,
+  breakable,
+  fonttitle=\bfseries,
+  title={Solution of Exercise~\ref{ex-#1} (ex-#1):},
+  phantomlabel={solution@#1},
+  attach title to upper=\par,
+}{\input{#2}}
+
+
+\newtcbtheorem{exercice}{Exercice}{%
+  description delimiters={\og}{\fg},
+  theorem style=plain,
+  lowerbox=ignored,
+  savelowerto=Solutions/\jobname-sol-\thetcbcounter.tex,
+  record={\string\tcbsolution{%
+      \thetcbcounter%
+    }{%
+      Solutions/\jobname-sol-\thetcbcounter.tex%
+    }
+  },
+  code={\tcbset{label={ex-\thetcbcounter}}},%
+  detach title,
+  terminator sign={:~},
+  separator sign none,
+  % breakable,
+  blank, new/crefname={exercice}{exercices},
+  new/Crefname={Exercice}{Exercices}, description
+  delimiters={\og}{\fg}, fonttitle=\bfseries,coltitle=ocre, enhanced,%
+  before skip=1em, after skip=1em, left=0pt, right=0pt,
+  fonttitle=\bfseries%
+}{ex}
+
+\ExplSyntaxOff
+\newtcolorbox{sujetscolletitle}{%
+  title={Exercices de colle \docnbr},%
+  fonttitle=\Large\bfseries\scshape{},%
+  halign = center,%
+  halign title = center,%
+  coltitle=black,%
+  standard jigsaw,%
+  opacityback=0,%
+  opacitybacktitle=0,%
+  width=0.8\linewidth,%
+  center%
+}
+
+\setdatenumber{\docstartyear}{\docstartmonth}{\docstartday}
+\edef\docstartdayname{\datedayname}
+\edef\docstartmonthname{\datemonthname}
+\setdatenumber{\docendyear}{\docendmonth}{\docendday}
+\edef\docenddayname{\datedayname}
+\edef\docendmonthname{\datemonthname}
+
+\newcounter{corpage}
+
+\fancypagestyle{excor}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \fancyhead[L]{\docclasseupper{} --- \etablissement}
+  \fancyhead[C]{\doctitle}
+  \fancyfoot[C]{%
+    \the\numexpr%
+    \thepage-\getpagerefnumber{corfirstpage}+1\relax%
+    /%
+    \the\numexpr%
+    \getpagerefnumber{TrueLastPage}-\getpagerefnumber{corfirstpage}+1
+    \relax%
+  }
+  \fancyhead[R]{Corrections des exercices}
+}
+
+\fancypagestyle{sujetscolle}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \fancyhead[L]{\docclasseupper{} --- \etablissement}
+  \fancyhead[C]{Exercices de colle}
+  \fancyhead[R]{Du \docstartdayname{}
+    \docstartday/\docstartmonth/\docstartyear{}
+    au \docenddayname{}
+    \docendday/\docendmonth/\docendyear
+  }
+  \fancyfoot[R]{\thepage/\pageref{LastPage}}
+}
+
+\pagestyle{sujetscolle}
+
+\newcommand{\upperRomannumeral}[1]{\uppercase\expandafter{\romannumeral#1}}
+\AtBeginDocument{
+  \tcbstartrecording%
+  \begin{sujetscolletitle}
+    Du \docstartdayname{}
+    \docstartday/\docstartmonth/\docstartyear{}
+    au \docenddayname{}
+    \docendday/\docendmonth/\docendyear.
+  \end{sujetscolletitle}
+  \bigbreak
+}
+
+\AtEndDocument{
+  \begin{center}
+    \textbf{--FIN--}
+  \end{center}
+  \tcbstoprecording%
+  \clearpage\label{corfirstpage}%
+  \pagestyle{excor}%
+  \tcbinputrecords%
+  \label{TrueLastPage}%
+}

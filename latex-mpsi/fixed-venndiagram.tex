@@ -1,0 +1,411 @@
+\usepackage{venndiagram}
+
+% 
+\pgfdeclarepatternformonly[\GridSize]{MyGrid}{\pgfqpoint{-1pt}{-1pt}}{\pgfqpoint{\GridSize}{\GridSize}}{\pgfqpoint{\GridSize}{\GridSize}}%
+{
+     \pgfsetlinewidth{0.3pt}
+     \pgfpathmoveto{\pgfqpoint{0pt}{0pt}}
+     \pgfpathlineto{\pgfqpoint{0pt}{\GridSize + 0.1pt}}
+     \pgfpathmoveto{\pgfqpoint{0pt}{0pt}}
+     \pgfpathlineto{\pgfqpoint{\GridSize + 0.1pt}{0pt}}
+     \pgfusepath{stroke}
+}
+
+\newdimen\GridSize
+%
+
+\tikzset{%a
+  labels/.style={fill=white},
+  labelA/.style={below,labels},
+  labelB/.style={below,labels},
+  labelC/.style={above,labels},
+  universe/.style={rounded corners=5pt},
+  universe label/.style={%
+    fill=white, node contents={$E$}, anchor=north west},
+  GridSize/.code={\GridSize=#1},
+  GridSize=3pt,
+  filling/.style={GridSize=7pt, pattern=MyGrid}
+}
+
+\makeatletter{}
+\renewenvironment{venndiagram2sets}[1][]%
+{%
+  \disable@keys{venn}{labelABC,labelOnlyC,labelOnlyAC,labelOnlyBC,%
+    labelNotABC,labelC,labelOnlyAB}%
+  \setkeys{venn}{#1}%
+  % Calculate centre of A
+  \pgfmathsetlength{\@venn@Ax}{\@venn@hgap+\@venn@radius}%
+  \pgfmathsetlength{\@venn@Ay}{\@venn@vgap+\@venn@radius}%
+  \pgfmathsetlength{\@venn@Bx}{\@venn@hgap+3*\@venn@radius
+    -\@venn@overlap}%
+  \setlength{\@venn@By}{\@venn@Ay}%
+  \pgfmathsetlength{\@venn@w}{2*\@venn@hgap+4*\@venn@radius
+     -\@venn@overlap}%
+  \pgfmathsetlength{\@venn@h}{2*\@venn@vgap+2*\@venn@radius}%
+  \def\fillA{\path[filling] (\@venn@Ax,\@venn@Ay)
+    circle (\@venn@radius);}%
+  \def\fillB{\path[filling] (\@venn@Bx,\@venn@By)
+    circle (\@venn@radius);}%
+  \def\fillAll{\path[filling] (0,0)
+    rectangle (\@venn@w,\@venn@h);}%
+  \let\fillOnlyA\@venn@fillOnlyA@twosets
+  \let\fillOnlyB\@venn@fillOnlyB@twosets
+  \def\fillNotA{\path[filling,even odd rule]
+    (0,0) rectangle (\@venn@w,\@venn@h)
+    (\@venn@Ax,\@venn@Ay) circle (\@venn@radius);}%
+  \def\fillNotB{\path[filling,even odd rule]
+    (0,0) rectangle (\@venn@w,\@venn@h)
+    (\@venn@Bx,\@venn@By) circle (\@venn@radius);}%
+  \def\fillNotAorB{%
+    \begin{scope}
+    \path[clip]
+    (0,0) rectangle (\@venn@w,\@venn@h)
+    (\@venn@Bx,\@venn@By) circle (\@venn@radius)
+     ;
+    \path[filling,even odd rule]
+    (0,0) rectangle (\@venn@w,\@venn@h)
+    (\@venn@Ax,\@venn@Ay) circle (\@venn@radius)
+    ;
+    \end{scope}
+   }%
+  \def\fillNotAorNotB{%
+    \path[filling,nonzero rule]
+    (0,0) rectangle (\@venn@w,\@venn@h)
+    (\@venn@Ax,\@venn@Ay) circle (\@venn@radius)
+    (0,0) rectangle (\@venn@w,\@venn@h)
+    (\@venn@Bx,\@venn@By) circle (\@venn@radius)
+    ;
+   }%
+  \let\fillANotB\fillOnlyA
+  \let\fillBNotA\fillOnlyB
+  \def\fillACapB{%
+    \begin{scope}
+      \clip (\@venn@Ax,\@venn@Ay) circle (\@venn@radius);
+      \path[filling]
+        (\@venn@Bx,\@venn@By) circle (\@venn@radius);
+    \end{scope}
+  }%
+  \let\fillBCapA\fillACapB
+  \ifdefempty{\@venn@tikzoptions}%
+  {%
+    \def\@venn@dobegin{\begin{tikzpicture}}%
+  }%
+  {%
+    \edef\@venn@dobegin{\noexpand\begin{tikzpicture}%
+      [\expandonce\@venn@tikzoptions]}%
+  }%
+  \@venn@dobegin
+  \path (0,0) coordinate (venn bottom left)
+        (0,\@venn@h) coordinate (venn top left)
+        (\@venn@w,\@venn@h) coordinate (venn top right)
+        (\@venn@w,0) coordinate (venn bottom right);
+}%
+{%
+    \draw (\@venn@Ax,\@venn@Ay+\@venn@radius)
+      node[labelA] (labelA) {\@venn@label@A};
+    \draw (\@venn@Bx,\@venn@By+\@venn@radius)
+      node[labelB] (labelB) {\@venn@label@B};
+      \draw (0.5*\@venn@w,0.5*\@venn@h) node (labelAB) {\@venn@label@AB};
+      \draw (venn top left) node[universe label] {};
+      \draw[universe] (venn bottom left) rectangle (venn top right);
+    \draw (\@venn@Ax,\@venn@Ay) circle (\@venn@radius);
+    \draw (\@venn@Bx,\@venn@By) circle (\@venn@radius);
+    \draw (\@venn@Ax,\@venn@Ay) node[above,left] (labelOnlyA)
+       {\@venn@label@OnlyA};
+    \draw (\@venn@Bx,\@venn@By) node[above,right] (labelOnlyB)
+       {\@venn@label@OnlyB};
+    \draw (\@venn@vgap,\@venn@hgap) node (labelNotAB) {\@venn@label@NotAB};
+    \@postvennhook
+  \end{tikzpicture}
+}
+
+\renewcommand*\@venn@fillOnlyA@twosets{%
+    \@venn@computecircleintersects{\@venn@Ax}{\@venn@Ay}{\@venn@Bx}{\@venn@By}%
+    \ifnum\@venn@intersect@n=2\relax
+      \pgfmathsetlength{\dimen@i}{\@venn@intersect@i@x-\@venn@Ax}%
+      \pgfmathsetlength{\dimen@ii}{\@venn@intersect@i@y-\@venn@Ay}%
+      \ifvennoldpgf
+        \pgfmathatantwo{\dimen@i}{\dimen@ii}%
+      \else
+        \pgfmathatantwo{\dimen@ii}{\dimen@i}%
+      \fi
+      \let\@venn@start@i@angle\pgfmathresult
+      \pgfmathsetlength{\dimen@i}{\@venn@intersect@ii@x-\@venn@Ax}%
+      \pgfmathsetlength{\dimen@ii}{\@venn@intersect@ii@y-\@venn@Ay}%
+      \ifvennoldpgf
+        \pgfmathatantwo{\dimen@i}{\dimen@ii}%
+      \else
+        \pgfmathatantwo{\dimen@ii}{\dimen@i}%
+      \fi
+      \let\@venn@end@i@angle\pgfmathresult
+      \pgfmathadd{\@venn@end@i@angle}{360}%
+      \let\@venn@end@i@angle\pgfmathresult
+      \pgfmathsetlength{\dimen@i}{\@venn@intersect@ii@x-\@venn@Bx}%
+      \pgfmathsetlength{\dimen@ii}{\@venn@intersect@ii@y-\@venn@By}%
+      \ifvennoldpgf
+        \pgfmathatantwo{\dimen@i}{\dimen@ii}%
+      \else
+        \pgfmathatantwo{\dimen@ii}{\dimen@i}%
+      \fi
+      \let\@venn@start@ii@angle\pgfmathresult
+      \pgfmathsetlength{\dimen@i}{\@venn@intersect@i@x-\@venn@Bx}%
+      \pgfmathsetlength{\dimen@ii}{\@venn@intersect@i@y-\@venn@By}%
+      \ifvennoldpgf
+        \pgfmathatantwo{\dimen@i}{\dimen@ii}%
+      \else
+        \pgfmathatantwo{\dimen@ii}{\dimen@i}%
+      \fi
+      \let\@venn@end@ii@angle\pgfmathresult
+      \pgfmathadd{\@venn@start@ii@angle}{360}%
+      \let\@venn@start@ii@angle\pgfmathresult
+      \path[filling]
+       (\@venn@intersect@i@x,\@venn@intersect@i@y)
+      arc[radius=\@venn@radius,start angle=\@venn@start@i@angle,
+      end angle=\@venn@end@i@angle]
+      arc[radius=\@venn@radius,start angle=\@venn@start@ii@angle,
+      end angle=\@venn@end@ii@angle]
+       -- cycle;
+    \else
+       \fillOnlyA
+    \fi
+}%
+\renewcommand*\@venn@fillOnlyB@twosets{%
+    \@venn@computecircleintersects{\@venn@Ax}{\@venn@Ay}{\@venn@Bx}{\@venn@By}%
+    \ifnum\@venn@intersect@n=2\relax
+      \pgfmathsetlength{\dimen@i}{\@venn@intersect@i@x-\@venn@Bx}%
+      \pgfmathsetlength{\dimen@ii}{\@venn@intersect@i@y-\@venn@By}%
+      \ifvennoldpgf
+        \pgfmathatantwo{\dimen@i}{\dimen@ii}%
+      \else
+        \pgfmathatantwo{\dimen@ii}{\dimen@i}%
+      \fi
+      \let\@venn@start@i@angle\pgfmathresult
+      \pgfmathsetlength{\dimen@i}{\@venn@intersect@ii@x-\@venn@Bx}%
+      \pgfmathsetlength{\dimen@ii}{\@venn@intersect@ii@y-\@venn@By}%
+      \ifvennoldpgf
+        \pgfmathatantwo{\dimen@i}{\dimen@ii}%
+      \else
+        \pgfmathatantwo{\dimen@ii}{\dimen@i}%
+      \fi
+      \let\@venn@end@i@angle\pgfmathresult
+      \pgfmathsetlength{\dimen@i}{\@venn@intersect@ii@x-\@venn@Ax}%
+      \pgfmathsetlength{\dimen@ii}{\@venn@intersect@ii@y-\@venn@Ay}%
+      \ifvennoldpgf
+        \pgfmathatantwo{\dimen@i}{\dimen@ii}%
+      \else
+        \pgfmathatantwo{\dimen@ii}{\dimen@i}%
+      \fi
+      \let\@venn@start@ii@angle\pgfmathresult
+      \pgfmathsetlength{\dimen@i}{\@venn@intersect@i@x-\@venn@Ax}%
+      \pgfmathsetlength{\dimen@ii}{\@venn@intersect@i@y-\@venn@Ay}%
+      \ifvennoldpgf
+        \pgfmathatantwo{\dimen@i}{\dimen@ii}%
+      \else
+        \pgfmathatantwo{\dimen@ii}{\dimen@i}%
+      \fi
+      \let\@venn@end@ii@angle\pgfmathresult
+      \path[filling]
+       (\@venn@intersect@i@x,\@venn@intersect@i@y)
+      arc[radius=\@venn@radius,start angle=\@venn@start@i@angle,
+      end angle=\@venn@end@i@angle]
+      arc[radius=\@venn@radius,start angle=\@venn@start@ii@angle,
+      end angle=\@venn@end@ii@angle]
+       -- cycle;
+    \else
+       \fillOnlyB
+    \fi
+  }
+
+\renewenvironment{venndiagram3sets}[1][]%
+{%
+  \disable@keys{venn}{labelAB,labelNotAB}%
+  \setkeys{venn}{#1}%
+  \pgfmathsetlength{\@venn@Cx}{\@venn@hgap + 2*\@venn@radius
+    -0.5*\@venn@overlap}%
+  \pgfmathsetlength{\@venn@Cy}{\@venn@vgap+\@venn@radius}%
+  \pgfmathsetlength{\@venn@Ax}{\@venn@hgap+\@venn@radius}%
+  \pgfmathsetlength{\@venn@Ay}{\@venn@Cy
+    + (\@venn@radius - 0.5*\@venn@overlap)*1.73205}%
+  \pgfmathsetlength{\@venn@Bx}{\@venn@hgap+3*\@venn@radius
+    -\@venn@overlap}%
+  \setlength{\@venn@By}{\@venn@Ay}%
+  \pgfmathsetlength{\@venn@w}{2*\@venn@hgap+4*\@venn@radius
+     -\@venn@overlap}%
+  \pgfmathsetlength{\@venn@h}{2*\@venn@vgap+4*\@venn@radius
+     -\@venn@overlap}%
+  \def\fillA{\path[filling] (\@venn@Ax,\@venn@Ay)
+    circle (\@venn@radius);}%
+  \def\fillB{\path[filling] (\@venn@Bx,\@venn@By)
+    circle (\@venn@radius);}%
+  \def\fillC{\path[filling] (\@venn@Cx,\@venn@Cy)
+    circle (\@venn@radius);}%
+  \def\fillAll{\path[filling] (0,0)
+    rectangle (\@venn@w,\@venn@h);}%
+  \def\fillNotA{\path[filling,even odd rule]
+    (0,0) rectangle (\@venn@w,\@venn@h)
+    (\@venn@Ax,\@venn@Ay) circle (\@venn@radius);}%
+  \def\fillNotB{\path[filling,even odd rule]
+    (0,0) rectangle (\@venn@w,\@venn@h)
+    (\@venn@Bx,\@venn@By) circle (\@venn@radius);}%
+  \def\fillNotC{\path[filling,even odd rule]
+    (0,0) rectangle (\@venn@w,\@venn@h)
+    (\@venn@Cx,\@venn@Cy) circle (\@venn@radius);}%
+  \let\fillOnlyA\@venn@fillOnlyA@threesets
+  \let\fillOnlyB\@venn@fillOnlyB@threesets
+  \let\fillOnlyC\@venn@fillOnlyC@threesets
+  \let\fillNotABC\@venn@fillNotABC@threesets
+  \def\fillANotB{%
+    \begin{scope}
+      \clip (\@venn@Ax,\@venn@Ay) circle (\@venn@radius);
+      \path[filling,even odd rule]
+        (\@venn@Ax,\@venn@Ay) circle (\@venn@radius)
+        (\@venn@Bx,\@venn@By) circle (\@venn@radius);
+    \end{scope}
+  }%
+  \def\fillBNotA{%
+    \begin{scope}
+      \clip (\@venn@Bx,\@venn@By) circle (\@venn@radius);
+      \path[filling,even odd rule]
+        (\@venn@Bx,\@venn@By) circle (\@venn@radius)
+        (\@venn@Ax,\@venn@Ay) circle (\@venn@radius);
+    \end{scope}
+  }%
+  \def\fillANotC{%
+    \begin{scope}
+      \clip (\@venn@Ax,\@venn@Ay) circle (\@venn@radius);
+      \path[filling,even odd rule]
+        (\@venn@Ax,\@venn@Ay) circle (\@venn@radius)
+        (\@venn@Cx,\@venn@Cy) circle (\@venn@radius);
+    \end{scope}
+  }%
+  \def\fillCNotA{%
+    \begin{scope}
+      \clip (\@venn@Cx,\@venn@Cy) circle (\@venn@radius);
+      \path[filling,even odd rule]
+        (\@venn@Cx,\@venn@Cy) circle (\@venn@radius)
+        (\@venn@Ax,\@venn@Ay) circle (\@venn@radius);
+    \end{scope}
+  }%
+  \def\fillBNotC{%
+    \begin{scope}
+      \clip (\@venn@Bx,\@venn@By) circle (\@venn@radius);
+      \path[filling,even odd rule]
+        (\@venn@Bx,\@venn@By) circle (\@venn@radius)
+        (\@venn@Cx,\@venn@Cy) circle (\@venn@radius);
+    \end{scope}
+  }%
+  \def\fillCNotB{%
+    \begin{scope}
+      \clip (\@venn@Cx,\@venn@Cy) circle (\@venn@radius);
+      \path[filling,even odd rule]
+        (\@venn@Cx,\@venn@Cy) circle (\@venn@radius)
+        (\@venn@Bx,\@venn@By) circle (\@venn@radius);
+    \end{scope}
+  }%
+  \def\fillACapB{%
+    \begin{scope}
+      \clip (\@venn@Ax,\@venn@Ay) circle (\@venn@radius);
+      \path[filling]
+        (\@venn@Bx,\@venn@By) circle (\@venn@radius);
+    \end{scope}
+  }%
+  \let\fillBCapA\fillACapB
+  \def\fillACapC{%
+    \begin{scope}
+      \clip (\@venn@Ax,\@venn@Ay) circle (\@venn@radius);
+      \path[filling]
+        (\@venn@Cx,\@venn@Cy) circle (\@venn@radius);
+    \end{scope}
+  }%
+  \let\fillCCapA\fillACapC
+  \def\fillBCapC{%
+    \begin{scope}
+      \clip (\@venn@Bx,\@venn@By) circle (\@venn@radius);
+      \path[filling]
+        (\@venn@Cx,\@venn@Cy) circle (\@venn@radius);
+    \end{scope}
+  }%
+  \let\fillCCapB\fillBCapC
+  \def\fillACapBNotC{%
+    \begin{scope}
+      \clip (\@venn@Ax,\@venn@Ay) circle (\@venn@radius);
+      \clip (\@venn@Bx,\@venn@By) circle (\@venn@radius);
+      \path[filling,even odd rule]
+        (\@venn@Bx,\@venn@By) circle (\@venn@radius)
+        (\@venn@Cx,\@venn@Cy) circle (\@venn@radius);
+    \end{scope}
+  }%
+  \let\fillBCapANotC\fillACapBNotC
+  \def\fillACapCNotB{%
+    \begin{scope}
+      \clip (\@venn@Ax,\@venn@Ay) circle (\@venn@radius);
+      \clip (\@venn@Cx,\@venn@Cy) circle (\@venn@radius);
+      \path[filling,even odd rule]
+        (\@venn@Cx,\@venn@Cy) circle (\@venn@radius)
+        (\@venn@Bx,\@venn@By) circle (\@venn@radius);
+    \end{scope}
+  }%
+  \let\fillCCapANotB\fillACapCNotB
+  \def\fillBCapCNotA{%
+    \begin{scope}
+      \clip (\@venn@Bx,\@venn@By) circle (\@venn@radius);
+      \clip (\@venn@Cx,\@venn@Cy) circle (\@venn@radius);
+      \path[filling,even odd rule]
+        (\@venn@Cx,\@venn@Cy) circle (\@venn@radius)
+        (\@venn@Ax,\@venn@Ay) circle (\@venn@radius);
+    \end{scope}
+  }%
+  \let\fillCCapBNotA\fillBCapCNotA
+  \def\fillACapBCapC{%
+    \begin{scope}
+      \clip (\@venn@Ax,\@venn@Ay) circle (\@venn@radius);
+      \clip (\@venn@Cx,\@venn@Cy) circle (\@venn@radius);
+      \path[filling]
+        (\@venn@Bx,\@venn@By) circle (\@venn@radius);
+    \end{scope}
+  }%
+  \let\fillACapCCapB\fillACapBCapC
+  \let\fillBCapACapC\fillACapBCapC
+  \let\fillBCapCCapA\fillACapBCapC
+  \let\fillCCapACapB\fillACapBCapC
+  \let\fillCCapBCapA\fillACapBCapC
+  \ifdefempty{\@venn@tikzoptions}%
+  {%
+    \def\@venn@dobegin{\begin{tikzpicture}}%
+  }%
+  {%
+    \edef\@venn@dobegin{\noexpand\begin{tikzpicture}%
+       [\expandonce\@venn@tikzoptions]}%
+  }%
+  \@venn@dobegin
+  \path (0,0) coordinate (venn bottom left)
+        (0,\@venn@h) coordinate (venn top left)
+        (\@venn@w,\@venn@h) coordinate (venn top right)
+        (\@venn@w,0) coordinate (venn bottom right);
+}%
+{%
+    \draw (\@venn@Ax,\@venn@Ay) node[above,left] (labelOnlyA) {\@venn@label@OnlyA};
+    \draw (\@venn@Bx,\@venn@By) node[above,right] (labelOnlyB) {\@venn@label@OnlyB};
+    \draw (\@venn@Cx,\@venn@Cy) node[below] (labelOnlyC) {\@venn@label@OnlyC};
+    \draw (\@venn@vgap,\@venn@hgap) node (labelNotABC) {\@venn@label@NotABC};
+    \draw (\@venn@Ax,\@venn@Ay+\@venn@radius)
+      node[labelA] (labelA) {\@venn@label@A};
+    \draw (\@venn@Bx,\@venn@By+\@venn@radius)
+      node[labelB] (labelB) {\@venn@label@B};
+    \draw (\@venn@Cx,\@venn@vgap) node[labelC] (labelC) {\@venn@label@C};
+    \draw (\@venn@Cx,0.5*\@venn@h) node (labelABC) {\@venn@label@ABC};
+    \draw (\@venn@Cx,\@venn@Ay) node[above] (labelOnlyAB) {\@venn@label@OnlyAB};
+    \draw (\@venn@Ax,\@venn@Ay) ++(-60:\@venn@radius-0.5*\@venn@overlap)
+      node[below left] (labelOnlyAC) {\@venn@label@OnlyAC};
+    \draw (\@venn@Bx,\@venn@By) ++(-120:\@venn@radius-0.5*\@venn@overlap)
+    node[below right] (labelOnlyBC) {\@venn@label@OnlyBC};
+    \draw (venn top left) node[universe label] {};
+    \draw[universe] (0,0) rectangle (\@venn@w,\@venn@h);
+    \draw (\@venn@Ax,\@venn@Ay) circle (\@venn@radius);
+    \draw (\@venn@Bx,\@venn@By) circle (\@venn@radius);
+    \draw (\@venn@Cx,\@venn@Cy) circle (\@venn@radius);
+    \@postvennhook
+  \end{tikzpicture}
+}
+  
+\makeatother{}

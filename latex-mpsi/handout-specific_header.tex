@@ -1,0 +1,530 @@
+\usepackage[a4paper,includeheadfoot,top=1.2cm,bottom=1.0cm,left=1.2cm,right=1.2cm,headheight=13pt]{geometry}
+\usepackage{environ}
+\input{header_common}
+\usepackage{transparent}
+\def\correction#1{\textcolor{white}{#1}}
+\input{fixed-venndiagram}
+\usepackage[newfloat]{minted}
+\tcbuselibrary{minted}
+
+\usepackage{transparent}
+
+\newcommand\voidformatter[1]{}
+
+\newtcblisting{pythoncode}[2][]{%
+  before skip=1em,
+  after skip=1em,
+  title={\ifx\relax#2\relax Code\else #2\fi},
+  halign title=center,
+  boxsep=1mm,
+  left=0mm,
+  right=0mm,
+  breakable,
+  listing engine=minted,
+  listing only,
+  minted language={python},
+  minted options={breaklines, autogobble},
+  #1
+}
+
+\usepackage[printwatermark]{xwatermark}
+\newwatermark[
+allpages,
+fontfamily=bch,
+color=gray!25,
+angle=45,scale=2.5,
+xpos=0,ypos=0]{Lycée militaire d'Autun}
+
+
+\newcommand\fileregexnbrchapname{(cours|coursinfo|ex)_(mpsi)_(\d{2})_(.*)}
+
+\newcounter{semainecounter}
+\setcounter{semainecounter}{0}
+
+\makeatletter{}
+\newwrite\tcb@colle@out
+
+\newcommand\mpsifinsemainedecolle{
+  \ifx\tcbcollerecord\tcb@null%
+  \global\let\tcbcollerecord\tcb@colle
+  \else%
+  \immediate\closeout\tcb@colle@out%
+  \fi%
+  \stepcounter{semainecounter}%
+  \message{Passage en semaine \thesemainecounter}
+  \ifnum\value{semainecounter}<10
+  \xdef\tcb@colle@file{Colles/colle-0\arabic{semainecounter}.records}
+  \else
+  \xdef\tcb@colle@file{Colles/colle-\arabic{semainecounter}.records}
+  \fi
+  \immediate\openout\tcb@colle@out\tcb@colle@file\relax%
+}
+
+\newcommand\mpsisetsemainedecolle[1]{
+  \if\relax\detokenize{#1}\relax
+  \relax
+  \else
+  \ifnum\value{semainecounter}=\numexpr#1\relax
+  \relax
+  \else
+  \immediate\closeout\tcb@colle@out%
+  \setcounter{semainecounter}{#1}%
+  \ifnum\value{semainecounter}<10
+  \xdef\tcb@colle@file{Colles/colle-0\arabic{semainecounter}.records}
+  \else
+  \xdef\tcb@colle@file{Colles/colle-\arabic{semainecounter}.records}
+  \fi
+  \immediate\openout\tcb@colle@out\tcb@colle@file%
+  \fi
+  \fi
+}
+
+
+\global\let\tcbcollerecord\tcb@null%
+\newcommand\tcbstartcollerecording{%
+  \mpsifinsemainedecolle
+}
+
+
+\newcommand{\tcbstopcollerecording}{%
+  \ifx\tcbcollerecord\tcb@null%
+  \else%
+  \immediate\closeout\tcb@colle@out%
+  \fi%
+}
+
+\def\printdbginfo{\message{Le chapitre \thechapter \docnbr \doctitle a
+    été compilé avec succès. La prochaine semaine de colle est la
+    \arabic{semainecounter}}}
+
+\ExplSyntaxOn
+\DeclareExpandableDocumentCommand{\printnumber}{sm}
+{
+  \IfBooleanTF{#1}
+  { \int_to_arabic:n { #2 } }
+  { #2 }
+}
+%
+\cs_generate_variant:Nn \tl_upper_case:n {V}
+\cs_generate_variant:Nn \tl_set:Nn {NV}
+\cs_generate_variant:Nn \tl_gset:Nn {Nx}
+\tl_new:N \g_spaced_job_name_tl
+\tl_new:N \g_spaced_jobtype
+\tl_new:N \g_spaced_jobclasse
+\tl_new:N \g_spaced_jobclasse_upper
+\tl_new:N \g_spaced_jobdescr
+\tl_new:N \l_initial
+\seq_new:N \g_job_name_seq
+%
+\NewExpandableDocumentCommand{\doctitle}{}{}
+\NewExpandableDocumentCommand{\doctype}{}{}
+\NewExpandableDocumentCommand{\docclasse}{}{}
+\NewExpandableDocumentCommand{\docclasseupper}{}{}
+\NewExpandableDocumentCommand{\docnbr}{}{}
+\NewExpandableDocumentCommand{\spacedfilename}{}{}
+%
+\NewDocumentCommand{\rescanchapname}{m O{_}}{
+  \tl_set:Nx \l_initial {#1}
+  % rescan \jobname
+  \tl_gset_rescan:Nnx \g_spaced_job_name_tl { } { \l_initial }
+  \seq_gset_split:NnV \g_job_name_seq { #2 } \g_spaced_job_name_tl
+  % replace hyphens by spaces
+  \tl_greplace_all:Nnn \g_spaced_job_name_tl { #2 } { ~ }
+  % \g_job_name_seq
+  \seq_gpop_left:NN \g_job_name_seq \g_spaced_jobtype
+  \seq_gpop_left:NN \g_job_name_seq \g_spaced_jobclasse
+  \tl_gset:Nx \g_spaced_jobclasse_upper {
+    \tl_upper_case:V {\g_spaced_jobclasse}
+  }
+  \seq_gpop_left:NN \g_job_name_seq \g_docnbr
+  \tl_gset:Nn \g_spaced_jobdescr {
+    \seq_use:Nn \g_job_name_seq {~}
+  }
+  \RenewExpandableDocumentCommand{\doctitle}{}{
+    % just print the (spaced) file name
+    \tl_use:N \g_spaced_jobdescr
+  }
+  \RenewExpandableDocumentCommand{\doctype}{}{
+    \tl_to_str:N \g_spaced_jobtype
+  }
+  \RenewExpandableDocumentCommand{\docclasse}{}{
+    \tl_to_str:N \g_spaced_jobclasse
+  }
+  \RenewExpandableDocumentCommand{\docclasseupper}{}{
+    \tl_to_str:N \g_spaced_jobclasse_upper
+  }
+  \RenewExpandableDocumentCommand{\docnbr}{}{
+    \int_to_arabic:n {\tl_to_str:N \g_docnbr}
+  }
+  \RenewExpandableDocumentCommand{\spacedfilename}{}{
+    \tl_use:N \g_spaced_job_name_tl
+  }
+}
+\ExplSyntaxOff
+
+\newcommand\inputchapter[1]{%
+  % \tcbstoprecording % NO!
+  \def\filename{#1}%
+  \rescanchapname{#1}[_]
+  \setcounter{chapter}{\docnbr}
+  \addtocounter{chapter}{-1}
+  \chapter{\doctitle}%
+  \input{#1}%
+  \printdbginfo{}%
+}
+
+\tcbset{%
+  theorem style/theoremlike/.style={%
+    separator sign none,%
+    % description delimiters={\og}{\fg},%
+    description formatter=\voidformatter,
+    terminator sign colon,%
+    theorem name,%
+    attach title to upper={\ },%
+    %
+    before lower={\textcolor{red}{Preuve:}\LARGE~},
+    collower=white,
+    breakable=true,%
+    blank,%
+    fonttitle=\bfseries,%
+    coltitle=ocre,%
+    enhanced,%
+    left=0pt,%
+    right=0pt%
+  },
+    theorem style/theoremlikewithproof/.style={%
+    separator sign none,%
+    % description delimiters={\og}{\fg},%
+    description formatter=\voidformatter,
+    terminator sign colon,%
+    theorem name,%
+    attach title to upper={\ },%
+    %
+    before lower={\textcolor{red}{Preuve:}~},
+    breakable=true,%
+    blank,%
+    fonttitle=\bfseries,%
+    coltitle=ocre,%
+    enhanced,%
+    left=0pt,%
+    right=0pt%
+  },
+  theorem style/definitionlike/.style={%
+    separator sign none,%
+    % description delimiters={\og}{\fg},%
+    description formatter=\voidformatter,
+    terminator sign colon,%
+    theorem name,%
+    attach title to upper={\ },%
+    %
+    breakable=true,%
+    blank,%
+    fonttitle=\bfseries,%
+    coltitle=lightgreen,%
+    enhanced,%
+    left=0pt,%
+    right=0pt%
+  },%
+  theorem style/exercicelike/.style={%
+    separator sign none,%
+    % description delimiters={\og}{\fg},%
+    description formatter=\voidformatter,
+    terminator sign colon,%
+    theorem name,%
+    attach title to upper={\ },%
+    breakable=true,%
+    blank,%
+    fonttitle=\bfseries,%
+    coltitle=brown,%
+    enhanced%
+  },%
+    theorem style/savoirfairestyle/.style={%
+    separator sign none,%
+    % description delimiters={\og}{\fg},%
+    description formatter=\voidformatter,
+    terminator sign colon,%
+    theorem name,%
+    attach title to upper={\ },%
+    breakable=true,%
+    blank,%
+    fonttitle=\bfseries,%
+    coltitle=red,%
+    enhanced,%
+    lowerbox=visible,
+    before lower={Preuve:~},
+    after lower={\hfill{}\square}
+  }%
+}
+
+\newtcbtheorem{savoirfaire}{%
+  À savoir faire}{%
+  new/crefname={savoir-faire}{%
+    savoirs-faire},%
+  new/Crefname={Savoir-faire}{%
+    Savoirs-faire},%
+  theorem style=savoirfairestyle,%
+  qcours}{sf}
+
+\makeatletter{}
+\newcommand{\@qcours}[1]{\tcbset{qcours={#1}}%
+  \begin{qcourstcb}{}{}
+    #1
+  \end{qcourstcb}}
+\newenvironment{qcours}{\collect@body\@qcours}{}
+\makeatother{}
+
+\newtcbtheorem{qcourstcb}{%
+  Question de cours}{%
+  new/crefname={question de cours}{questions de cours},%
+  new/Crefname={Question de cours}{Questions de cours},%
+  theorem style=savoirfairestyle%
+}{qcourstcb}
+
+\tcolorboxenvironment{mytcbitemizeleftbar}{%
+  blanker,% Maybe try blank instead
+  before upper={\textsc{Questions de cours}},
+  top=1em,
+  bottom=1em,
+  left=0.5em,
+  right=0.5em,
+  before skip=0.0em,%
+  after skip=0.0em%
+}
+
+\newtcbtheorem[number within=section]{theorem}{Théorème}{%
+  new/crefname={Théorème}{Théorèmes},%
+  new/Crefname={Théorème}{Théorèmes},%
+  theorem style=theoremlike,%
+  % ptcours
+}{theo}
+
+\newtcbtheorem[number within=section]{corollaire}{Corollaire}{%
+  new/crefname={corollaire}{corollaires},%
+  new/Crefname={Corollaire}{Corollaires},%
+  theorem style=theoremlike,%
+  % ptcours
+}{coro}
+
+\newtcbtheorem[number within=section]{lemme}{Lemme}{%
+  new/crefname={lemme}{lemmes},%
+  new/Crefname={Lemme}{Lemmes},%
+  theorem style=theoremlike,%
+  % ptcours
+}{lemm}
+
+\newtcbtheorem[number within=section]{proposition}{Proposition}{%
+  new/crefname={proposition}{propositions},%
+  new/Crefname={Proposition}{Propositions},%
+  theorem style=theoremlike,%
+  % ptcours
+  % collower=white
+}{prop}
+
+\newtcbtheorem[number within=section]{corollairewithproof}{Corollaire}{%
+  new/crefname={corollaire}{corollaires},%
+  new/Crefname={Corollaire}{Corollaires},%
+  theorem style=theoremlikewithproof,%
+  % ptcours
+}{coro}
+
+\newtcbtheorem[number within=section]{lemmewithproof}{Lemme}{%
+  new/crefname={lemme}{lemmes},%
+  new/Crefname={Lemme}{Lemmes},%
+  theorem style=theoremlikewithproof,%
+  % ptcours
+}{lemm}
+
+\newtcbtheorem[number within=section]{propositionwithproof}{Proposition}{%
+  new/crefname={proposition}{propositions},%
+  new/Crefname={Proposition}{Propositions},%
+  theorem style=theoremlikewithproof,%
+  % ptcours
+  % collower=white
+}{prop}
+
+
+\newtcbtheorem[number within=section]{methode}{Methode}{%
+  new/crefname={methode}{methodes},%
+  new/Crefname={Methode}{Methodes},%
+  theorem style=theoremlike,%
+  % ptcours
+}{meth}
+
+
+\newtcbtheorem[number within=section]{ptcours}{ptcours}{%
+  breakable=true, blanker,%
+  % ptcours
+}{ptcours}
+
+
+
+\newtcbtheorem[number within=section]{definition}{Définition}{%
+  new/crefname={definition}{definitions},%
+  new/Crefname={Definition}{Definitions},%
+  theorem style=definitionlike,%
+  % ptcours
+}{def}
+
+\newtcbtheorem[number within=section]{notation}{Notation}{%
+  new/crefname={notation}{notations},%
+  new/Crefname={Notation}{Notations},%
+  theorem style=definitionlike,%
+  % nowrite
+}{def}
+
+\newtcbtheorem[number within=section]{exercice}{Exercice}{%
+  new/crefname={exercice}{exercices},%
+  new/Crefname={Exercices}{Exercices},%
+  theorem style=exercicelike,%
+  % nowrite,
+  before lower={\textcolor{lightgreen}{Solution \thetcbcounter:}~}
+}{exer}
+
+\newtcbtheorem[number within=section]{remarque}{Remarque}{%
+  new/crefname={remarque}{remarques},%
+  new/Crefname={Remarques}{Remarques},%
+  theorem style=exercicelike,%
+  % nowrite
+}{rmq}
+
+
+\newtcbtheorem[number within=section]{exemple}{Exemple}{%
+  new/crefname={exemple}{exemples},%
+  new/Crefname={Exemples}{Exemples},%
+  theorem style=exercicelike,%
+  % nowrite
+}{exem}
+
+\newtcbtheorem[number within=section]{rappel}{Rappel}{%
+  new/crefname={rappel}{rappels},%
+  new/Crefname={Rappel}{Rappels},%
+  theorem style=exercicelike,%
+  % nowrite
+}{rap}
+
+\newtcolorbox{proof}{% 'proof' from 'amsthm'
+  blanker,%
+  breakable=true,%
+  left=5mm,%
+  before skip=10pt,%
+  after skip=10pt,%
+  borderline west={1mm}{2mm}{red},%
+  before upper=\hspace{-5mm}%
+  {\setlength{\fboxsep}{0pt}\colorbox{white}{\rule[-0.5em]{0pt}{2em}Preuve:~}}%
+}
+
+\fancypagestyle{cours}{
+  \fancyhf{}%
+  \renewcommand{\headrulewidth}{0.4pt}%
+  \fancyhead[L]{\leftmark}%
+  \fancyhead[R]{\rightmark}%
+  \fancyfoot[RO,LE]{\thepage/\pageref{LastPage}}%
+  \fancyfoot[LO,RE]{\docclasseupper{} --- \etablissement}%
+}
+\pagestyle{cours}
+
+\fancypagestyle{plain}{
+  \fancyhf{}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \fancyfoot[RO,LE]{\thepage/\pageref{LastPage}}%
+  \fancyfoot[LO,RE]{\docclasseupper{} --- \etablissement}%
+}
+
+\renewcommand*\thechapter{\Roman{chapter}}
+\renewcommand*\thesection{\Roman{section}}
+\titleformat{name=\chapter}[display]
+{\normalfont\huge\bfseries}
+{}
+{20pt}
+{%
+  \begin{tcolorbox}[
+    enhanced,
+    colback=titlebgdark,
+    boxrule=0.25cm,
+    colframe=titlebglight,
+    arc=0pt,
+    outer arc=0pt,
+    leftrule=0pt,
+    rightrule=0pt,
+    fontupper=\color{white}\sffamily\bfseries\huge,
+    enlarge left by=-1in-\hoffset-\oddsidemargin,
+    enlarge right by=%
+    -\paperwidth+1in+\hoffset+\oddsidemargin+\textwidth,
+    width=\paperwidth,
+    left=1in+\hoffset+\oddsidemargin,
+    right=\paperwidth-1in-\hoffset-\oddsidemargin-\textwidth,
+    top=0.6cm,
+    bottom=0.6cm,
+    overlay={
+      \node[
+      fill=titlebgdark,
+      draw=titlebglight,
+      line width=0.15cm,
+      inner sep=0pt,
+      text width=1.7cm,
+      minimum height=1.7cm,
+      align=center,
+      font=%
+      \color{white}\sffamily\bfseries\fontsize{30}{36}\selectfont
+      ]
+      (chapname)
+      at ([xshift=-4cm]frame.north east)
+      {
+        \thechapter
+      };
+      \node[font=\small,anchor=south,inner sep=2pt] at
+      (chapname.north)
+      {\chaptertitlename};
+    }
+    ]
+    #1
+  \end{tcolorbox}%
+}
+\titleformat{name=\chapter,numberless}[display]
+{\normalfont\huge\bfseries}
+{}
+{20pt}
+{%
+  \begin{tcolorbox}[
+    enhanced,
+    colback=titlebgdark,
+    boxrule=0.25cm,
+    colframe=titlebglight,
+    arc=0pt,
+    outer arc=0pt,
+    remember as=title,
+    leftrule=0pt,
+    rightrule=0pt,
+    fontupper=\color{white}\sffamily\bfseries\huge,
+    enlarge left by=-1in-\hoffset-\oddsidemargin,
+    enlarge right by=%
+    -\paperwidth+1in+\hoffset+\oddsidemargin+\textwidth,
+    width=\paperwidth,
+    left=1in+\hoffset+\oddsidemargin,
+    right=\paperwidth-1in-\hoffset-\oddsidemargin-\textwidth,
+    top=0.6cm,
+    bottom=0.6cm,
+    ]
+    #1
+  \end{tcolorbox}%
+}
+\titlespacing*{\chapter}{0pt}{0pt}{40pt}
+
+\apptocmd{\ttl@straight@i}{%
+  \ifstrequal{#1}{section}{%
+    \global\let\currsectitle\ttl@savetitle }{}%
+  \ifstrequal{#1}{subsection}{%
+    \global\let\currssectitle\ttl@savetitle}{}%
+}{}{}
+\pretocmd{\@part}{\gdef\currparttitle{#1}}{}{}
+\makeatother
+
+
+
+
+\newcommand{\upperRomannumeral}[1]{\uppercase\expandafter{\romannumeral#1}}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

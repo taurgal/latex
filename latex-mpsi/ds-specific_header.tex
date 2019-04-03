@@ -1,0 +1,209 @@
+\documentclass[french,twoside,draft]{article}
+\usepackage[a4paper,includeheadfoot,top=1.2cm,bottom=1.2cm,left=1.2cm,right=1.2cm]{geometry}
+\input{header_common}
+\usepackage{pgfornament}
+\usepackage{amsthm}
+
+\input{process_filename_type_classe_nbr_date}
+
+\newcommand\tcbsolution[2]{%
+  \IfFileExists{#2}{%
+    \pagebreak[3]
+    \tcbsolutionb{#1}{#2}
+    \pagebreak[3]
+  }{}%
+}
+
+\NewTotalTColorBox{\tcbsolutionb}{mm}{%
+  blank,
+  coltitle=ocre,
+  breakable,
+  fonttitle=\bfseries,
+  title={Exercise~\ref{ex-#1}:},
+  phantomlabel={solution@#1},
+  attach title to upper=\par,
+}{\input{#2}
+\pagebreak[3]}
+\everymath{\displaystyle}
+
+\usepackage{empheq}
+\usepackage{fancybox}
+\setlength\shadowsize{2pt}
+\newcommand\resbox[1]{%
+  \relax\ifmmode%
+  {\ovalbox{\( #1 \)}}%
+  \else%
+  \ovalbox{#1}%
+  \fi%
+}
+
+\fancypagestyle{DS}{
+  \setdate{\docyear}{\docmonth}{\docday}
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \fancyhead[L]{\docclasseupper{} --- \etablissement}
+  \fancyhead[R]{DS du \MakeLowercase{\datedayname}~\datedate}
+  \fancyfoot[R]{\thepage/%
+    \the\numexpr%
+    \getpagerefnumber{corfirstpage}-1\relax
+  }
+  \fancyfoot[L]{Devoir surveillé~\no\docnbr}
+}
+\pagestyle{DS}
+\fancypagestyle{DSfirstpage}{
+  \setdate{\docyear}{\docmonth}{\docday}
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \fancyhead[L]{\docclasseupper{} --- \etablissement}
+  \fancyhead[R]{DS du \MakeLowercase{\datedayname}~\datedate}
+  \fancyfoot[R]{\thepage/%
+    \the\numexpr%
+    \getpagerefnumber{corfirstpage}-1\relax
+  }
+  \fancyfoot[L]{Devoir surveillé~\no\docnbr}
+}
+\thispagestyle{DSfirstpage}
+
+\newcounter{corpage}
+\fancypagestyle{excor}{
+  \setdate{\docyear}{\docmonth}{\docday}
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0.4pt}
+
+  \fancyhead[L]{\docclasseupper{} --- \etablissement}
+  \fancyhead[C]{\doctitle}
+  \fancyfoot[R]{%
+    \the\numexpr%
+    \thepage-\getpagerefnumber{corfirstpage}+1\relax%
+    /%
+    \the\numexpr%
+    \getpagerefnumber{TrueLastPage}-\getpagerefnumber{corfirstpage}+1
+    \relax%
+  }
+  \fancyfoot[L]{Correction du devoir surveillé~\no\docnbr}
+}
+
+
+\newcommand{\upperRomannumeral}[1]{\uppercase\expandafter{\romannumeral#1}}
+\AtBeginDocument{
+  \tcbstartrecording%
+  \everymath{\displaystyle}
+  \begin{center}
+    \begin{tikzpicture}[
+      every node/.style={inner sep=10pt}]
+      \node[align=center] (vecbox) {
+        \LARGE{MATHÉMATIQUES}\\
+        DS~\no\docnbr{}\\
+        Durée:~4h
+      };%
+      \path  (vecbox.south west) to [ornament=88,
+      options/.append style={yshift=1pt}] (vecbox.south east);
+      \path  (vecbox.north west) to [ornament=88,
+      options/.append style={yshift=1pt}] (vecbox.north east);
+    \end{tikzpicture}
+  \end{center}
+  \bigskip{}
+  \begin{center}
+    \begin{minipage}{0.9\linewidth}
+      \itshape%
+      Les calculatrices ne sont pas autorisées. Un grand soin devra
+      être apporté à la rédaction et à la présentation. Si vous
+      constatez ce qui vous semble être une erreur d'énoncé,
+      signalez-le et poursuivez votre composition en expliquant les
+      raisons des initiatives que vous serez amenés à prendre.
+      Rappelons que toute tentative de recherche, même infructueuse,
+      sera prise en considération. Enfin les exercices sont
+      indépendants et peuvent être traités dans un ordre quelconque.
+    \end{minipage}
+  \end{center}
+  \ifx\relax\consigneds\relax
+  \else
+  \begin{center}
+    \begin{minipage}{0.9\linewidth}
+      \itshape{}%
+      \consigneds
+    \end{minipage}
+  \end{center}
+  \fi
+  \bigskip{}
+}
+
+\makeatletter{}
+\def\tcbverbatimwrite#1{%
+  \@bsphack
+  \immediate\openout\tcb@out #1
+  \edef\beginputlineno{\the\inputlineno}
+  \tcb@verbatim@begin@hook%
+  \let\do\@makeother\dospecials
+  \catcode`\^^M\active \catcode`\^^I=12
+  \def\verbatim@processline{%
+    \immediate\write\tcb@out
+      {\the\verbatim@line}}%
+  \verbatim@start}%'
+
+\def\endtcbverbatimwrite{%
+  \tcb@verbatim@end@hook%
+  \def\@@percentchar{\@percentchar\@percentchar\@percentchar}
+  \immediate\write\tcb@out
+    {%
+	 \@@percentchar\space Local Variables:^^J%
+	 \@@percentchar\space mode: latex^^J%
+	 \@@percentchar\space TeX-source-correlate-orig-linenbr: %
+     \beginputlineno ^^J%
+	 \@@percentchar\space TeX-source-correlate-jobname: %
+     "\jobname"^^J%
+     \@@percentchar\space TeX-master: "\jobname"^^J%
+	 \@@percentchar\space End:^^J%
+   }
+  \immediate\closeout\tcb@out
+  \@esphack%
+}
+\makeatother{}
+
+\theoremstyle{definition}
+\newtheorem{remarque}{Remarque}
+\newtheorem*{remarque*}{Remarque}
+
+\newtcbtheorem{exercice}{Exercice}{%
+  description delimiters={\og}{\fg},
+  theorem style=plain,
+  lowerbox=ignored,
+  savelowerto=Solutions/\jobname-sol-\thetcbcounter.tex,
+  record={\string\tcbsolution{%
+      \thetcbcounter%
+    }{%
+      Solutions/\jobname-sol-\thetcbcounter.tex%
+    }
+  },
+  code={\tcbset{label={ex-\thetcbcounter}}},%
+  detach title,
+  terminator sign={:~},
+  separator sign none,
+  breakable, blank, new/crefname={exercice}{exercices},
+  new/Crefname={Exercice}{Exercices}, description
+  delimiters={\og}{\fg}, fonttitle=\bfseries,coltitle=ocre, enhanced,%
+  before skip=1em, after skip=1em, left=0pt, right=0pt,
+  fonttitle=\bfseries%
+}{ex}
+
+\AtEndDocument{%
+  \tcbstoprecording%
+  \clearpage\label{corfirstpage}%
+  \pagestyle{excor}%
+  \begin{center}
+    \begin{tikzpicture}[
+      every node/.style={inner sep=10pt}]
+      \node[align=center] (vecbox) {
+        \LARGE{MATHÉMATIQUES}\\
+        Correction du DS~\no\docnbr{}
+      };%
+      \path  (vecbox.south west) to [ornament=88,
+      options/.append style={yshift=1pt}] (vecbox.south east);
+      \path  (vecbox.north west) to [ornament=88,
+      options/.append style={yshift=1pt}] (vecbox.north east);
+    \end{tikzpicture}
+  \end{center}
+  \bigskip{}
+  \tcbinputrecords%
+  \label{TrueLastPage}%
+}

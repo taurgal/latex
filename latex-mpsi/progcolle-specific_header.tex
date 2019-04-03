@@ -1,0 +1,251 @@
+\usepackage[a4paper,includeheadfoot,top=1.2cm,bottom=1.0cm,left=1.2cm,right=1.2cm]{geometry}
+\input{header_common}
+\usepackage[titles]{tocloft}
+\setlength\cftbeforetoctitleskip{1em}
+\setlength\cftaftertoctitleskip{1em}
+\renewcommand\cfttoctitlefont{\large\bfseries}
+\renewcommand\cftaftertoctitle{}
+\cftpagenumbersoff{section}
+
+
+\input{process_filename_type_classe_nbr_datespan}
+
+\ExplSyntaxOff
+\newtcolorbox{progcolletitle}{%
+  title=PROGRAMME DE COLLE \docnbr,%
+  fonttitle=\Large\bfseries\scshape{},%
+  halign = center,%
+  halign title = center,%
+  coltitle=black,%
+  standard jigsaw,%
+  opacityback=0,%
+  opacitybacktitle=0,%
+  width=0.8\linewidth,%
+  center%
+}
+
+\newenvironment{mytcbitemizeleftbar}{%
+  \begin{itemize}%
+  }{%
+  \end{itemize}%
+}
+\tcolorboxenvironment{mytcbitemizeleftbar}{%
+  blanker,% Maybe try blank instead
+  before upper={\textsc{Savoirs-faire (à vérifier par le colleur):}},
+  breakable,
+  top=1em,
+  bottom=1em,
+  left=0.5em,
+  right=0.5em,
+  before skip=0.0em,%
+  after skip=0.0em%
+}
+\newenvironment{mytcbitemizeleftbarremarque}{%
+  \begin{itemize}%
+  }{%
+  \end{itemize}%
+}
+\tcolorboxenvironment{mytcbitemizeleftbarremarque}{%
+  blanker,% Maybe try blank instead
+  before upper={\textsc{Remarque:}},
+  breakable,
+  top=1em,
+  bottom=1em,
+  left=0.5em,
+  right=0.5em,
+  before skip=0.0em,%
+  after skip=0.0em%
+}
+\newenvironment{mytcbitemizeleftbarremarques}{%
+  \begin{itemize}%
+  }{%
+  \end{itemize}%
+}
+\tcolorboxenvironment{mytcbitemizeleftbarremarques}{%
+  blanker,% Maybe try blank instead
+  before upper={\textsc{Remarques}},
+  breakable,
+  top=1em,
+  bottom=1em,
+  left=0.5em,
+  right=0.5em,
+  before skip=0.0em,%
+  after skip=0.0em%
+}
+\newenvironment{remarques}{%
+  \begin{mytcbitemizeleftbarremarques}%
+  }{%
+  \end{mytcbitemizeleftbarremarques}%
+}
+
+\newenvironment{questionsdecours}{%
+  \begin{mytcbitemizeleftbar}%
+  }{%
+  \end{mytcbitemizeleftbar}%
+}
+\newenvironment{savoirfaire}{%
+  \begin{mytcbitemizeleftbar}%
+  }{%
+  \end{mytcbitemizeleftbar}%
+}
+\newenvironment{remarque}{%
+  \begin{mytcbitemizeleftbarremarque}%
+  }{%
+  \end{mytcbitemizeleftbarremarque}%
+}
+
+\newenvironment{listedeschapitres}{%
+  \begin{itemize}}{\end{itemize}}
+\tcolorboxenvironment{listedeschapitres}{%
+  blanker,
+  before upper={\textsc{Chapitres de la semaine}},
+  before skip=0.0em,%
+  after skip=0.0em,%
+  before skip=1em,
+  after skip=1em,
+  top=1em,
+  bottom=1em,
+  left=0.5em,
+  right=0.5em,
+  borderline horizontal={1pt}{0pt}{black}}
+
+\xdef\tmp{}
+
+\newtcolorbox{listedesptcours}{
+  blank,
+  before upper={%
+    \textsc{Contenu par chapitre},
+    \begin{itemize}},
+    after upper={\end{itemize}},
+  colframe=red,
+  breakable,
+  before skip=1em,
+  after skip=1em,
+  left=0.5em,
+  right=0.5em
+}
+
+\newenvironment{listedesptcoursunchap}[1]{
+#1\begin{enumerate}}{\end{enumerate}}
+
+
+\setdatenumber{\docstartyear}{\docstartmonth}{\docstartday}
+\edef\docstartdayname{\datedayname}
+\edef\docstartmonthname{\datemonthname}
+\setdatenumber{\docendyear}{\docendmonth}{\docendday}
+\edef\docenddayname{\datedayname}
+\edef\docendmonthname{\datemonthname}
+
+\fancypagestyle{progcolle}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \fancyhead[L]{\docclasseupper{} --- \etablissement}
+  \fancyhead[C]{Programme de colle}
+  \fancyhead[R]{Du \docstartdayname{}
+    \docstartday/\docstartmonth/\docstartyear{}
+    au \docenddayname{}
+    \docendday/\docendmonth/\docendyear
+  }
+  \fancyfoot[R]{\thepage/\pageref{LastPage}}
+}
+
+\pagestyle{progcolle}
+
+\newcommand{\upperRomannumeral}[1]{\uppercase\expandafter{\romannumeral#1}}
+\AtBeginDocument{
+  \begin{progcolletitle}
+    Du~\docstartdayname~\docstartday~\docstartmonthname{}
+    au~\docenddayname~\docendday~\docendmonthname{}.
+  \end{progcolletitle}
+  \bigbreak
+}
+
+\AtEndDocument{
+  \begin{center}
+    \textbf{--FIN--}
+  \end{center}
+  \label{LastPage}
+}
+
+\makeatletter{}
+\def\mycontentsline#1#2#3#4#5#6#7#8{%
+  \message{!!!!!!! SEMAINE #1, #2, #3, #4, #5, #6, #7, #8}
+  \def\semainenbr{#1}%
+  \def\thechapternbr{#2}%
+  \def\chaptertitle{#3}%
+  \def\sectionnbr{#4}%
+  \def\thesectionnbr{#5}%
+  \def\theenvname{#6}%
+  \def\questype{#7}%
+  % 
+  \ifcsname chapter-\thechapternbr\endcsname%
+  \else%
+  \expandafter%
+  \xdef\csname chapter-\thechapternbr\endcsname{\chaptertitle}%
+  \listxadd{\chapters}{Chapitre
+    \rom{\thechapternbr}:~
+    \chaptertitle}%
+  \listxadd{\nbrofchapters}{\thechapternbr}%
+  \fi%
+  % 
+  \listcsxadd{\questype-chapter-\thechapternbr}{#8}%
+  \listcsxadd{type-\questype}{#8}%
+}
+\makeatother{}
+
+% Important if you use amsmath!
+\show\leqslant
+\makeatletter
+\@ifpackageloaded{amsmath}{%
+  \robustify\qopname%
+  \robustify\Arg%
+  \robustify\intervalle
+  \robustify\iinterff
+  \robustify\setcompr
+  \robustify\set
+  \robustify\inlinefunction
+  \robustify\fullfunctioninline
+  \robustify\cnset
+  \robustify\substack
+  \robustify\vcolwithname
+  \robustify\vcol
+  \robustify\floor
+  \robustify\opltransv
+  \robustify\arcsin
+  \robustify\arccos
+  \robustify\arctan
+  \robustify\sqrt
+  \robustify\id
+  \robustify\inlinelimit
+  % \robustify\opltransv
+  \robustify\(
+  \robustify\)
+  \robustify\rang
+  \robustify\tr
+  \robustify\transposeRight
+  \robustify\transposeLeft
+  \robustify\transpose
+}{}
+\makeatother
+%
+
+\newread\file
+\xdef\tcbcollefile{Colles/colle-\docnbr.records}
+\openin\file=\tcbcollefile
+
+\def\work#1{\item \ptcourschapnbr{#1}}
+\def\ptcourschapnbr#1{%
+  \begin{listedesptcoursunchap}{Chapitre \rom{#1}: \csname
+      chapter-#1\endcsname}
+    \forlistcsloop{\prependitem}{ptcours-chapter-#1}%
+  \end{listedesptcoursunchap}
+}
+\def\prependitem#1{\item #1}
+\def\appendpar#1{#1\par}
+
+\AtBeginDocument{
+  \input{Colles/colle-\docnbr.records}
+}
+
+\def\nocollefileerrmesg{\LARGE{}\textcolor{red}{%
+    Error: The file \tcbcollefile{} does not exists!}}

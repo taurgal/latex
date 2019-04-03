@@ -1,0 +1,204 @@
+\documentclass[french,twoside,draft]{article}
+\usepackage[a4paper,includeheadfoot,top=1.2cm,bottom=1.2cm,left=1.2cm,right=1.2cm]{geometry}
+\input{header_common}
+\usepackage[newfloat]{minted}
+\tcbuselibrary{minted}
+
+\usepackage{pgfornament}
+\usepackage{amsthm}
+
+\input{process_filename_type_classe_nbr_date}
+
+\newcommand\tcbsolution[2]{%
+  \IfFileExists{#2}{\par\pagebreak[3]\tcbsolutionb{#1}{#2}}{}%
+}
+
+\newif\ifinlisting
+\makeatletter
+\tcbset{%
+  reset@minted/.style={%
+    minted language=latex,
+    minted options={tabsize=2,fontsize=\small},
+    minted style=,
+    listing engine=minted,
+    in listing/.is if=inlisting,
+    in listing/.initial=false,
+  },
+  initialize@reset=reset@minted,
+}
+
+\newtcblisting{pythoncode}[2][]{%
+  before skip=0.5em,
+  after skip=0.5em,
+  title={#2},
+  halign title=center,
+  boxsep=0mm,
+  left=0mm,
+  right=0mm,
+  breakable,
+  listing engine=minted,
+  listing only,
+  minted language={python},
+  minted options={breaklines=true, autogobble=true, stripnl=true},
+  in listing = true,
+  #1
+}
+
+\makeatletter{}
+
+\def\tcbverbatimwrite#1{%
+  \@bsphack
+  \immediate\openout\tcb@out #1
+  \edef\beginputlineno{\the\inputlineno}
+  \tcb@verbatim@begin@hook%
+  \let\do\@makeother\dospecials
+  \catcode`\^^M\active \catcode`\^^I=12
+  \def\verbatim@processline{%
+    \immediate\write\tcb@out
+      {\the\verbatim@line}}%
+  \verbatim@start}%'
+
+\def\endtcbverbatimwrite{%
+  \tcb@verbatim@end@hook%
+  \def\@@percentchar{\@percentchar\@percentchar\@percentchar}
+  % \ifinlisting
+  % \else
+  % \immediate\write\tcb@out
+  % {%
+  %   \@@percentchar\space Local Variables:^^J%
+  %   \@@percentchar\space mode: latex^^J%
+  %   \@@percentchar\space TeX-source-correlate-orig-linenbr: %
+  %   \beginputlineno ^^J%
+  %   \@@percentchar\space TeX-source-correlate-jobname: %
+  %   "\jobname"^^J%
+  %   \@@percentchar\space TeX-master: "\jobname"^^J%
+  %   \@@percentchar\space End:^^J%
+  % }
+  % \fi
+  \immediate\closeout\tcb@out
+  \@esphack%
+}
+\makeatother{}
+
+\NewTotalTColorBox{\tcbsolutionb}{mm}{%
+  blank,
+  coltitle=ocre,
+  breakable,
+  fonttitle=\bfseries,
+  title={Exercise~\ref{ex-#1}:},
+  phantomlabel={solution@#1},
+  attach title to upper=\par,
+}{\input{#2}}
+
+\everymath{\displaystyle}
+
+\fancypagestyle{DS}{
+  \setdate{\docyear}{\docmonth}{\docday}
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \fancyhead[L]{\docclasseupper{} --- \etablissement}
+  \fancyhead[R]{Révision du \MakeLowercase{\datedayname}~\datedate}
+  \fancyfoot[R]{\thepage/%
+    \the\numexpr%
+    \getpagerefnumber{corfirstpage}-1\relax
+  }
+  \fancyfoot[L]{Révision~\no\docnbr}
+}
+\pagestyle{DS}
+\fancypagestyle{DSfirstpage}{
+  \setdate{\docyear}{\docmonth}{\docday}
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \fancyhead[L]{\docclasseupper{} --- \etablissement}
+  \fancyhead[R]{Révision du \MakeLowercase{\datedayname}~\datedate}
+  \fancyfoot[R]{\thepage/%
+    \the\numexpr%
+    \getpagerefnumber{corfirstpage}-1\relax
+  }
+  \fancyfoot[L]{Révision~\no\docnbr}
+}
+\thispagestyle{DSfirstpage}
+
+\newcounter{corpage}
+\fancypagestyle{excor}{
+  \setdate{\docyear}{\docmonth}{\docday}
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0.4pt}
+
+  \fancyhead[L]{\docclasseupper{} --- \etablissement}
+  \fancyhead[C]{\doctitle}
+  \fancyfoot[R]{%
+    \the\numexpr%
+    \thepage-\getpagerefnumber{corfirstpage}+1\relax%
+    /%
+    \the\numexpr%
+    \getpagerefnumber{TrueLastPage}-\getpagerefnumber{corfirstpage}+1
+    \relax%
+  }
+  \fancyfoot[L]{Correction du sujet~\no\docnbr}
+}
+
+
+\newcommand{\upperRomannumeral}[1]{\uppercase\expandafter{\romannumeral#1}}
+\AtBeginDocument{
+  \tcbstartrecording%
+  \everymath{\displaystyle}
+  \begin{center}
+    \begin{tikzpicture}[
+      every node/.style={inner sep=10pt}]
+      \node[align=center] (vecbox) {
+        \LARGE{MATHÉMATIQUES}\\
+        Révision~\no\docnbr{}\\
+      };%
+      \path  (vecbox.south west) to [ornament=88,
+      options/.append style={yshift=1pt}] (vecbox.south east);
+      \path  (vecbox.north west) to [ornament=88,
+      options/.append style={yshift=1pt}] (vecbox.north east);
+    \end{tikzpicture}
+  \end{center}
+}
+
+
+\newtcbtheorem{exercice}{Exercice}{%
+  description delimiters={\og}{\fg},
+  theorem style=plain,
+  lowerbox=ignored,
+  savelowerto=Solutions/\jobname-sol-\thetcbcounter.tex,
+  record={\string\tcbsolution{%
+      \thetcbcounter%
+    }{%
+      Solutions/\jobname-sol-\thetcbcounter.tex%
+    }
+  },
+  code={\tcbset{label={ex-\thetcbcounter}}},%
+  detach title,
+  terminator sign={:~},
+  separator sign none,
+  breakable, blank, new/crefname={exercice}{exercices},
+  new/Crefname={Exercice}{Exercices}, description
+  delimiters={\og}{\fg}, fonttitle=\bfseries,coltitle=ocre, enhanced,%
+  before skip=1em, after skip=1em, left=0pt, right=0pt,
+  fonttitle=\bfseries%
+}{ex}
+
+\AtEndDocument{%
+  \tcbstoprecording%
+  \clearpage\label{corfirstpage}%
+  \pagestyle{excor}%
+  \begin{center}
+    \begin{tikzpicture}[
+      every node/.style={inner sep=10pt}]
+      \node[align=center] (vecbox) {
+        \LARGE{MATHÉMATIQUES}\\
+        Correction de l'épreuve blanche~\no\docnbr{}
+      };%
+      \path  (vecbox.south west) to [ornament=88,
+      options/.append style={yshift=1pt}] (vecbox.south east);
+      \path  (vecbox.north west) to [ornament=88,
+      options/.append style={yshift=1pt}] (vecbox.north east);
+    \end{tikzpicture}
+  \end{center}
+  \bigskip{}
+  \tcbinputrecords%
+  \label{TrueLastPage}%
+}

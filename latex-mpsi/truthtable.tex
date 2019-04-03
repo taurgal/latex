@@ -1,0 +1,185 @@
+% \RequirePackage{etoolbox}
+% \RequirePackage{expl3}
+% \RequirePackage{xparse}
+% \RequirePackage{tabularx}
+
+\makeatletter{}
+% Boolean operator and checking functions
+\def\truthtbl@raiseboolerror#1{%
+  \PackageError{Truth table}{'#1' is not a boolean}{}
+}
+\def\truthtbl@checkifbool#1{%
+  \if#1V%
+  \else\if#1F%
+  \else%
+  \truthtbl@raiseboolerror{#1}\fi\fi}
+\def\tnot#1{%
+  \truthtbl@checkifbool{#1}%  
+  \if#1V%
+  F\else%
+  V\fi%
+}
+\def\tand#1#2{%
+  \truthtbl@checkifbool{#1}%
+  \truthtbl@checkifbool{#2}%
+  \if#1V%
+  \if#2V%
+  V\else%
+  F%
+  \fi%
+  \else%
+  F%
+  \fi}
+\def\tor#1#2{%
+  \truthtbl@checkifbool{#1}%
+  \truthtbl@checkifbool{#2}%
+  \if#1V%
+  V%
+  \else%
+  \if#2V%
+  V\else%
+  F%
+  \fi\fi}
+\def\txor#1#2{%
+  \truthtbl@checkifbool{#1}%
+  \truthtbl@checkifbool{#2}%
+  \if#1V%
+  \if#2V%
+  F\else%
+  V%
+  \fi%
+  \else%
+  \if#2V%
+  V\else%
+  F%
+  \fi\fi}
+\def\tnand#1#2{%
+  \tnot{\tand{#1}{#2}}
+}
+\def\timplies#1#2{%
+  \tor{\tnot{#1}}{#2}
+}
+\def\tequiv#1#2{%
+  \or{%
+    \tand{#1}{#2}%
+  }{%
+    \tand{\tnot{#1}}{\tnot{#2}}%
+  }}
+
+\ExplSyntaxOn
+% Convert commas to ampersands
+\def\commatoamp#1{\if#1,&\else #1\fi}
+\NewDocumentCommand{\replcommaswithamps}{m}{
+  \tl_gset:Nx \aux_tl {#1}
+  \tl_gset:Nx \g_res_tl {
+    \tl_map_function:NN \aux_tl \commatoamp
+  }
+  \tl_use:N \g_res_tl
+}
+
+% Count items in the argument
+\NewDocumentCommand \countItems { m } {
+  \clist_count:N #1
+}
+% Count items in the argument
+\NewDocumentCommand \countInlineItems { m } {
+  \clist_count:n {#1}
+}
+\ExplSyntaxOff
+
+\pgfkeysdefnargs{/truthtbl/expr}{2}{%
+  \def\truthtbl@exprnbrargs{\countInlineItems{#1}}
+  \def\truthtbl@exprargs{#1}
+  \pgfkeyssetvalue{/truthtbl/exprargs}{#1}
+  \pgfkeyssetvalue{/truthtbl/exprnbrargs}{\countInlineItems{#1}}
+  \pgfkeyssetvalue{/truthtbl/exprargs}{#1}
+  \ifcase\countInlineItems{#1}\relax%
+  \pgfkeysdefargs{/truthtbl/evalexpr}{}{#2}%
+  \or%
+  \pgfkeysdefargs{/truthtbl/evalexpr}{##1}{#2}%
+  \or%
+  \pgfkeysdefargs{/truthtbl/evalexpr}{##1,##2}{#2}%
+  \or%
+  \pgfkeysdefargs{/truthtbl/evalexpr}{##1,##2,##3}{#2}%
+  \or%
+  \pgfkeysdefargs{/truthtbl/evalexpr}{##1,##2,##3,##4}{#2}%
+  \or%
+  \pgfkeysdefargs{/truthtbl/evalexpr}{##1,##2,##3,##4,##5}{#2}%
+  \or%
+  \pgfkeysdefargs{/truthtbl/evalexpr}{##1,##2,##3,##4,##5,##6}{#2}%
+  \or%
+  \pgfkeysdefargs{/truthtbl/evalexpr}{##1,##2,##3,##4,##5,##6,##7}{#2}%
+  \or%
+  \pgfkeysdefargs{/truthtbl/evalexpr}{##1,##2,##3,##4,##5,##6,##7,##8}{#2}%
+  \or%
+  \pgfkeysdefargs{/truthtbl/evalexpr}{%
+    ##1,##2,##3,##4,##5,##6,##7,##8,##9}{#2}%
+  \else%
+  \pgfkeys@error{Expected <= 9 arguments, got #2}%
+  \fi%
+}
+
+\newif\ifheaderinmathmode
+\newif\ifbodyinmathmode
+\pgfqkeys{/truthtbl}{%
+  expression name/.store in=\truthtbl@exprname,
+  expression name/.default={Expr.},
+  header in math mode/.is if=headerinmathmode,
+  header in math mode/.is if=true,
+  body in math mode/.is if=bodyinmathmode,
+  body in math mode/.is if=true,
+}
+
+
+% Put all comma-separated strings of #1 boolean in the list
+% \thruthtbl@allvalues
+\def\truthtbl@putalltruthvaluesoflength#1{%
+  \truthtbl@putalltruthvaluesoflengthwithprefix{#1}{}
+}
+
+\def\truthtbl@putalltruthvaluesoflengthwithprefix#1#2{%
+  \ifnumcomp{#1}{>}{0}{%
+    \ifx\relax#2\relax
+    \truthtbl@putalltruthvaluesoflengthwithprefix{\numexpr #1-1\relax}{V}%
+    \truthtbl@putalltruthvaluesoflengthwithprefix{\numexpr #1-1\relax}{F}%
+    \else
+    \truthtbl@putalltruthvaluesoflengthwithprefix{\numexpr #1-1\relax}{#2,V}%
+    \truthtbl@putalltruthvaluesoflengthwithprefix{\numexpr #1-1\relax}{#2,F}%
+    \fi
+  }{
+    \listgadd{\thruthtbl@allvalues}{#2}
+  }
+}
+
+\def\drawthruthtable#1{%
+  \gdef\thruthtbl@allvalues{}
+  \pgfqkeys{/truthtbl}{#1}
+  \truthtbl@putalltruthvaluesoflength{\truthtbl@exprnbrargs}
+  % Create the header string of the form ccc...c|c
+  \newcount\X
+  \X=1
+  \def\truthtbl@header{}
+  \loop
+  \advance \X by 1
+  \edef\truthtbl@header{c\truthtbl@header}
+  \unless\ifnum \X>\truthtbl@exprnbrargs
+  \repeat
+  \edef\truthtbl@header{\truthtbl@header|c}
+  % Create each line.
+  \gdef\@joinwithdblbackslash##1{%
+    ##1\gdef\@joinwithdblbackslash####1{ \\ ####1}}
+  \def\pp##1{%
+    \@joinwithdblbackslash{%
+      \replcommaswithamps{##1}&\pgfqkeys{/truthtbl}{evalexpr={##1}}}}
+  \expandafter\tabular\expandafter{\truthtbl@header}
+  \replcommaswithamps{\truthtbl@exprargs} & \replcommaswithamps{\truthtbl@exprname} \\ \hline
+  \forlistloop{\pp}{\thruthtbl@allvalues}
+  \endtabular
+}
+
+% Hopefully usefull example
+% \drawthruthtable{%
+%   expression name={\(\neg{}P\wedge{}Q\)},
+%   expr={P,Q}{\strut\txor{#1}{#2}}
+% }
+\makeatother{}

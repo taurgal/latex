@@ -1,0 +1,81 @@
+\documentclass[french,twoside,draft]{article}
+\usepackage[a4paper,includeheadfoot,top=1.2cm,bottom=1.0cm,left=1.2cm,right=1.2cm]{geometry}
+\input{header_common}
+
+\everymath{\displaystyle}
+
+\provideboolean{authcalc}
+\setboolean{authcalc}{false}
+
+\fancypagestyle{DS}{
+  \setdatenumber{\docyear}{\docmonth}{\docday}
+  % Export some more doc information in macros
+  \def\docdayname{\datedayname}
+  \def\docmonthname{\datemonthname}
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \fancyhead[L]{\docclasse{} --- \etablissement}
+  \fancyhead[RO,LE]{DS~\no\docnbrintype}
+  \fancyfoot[RO,LE]{\thepage/\pageref{LastPage}}
+  \fancyfoot[LO,RE]{DS~\no\docnbrintype}
+}
+\pagestyle{DS}
+
+\fancypagestyle{DSfirstpage}{
+  \setdatenumber{\docyear}{\docmonth}{\docday}
+  % Export some more doc information in macros
+  \def\docdayname{\datedayname}
+  \def\docmonthname{\datemonthname}
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \fancyhead[L]{\docclasse{} --- \etablissement}
+  \fancyhead[RO,LE]{\docdayname~\datedate}
+  \fancyfoot[RO,LE]{\thepage/\pageref{LastPage}}
+  \fancyfoot[LO,RE]{DS~\no\docnbrintype}
+}
+\thispagestyle{DSfirstpage}
+
+\newcommand{\upperRomannumeral}[1]{\uppercase\expandafter{\romannumeral#1}}
+\AtBeginDocument{
+  \everymath{\displaystyle}
+  \begin{Center}
+    \begin{minipage}{0.8\linewidth}
+      \begin{Center}
+        \Large
+        \bfseries
+        MATHÉMATIQUES
+        \bigbreak
+        Correction du DS~\no\docnbrintype
+        \bigbreak
+      \end{Center}
+    \end{minipage}
+  \end{Center}
+  \bigbreak
+  \bigbreak
+}
+
+\newlist{exrccp}{enumerate}{4}
+
+\setlist[exrccp,1]{
+  topsep=2em,
+  itemsep=2em,
+  align=left,
+  labelindent=0pt,
+  itemindent=2cm,
+  labelsep=2em,
+  leftmargin=*,labelindent=1em,
+  label={Exercice~\Roman*},
+  font={\normalfont\normalsize\bfseries\Large},
+}
+
+
+\setlist[exrccp,2]{ label={\arabic*)},
+  font={\normalfont\normalsize\bfseries}}
+\setlist[exrccp,3]{label={\alph*.},
+  font={\normalfont\normalsize\bfseries}}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "ds_mpsi_math1_01_2018-03-26"
+%%% End:

@@ -1,0 +1,108 @@
+\usepackage[%
+a4paper,includeheadfoot,top=1.0cm,%
+bottom=1.0cm,left=1.2cm,headsep=0pt,%
+footskip=0pt,right=1.2cm,footskip=1cm]{geometry}
+
+
+\usepackage{tabu}
+\usepackage{lastpage}
+
+\input{header_common}
+\usepackage{pgfornament}
+\usepackage{amsthm}
+\input{process_filename_type_classe_descr}
+
+\titleformat{\section}
+  {\normalfont\sffamily\large\bfseries\centering}
+  {}{1em}{}
+
+\everymath{\displaystyle}
+
+\fancypagestyle{cours}{
+  \fancyhf{}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \fancyfoot[RO,LE]{\thepage/\pageref{LastPage}}%
+  \fancyfoot[LO,RE]{\docclasseupper{} --- \etablissement}%
+  \fancyfoot[C]{\doctitle}%
+}
+\pagestyle{cours}
+
+\newtheoremstyle{thm}%
+{3pt}%
+{3pt}%
+{}%
+{}%
+{\bfseries}%
+{:}%
+{.5em}%
+{}%
+
+\theoremstyle{thm}
+
+\newtheorem{theoreme}{Théorème}[section]
+\newtheorem*{theoreme*}{Théorème}
+\newtheorem{remarque}{Remarque}[section]
+\newtheorem*{remarque*}{Remarque}
+
+\tcbset{%
+  theorem style/theoremlike/.style={%
+    separator sign none,%
+    description delimiters={\og}{\fg},%
+    terminator sign colon,%
+    theorem name and number,%
+    attach title to upper={\ },%
+    %
+    before lower={\textcolor{red}{Preuve:}~},
+    breakable=true,%
+    blank,%
+    fonttitle=\bfseries,%
+    coltitle=ocre,%
+    enhanced,%
+    left=0pt,%
+    right=0pt%
+  },
+  theorem style/exercicelike/.style={%
+    separator sign none,%
+    description delimiters={\og}{\fg},%
+    terminator sign colon,%
+    theorem name and number,%
+    attach title to upper={\ },%
+    %
+    before lower={%
+      \textcolor{red}{Solution de l'exercice~\thetcbcounter:}~},
+    breakable=true,%
+    blank,%
+    fonttitle=\bfseries,%
+    coltitle=ocre,%
+    enhanced,%
+    left=0pt,%
+    right=0pt%
+  }
+}
+
+\newtcbtheorem[]{proposition}{Proposition}{%
+  new/crefname={proposition}{propositions},%
+  new/Crefname={Proposition}{Propositions},%
+  theorem style=theoremlike%
+}{prop}
+
+\newtcbtheorem[]{exercice}{Exercice}{%
+  new/crefname={exercice}{exercices},%
+  new/Crefname={Exercice}{Exercices},%
+  theorem style=exercicelike%
+}{ex}
+
+\AtBeginDocument{
+\begin{center}
+  \begin{tikzpicture}[
+    every node/.style={inner sep=10pt}]
+    \node (vecbox) {\LARGE{\doctitle}};%
+    \path  (vecbox.south west) to [ornament=88,
+    options/.append style={yshift=1pt}] (vecbox.south east);
+    \path  (vecbox.north west) to [ornament=88,
+    options/.append style={yshift=1pt}] (vecbox.north east);
+\end{tikzpicture}
+\end{center}
+\bigskip{}
+}
+

@@ -1,0 +1,1191 @@
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{ifluatex} 
+\ifluatex%
+  \usepackage{unicode-math}%
+  \setmathfont{XITS Math}%
+  \usepackage[utf8]{luainputenc}%
+  \usepackage{fontspec}
+  \setmainfont{TeX Gyre Pagella}
+  \setsansfont{TeX Gyre Heros}[Scale=MatchLowercase]
+  \setmonofont{Inconsolata}[Scale=MatchLowercase]
+  \usepackage[%
+  activate={true,nocompatibility},%
+  final,tracking=true]{microtype}
+\else%
+  \usepackage[utf8]{inputenc}%
+\fi 
+\usepackage{xcolor}
+% \usepackage{fixltx2e}
+\usepackage{dsfont}
+\usepackage{suffix}
+\usepackage{soul}
+\newcommand\iddots{\reflectbox{$\ddots$}}
+\usepackage{expl3}
+\usepackage{etoolbox}
+\usepackage{xstring}
+\usepackage{xparse}
+
+
+
+\ExplSyntaxOn
+\def\diffd{\mathrm{d}}
+\DeclareDocumentCommand\derivative{ s o m g d() }
+{ % Total derivative
+	% s: star for \flatfrac flat derivative
+	% o: optional n for nth derivative
+	% m: mandatory (x in df/dx)
+	% g: optional (f in df/dx)
+	% d: long-form d/dx(...)
+	\IfBooleanTF{#1}
+	{\let\fractype\flatfrac}
+	{\let\fractype\frac}
+	\IfNoValueTF{#4}
+	{
+		\IfNoValueTF{#5}
+		{\fractype{\diffd \IfNoValueTF{#2}{}{^{#2}}}{\diffd #3\IfNoValueTF{#2}{}{^{#2}}}}
+		{\fractype{\diffd \IfNoValueTF{#2}{}{^{#2}}}{\diffd #3\IfNoValueTF{#2}{}{^{#2}}} \argopen(#5\argclose)}
+	}
+	{\fractype{\diffd \IfNoValueTF{#2}{}{^{#2}} #3}{\diffd #4\IfNoValueTF{#2}{}{^{#2}}}}
+}
+\ExplSyntaxOff
+
+\usepackage[french]{babel}
+\frenchbsetup{og = «, fg = »}
+
+% \makeatletter
+% \def\stripzero#1{\expandafter\strip@zero@help#1}
+% \def\strip@zero@help#1{\ifx 0#1\expandafter\strip@zero@help\else#1\fi}
+% \makeatother
+\author{Bosché Aurélien}
+\def\contractedauthorname{A.~Bosché}
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+\newcommand\etablissement{Lycée militaire d'Autun}
+
+\usepackage{ellipsis}
+\definecolor{ocre}{RGB}{243,102,25}
+\definecolor{teal}{RGB}{243,102,25}
+\definecolor{lightgreen}{RGB}{50,200,50}
+\usepackage{datenumber}
+\setstartyear{2000}
+\usepackage{titlecaps}
+
+\newcommand{\vcenteredinclude}[2][]{\begingroup
+\setbox0=\hbox{\includegraphics[#1]{#2}}%
+\parbox{\wd0}{\box0}\endgroup}
+
+\usepackage{siunitx}
+\sisetup{locale = FR, binary-units=true}
+\DeclareSIUnit \shortbit  { b }
+\usepackage{pdftexcmds}
+\usepackage{fancyhdr}
+\usepackage{textcomp}
+
+\usepackage[explicit]{titlesec}
+\definecolor{titlebgdark}{RGB}{0,163,243}
+\definecolor{titlebglight}{RGB}{191,233,251}
+\definecolor{othertitlebgdark}{RGB}{0,243,163}
+\definecolor{othertitlebglight}{RGB}{191,251,233}
+\definecolor{CoverLeftBarColor}{RGB}{191,233,251}
+\definecolor{CoverUpperBarColor}{RGB}{0,163,243}
+
+\usepackage{mathrsfs}
+\usepackage{stmaryrd}
+\usepackage{esvect}
+% \usepackage{dsfont}
+% \DeclareRobustCommand{\officialeuro}{€}
+% % \ifmmode\expandafter\text\fi%
+% % {\fontencoding{U}\fontfamily{eurosym}\selectfont e}}
+
+\usepackage[np]{numprint}
+\usepackage{icomma}
+\usepackage[newcommands]{ragged2e}
+
+\usepackage{multicol}
+\usepackage{booktabs}
+
+\newcommand*{\myll}[1]{\underset{#1}{\ll}}
+
+\usepackage{enumitem}
+\setlist[itemize,1]{label={\textbullet}}
+
+\makeatletter{}
+\enitkv@key{}{nbcols}{%
+  \ifnumcomp{#1}{=}{1}{}{%
+    \def\enit@before{%
+      \setlength{\multicolsep}{\abovedisplayskip}
+      \begin{multicols}{#1}}%
+      \def\enit@after{\vspace*{\fill}\end{multicols}}%
+  }%
+}
+\makeatother{}
+
+
+% \usepackage{lastpage}
+\AtEndDocument{\label{LastPage}}
+
+\usepackage{tikz}
+\usetikzlibrary{matrix,calc,arrows,arrows.meta,positioning,tikzmark,decorations.pathreplacing,decorations.markings,shapes}
+\tikzset{>=latex}
+\newcommand*\keystroke[1]{%
+  \tikz[baseline=(key.base)]%
+    \node[%
+      draw,%
+      fill=white,%
+      rectangle,%
+      rounded corners=2pt,%
+      inner sep=1pt,%
+      line width=0.5pt,%
+      font=\scriptsize\sffamily%
+    ](key) {#1\strut};%
+}
+\usepackage{tkz-tab}
+\tikzset{t style/.style = {style = solid}}
+\presetkeys     [TAB] {tbs} {nocadre  = true}{}
+
+\usepackage[skins,theorems,breakable,xparse]{tcolorbox}
+\tcbset{
+  label separator=:,
+  geometry nodes=true,
+  enhanced
+}
+
+\newcommand{\scsep}{\,;\,}
+\newcommand{\comsep}{\,,\,}
+
+\newcommand\tuple[2][\comsep]{%
+  \begingroup
+  \def\nextitem{\def\nextitem{#1}}%
+  \renewcommand*{\do}[1]{\nextitem{}##1}%
+  \left(\docsvlist{#2}\right)%
+  \endgroup
+}
+
+\newcommand\set[2][\comsep]{%
+  \begingroup
+  \def\nextitem{\def\nextitem{#1}}%
+  \renewcommand*{\do}[1]{\nextitem{}##1}%
+  \left\{\docsvlist{#2}\right\}%
+  \endgroup
+}
+
+\newcounter{tmp}
+\newcommand\permut[1]{%
+  \begingroup
+  \setcounter{tmp}{0}
+  \forcsvlist{\listadd\mylist}{#1}%
+  \gdef\nextitemone{\gdef\nextitemone{&}}%
+  \gdef\nextitemtwo{\gdef\nextitemtwo{&}}%
+  \newcommand\glob[1]{}
+  \begin{pmatrix}
+    \forlistloop{%
+      \nextitemtwo\stepcounter{tmp}\arabic{tmp}\glob}{\mylist} \\%
+    \forlistloop{\nextitemone{}}{\mylist}
+  \end{pmatrix}
+  \endgroup
+}
+
+\newcommand\permutbyhand[2]{%
+  \begingroup
+  \setcounter{tmp}{0}
+  \forcsvlist{\listadd\mylistone}{#1}%
+  \forcsvlist{\listadd\mylisttwo}{#2}%
+  \gdef\nextitemone{\gdef\nextitemone{&}}%
+  \gdef\nextitemtwo{\gdef\nextitemtwo{&}}%
+  \begin{pmatrix}
+    \forlistloop{\nextitemone{}}{\mylistone} \\
+    \forlistloop{\nextitemtwo{}}{\mylisttwo}
+  \end{pmatrix}
+  \endgroup
+}
+
+\newcommand\setinterior[1]{\mathring{#1}}
+\DeclareSymbolFont{yhlargesymbols}{OMX}{yhex}{m}{n}
+\DeclareMathAccent{\wideparen}{\mathord}{yhlargesymbols}{"F3}
+\newcommand\setinteriorbig[1]{\mathring{\wideparen{#1}}}
+\newcommand\setclosure[1]{\overline{#1}}
+\usepackage{adjustbox}
+\newcommand\subline[2]{\overline{#1}^{\,\stackbox[t][l]{#2}}}
+\newcommand\setclosurein[2]{\subline{#1}{#2}}
+\newcommand\setclosureinRbar[1]{\setclosurein{#1}{\scriptsize\Rbar}}
+
+\DeclareListParser{\doscsvlist}{;}
+
+\newcommand\vvect[2][\relax]{%
+  \delimitershortfall=0pt
+  \delimiterfactor=1000
+  %
+  \begingroup
+  \def\nextitem{\def\nextitem{\\}}%
+  \renewcommand*{\do}[1]{\nextitem{}##1}%
+  \ifx\relax#1\relax%
+  \else%
+  \vv{#1}%
+  \fi%
+  \left(%
+    \begin{smallmatrix}\doscsvlist{#2}\end{smallmatrix}%
+  \right)%
+  \endgroup
+}
+\newcommand\vvectnoname[1]{%
+  \delimitershortfall=0pt
+  \delimiterfactor=1000
+  %
+  \begingroup
+  \def\nextitem{\def\nextitem{\\}}%
+  \renewcommand*{\do}[1]{\nextitem{}##1}%
+  \left(%
+    \begin{smallmatrix}\doscsvlist{#1}\end{smallmatrix}%
+  \right)%
+  \endgroup
+}
+
+
+\newcommand\setcompr[3][,~]{%
+  \left\{#2#1{}#3\right\}
+}
+
+\newcommand\signature[1]{\epsilon\left(#1\right)}
+
+% Interdire les coupures dans les formules de maths.
+% \relpenalty=10000%
+% \binoppenalty=10000%
+
+\usepackage{pgfplots}
+\pgfplotsset{%
+  compat=newest%
+}
+
+\pgfplotsset{%
+  legend pos=north west,%
+  samples=100,%
+  compat=newest,%
+  /pgf/number format/use comma,%
+  major tick length=0.2cm,%
+  minor tick length=0.1cm,%
+  every major tick/.append style={black},%
+  every axis x label/.style={at={(current axis.right of origin)},%
+    anchor=south east},%
+  every axis y label/.style={at={(current axis.above origin)},%
+    anchor=north west},%
+  every axis/.append style={ultra thick},%
+  every major grid/.append style={gray!80!black},%
+  grid=both,%
+  tick label style={fill=white},%
+  axis lines=center,%
+  minor x tick num=1,%
+  /pgf/number format/use comma,%
+  major tick length=0.2cm,%
+  minor tick length=0.1cm,%
+  every major tick/.append style={black, very thick},%
+  every minor tick/.append style={black, very thick},%
+  every axis x label/.style={at={(current axis.right of origin)},%
+    anchor=south east},%
+  every axis y label/.style={at={(current axis.above origin)},%
+    anchor=north west},%
+  every axis/.append style={ultra thick},%
+  enlarge x limits=0.05,%
+  enlarge y limits=0.05,%
+}
+
+\usepackage{tabularx}
+\definecolor{graycell}{gray}{0.75}
+\definecolor{graycol}{gray}{0.75}
+\def\tabularxcolumn#1{m{#1}}
+\newcolumntype{M}{>{\Centering$}X<{$}}
+\newcolumntype{L}{>{\RaggedRight}X<{}}
+\newcolumntype{R}{>{\RaggedLeft}X<{}}
+\newcolumntype{C}{>{\Centering}X<{}}
+\newcolumntype{G}{>{\columncolor{graycol}}c<{}}
+
+%\DeclareMathOperator{\deg}{deg}
+\DeclareMathOperator{\Arg}{Arg}
+\DeclareMathOperator{\len}{len}
+\let\arg\relax
+\DeclareMathOperator{\arg}{arg}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\cotan}{cotan}
+\DeclareMathOperator{\arccotan}{arccotan}
+
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\coker}{Coker}
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\cov}{Cov}
+
+\DeclareMathOperator{\Vect}{Vect}
+\DeclareMathOperator{\rg}{rg}
+\DeclareMathOperator{\tr}{Tr}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\spectre}{sp}
+\DeclareMathOperator{\card}{Card}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\grad}{\vec{\rm grad}}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\pgcdop}{pgcd}
+\DeclareMathOperator{\ppcmop}{ppcm}
+
+\let\ln\relax
+\let\th\relax
+\DeclareMathOperator{\ln}{ln}
+\DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\sh}{sh}
+% \DeclareMathOperator{\card}{card}
+\DeclareMathOperator{\comat}{Com}
+\DeclareMathOperator{\imv}{Im}
+\DeclareMathOperator{\rang}{rg}
+\DeclareMathOperator{\Fr}{Fr}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\supp}{supp}
+% \DeclareMathOperator{\inf}{inf}
+
+\newcommand\pgcd[2]{{#1}\wedge{}{#2}}
+\newcommand\ppcm[2]{{#1}\vee{#2}}
+\newcommand\inbase[2]{\left(#2\right)_{#1}}
+\newcommand\insbase[2]{\left(#2\right)^{s}_{#1}}
+\newcommand\inubase[2]{\left(#2\right)^{u}_{#1}}
+
+\newcommand\Ox{(Ox)}
+\newcommand\Oy{(Oy)}
+\newcommand\Oz{(Oy)}
+
+\usepackage{stackrel}
+\newcommand{\normn}[2]{\norm{#2}_{#1}}
+
+\newcommand{\reprgraph}[1]{\mathcal{C}_{#1}}
+\newcommand{\loceq}[1]{\stackrel[#1]{}{=}}
+\newcommand{\locsim}[1]{\stackrel[#1]{}{\sim}}
+\newcommand{\BO}[2][]{%
+  \ifx\relax#1\relax%
+  \operatorname{O}\left(#2\right)%
+  \else%
+  \operatorname{O}_{#1}\left(#2\right)%
+  \fi%
+}
+\newcommand{\lo}[2][]{%
+  \ifx\relax#1\relax%
+  \operatorname{o}\left(#2\right)%
+  \else%
+  \operatorname{o}_{#1}\left(#2\right)%
+  \fi%
+}
+
+\newcommand{\locBO}[2]{\BO[#1]{#2}}%
+\newcommand{\loclo}[2]{\lo[#1]{#2}}%
+
+\robustify\arg
+\robustify\Arg
+\robustify\lo
+\robustify\BO
+\robustify\locsim
+\robustify\locBO
+\robustify\loclo
+\robustify\operatorname
+
+\newcommand{\BT}[1]{\operatorname{\Theta}\left(#1\right)}
+\newcommand\planC{\mathcal{P}}
+
+
+\newcommand\repere[3]{\left(#1;#2,#3\right)}
+\newcommand\OIJ{\repere{O}{I}{J}}
+
+\newcommand\K{\mathbf{K}}
+\newcommand\quaternionsset{\mathbf{H}}
+\newcommand\C{\mathbf{C}}
+\newcommand\R{\mathbf{R}}
+\newcommand\iR{i\mathbf{R}}
+\newcommand\Q{\mathbf{Q}}
+\newcommand\Z{\mathbf{Z}}
+\newcommand\N{\mathbf{N}}
+\newcommand\DD{\mathbf{D}}
+\newcommand\Kst{\mathbf{K}^{\ast}}
+\newcommand\Cst{\mathbf{C}^{\ast}}
+\newcommand\Rst{\mathbf{R}^{\ast}}
+\newcommand\Qst{\mathbf{Q}^{\ast}}
+\newcommand\Zst{\mathbf{Z}^{\ast}}
+\newcommand\Nst{\mathbf{N}^{\ast}}
+\newcommand\DDst{\mathbf{D}^{\ast}}
+\newcommand\setst[1]{#1^{\ast}}
+\newcommand\Kp{\mathbf{K}_{+}}
+\newcommand\Cp{\mathbf{C}_{+}}
+\newcommand\Rp{\mathbf{R}_{+}}
+\newcommand\Qp{\mathbf{Q}_{+}}
+\newcommand\DDp{\mathbf{D}_+}
+\newcommand\Zp{\mathbf{Z}_{+}}
+\newcommand\Np{\mathbf{N}_{+}}
+\newcommand\Km{\mathbf{K}_{-}}
+\newcommand\Cm{\mathbf{C}_{-}}
+\newcommand\Rm{\mathbf{R}_{-}}
+\newcommand\Qm{\mathbf{Q}_{-}}
+\newcommand\Zm{\mathbf{Z}_{-}}
+\newcommand\Nm{\mathbf{N}_{-}}
+\newcommand\zp{0^{+}}
+\newcommand\zm{0^{-}}
+\newcommand\Knamecr[1]{\mathbf{#1}[X]}
+\newcommand\Knamecrn[2]{\mathbf{#1}_{#2}[X]}
+\newcommand\Knamepar[1]{\mathbf{#1}(X)}
+\newcommand\Kcrn[1]{\mathbf{K}_{#1}[X]}
+\newcommand\Qcrn[1]{\mathbf{Q}_{#1}[X]}
+\newcommand\Ccrn[1]{\mathbf{C}_{#1}[X]}
+\newcommand\Rcrn[1]{\mathbf{R}_{#1}[X]}
+\newcommand\Zcrn[1]{\mathbf{Z}_{#1}[X]}
+\newcommand\Kcr{\mathbf{K}[X]}
+\newcommand\Qcr{\mathbf{Q}[X]}
+\newcommand\Ccr{\mathbf{C}[X]}
+\newcommand\Rcr{\mathbf{R}[X]}
+\newcommand\Zcr{\mathbf{Z}[X]}
+\newcommand\Kpar{\mathbf{K}(X)}
+\newcommand\Qpar{\mathbf{Q}(X)}
+\newcommand\Cpar{\mathbf{C}(X)}
+\newcommand\Rpar{\mathbf{R}(X)}
+\newcommand\Kcrnst[1]{\mathbf{K}_{#1}[X]^{\ast}}
+\newcommand\Ccrnst[1]{\mathbf{C}_{#1}[X]^{\ast}}
+\newcommand\Rcrnst[1]{\mathbf{R}_{#1}[X]^{\ast}}
+\newcommand\Kcrst{\mathbf{K}[X]^{\ast}}
+\newcommand\Ccrst{\mathbf{C}[X]^{\ast}}
+\newcommand\Rcrst{\mathbf{R}[X]^{\ast}}
+\newcommand\commutant[1]{\mathcal{C}\left(#1\right)}
+
+\newcommand\MmnK[2]{\mathcal{M}_{#1,#2}\left(\K\right)}
+\newcommand\MnK[1]{\mathcal{M}_{#1}\left(\K\right)}
+\newcommand\MmnR[2]{\mathcal{M}_{#1,#2}\left(\R\right)}
+\newcommand\MnR[1]{\mathcal{M}_{#1}\left(\R\right)}
+\newcommand\MmnC[2]{\mathcal{M}_{#1,#2}\left(\C\right)}
+\newcommand\MnC[1]{\mathcal{M}_{#1}\left(\C\right)}
+\newcommand\MmnQ[2]{\mathcal{M}_{#1,#2}\left(\Q\right)}
+\newcommand\MnQ[1]{\mathcal{M}_{#1}\left(\Q\right)}
+\newcommand\MatPass[2]{P_{#1}^{#2}}
+\newcommand\MatFamille[2]{P_{#1}\left(#2\right)}
+\newcommand\Colonne[2]{C_{#1}\left(#2\right)}
+\newcommand\Ligne[2]{L_{#1}\left(#2\right)}
+%
+%
+\newcommand\evcont[1]{\overline{#1}}
+\newcommand\pcond[2]{p_{#2}\left(#1\right)}
+\newcommand\pcondmid[2]{p\left(#1\mid#2\right)}
+%
+\newcommand\pscal[2]{\left(#1\mid#2\right)}
+\newcommand\pscalang[2]{\langle#1\,,\,#2\rangle}
+\newcommand\orth[1]{#1^{\perp}}
+\newcommand\dist[2]{d\left(#1,#2\right)}
+% \newcommand\gporth[1]{O\left(#1\right)}
+\newcommand\OEE[1]{\text{O}\left(#1\right)}
+\newcommand\OnR[1]{\text{O}_{#1}\left(\R\right)}
+\newcommand\SOnR[1]{\text{SO}_{#1}\left(\R\right)}
+\newcommand\SLnR[1]{\text{SL}_{#1}\left(\R\right)}
+\newcommand\SOE[1]{\text{SO}\left(#1\right)}
+\newcommand\SLE[1]{\text{SL}\left(#1\right)}
+% \newcommand{\revdots}{\mathinner{\mkern1mu\raise1pt\vbox{\kern7pt\hbox
+% {.}}\mkern2mu\raise4pt\hbox{.}\mkern2mu\raise7pt\hbox
+% {.}\mkern1mu}}
+
+\newcommand\TnsK[1]{\mathcal{T}^{s}_{#1}\left(\K\right)}
+\newcommand\TnsR[1]{\mathcal{T}^{s}_{#1}\left(\R\right)}
+\newcommand\TnsC[1]{\mathcal{T}^{s}_{#1}\left(\C\right)}
+\newcommand\TniK[1]{\mathcal{T}^{i}_{#1}\left(\K\right)}
+\newcommand\TniR[1]{\mathcal{T}^{i}_{#1}\left(\R\right)}
+\newcommand\TniC[1]{\mathcal{T}^{i}_{#1}\left(\C\right)}
+\newcommand\SnK[1]{\mathcal{S}_{#1}\left(\K\right)}
+\newcommand\SnR[1]{\mathcal{S}_{#1}\left(\R\right)}
+\newcommand\SnC[1]{\mathcal{S}_{#1}\left(\C\right)}
+\newcommand\AnK[1]{\mathcal{A}_{#1}\left(\K\right)}
+\newcommand\AnR[1]{\mathcal{A}_{#1}\left(\R\right)}
+\newcommand\AnC[1]{\mathcal{A}_{#1}\left(\C\right)}
+
+\newcommand\rootmult[2]{m_{#1}(#2)}
+\newcommand\rootset[2]{\mathcal{R}_{#1}(#2)}
+
+
+\newcommand\poltaylor[3]{T_{#1,#2,#3}}
+\newcommand\restetaylor[3]{R_{#1,#2,#3}}
+
+\robustify\K
+\robustify\C
+\robustify\R
+\robustify\iR
+\robustify\Q
+\robustify\Z
+\robustify\N
+\robustify\DD
+\robustify\DDst
+\robustify\Kst
+\robustify\Cst
+\robustify\Rst
+\robustify\Qst
+\robustify\Zst
+\robustify\Nst
+\robustify\Kp
+\robustify\Cp
+\robustify\Rp
+\robustify\Qp
+\robustify\Zp
+\robustify\Np
+\robustify\Km
+\robustify\Cm
+\robustify\Rm
+\robustify\Qm
+\robustify\Zm
+\robustify\Nm
+\robustify\ch
+\robustify\sh
+\robustify\arcsin
+\robustify\arccos
+\robustify\arctan
+\robustify\sqrt
+\robustify\exp
+\robustify\substack
+\robustify\mod
+\robustify\vv
+
+
+\newcommand\setp[1]{#1_{+}}
+\newcommand\setm[1]{#1_{-}}
+
+\newcommand\Kpst{\mathbf{K}^{\ast}_{+}}
+\newcommand\Cpst{\mathbf{C}^{\ast}_{+}}
+\newcommand\Rpst{\mathbf{R}^{\ast}_{+}}
+\newcommand\Qpst{\mathbf{Q}^{\ast}_{+}}
+\newcommand\Zpst{\mathbf{Z}^{\ast}_{+}}
+\newcommand\Npst{\mathbf{N}^{\ast}_{+}}
+
+\newcommand\Kmst{\mathbf{K}^{\ast}_{-}}
+\newcommand\Cmst{\mathbf{C}^{\ast}_{-}}
+\newcommand\Rmst{\mathbf{R}^{\ast}_{-}}
+\newcommand\Qmst{\mathbf{Q}^{\ast}_{-}}
+\newcommand\Zmst{\mathbf{Z}^{\ast}_{-}}
+\newcommand\Nmst{\mathbf{N}^{\ast}_{-}}
+
+\newcommand\setpst[1]{#1^{\ast}_{+}}
+\newcommand\setmst[1]{#1^{\ast}_{-}}
+
+
+\newcommand\nthrootgroup[1]{\mathbf{U}_{#1}}
+\newcommand\unitgroup{\mathbf{U}}
+
+\newcommand*\oline[1]{%
+   \vbox{%
+     \hrule height 0.5pt%                  % Line above with certain width
+     \kern0.25ex%                          % Distance between line and content
+     \hbox{%
+       \kern-0.1em%                        % Distance between content and left side of box, negative values for lines shorter than content
+       \ifmmode#1\else\ensuremath{#1}\fi%  % The content, typeset in dependence of mode
+       \kern-0.1em%                        % Distance between content and left side of box, negative values for lines shorter than content
+     }% end of hbox
+   }% end of vbox
+}
+\newcommand\Rbar{\oline{\mathbf{R}}}
+\newcommand\Cbar{\oline{\mathbf{C}}}
+
+
+\def\Ibar{\setclosure{I}}%
+\def\IbarinRbar{\setclosureinRbar{I}}%
+\def\Irond{\setinterior{I}}%
+\def\Ebar{\setclosure{E}}%
+\def\EbarinRbar{\setclosureinRbar{E}}%
+\def\Erond{\setinterior{E}}%
+\def\Jbar{\setclosure{J}}%
+\def\JbarinRbar{\setclosureinRbar{J}}%
+
+\robustify\Ibar
+\robustify\IbarinRbar
+\robustify\Irond
+\robustify\Ebar
+\robustify\EbarinRbar
+\robustify\Erond
+\robustify\Jbar
+\robustify\JbarinRbar
+\robustify\Rbar
+\robustify\Cbar
+
+\newcommand\class[1]{\mathcal{C}^{#1}}
+\newcommand\kronecker[1]{\delta_{#1}}
+\newcommand\setdiffsym[2]{#1\mathbin{\Delta}#2}
+\newcommand\setdiff[2]{#1\setminus{}#2}
+\newcommand\setcompvar[2]{{\normalsize\complement}^{#2}_{#1}}
+\newcommand\setcomp[2]{\setdiff{#1}{#2}}
+\newcommand\setcompbar[1]{\overline{#1}}
+\newcommand\powerset[1]{\mathscr{P}(#1)}
+\newcommand\ppowerset[2]{\mathscr{P}_{#1}(#2)}
+\newcommand\applisetpower[2]{#2^{#1}}
+\newcommand\applisetinline[2]{\mathcal{F}(#1,#2)}
+\newcommand\appliset[2]{\applisetpower{#1}{#2}}
+\newcommand\permset[1]{\mathbf{S}_{#1}}
+\newcommand\permsetn[1]{\text{S}_{#1}}
+\newcommand\permsetfrakn[1]{\frak{S}_{#1}}
+\newcommand\cnset[3]{\mathcal{C}^{#1}\left(#2,#3\right)}
+\newcommand\contM[2]{\mathcal{C}_{\mathcal{M}}\left(#1,#2\K\right)}
+\newcommand\contMR[1]{\mathcal{C}_{\mathcal{M}}\left(#1,\R\right)}
+\newcommand\contMK[1]{\mathcal{C}_{\mathcal{M}}\left(#1,\K\right)}
+\newcommand\escasetK[1]{\mathcal{E}\left(#1,\K\right)}
+\newcommand\Sol{\mathcal{S}}
+\newcommand\invset[1]{\text{U}\left(#1\right)}
+
+\robustify\powerset
+
+\delimitershortfall=-1.2pt
+\delimiterfactor=1100
+
+\newcommand\x{\times}
+\newcommand\lp{\left\{}
+  \newcommand\rp{\right\}}
+
+\newcommand\reste[2]{#1\mathbin{\%}#2}
+\newcommand\quotient[2]{#1\mathbin{//}#2}
+
+\usepackage{centernot}
+\newcommand\relbinR{\mathrel{R}}
+\newcommand\relbin{\mathrel{R}}
+\newcommand\nrelbin{\mathrel{\rlap{\,/}R}}
+\newcommand\primeset{\mathcal{P}}
+\newcommand\irrset[1]{\mathcal{I}_{\mathbf{#1}[X]}}
+\newcommand\irrsetunit[1]{\mathcal{I}^{u}_{\mathbf{#1}[X]}}
+\newcommand\valpadic[2]{v_{#1}\left(#2\right)}
+\newcommand\classequi[1]{\operatorname{Cl}\left(#1\right)}
+\newcommand\relequi{\sim{}}
+\newcommand\dblrestr[3]{#1_{\left|#2\right.}^{\left|#3\right.}}
+\newcommand\corestr[2]{#1^{\left|#2\right.}}
+\newcommand\restr[2]{#1_{\left|#2\right.}}
+\newcommand\invimg[2]{#1^{-1}(#2)}
+\newcommand\dirimg[2]{#1(#2)}
+\newcommand{\bod}[1]{\allowbreak
+  \if@display\mkern18mu\else\mkern8mu\fi\left[\,#1\,\right]}
+
+\robustify\reste
+\robustify\quotient
+\robustify\relbinR
+\robustify\relbin
+\robustify\nrelbin
+\robustify\primeset
+\robustify\valpadic
+\robustify\classequi
+\robustify\relequi
+\robustify\dblrestr
+\robustify\corestr
+\robustify\restr
+\robustify\invimg
+\robustify\dirimg
+\robustify\bod
+
+
+
+\newcommand\suitloibern[2]{#1\hookrightarrow\mathcal{B}(#2)}
+\newcommand\loibern[1]{\mathcal{B}(#1)}
+\newcommand\suitloibinom[3]{#1\hookrightarrow\mathcal{B}(#2,#3)}
+\newcommand\loibinom[2]{\mathcal{B}(#1,#2)}
+\newcommand\suitloiunif[2]{#1\hookrightarrow\mathcal{U}(#2)}
+\newcommand\loiunif[1]{\mathcal{U}(#1)}
+\newcommand\esp[1]{\text{E}\left(#1\right)}
+\newcommand\variance[1]{\text{V}\left(#1\right)}
+\newcommand\covariance[2]{\text{cov}\left(#1,#2\right)}
+\newcommand\moment[2]{m_{#1}\left(#2\right)}
+\newcommand\ectype[1]{\sigma\left(#1\right)}
+
+\renewcommand\vec[1]{\vv{#1}}
+\newcommand\opligne[1]{L_{#1}}
+\newcommand\opcol[1]{C_{#1}}
+\newcommand\opcolmat[2]{C_{#1}\left(#2\right)}
+\newcommand\oplex[2]{L_{#1}\leftrightarrow{}L_{#2}}
+\newcommand\opcex[2]{C_{#1}\leftrightarrow{}C_{#2}}
+\newcommand\opltransv[4][+]{L_{#2}\leftarrow{}L_{#2}{}#1{}#3{}L_{#4}}
+\newcommand\opctransv[4][+]{C_{#2}\leftarrow{}C_{#2}{}#1{}#3{}C_{#4}}
+\newcommand\opltransvm[3]{L_{#1}\leftarrow{}L_{#1}{}-{}#2{}L_{#3}}
+\newcommand\opctransvm[3]{C_{#1}\leftarrow{}C_{#1}{}-{}#2{}C_{#3}}
+\newcommand\opltransvp[3]{L_{#1}\leftarrow{}L_{#1}{}+{}#2{}L_{#3}}
+\newcommand\opctransvp[3]{C_{#1}\leftarrow{}C_{#1}{}+{}#2{}C_{#3}}
+\newcommand\opldilat[2]{L_{#1}\leftarrow{}#2{}L_{#1}}
+\newcommand\opcdilat[2]{C_{#1}\leftarrow{}#2{}C_{#1}}
+
+\newcommand\matex[2]{P_{#1,#2}}
+\newcommand\mattransv[3]{T_{#1,#3}\left(#2\right)}
+\newcommand\matdil[2]{D_{#1}\left(#2\right)}
+% \newcommand\matextaille[3]{P_{#1,#2}^{#3}}
+% \newcommand\mattransvtaille[4]{T_{#1,#3}^{#4}\left(#3\right)}
+% \newcommand\matdiltaille[3]{D_{#1}^{#3}\left(#2\right)}
+
+\newcommand\fconst[1]{\tilde{#1}}
+\newcommand\indic[1]{\mathbf{1}_{#1}}
+\newcommand\ensparties[1]{\mathbf{1}_{#1}}
+
+\newcommand{\veci}{\vec{\imath}}
+\newcommand{\vecj}{\vec{\jmath}}
+\newcommand{\veck}{\vec{k}}
+
+\makeatletter
+\newcommand\vcolwithname[3][\\]{%
+    \global\def\my@delim{#1}%
+    #2\,\begin{pmatrix}
+        \my@vector #3,\relax\noexpand\@eolst%
+    \end{pmatrix}}
+\newcommand\vcol[2][\\]{%
+    \global\def\my@delim{#1}%
+    \begin{pmatrix}
+        \my@vector #2,\relax\noexpand\@eolst%
+    \end{pmatrix}}
+\def\my@vector #1,#2\@eolst{%
+   \ifx\relax#2\relax
+      #1
+   \else
+      #1\my@delim
+      \my@vector #2\@eolst%
+      \fi}
+\makeatother
+    
+% Extension to amsmath matrices
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+\newcommand\dd{\,\mathrm{d}}
+\newcommand\dx{\dd{}x}
+\newcommand\dy{\dd{}y}
+\newcommand\dt{\dd{}t}
+\newcommand\ds{\dd{}s}
+\newcommand\du{\dd{}u}
+\newcommand\dv{\dd{}v}
+\newcommand\dw{\dd{}w}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclarePairedDelimiter\vari{[}{]}
+\DeclarePairedDelimiter\prodscasurr{<}{>}
+\newcommand\prodsca[2]{\prodscasurr{#1\comsep{}#2}}
+
+\newcommand\ppos[1]{#1^{+}}
+\newcommand\pneg[1]{#1^{-}}
+
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+%
+\let\oldfloor\floor
+\def\floor{\@ifstar{\oldfloor}{\oldfloor*}}
+%
+\let\oldvari\vari
+\def\vari{\@ifstar{\oldvari}{\oldvari*}}
+%
+\robustify\abs
+\robustify\norm
+\robustify\floor
+\robustify\vari
+\makeatother
+
+\usepackage{marvosym}
+\usepackage{float}
+\newfloat{algorithm}{h}{alg}
+\floatname{algorithm}{Algorithme}
+
+\usepackage{caption}
+\captionsetup{margin=0.05\linewidth}
+
+\usepackage{hyperref}
+\usepackage{cleveref}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+\newcommand\identitymatrix[1][]{\mathbbm{1}_{#1}}
+\newcommand\zeromatrix[1][]{\mathbbm{0}_{#1}}
+
+\newcommand\KDelta[1]{\KroneckerDelta{#1}}
+\newcommand\transposeRight[1]{#1^{T}}
+\newcommand\transposeLeft[1]{\prescript{t}{}{#1}}
+\newcommand\transpose[1]{\prescript{t}{}{#1}}
+
+\newcommand{\fullfunction}[6][t]{
+  \begin {array}[#1]{rcl}
+    {#2} \colon {#3} & \to & {#4} \\
+    {#5} & \mapsto     & {#6}
+  \end{array}
+}
+\newcommand{\fullfunctioninline}[5]{%
+    {#1}:{#2}\to{#3};~{#4}\mapsto{#5}%
+}
+\newcommand{\inlinefunction}[4][\to]{
+  {#2}\colon{#3}{}#1{}{#4}
+}
+\newcommand{\inlinemapsto}[3][]{
+  \ifx\relax#1\relax%
+  {#2}\mapsto{#3}%
+  \else%
+  {#1}\colon{#2}\mapsto{#3}%
+  \fi%
+}
+
+\newcommand{\inlinemapstonamed}[3]{
+  \ifx\relax#1\relax%
+  {#2}\mapsto{#3}%
+  \else%
+  {#1}\colon{#2}\mapsto{#3}%
+  \fi%
+}
+
+\newcommand{\inlinelimit}[5][t]{
+  \if#1t\relax%
+  #2\xrightarrow{#3\rightarrow{}#4}#5
+  \else%
+  \if#1b\relax%
+  #2\xrightarrow[#3\rightarrow{}#4]{}#5
+  \else%
+  \if#1m\relax%
+  #2\xrightarrow[#4]{#3}#5
+  \else%
+  ??????????????????
+  \fi%
+  \fi%
+  \fi%
+}
+
+\newcommand{\inlineseqlimit}[3][n\to{}+\infty]{
+  #2\xrightarrow{#1}#3
+}
+
+\newcommand{\inlinecondlimit}[5]{
+  #1\xrightarrow[#4]{#2\rightarrow{}#3}#5
+}
+
+\newcommand{\inlineleftlimit}[4]{
+  \inlinecondlimit{#1}{#2}{#3}{#2<#3}{#4}
+}
+
+\newcommand{\inlinerightlimit}[4]{
+  \inlinecondlimit{#1}{#2}{#3}{#2>#3}{#4}
+}
+
+\newcommand{\inlinedifflimit}[4]{
+  \inlinecondlimit{#1}{#2}{#3}{#2\neq{}#3}{#4}
+}
+
+\newcommand{\image}[2]{
+  #1\left(#2\right)
+}
+\newcommand{\imager}[2]{
+  #1^{-1}\left(#2\right)
+}
+
+\newcommand{\dlna}[2]{
+  DL_{#1}\left(#2\right)
+}
+
+\newcommand\lineappset[2]{\mathcal{L}\left(#1,#2\right)}
+\newcommand\lineendo[1]{\mathcal{L}\left(#1\right)}
+\newcommand\gl[1]{\text{GL}\left(#1\right)}
+\newcommand\gln[2]{\text{GL}_{#1}\left(#2\right)}
+\newcommand\glnK[1]{\text{GL}_{#1}\left(\K\right)}
+\newcommand\glnR[1]{\text{GL}_{#1}\left(\R\right)}
+\newcommand\glnC[1]{\text{GL}_{#1}\left(\C\right)}
+\newcommand\dual[1]{{#1}^{*}}
+
+\ExplSyntaxOn
+\DeclareExpandableDocumentCommand{\fpdim}{m}
+{
+  \fp_to_dim:n { round(#1,5) }
+}
+\ExplSyntaxOff
+
+% Fix \left and \right spacing
+\let\originalleft\left
+\let\originalright\right
+\renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+\renewcommand{\right}{\aftergroup\egroup\originalright}
+
+\NewDocumentCommand\intervalle{s m m m m m}{
+  \IfBooleanTF{#1}{%
+    \mathopen{}\left%
+      #2{}#3\mathclose{}\mathpunct{}#6#4\mathclose{}\right#5
+  }{%
+    \delimitershortfall=0pt
+    \delimiterfactor=1000
+    \mathopen{}%
+    \left#2{}#3\mathclose{}\mathpunct{}#6#4\mathclose{}\right#5
+  }%
+}
+
+\NewDocumentCommand\interff{s m m}{
+  \IfBooleanTF{#1}{%
+    \intervalle{[}{#2}{#3}{]}{,}
+  }{%
+    \intervalle*{[}{#2}{#3}{]}{,}
+  }%
+}
+
+\NewDocumentCommand\interfo{s m m}{
+  \IfBooleanTF{#1}{%
+    \intervalle{[}{#2}{#3}{[}{,}
+  }{%
+    \intervalle*{[}{#2}{#3}{[}{,}
+  }%
+}
+
+\NewDocumentCommand\interof{s m m}{
+  \IfBooleanTF{#1}{%
+    \intervalle{]}{#2}{#3}{]}{,}
+  }{%
+    \intervalle*{]}{#2}{#3}{]}{,}
+  }%
+}
+
+\NewDocumentCommand\interoo{s m m}{
+  \IfBooleanTF{#1}{%
+    \intervalle{]}{#2}{#3}{[}{,}
+  }{%
+    \intervalle*{]}{#2}{#3}{[}{,}
+  }%
+}
+
+\NewDocumentCommand\interffsc{s m m}{
+  \IfBooleanTF{#1}{%
+    \intervalle{[}{#2}{#3}{]}{;}
+  }{%
+    \intervalle*{[}{#2}{#3}{]}{;}
+  }%
+}
+
+\NewDocumentCommand\interfosc{s m m}{
+  \IfBooleanTF{#1}{%
+    \intervalle{[}{#2}{#3}{[}{;}
+  }{%
+    \intervalle*{[}{#2}{#3}{[}{;}
+  }%
+}
+
+\NewDocumentCommand\interofsc{s m m}{
+  \IfBooleanTF{#1}{%
+    \intervalle{]}{#2}{#3}{]}{;}
+  }{%
+    \intervalle*{]}{#2}{#3}{]}{;}
+  }%
+}
+
+\NewDocumentCommand\interoosc{s m m}{
+  \IfBooleanTF{#1}{%
+    \intervalle{]}{#2}{#3}{[}{;}
+  }{%
+    \intervalle*{]}{#2}{#3}{[}{;}
+  }%
+}
+
+\NewDocumentCommand\iinterff{s m m}{
+  \IfBooleanTF{#1}{%
+    \intervalle{\llbracket}{#2}{#3}{\rrbracket}{,}
+  }{%
+    \intervalle*{\llbracket}{#2}{#3}{\rrbracket}{,}
+  }%
+}
+
+\NewDocumentCommand\iinterfo{s m m}{
+  \IfBooleanTF{#1}{%
+    \intervalle{\llbracket}{#2}{#3}{\llbracket}{,}
+  }{%
+    \intervalle*{\llbracket}{#2}{#3}{\llbracket}{,}
+  }%
+}
+
+\NewDocumentCommand\iinterof{s m m}{
+  \IfBooleanTF{#1}{%
+    \intervalle{\rrbracket}{#2}{#3}{\rrbracket}{,}
+  }{%
+    \intervalle*{\rrbracket}{#2}{#3}{\rrbracket}{,}
+  }%
+}
+
+\NewDocumentCommand\iinteroo{s m m}{
+  \IfBooleanTF{#1}{%
+    \intervalle{\rrbracket}{#2}{#3}{\llbracket}{,}
+  }{%
+    \intervalle*{\rrbracket}{#2}{#3}{\llbracket}{,}
+  }%
+}
+
+\NewDocumentCommand\iinterffsc{s m m}{
+  \IfBooleanTF{#1}{%
+    \intervalle{\llbracket}{#2}{#3}{\rrbracket}{;}
+  }{%
+    \intervalle*{\llbracket}{#2}{#3}{\rrbracket}{;}
+  }%
+}
+
+\NewDocumentCommand\iinterfosc{s m m}{
+  \IfBooleanTF{#1}{%
+    \intervalle{\llbracket}{#2}{#3}{\llbracket}{;}
+  }{%
+    \intervalle*{\llbracket}{#2}{#3}{\llbracket}{;}
+  }%
+}
+
+\NewDocumentCommand\iinterofsc{s m m}{
+  \IfBooleanTF{#1}{%
+    \intervalle{\rrbracket}{#2}{#3}{\rrbracket}{;}
+  }{%
+    \intervalle*{\rrbracket}{#2}{#3}{\rrbracket}{;}
+  }%
+}
+
+\NewDocumentCommand\iinteroosc{s m m}{
+  \IfBooleanTF{#1}{%
+    \intervalle{\rrbracket}{#2}{#3}{\llbracket}{;}
+  }{%
+    \intervalle*{\rrbracket}{#2}{#3}{\llbracket}{;}
+  }%
+}
+
+\newcommand*{\segment}[2]{\intervalle{[}{#1}{#2}{]}{}}
+\newcommand*{\semicolon}{\mathbin{;}}
+\newcommand*{\ptnoname}[2]{\left(#1\mathbin{,}#2\right)}
+\newcommand*{\pt}[3]{#1\ptnoname{#2}{#3}}
+
+\newenvironment{nscenter}[1][0.3\topsep]
+{\setlength{\topsep}{#1}\par\kern\topsep\centering}
+{\par\kern\topsep}
+
+\newcommand{\divides}{\mid}
+\newcommand{\notdivides}{\nmid}
+
+\allowdisplaybreaks
+\newcommand\conj[1]{\oline{#1}}
+\newcommand\coord[2][\mathcal{B}]{\textup{Coord}_{#1}\left(#2\right)}
+
+\newcommand\diagramoneapp[5][1.3]{
+  \begin{tikzpicture}[baseline={(0,-0.45ex)},
+    every node/.style={outer ysep=0.5, inner ysep=0.5}]%
+    \node (n3) at (0,0) {#2};%
+    \node (n2) at ($ (n3.east) + (#1,0) $) {#3};%
+    \draw[->] (n3) -- (n2)%
+    node[midway, above] {#4}%
+    node[midway, below]%
+    {#5};%
+  \end{tikzpicture}%
+}
+
+\newcommand\diagramtwoapp[8][1.3]{
+  \begin{tikzpicture}[baseline={(0,-0.45ex)},
+    every node/.style={outer ysep=0.5, inner ysep=0.5}]%
+    \node (n3) at (0,0) {#2};%
+    \node (n2) at ($ (n3.east) + (#1,0) $) {#3};%
+    \node (n1) at ($ (n2.east) + (#1,0) $) {#4};%
+    \draw[->] (n3) -- (n2)%
+    node[midway, above] {#5}%
+    node[midway, below]%
+    {#6};%
+    \draw[->] (n2) -- (n1)%
+    node[midway, above] {#7}%
+    node[midway, below]%
+    {#8};%
+  \end{tikzpicture}%
+}
+\newcommand\diagramtwoappandcompo[8][2]{
+  \def\az{#1}
+  \def\na{#2}
+  \def\nb{#3}
+  \def\nc{#4}
+  \def\apa{#5}
+  \def\mata{#6}
+  \def\apb{#7}
+  \def\matb{#8}
+  \diagramtwoappandcompocontinued
+}
+\newcommand\diagramtwoappandcompocontinued[3][-1.2]{
+  \begin{tikzpicture}[baseline={(0,-0.45ex)}]%
+    \node (n3) at (0,0) {\na};%
+    \node (n2) at ($ (n3.east) + (\az,0) $) {\nb};%
+    \node (n1) at ($ (n2.east) + (\az,0) $) {\nc};%
+    \draw[->] (n3) -- (n2)%
+    node[midway, above] {\apa}%
+    node[midway, below]%
+    {\mata};%
+    \draw[->] (n2) -- (n1)%
+    node[midway, above] {\apb}%
+    node[midway, below]%
+    {\matb};%
+    \coordinate (bn2) at ($ (n2) + (0,#1) $);
+    \draw[rounded corners, ->] (n3) |- (bn2) -| (n1);
+    \draw (bn2)
+    node[above] {#2}
+    node[below] {#3};
+  \end{tikzpicture}%
+}
+
+
+\robustify\inlinelimit
+\robustify\inlineleftlimit
+\robustify\inlinerightlimit
+\robustify\inlinedifflimit
+\robustify\inlineseqlimit
+\robustify\transposeRight
+\robustify\transposeLeft
+\robustify\transpose
+\robustify\MmnK
+\robustify\MnK
+\robustify\MmnR
+\robustify\MnR
+\robustify\MmnC
+\robustify\MnC
+\robustify\MmnQ
+\robustify\MnQ
+\robustify\Mat
+\robustify\diag
+\robustify\MatPass
+\robustify\MatFamille
+\robustify\Colonne
+\robustify\Ligne
+\robustify\xrightarrow
+\robustify\lineappset
+\robustify\opltransv
+\robustify\opctransv
+\robustify\opldilat
+\robustify\opcdilat
+\robustify\opligne
+\robustify\opcol
+\robustify\opcolmat
+\robustify\oplex
+\robustify\opcex
+
+
+\renewcommand{\parallel}{\mathbin{\!/\mkern-5mu/\!}}
+
+\AtBeginDocument{%
+  \renewcommand\angle[2]{\left(#1,#2\right)}
+  \renewcommand\d[1]{\text{d}}
+  \robustify\angle
+  \renewcommand\leq{\leqslant}
+  \renewcommand\geq{\geqslant}
+  \renewcommand{\Re}{\operatorname{Re}}%
+  \renewcommand{\Im}{\operatorname{Im}}%
+  \robustify\Re
+  \robustify\Im
+  \let\temp\phi
+  \let\phi\varphi
+  \let\varphi\temp
+  \let\th\relax  
+  \DeclareMathOperator{\th}{th}
+  \robustify\th
+  \robustify\cnset
+  \robustify\fullfunctioninline
+  \robustify\Vect
+  \robustify\im
+  \robustify\coord
+  \robustify\substack
+  \robustify\rang
+  \robustify\ln
+  \robustify\substack
+}
+\usepackage{diagbox}
+
+%% MP
+\newcommand\charpoly[1]{\chi_{#1}}
+\newcommand\spec[1]{\textrm{Sp}(#1)}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

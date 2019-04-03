@@ -1,0 +1,225 @@
+\usepackage[
+a4paper,includeheadfoot,headsep=1em,top=1.5cm,bottom=1.5cm,left=1.2cm,right=1.2cm,footskip=0pt]{geometry}
+\usepackage[french]{babel}
+\usepackage{ellipsis}
+\usepackage[export]{adjustbox}
+
+\usepackage{xparse}
+\usepackage{xstring}
+\StrSubstitute{\jobname}{'}{ }[\jobname]
+\input{process_filename_type_classe_nbr_descr}
+
+
+\input{header_common}
+\setlength{\columnsep}{3em}
+\usepackage{fontawesome}
+\usepackage{refcount}
+\usepackage{amsthm}
+\usepackage{etoolbox}
+\usepackage{comment}
+
+\def\tableofcontents{}
+
+% \csundef{verbatim}
+% \csundef{endverbatim}
+% \csundef{verbatim*}
+% \csundef{endverbatim*}
+
+% \newminted[verbatim]{text}{autogobble, breaklines}
+\tcbuselibrary{minted}
+
+\setminted{%
+  autogobble,
+  breaklines,
+  stripnl
+}
+
+\def\tabularxcolumn#1{m{#1}}
+\newcolumntype{M}{>{\Centering$}X<{$}}
+\newcolumntype{L}{>{\RaggedRight}X<{}}
+\newcolumntype{R}{>{\RaggedLeft}X<{}}
+\newcolumntype{C}{>{\Centering}X<{}}
+\newcolumntype{G}{>{\columncolor{graycol}}c<{}}
+
+\setlist[enumerate]{nosep,%
+  topsep=6pt plus 2pt minus 2pt,
+  itemsep=1pt plus 0.6pt minus 0.6pt
+}
+\setlist[enumerate,2]{%
+  topsep=2.0pt plus 0.6pt minus 0.6pt
+}
+\setlist[itemize]{partopsep=0pt}
+\titlespacing\section{0pt}{0pt}{\the\dimexpr-\parskip+1ex\relax}
+
+\fancypagestyle{tpinfo}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \fancyhead[L]{\docclasseupper{} --- \etablissement}
+  \fancyhead[C]{TP n°\docnbr}
+  \fancyfoot[C]{\thepage/\pageref{LastPage}\relax
+  }
+  \fancyhead[R]{Informatique pour tous}
+}
+\pagestyle{tpinfo}
+
+% \def\strippeddownversion{yes}
+\newsavebox\computercodebox
+\savebox\computercodebox{%
+  \begin{tikzpicture}[thick]
+    \def\w{0.23}\def\h{0.23}%
+    \coordinate (sw) at ( 0,0);%
+    \coordinate (se) at (\w,0);%
+    \coordinate (nw) at ( 0,\h);%
+    \coordinate (ne) at (\w,\h);%
+    \def\ind{0.15}%
+    \def\long{0.4}%
+    \def\nbr{3}%
+    \pgfmathsetmacro{\vind}{1/(1+\nbr)}
+    \foreach \i in {1,...,\nbr} {%
+      \coordinate (l\i beg) at ($ (nw)!{\vind*\i}!(sw) $);%
+      \coordinate (l\i end) at ($ (ne)!{\vind*\i}!(se) $);%
+    }%
+    \foreach \i in {1,...,\numexpr\nbr-1\relax} {%
+      \coordinate (code\i beg) at ($ (l\i beg)!{\i*\ind}!(l\i end)
+      $);%
+      \coordinate (code\i end) at
+      ($ (l\i beg)!{\i*\ind+\long}!(l\i end) $);%
+    }%
+    \coordinate (code\nbr beg) at ($ (l\nbr beg)!{\ind}!(l\nbr end)
+    $);%
+    \coordinate (code\nbr end) at
+    ($ (l\nbr beg)!{\ind+\long}!(l\nbr end) $);%
+    %
+    \draw (sw) -- (se) -- (ne) -- (nw) -- cycle;
+    \foreach \i in {1,...,\nbr} {
+      \draw (code\i beg) -- (code\i end);%
+    }
+  \end{tikzpicture}%
+}
+\def\computercode{\usebox{\computercodebox}}
+
+\theoremstyle{definition}
+\ifdef{\strippeddownversion}{%
+  \newcounter{activite}
+  \setcounter{activite}{0}
+  \specialcomment{activite}
+  {\stepcounter{activite}%
+    \noindent{}\computercode\quad\textbf{Activité~\theactivite}\par
+    \def\ProcessCutFile{}
+  }{}
+}{%
+  \newtheorem{activite}{Activite}%
+}
+
+\newenvironment{easyzoom--overlay}{}{}
+\newenvironment{code-syntaxic-blocks}{}{}
+\newenvironment{nocode-syntaxic-blocks}{}{}
+\tcbset{%
+  colback=white,
+  colbacktitle=white,
+  coltitle=black
+}
+
+\newtcolorbox{objectifs-heading}{%
+  title={\hspace*{-3.5mm}\textsc{Objectifs:}},
+  left=4mm,
+  blanker,
+  before skip = 6mm,
+  after skip = 6mm,
+  oversize = -2cm,
+  breakable
+}
+
+\newcounter{codelist}
+\setcounter{codelist}{0}
+\newenvironment{only-code-and-output-container}{}{}
+
+\newenvironment{src-container}{}{}%
+\newenvironment{code-and-table-container}{}{}%
+\newenvironment{code-and-output-container}{}{}%
+\newenvironment{debugtable-container}{}{}%
+\newenvironment{debugtable-small-container}{}{}%
+\makeatletter
+\newif\ifinlisting
+\tcbset{%
+  reset@minted/.style={%
+    minted language=latex,
+    minted options={tabsize=2,fontsize=\small},
+    minted style=,
+    listing engine=minted,
+    in listing/.is if=inlisting,
+    in listing/.initial=false,
+  },
+  initialize@reset=reset@minted,
+}
+
+\makeatletter{}
+\newenvironment{pythoncode}[1]{%
+  \def\atendpythoncode{#1}
+  \VerbatimEnvironment
+  \minted@configlang{python}%
+  \begin{VerbatimOut}{\jobname.pyg}}%
+{%
+\end{VerbatimOut}
+\vspace{1em}
+\hrule%
+\if\atendpythoncode\relax\relax%
+\else%
+\vspace*{0.1cm}%
+{\hfill\atendpythoncode\hfill}%
+\vspace*{0.1cm}%
+\hrule%
+\fi%
+\minted@pygmentize{python}
+\hrule%
+\vspace{1em}
+\DeleteFile{\jobname.pyg}
+}
+\makeatother{}
+
+
+% \newtcblisting{pythoncode}{%
+%   before skip=0.5em,
+%   after skip=0.5em,
+%   title={Bla},
+%   halign title=center,
+%   boxsep=0mm,
+%   left=0mm,
+%   right=0mm,
+%   breakable,
+%   listing engine=minted,
+%   listing only,
+%   minted language={python}
+% }
+
+\makeatletter{}
+\AtBeginEnvironment{pythoncode}{%
+  \renewcommand{\fcolorbox}[4][]{#4}}
+\newtcolorbox{python-output-container}{%
+  blanker,
+  title={Sortie du script n°\thecodelist},
+  halign title=center,
+  boxsep=2mm,
+  middle=2mm,
+  bottomtitle=0mm,
+  borderline north={1mm}{0pt}{thin, gray},
+  borderline south={1mm}{0pt}{thin, gray},
+  breakable,
+  overlay = {
+    \coordinate (leftend)
+    at ( $(title.south west)!0.75!(title.south east)$ );
+    \coordinate (rightend)
+    at ( $(title.south west)!0.25!(title.south east)$ );
+      \draw[thin, rounded corners=\kvtcb@arc, 
+        tcbcol@frame] 
+        (leftend) -- (rightend);
+      }
+}
+\makeatother
+
+ 
+\AtBeginDocument{%
+  \begin{center}
+    \textsc{\LARGE{}\doctitle}
+  \end{center}
+}
