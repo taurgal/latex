@@ -4,7 +4,95 @@
 \usepackage{pgfornament}
 \usepackage{amsthm}
 
+\newif\ifpotpourri%
+\IfEndWith{\jobname}{\detokenize{potpourri}}{%
+\message{********* POTPOURRI}
+\potpourritrue}{
+\message{********* DS}
+\potpourrifalse}%
+\ifpotpourri
+\fancypagestyle{DS}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \fancyhead[L]{Potpourri}
+  \fancyhead[R]{Potpourri}
+  \fancyfoot[R]{\thepage/%
+    \the\numexpr%
+    \getpagerefnumber{corfirstpage}-1\relax
+  }
+  \fancyfoot[L]{Pot pourri}
+}
+\fancypagestyle{DSfirstpage}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \fancyhead[L]{Potpourri}
+  \fancyhead[R]{Potpourri}
+  \fancyfoot[R]{\thepage/%
+    \the\numexpr%
+    \getpagerefnumber{corfirstpage}-1\relax
+  }
+  \fancyfoot[L]{Pot pourri}
+}
+\fancypagestyle{excor}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \fancyhead[L]{Pot pourri}
+  \fancyhead[C]{Pot pourri}
+  \fancyfoot[R]{%
+    \the\numexpr%
+    \thepage-\getpagerefnumber{corfirstpage}+1\relax%
+    /%
+    \the\numexpr%
+    \getpagerefnumber{TrueLastPage}-\getpagerefnumber{corfirstpage}+1
+    \relax%
+  }
+  \fancyfoot[L]{Correction du Pot pourri}
+}
+\else
 \input{process_filename_type_classe_nbr_date}
+\fancypagestyle{DS}{
+  \setdate{\docyear}{\docmonth}{\docday}
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \fancyhead[L]{\docclasseupper{} --- \etablissement}
+  \fancyhead[R]{DS du \MakeLowercase{\datedayname}~\datedate}
+  \fancyfoot[R]{\thepage/%
+    \the\numexpr%
+    \getpagerefnumber{corfirstpage}-1\relax
+  }
+  \fancyfoot[L]{Devoir surveillé~\no\docnbr}
+}
+\fancypagestyle{DSfirstpage}{
+  \setdate{\docyear}{\docmonth}{\docday}
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \fancyhead[L]{\docclasseupper{} --- \etablissement}
+  \fancyhead[R]{DS du \MakeLowercase{\datedayname}~\datedate}
+  \fancyfoot[R]{\thepage/%
+    \the\numexpr%
+    \getpagerefnumber{corfirstpage}-1\relax
+  }
+  \fancyfoot[L]{Devoir surveillé~\no\docnbr}
+}
+\fancypagestyle{excor}{
+  \setdate{\docyear}{\docmonth}{\docday}
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0.4pt}
+
+  \fancyhead[L]{\docclasseupper{} --- \etablissement}
+  \fancyhead[C]{\doctitle}
+  \fancyfoot[R]{%
+    \the\numexpr%
+    \thepage-\getpagerefnumber{corfirstpage}+1\relax%
+    /%
+    \the\numexpr%
+    \getpagerefnumber{TrueLastPage}-\getpagerefnumber{corfirstpage}+1
+    \relax%
+  }
+  \fancyfoot[L]{Correction du devoir surveillé~\no\docnbr}
+}
+
+\fi
 
 \newcommand\tcbsolution[2]{%
   \IfFileExists{#2}{%
@@ -37,52 +125,9 @@
   \fi%
 }
 
-\fancypagestyle{DS}{
-  \setdate{\docyear}{\docmonth}{\docday}
-  \fancyhf{}
-  \renewcommand{\headrulewidth}{0.4pt}
-  \fancyhead[L]{\docclasseupper{} --- \etablissement}
-  \fancyhead[R]{DS du \MakeLowercase{\datedayname}~\datedate}
-  \fancyfoot[R]{\thepage/%
-    \the\numexpr%
-    \getpagerefnumber{corfirstpage}-1\relax
-  }
-  \fancyfoot[L]{Devoir surveillé~\no\docnbr}
-}
 \pagestyle{DS}
-\fancypagestyle{DSfirstpage}{
-  \setdate{\docyear}{\docmonth}{\docday}
-  \fancyhf{}
-  \renewcommand{\headrulewidth}{0.4pt}
-  \fancyhead[L]{\docclasseupper{} --- \etablissement}
-  \fancyhead[R]{DS du \MakeLowercase{\datedayname}~\datedate}
-  \fancyfoot[R]{\thepage/%
-    \the\numexpr%
-    \getpagerefnumber{corfirstpage}-1\relax
-  }
-  \fancyfoot[L]{Devoir surveillé~\no\docnbr}
-}
 \thispagestyle{DSfirstpage}
-
 \newcounter{corpage}
-\fancypagestyle{excor}{
-  \setdate{\docyear}{\docmonth}{\docday}
-  \fancyhf{}
-  \renewcommand{\headrulewidth}{0.4pt}
-
-  \fancyhead[L]{\docclasseupper{} --- \etablissement}
-  \fancyhead[C]{\doctitle}
-  \fancyfoot[R]{%
-    \the\numexpr%
-    \thepage-\getpagerefnumber{corfirstpage}+1\relax%
-    /%
-    \the\numexpr%
-    \getpagerefnumber{TrueLastPage}-\getpagerefnumber{corfirstpage}+1
-    \relax%
-  }
-  \fancyfoot[L]{Correction du devoir surveillé~\no\docnbr}
-}
-
 
 \newcommand{\upperRomannumeral}[1]{\uppercase\expandafter{\romannumeral#1}}
 \AtBeginDocument{
@@ -93,8 +138,13 @@
       every node/.style={inner sep=10pt}]
       \node[align=center] (vecbox) {
         \LARGE{MATHÉMATIQUES}\\
-        DS~\no\docnbr{}\\
-        Durée:~4h
+        \ifpotpourri%
+        POT POURRI
+        \else%
+        DS~\no\docnbr\\
+        Durée:~\ifcsname dureeds\endcsname\dureeds\else{}4h\fi
+        \fi
+        %
       };%
       \path  (vecbox.south west) to [ornament=88,
       options/.append style={yshift=1pt}] (vecbox.south east);
@@ -146,7 +196,8 @@
   \def\@@percentchar{\@percentchar\@percentchar\@percentchar}
   \immediate\write\tcb@out
     {%
-	 \@@percentchar\space Local Variables:^^J%
+	 \@@percentchar\space Local
+     \@@percentchar\space Variables:^^J%
 	 \@@percentchar\space mode: latex^^J%
 	 \@@percentchar\space TeX-source-correlate-orig-linenbr: %
      \beginputlineno ^^J%
@@ -195,7 +246,11 @@
       every node/.style={inner sep=10pt}]
       \node[align=center] (vecbox) {
         \LARGE{MATHÉMATIQUES}\\
+        \ifpotpourri%
+        Correction du POT POURRI
+        \else%
         Correction du DS~\no\docnbr{}
+        \fi
       };%
       \path  (vecbox.south west) to [ornament=88,
       options/.append style={yshift=1pt}] (vecbox.south east);

@@ -192,9 +192,9 @@
     \begin{tikzpicture}[
       every node/.style={inner sep=10pt}]
       \node[align=center] (vecbox) {
-        \LARGE{MATHÉMATIQUES}\\
+        \LARGE{INFORMATIQUE}\\
         Épreuve blanche\\
-        Durée:~4h
+        Durée:~\ifcsname dureeds\endcsname\dureeds\else{}1h30\fi%
       };%
       \path  (vecbox.south west) to [ornament=88,
       options/.append style={yshift=1pt}] (vecbox.south east);

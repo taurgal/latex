@@ -49,48 +49,46 @@
   \seq_use:Nn \g_adam_job_name_seq {~}
 }
 
-\NewDocumentCommand{\kk}{}
- {ESSAI4}
-
 \NewExpandableDocumentCommand{\doctitle}{}
  {
   % just print the (spaced) file name
   \tl_use:N \g_adam_spaced_jobdescr
 }
 
-\NewDocumentCommand{\doctype}{}
+\NewExpandableDocumentCommand{\doctype}{}
  {
   \tl_to_str:N \g_adam_spaced_jobtype
  }
-\NewDocumentCommand{\docclasse}{}
+\NewExpandableDocumentCommand{\docclasse}{}
  {
   \tl_to_str:N \g_adam_spaced_jobclasse
 }
-\NewDocumentCommand{\docnbr}{}
+\NewExpandableDocumentCommand{\docnbr}{}
  {
   \tl_to_str:N \g_adam_spaced_jobnbr
  }
-\NewDocumentCommand{\docstartyear}{}
+\NewExpandableDocumentCommand{\docstartyear}{}
  { \tl_to_str:N \g_adam_spaced_jobystart}
-\NewDocumentCommand{\docstartmonth}{}
+\NewExpandableDocumentCommand{\docstartmonth}{}
  { \tl_to_str:N \g_adam_spaced_jobmstart}
-\NewDocumentCommand{\docstartday}{}
+\NewExpandableDocumentCommand{\docstartday}{}
  { \tl_to_str:N \g_adam_spaced_jobdstart}
 
-\NewDocumentCommand{\docendyear}{}
+\NewExpandableDocumentCommand{\docendyear}{}
  { \tl_to_str:N \g_adam_spaced_jobyend}
-\NewDocumentCommand{\docendmonth}{}
+\NewExpandableDocumentCommand{\docendmonth}{}
  { \tl_to_str:N \g_adam_spaced_jobmend}
-\NewDocumentCommand{\docendday}{}
+\NewExpandableDocumentCommand{\docendday}{}
  { \tl_to_str:N \g_adam_spaced_jobdend}
 
-\NewDocumentCommand{\docclasseupper}{}
+\NewExpandableDocumentCommand{\docclasseupper}{}
  {
   \tl_to_str:N \g_adam_spaced_jobclasse_upper
  }
 
-\NewDocumentCommand{\spacedfilename}{}
+\NewExpandableDocumentCommand{\spacedfilename}{}
  {
   \tl_use:N \g_adam_spaced_job_name_tl
  }
 \ExplSyntaxOff
+

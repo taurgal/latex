@@ -4,9 +4,9 @@
 \tl_new:N \g_adam_spaced_job_name_tl
 \tl_new:N \g_adam_spaced_jobtype
 \tl_new:N \g_adam_spaced_jobclasse
-\tl_new:N \g_adam_spaced_jobnbr
 \tl_new:N \g_adam_spaced_jobclasse_upper
 \tl_new:N \g_adam_spaced_jobdescr
+\tl_new:N \g_adam_spaced_jobfiliere
 
 \seq_new:N \g_adam_job_name_seq
 % rescan \jobname
@@ -17,38 +17,48 @@
 % \g_adam_job_name_seq
 \seq_gpop_left:NN \g_adam_job_name_seq \g_adam_spaced_jobtype
 \seq_gpop_left:NN \g_adam_job_name_seq \g_adam_spaced_jobclasse
-\seq_gpop_left:NN \g_adam_job_name_seq \g_adam_spaced_jobnbr
 \tl_gset:Nx \g_adam_spaced_jobclasse_upper {
   \tl_upper_case:V {\g_adam_spaced_jobclasse}
   }
-\tl_gset:Nn \g_adam_spaced_jobdescr {
+
+\seq_gpop_left:NN \g_adam_job_name_seq \g_adam_spaced_jobnom
+\seq_gpop_left:NN \g_adam_job_name_seq \g_adam_spaced_jobprenom
+
+\tl_gset:Nn \g_adam_spaced_jobfiliere {
   \seq_use:Nn \g_adam_job_name_seq {~}
 }
 
-\NewExpandableDocumentCommand{\doctitle}{}
- {
-  % just print the (spaced) file name
-  \tl_use:N \g_adam_spaced_jobdescr
- }
-\NewExpandableDocumentCommand{\doctype}{}
+
+\NewDocumentCommand{\doctype}{}
  {
   \tl_to_str:N \g_adam_spaced_jobtype
  }
-\NewExpandableDocumentCommand{\docclasse}{}
+\NewDocumentCommand{\docclasse}{}
  {
   \tl_to_str:N \g_adam_spaced_jobclasse
-}
-\NewExpandableDocumentCommand{\docnbr}{}
- {
-  \tl_to_str:N \g_adam_spaced_jobnbr
  }
 
-\NewExpandableDocumentCommand{\docclasseupper}{}
+\NewDocumentCommand{\docnom}{}
+ {
+  \tl_to_str:N \g_adam_spaced_jobnom
+ }
+\NewDocumentCommand{\docprenom}{}
+ {
+  \tl_to_str:N \g_adam_spaced_jobprenom
+ }
+
+\NewDocumentCommand{\docfiliere}{}
+ {
+  \tl_use:N \g_adam_spaced_jobfiliere
+ }
+
+
+\NewDocumentCommand{\docclasseupper}{}
  {
   \tl_to_str:N \g_adam_spaced_jobclasse_upper
  }
 
-\NewExpandableDocumentCommand{\spacedfilename}{}
+\NewDocumentCommand{\spacedfilename}{}
  {
   \tl_use:N \g_adam_spaced_job_name_tl
  }

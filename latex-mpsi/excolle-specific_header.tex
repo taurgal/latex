@@ -6,9 +6,78 @@
 \renewcommand\cfttoctitlefont{\large\bfseries}
 \renewcommand\cftaftertoctitle{}
 \cftpagenumbersoff{section}
+\newif\ifexcolleall
+\IfEndWith{\jobname}{\detokenize{all}}{%
+  \excollealltrue\message{*******! OK }}{%
+  \excolleallfalse\message{*******! BAD }}
+\ifexcolleall
+  \input{process_filename_type_classe_nbr_datespan}
+\IfBeginWith{\jobname}{\detokenize{excolle}}{%
+  \def\docclasseupper{MP}}{%
+  \def\docclasseupper{MPSI}}
+  \def\doctitle{Colles de MPSI}
+  \fancypagestyle{excor}{
+    \fancyhf{}
+    \renewcommand{\headrulewidth}{0.4pt}
+    \fancyhead[L]{\docclasseupper{} --- \etablissement}
+    \fancyhead[C]{\doctitle}
+    \fancyfoot[C]{%
+      \the\numexpr%
+      \thepage-\getpagerefnumber{corfirstpage}+1\relax%
+      /%
+      \the\numexpr%
+      \getpagerefnumber{TrueLastPage}-\getpagerefnumber{corfirstpage}+1
+      \relax%
+    }
+    \fancyhead[R]{Corrections des exercices}
+  }
 
-
-\input{process_filename_type_classe_nbr_datespan}
+  \fancypagestyle{sujetscolle}{
+    \fancyhf{}
+    \renewcommand{\headrulewidth}{0.4pt}
+    \fancyhead[L]{\docclasseupper{} --- \etablissement}
+    \fancyhead[C]{Exercices de colle}
+    \fancyhead[R]{De l'année}
+    \fancyfoot[R]{\thepage/\pageref{LastPage}}
+  }
+  \else
+    \setdatenumber{\docstartyear}{\docstartmonth}{\docstartday}
+    \edef\docstartdayname{\datedayname}
+    \edef\docstartmonthname{\datemonthname}
+    \setdatenumber{\docendyear}{\docendmonth}{\docendday}
+    \edef\docenddayname{\datedayname}
+    \edef\docendmonthname{\datemonthname}
+    
+    \newcounter{corpage}
+    
+    \fancypagestyle{excor}{
+      \fancyhf{}
+      \renewcommand{\headrulewidth}{0.4pt}
+      \fancyhead[L]{\docclasseupper{} --- \etablissement}
+      \fancyhead[C]{\doctitle}
+      \fancyfoot[C]{%
+        \the\numexpr%
+        \thepage-\getpagerefnumber{corfirstpage}+1\relax%
+        /%
+        \the\numexpr%
+        \getpagerefnumber{TrueLastPage}-\getpagerefnumber{corfirstpage}+1
+        \relax%
+      }
+  \fancyhead[R]{Corrections des exercices}
+}
+\fancypagestyle{sujetscolle}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \fancyhead[L]{\docclasseupper{} --- \etablissement}
+  \fancyhead[C]{Exercices de colle}
+  \fancyhead[R]{Du \docstartdayname{}
+    \docstartday/\docstartmonth/\docstartyear{}
+    au \docenddayname{}
+    \docendday/\docendmonth/\docendyear
+  }
+  \fancyfoot[R]{\thepage/\pageref{LastPage}}
+} 
+\fi
 
 \newcommand\tcbsolution[2]{%
   \IfFileExists{#2}{\tcbsolutionb{#1}{#2}}{}%
@@ -61,54 +130,20 @@
   center%
 }
 
-\setdatenumber{\docstartyear}{\docstartmonth}{\docstartday}
-\edef\docstartdayname{\datedayname}
-\edef\docstartmonthname{\datemonthname}
-\setdatenumber{\docendyear}{\docendmonth}{\docendday}
-\edef\docenddayname{\datedayname}
-\edef\docendmonthname{\datemonthname}
-
-\newcounter{corpage}
-
-\fancypagestyle{excor}{
-  \fancyhf{}
-  \renewcommand{\headrulewidth}{0.4pt}
-  \fancyhead[L]{\docclasseupper{} --- \etablissement}
-  \fancyhead[C]{\doctitle}
-  \fancyfoot[C]{%
-    \the\numexpr%
-    \thepage-\getpagerefnumber{corfirstpage}+1\relax%
-    /%
-    \the\numexpr%
-    \getpagerefnumber{TrueLastPage}-\getpagerefnumber{corfirstpage}+1
-    \relax%
-  }
-  \fancyhead[R]{Corrections des exercices}
-}
-
-\fancypagestyle{sujetscolle}{
-  \fancyhf{}
-  \renewcommand{\headrulewidth}{0.4pt}
-  \fancyhead[L]{\docclasseupper{} --- \etablissement}
-  \fancyhead[C]{Exercices de colle}
-  \fancyhead[R]{Du \docstartdayname{}
-    \docstartday/\docstartmonth/\docstartyear{}
-    au \docenddayname{}
-    \docendday/\docendmonth/\docendyear
-  }
-  \fancyfoot[R]{\thepage/\pageref{LastPage}}
-}
-
 \pagestyle{sujetscolle}
 
 \newcommand{\upperRomannumeral}[1]{\uppercase\expandafter{\romannumeral#1}}
 \AtBeginDocument{
   \tcbstartrecording%
   \begin{sujetscolletitle}
+    \ifexcolleall
+    Colles de l'année
+    \else
     Du \docstartdayname{}
     \docstartday/\docstartmonth/\docstartyear{}
     au \docenddayname{}
     \docendday/\docendmonth/\docendyear.
+    \fi
   \end{sujetscolletitle}
   \bigbreak
 }

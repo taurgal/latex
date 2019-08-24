@@ -7,10 +7,69 @@
 \renewcommand\cftaftertoctitle{}
 \cftpagenumbersoff{section}
 
-
 \input{process_filename_type_classe_nbr_datespan}
 
-\ExplSyntaxOff
+\def\nocollefileerrmesg{\LARGE{}\textcolor{red}{%
+    Error: The file \tcbcollefile{} does not exists!}}%
+
+\def\tcbexercice#1#2#3{%
+  \pgfkeys{#3}% sets \extypevalue and more
+  \ifnum\exsheetpart=\exsheetpart
+  \listcsxadd{ex-\extypevalue}{{#1}{#2}{\exsheetpart}}
+  \fi
+}%
+\def\tcbexerciceavecsolution#1#2#3{}%
+
+\def\exandtdsheetnbr#1#2#3{%
+  \def\exsheetype{#1}
+  \def\exsheetnbr{#2}
+  \def\exsheetpart{#3}
+  \input{Solutions/#1-#2.records}
+}%
+\makeatother
+
+\newtcbtheorem[use counter=exnbr]{exercice}{Exercice}{%
+  description delimiters={\og}{\fg},
+  theorem style=plain,
+  lowerbox=ignored,
+  terminator sign={!!},
+  before lower={\textcolor{lightgreen}{Solution \thetcbcounter:}~},
+  code={\tcbset{label={exer-\thetcbcounter}}},%  
+  detach title,%
+  separator sign none,%
+  terminator sign none,%
+  blank,
+  breakable,%
+  % new/crefname={exercice}{exercices},%
+  % new/Crefname={Exercice}{Exercices},%
+  description delimiters={\og}{\fg},%
+  fonttitle=\bfseries,%
+  coltitle=ocre,%
+  enhanced,%
+  before skip=1em, after skip=1em, left=0pt, right=0pt,%
+  fonttitle=\bfseries
+}{exer}
+
+\makeatletter
+\def\processexcolle#1{%
+  \processexcolle@aux#1
+}%
+\newcounter{exnbr}
+\def\processexcolle@aux#1#2#3{%
+  \setcounter{exnbr}{#1}
+  \def\exex{ex}%
+  \ifx\exex\exsheetype%
+  \def\temptemp{d'exercice}%
+  \else%
+  \temptemp{de td}%
+  \fi%
+  \begin{exercice}{(de la fiche \temptemp{}
+      \number\exsheetnbr\relax)}{}
+  \input{#2}%    
+  \end{exercice}
+}%
+\makeatother
+
 \newtcolorbox{progcolletitle}{%
   title=PROGRAMME DE COLLE \docnbr,%
   fonttitle=\Large\bfseries\scshape{},%
@@ -35,47 +94,26 @@
   breakable,
   top=1em,
   bottom=1em,
-  left=0.5em,
-  right=0.5em,
-  before skip=0.0em,%
-  after skip=0.0em%
-}
-\newenvironment{mytcbitemizeleftbarremarque}{%
-  \begin{itemize}%
-  }{%
-  \end{itemize}%
-}
-\tcolorboxenvironment{mytcbitemizeleftbarremarque}{%
-  blanker,% Maybe try blank instead
-  before upper={\textsc{Remarque:}},
-  breakable,
-  top=1em,
-  bottom=1em,
-  left=0.5em,
-  right=0.5em,
-  before skip=0.0em,%
-  after skip=0.0em%
-}
-\newenvironment{mytcbitemizeleftbarremarques}{%
-  \begin{itemize}%
-  }{%
-  \end{itemize}%
-}
-\tcolorboxenvironment{mytcbitemizeleftbarremarques}{%
-  blanker,% Maybe try blank instead
-  before upper={\textsc{Remarques}},
-  breakable,
-  top=1em,
-  bottom=1em,
-  left=0.5em,
+  left=0.0em,
   right=0.5em,
   before skip=0.0em,%
   after skip=0.0em%
 }
 \newenvironment{remarques}{%
-  \begin{mytcbitemizeleftbarremarques}%
+  \begin{itemize}%
   }{%
-  \end{mytcbitemizeleftbarremarques}%
+  \end{itemize}%
+}
+\tcolorboxenvironment{remarques}{%
+  blanker,% Maybe try blank instead
+  before upper={\textsc{Remarques:}},
+  breakable,
+  top=1em,
+  bottom=1em,
+  left=0.0em,
+  right=0.5em,
+  before skip=0.0em,%
+  after skip=0.0em%
 }
 
 \newenvironment{questionsdecours}{%
@@ -88,24 +126,19 @@
   }{%
   \end{mytcbitemizeleftbar}%
 }
-\newenvironment{remarque}{%
-  \begin{mytcbitemizeleftbarremarque}%
-  }{%
-  \end{mytcbitemizeleftbarremarque}%
-}
 
 \newenvironment{listedeschapitres}{%
   \begin{itemize}}{\end{itemize}}
 \tcolorboxenvironment{listedeschapitres}{%
   blanker,
-  before upper={\textsc{Chapitres de la semaine}},
+  before upper={\textsc{\large\color{red}Chapitres de la semaine}},
   before skip=0.0em,%
   after skip=0.0em,%
   before skip=1em,
   after skip=1em,
   top=1em,
   bottom=1em,
-  left=0.5em,
+  left=0.0em,
   right=0.5em,
   borderline horizontal={1pt}{0pt}{black}}
 
@@ -114,18 +147,42 @@
 \newtcolorbox{listedesptcours}{
   blank,
   before upper={%
-    \textsc{Contenu par chapitre},
+    \textsc{\large\color{blue} Contenu par chapitre},
     \begin{itemize}},
     after upper={\end{itemize}},
   colframe=red,
   breakable,
   before skip=1em,
   after skip=1em,
-  left=0.5em,
+  left=0.0em,
   right=0.5em
 }
 
+\newtcolorbox{listedesqcours}{
+  blank,
+  before upper={%
+    \textsc{\large\color{blue} Questions de cours:},
+    \begin{itemize}},
+    after upper={\end{itemize}},
+  colframe=red,
+  breakable,
+  before skip=1em,
+  after skip=1em,
+  left=0.0em,
+  right=0.5em
+}
+
+\newenvironment{listedesexercices}{%
+  \begingroup%
+  \noindent\textsc{\large\color{blue} Exercices à savoir traiter:}\par%
+  \setlength{\leftskip}{\parindent}%
+}{\endgroup}
+
+
 \newenvironment{listedesptcoursunchap}[1]{
+#1\begin{enumerate}}{\end{enumerate}}
+
+\newenvironment{listedesqcoursunchap}[1]{
 #1\begin{enumerate}}{\end{enumerate}}
 
 
@@ -152,22 +209,80 @@
 \pagestyle{progcolle}
 
 \newcommand{\upperRomannumeral}[1]{\uppercase\expandafter{\romannumeral#1}}
-\AtBeginDocument{
-  \begin{progcolletitle}
-    Du~\docstartdayname~\docstartday~\docstartmonthname{}
-    au~\docenddayname~\docendday~\docendmonthname{}.
-  \end{progcolletitle}
-  \bigbreak
-}
 
-\AtEndDocument{
-  \begin{center}
-    \textbf{--FIN--}
-  \end{center}
-  \label{LastPage}
+\def\extypechar{\relax}
+\def\extypevalue{none}
+\def\exdiffchar{\relax}
+\gdef\exdiffvalue{none}
+\def\sourcename{\relax}
+\def\sourceyear{\relax}
+\tcbset{%
+  type/.is choice,
+  type/.default=none,
+  type/none/.code={\def\extypechar{}\def\extypevalue{none}},
+  type/classic/.code={\def\extypechar{\Heart}\def\extypevalue{classic}},
+  type/fun/.code={\def\extypechar{\Football}\def\extypevalue{fun}},
+  type/important/.code={\def\extypechar{\faStarO}\def\extypevalue{important}},
+  type/training/.code={\def\extypechar{\Bicycle}\def\extypevalue{training}},
+  type/CCP/.code={\def\extypechar{CCP}\def\extypevalue{CCP}},
+  type/colle/.code={\def\extypevalue{colle}\def\extypechar{
+\tikz[y=0.016pt, x=0.016pt, inner sep=0pt, outer sep=0pt]{
+\path[fill] (208,-352) .. controls (205.61,-352) and
+  (203.22,-352.35) .. (200.94,-353.09) .. controls (187.98,-357.3) and
+  (174.35,-360) .. (160,-360) .. controls (145.65,-360) and
+  (132.02,-357.3) .. (119.05,-353.09) .. controls (116.77,-352.35) and
+  (114.39,-352) .. (112,-352) .. controls (49.94,-352) and
+  (-0.33,-402.48) .. (0,-464.62) .. controls (0.14,-490.88) and
+  (21.73,-512) .. (48,-512) -- (272,-512) .. controls
+  (298.27,-512) and (319.86,-490.88) .. (320,-464.62) .. controls
+  (320.33,-402.48) and (270.06,-352) .. (208,-352) --
+  cycle(160,-320) .. controls (213.02,-320) and
+  (256,-277.02) .. (256,-224) .. controls (256,-170.98) and
+  (213.02,-128) .. (160,-128) .. controls (106.98,-128) and
+  (64,-170.98) .. (64,-224) .. controls (64,-277.02) and
+  (106.98,-320) .. (160,-320) -- cycle(592,0) --
+  (208,0) .. controls (181.53,0) and (160,-22.25) ..
+  (160,-49.59) -- (160,-96) .. controls (183.42,-96) and
+  (205.1,-102.78) .. (224,-113.8) -- (224,-64) --
+  (576,-64) -- (576,-352) -- (512,-352) --
+  (512,-288) -- (384,-288) -- (384,-352) --
+  (307.76,-352) .. controls (326.86,-368.69) and (340.88,-390.73) ..
+  (347.45,-416) -- (592,-416) .. controls (618.47,-416) and
+  (640,-393.75) .. (640,-366.41) -- (640,-49.59) .. controls
+  (640,-22.25) and (618.47,0) .. (592,0) -- cycle;
+}}
+  },
+  type/Centrale/.code={\def\extypechar{\makesamewidth[c]{Cent.}}},
+  type/Mines/.code={\def\extypechar{\makesamewidth[c]{Mines}}},
+  %
+  difficulty/.is choice,
+  difficulty/.default=none,
+  difficulty/none/.code={\def\exdiffchar{}\gdef\exdiffvalue{none}},
+  difficulty/easy/.code={\def\exdiffchar{%
+      \makesamewidth[c]{\faHandPeaceO}\gdef\exdiffvalue{easy}%
+    }},
+  difficulty/hard/.code={\def\exdiffchar{%
+      \makesamewidth[c]{\Lightning}\gdef\exdiffvalue{hard}%
+    }},
+  difficulty/vhard/.code={\def\exdiffchar{%
+      \makesamewidth[c]{\Lightning\!\Lightning}%
+      \gdef\exdiffvalue{vhard}
+    }},
+  %
+  source/name/.is choice,
+  source/name/xens/.code={\def\sourcename{X-ENS-ESPCI}},
+  source/name/centrale/.code={\def\sourcename{Centrale-Supélec}},
+  source/name/ccp/.code={\def\sourcename{CCP}},
+  source/name/minestelecom/.code={\def\sourcename{Mines-Télécom}},
+  source/name/minesponts/.code={\def\sourcename{Mines-Ponts}},
+  source/year/.code={\def\sourceyear{#1}},
+  exsheetpart/.code={\def\exsheetpart{#1}},
+%   exsheetpart/.default=1,
+%   exsheetpart=1
 }
 
 \makeatletter{}
+\def\nbrofchapters{}
 \def\mycontentsline#1#2#3#4#5#6#7#8{%
   \message{!!!!!!! SEMAINE #1, #2, #3, #4, #5, #6, #7, #8}
   \def\semainenbr{#1}%
@@ -181,16 +296,18 @@
   \ifcsname chapter-\thechapternbr\endcsname%
   \else%
   \expandafter%
-  \xdef\csname chapter-\thechapternbr\endcsname{\chaptertitle}%
-  \listxadd{\chapters}{Chapitre
-    \rom{\thechapternbr}:~
+  \xdef\csname chapter-\thechapternbr\endcsname{%
     \chaptertitle}%
+  \listxadd{\chapters}{Chapitre
+    \rom{\thechapternbr}:~\chaptertitle}%
   \listxadd{\nbrofchapters}{\thechapternbr}%
   \fi%
   % 
+  \expandafter\def\csname\questype-chapter\endcsname{
+    There are some of this type}
   \listcsxadd{\questype-chapter-\thechapternbr}{#8}%
   \listcsxadd{type-\questype}{#8}%
-}
+}%
 \makeatother{}
 
 % Important if you use amsmath!
@@ -229,23 +346,66 @@
 \makeatother
 %
 
-\newread\file
-\xdef\tcbcollefile{Colles/colle-\docnbr.records}
-\openin\file=\tcbcollefile
+\def\prependitem#1{\item #1}
 
-\def\work#1{\item \ptcourschapnbr{#1}}
 \def\ptcourschapnbr#1{%
+  \expandafter\ifx\csname ptcours-chapter-#1\endcsname\relax
+  \else
+  \item
   \begin{listedesptcoursunchap}{Chapitre \rom{#1}: \csname
       chapter-#1\endcsname}
     \forlistcsloop{\prependitem}{ptcours-chapter-#1}%
   \end{listedesptcoursunchap}
+  \fi
 }
-\def\prependitem#1{\item #1}
-\def\appendpar#1{#1\par}
+\def\qcourschapnbr#1{%
+  \expandafter\ifx\csname qcours-chapter-#1\endcsname\relax
+  \else
+  \item
+  \begin{listedesqcoursunchap}{Chapitre \rom{#1}: \csname
+      chapter-#1\endcsname}
+    \forlistcsloop{\prependitem}{qcours-chapter-#1}%
+  \end{listedesqcoursunchap}
+  \fi
+}
+
 
 \AtBeginDocument{
-  \input{Colles/colle-\docnbr.records}
+  \begin{progcolletitle}
+    Du~\docstartdayname~\docstartday~\docstartmonthname{}
+    au~\docenddayname~\docendday~\docendmonthname{}.
+  \end{progcolletitle}
+  \bigbreak
+  \xdef\tcbcollefile{Colles/colle-\docnbr.records}
+  \IfFileExists{\tcbcollefile}{
+    \message{INPUTtcbcollefile: \tcbcollefile}
+    \input{\tcbcollefile}
+  \begin{listedeschapitres}
+    \forlistcsloop{\prependitem}{chapters}
+  \end{listedeschapitres}
+  \ifcsname ptcours-chapter\endcsname%
+  \begin{listedesptcours}
+    \forlistcsloop{\ptcourschapnbr}{nbrofchapters}%
+  \end{listedesptcours}
+  \fi
+  \ifcsname qcours-chapter\endcsname%
+  \begin{listedesqcours}
+    \forlistcsloop{\qcourschapnbr}{nbrofchapters}%
+  \end{listedesqcours}
+  \fi
+  \begin{listedesexercices}
+    \forlistcsloop{\processexcolle}{ex-colle}%
+  \end{listedesexercices}  
+}{%
+    \begin{center}
+      \nocollefileerrmesg
+    \end{center}
+  }
 }
 
-\def\nocollefileerrmesg{\LARGE{}\textcolor{red}{%
-    Error: The file \tcbcollefile{} does not exists!}}
+\AtEndDocument{
+  \begin{center}
+    \textbf{--FIN--}
+  \end{center}
+  \label{LastPage}
+}

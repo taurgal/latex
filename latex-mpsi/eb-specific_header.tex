@@ -3,6 +3,8 @@
 \input{header_common}
 \usepackage{pgfornament}
 \usepackage{amsthm}
+\usepackage[newfloat]{minted}
+\tcbuselibrary{minted}
 
 \input{process_filename_type_classe_nbr_date}
 
@@ -19,6 +21,22 @@
   phantomlabel={solution@#1},
   attach title to upper=\par,
 }{\input{#2}}
+
+\newtcblisting{pythoncode}[2][]{%
+  before skip=1em,
+  after skip=1em,
+  title={\ifx\relax#2\relax Code\else #2\fi},
+  halign title=center,
+  boxsep=1mm,
+  left=0mm,
+  right=0mm,
+  breakable,
+  listing engine=minted,
+  listing only,
+  minted language={python},
+  minted options={breaklines, autogobble},
+  #1
+}
 
 \everymath{\displaystyle}
 
@@ -79,7 +97,7 @@
       \node[align=center] (vecbox) {
         \LARGE{MATHÉMATIQUES}\\
         Épreuve blanche~\no\docnbr{}\\
-        Durée:~4h
+        Durée:~\ifcsname dureeds\endcsname\dureeds\else{}4h\fi%
       };%
       \path  (vecbox.south west) to [ornament=88,
       options/.append style={yshift=1pt}] (vecbox.south east);
