@@ -31,9 +31,9 @@
 \newtcbtheorem[use counter=exnbr]{exercice}{Exercice}{%
   description delimiters={\og}{\fg},
   theorem style=plain,
-  lowerbox=ignored,
+  % lowerbox=ignored,
   terminator sign={!!},
-  before lower={\textcolor{lightgreen}{Solution \thetcbcounter:}~},
+  before lower={\textcolor{lightgreen}{Solution:}~},
   code={\tcbset{label={exer-\thetcbcounter}}},%  
   detach title,%
   separator sign none,%
@@ -64,7 +64,7 @@
   \temptemp{de td}%
   \fi%
   \begin{exercice}{(de la fiche \temptemp{}
-      \number\exsheetnbr\relax)}{}
+      \number\exsheetnbr\relax):~}{}
   \input{#2}%    
   \end{exercice}
 }%

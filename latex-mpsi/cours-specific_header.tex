@@ -9,6 +9,7 @@
 \tcbuselibrary{minted}
 
 \makeatletter
+\def\tcb@null@two#1#2{}
 \newtcblisting{pythoncode}[2][]{%
   before skip=1em,
   after skip=1em,
@@ -49,18 +50,20 @@
 
 
 \newcommand\mpsifinsemainedecolle[1]{
+  \def\tdsheetslist{Z}
+  \def\exsheetslist{Z}
   \tcbset{#1}
-  \if\relax\tdsheetslist\relax%
-  \errmessage{PAS DE FICHE DE TD POUR CETTE SEMAINE DE COLLE}%
+  \ifx Z\tdsheetslist\relax%
+  \errmessage{SPECIFIER UNE LISTE DE FICHES DE TD MEME VIDE!}%
   \fi%
-  \if\relax\exsheetslist\relax%
-  \errmessage{PAS DE FICHE DE EX POUR CETTE SEMAINE DE COLLE}%
+  \ifx Z\exsheetslist\relax%
+  \errmessage{SPECIFIER UNE LISTE DE FICHES DE EX MEME VIDE!}%
   \fi%
   \foreach \exsheetnbr/\sheetpart in \exsheetslist
   {\exandtdsheetnbr{ex}{\exsheetnbr}{\sheetpart}}%
   \foreach \tdsheetnbr in \tdsheetslist
   {\exandtdsheetnbr{td}{\tdsheetnbr}{1}}%
-  \ifx\tcbcollerecord\tcb@null%
+  \ifx\tcbcollerecord\tcb@null@two%
   \global\let\tcbcollerecord\tcb@colle
   \else%
   \immediate\closeout\tcb@colle@out%
@@ -98,7 +101,7 @@
           Colles/colle-\arabic{semainecounter}.records}
       \fi
       \message{**: H}
-      \ifx\tcbcollerecord\tcb@null
+      \ifx\tcbcollerecord\tcb@null@two
         \global\let\tcbcollerecord\tcb@colle
       \else
         \immediate\closeout\tcb@colle@out
@@ -111,13 +114,13 @@
 
 %
 \newcommand\tcbstartcollerecording{%
-  \global\let\tcbcollerecord\tcb@null  
+  \global\let\tcbcollerecord\tcb@null@two  
   \setcounter{semainecounter}{0}
   \mpsisetsemainedecolle{1}
 }
 
 \newcommand{\tcbstopcollerecording}{%
-  \ifx\tcbcollerecord\tcb@null%
+  \ifx\tcbcollerecord\tcb@null@two%
   \else%
   \immediate\closeout\tcb@colle@out%
   \fi%
@@ -224,7 +227,7 @@
   }}
 
 
-\long\def\tcb@colle#1{%
+\long\def\tcb@colle#1#2{%
   \immediate\protected@iwrite\tcb@colle@out
   {\let\label\@gobble \let\index\@gobble \let\glossary\@gobble}%
   {\string\mycontentsline{%
@@ -240,13 +243,15 @@
     }{%
       \tcbenvname%
     }{%
-      \questype%
-    }{%
       #1%
+    }{%
+      #2%
     }%
   }}
 
+\def\mytheoremname{}
 \tcbset{%
+  theorem name/.store in=\mytheoremname,
   envname/.code={\gdef\tcbenvname{#1}},%
   writerecords/.code={%
     \ifnowrite
@@ -271,6 +276,25 @@
 
 \tcbset{%
   nowrite/.is if=nowrite,%
+  nowrite/.default=true,%
+  nowrite=false,%
+  ptcours/.default={%
+    \descriptiontext%
+  },%
+  ptcours/.code={%
+    \ifnowrite%
+    \else%
+    \if\relax\detokenize{#1}\relax%
+    \else%
+    \tcbcollerecord{ptcours}{#1}%
+    \fi%
+    \fi%
+  }%
+}
+
+
+\tcbset{%
+  nowrite/.is if=nowrite,%
   nowrite/.default=false,%
   nowrite=false,%
   qcours/.default={%
@@ -278,27 +302,10 @@
   },%
   qcours/.code={%
     \def\questype{qcours}%
+    \gdef\questype{qcours}%
     \ifnowrite%
     \else%
-    \tcbcollerecord{#1}%
-    \fi%
-  }%
-}
-\tcbset{%
-  nowrite/.is if=nowrite,%
-  nowrite/.default=false,%
-  nowrite=false,%
-  ptcours/.default={%
-    \descriptiontext%
-  },%
-  ptcours/.code={%
-    \def\questype{ptcours}%
-    \ifnowrite%
-    \else%
-    \if\relax#1\relax%
-    \else%
-    \tcbcollerecord{#1}%
-    \fi%
+    \tcbcollerecord{qcours}{#1}%
     \fi%
   }%
 }
@@ -306,6 +313,7 @@
 \def\colle{%
   \def\tcbenvname{colle}%
   \def\questype{qcours}%
+  \gdef\questype{qcours}%
   \immediate\protected@iwrite\tcb@colle@out
   {\let\label\@gobble \let\index\@gobble \let\glossary\@gobble}%
   {\string\mycontentsline{%
@@ -374,10 +382,18 @@
 }
 \makeatother
 
+
 \tcbset{%
   theorem style/theoremlike/.style={%
     separator sign none,%
     description delimiters={\og}{\fg},%
+    separator sign={\ifx\mytheoremname\empty%
+      :%
+      \else%
+      \message{********??!!!: }%
+      \show\mytheoremname
+      (\mytheoremname):%
+      \fi},%
     terminator sign colon,%
     theorem name and number,%
     attach title to upper={\ },%
@@ -491,7 +507,7 @@
   new/crefname={methode}{methodes},%
   new/Crefname={Methode}{Methodes},%
   theorem style=theoremlike,%
-  % ptcours
+  ptcours
 }{meth}
 
 
@@ -513,29 +529,29 @@
   new/crefname={notation}{notations},%
   new/Crefname={Notation}{Notations},%
   theorem style=definitionlike,%
-  nowrite
+  ptcours
 }{def}
 
 \newtcbtheorem[number within=section]{exercice}{Exercice}{%
   new/crefname={exercice}{exercices},%
   new/Crefname={Exercices}{Exercices},%
   theorem style=exercicelike,%
-  nowrite,
-  before lower={\textcolor{lightgreen}{ Solution \thetcbcounter:}~}
+  before lower={\textcolor{lightgreen}{Solution:}~},
+  ptcours
 }{exer}
 
 \newtcbtheorem[number within=section]{remarque}{Remarque}{%
   new/crefname={remarque}{remarques},%
   new/Crefname={Remarques}{Remarques},%
   theorem style=exercicelike,%
-  nowrite
+  ptcours
 }{rmq}
 
 \newtcbtheorem[number within=section]{rappel}{Rappel}{%
   new/crefname={rappel}{rappels},%
   new/Crefname={Rappels}{Rappels},%
   theorem style=exercicelike,%
-  nowrite
+  ptcours
 }{rmq}
 
 
@@ -543,7 +559,7 @@
   new/crefname={exemple}{exemples},%
   new/Crefname={Exemples}{Exemples},%
   theorem style=exercicelike,%
-  qcours
+  ptcours
 }{exem}
 
 \tcolorboxenvironment{proof}{% 'proof' from 'amsthm'
@@ -572,7 +588,10 @@
   \fancyfoot[LO,RE]{\docclasse{} --- \etablissement}%
 }
 
-\renewcommand\thechapter{\Roman{chapter}}
+\newcommand{\ZeroRoman}[1]{% 0 + \Roman
+  \ifcase\value{#1}0\else% Chapter 0
+  \Roman{#1}\fi}% All other chapters
+\renewcommand{\thechapter}{\ZeroRoman{chapter}}
 \titleformat{name=\chapter}[display]
 {\normalfont\huge\bfseries}
 {}

@@ -3,8 +3,10 @@
 \input{header_common}
 \usepackage{transparent}
 \def\correction#1{\textcolor{white}{#1}}
-\input{fixed-venndiagram}
+\input{venndiagram2}
 \usepackage[newfloat]{minted}
+\usepackage{comment}
+\excludecomment{colle}
 \tcbuselibrary{minted}
 
 \usepackage{transparent}
@@ -44,41 +46,12 @@ xpos=0,ypos=0]{Lycée militaire d'Autun}
 \makeatletter{}
 \newwrite\tcb@colle@out
 
-\newcommand\mpsifinsemainedecolle{
-  \ifx\tcbcollerecord\tcb@null%
-  \global\let\tcbcollerecord\tcb@colle
-  \else%
-  \immediate\closeout\tcb@colle@out%
-  \fi%
-  \stepcounter{semainecounter}%
-  \message{Passage en semaine \thesemainecounter}
-  \ifnum\value{semainecounter}<10
-  \xdef\tcb@colle@file{Colles/colle-0\arabic{semainecounter}.records}
-  \else
-  \xdef\tcb@colle@file{Colles/colle-\arabic{semainecounter}.records}
-  \fi
-  \immediate\openout\tcb@colle@out\tcb@colle@file\relax%
+
+\newcommand\mpsifinsemainedecolle[1]{
 }
 
 \newcommand\mpsisetsemainedecolle[1]{
-  \if\relax\detokenize{#1}\relax
-  \relax
-  \else
-  \ifnum\value{semainecounter}=\numexpr#1\relax
-  \relax
-  \else
-  \immediate\closeout\tcb@colle@out%
-  \setcounter{semainecounter}{#1}%
-  \ifnum\value{semainecounter}<10
-  \xdef\tcb@colle@file{Colles/colle-0\arabic{semainecounter}.records}
-  \else
-  \xdef\tcb@colle@file{Colles/colle-\arabic{semainecounter}.records}
-  \fi
-  \immediate\openout\tcb@colle@out\tcb@colle@file%
-  \fi
-  \fi
 }
-
 
 \global\let\tcbcollerecord\tcb@null%
 \newcommand\tcbstartcollerecording{%
@@ -253,6 +226,25 @@ xpos=0,ypos=0]{Lycée militaire d'Autun}
     lowerbox=visible,
     before lower={Preuve:~},
     after lower={\hfill{}\square}
+  }%
+}
+
+\newif\ifnowrite
+\def\tcbcollerecorddata{}
+
+\tcbset{%
+  nowrite/.is if=nowrite,%
+  nowrite/.default=false,%
+  nowrite=false,%
+  qcours/.default={%
+    \descriptiontext%
+  },%
+  qcours/.code={%
+    \def\questype{qcours}%
+    \ifnowrite%
+    \else%
+    \tcbcollerecord{#1}%
+    \fi%
   }%
 }
 
