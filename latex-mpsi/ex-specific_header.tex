@@ -38,7 +38,7 @@
   (mytitle\thetcbcounter) {%
     \llap{\smash{\rotatebox[origin=c]{90}{%
           \small\extypechar\exdiffchar}~}}%
-    \color{tcbcol@title}%
+    \color{tcbcoltitle}%
     \kvtcb@fonttitle%
     \kvtcb@haligntitle%
     \kvtcb@before@title%
@@ -274,8 +274,7 @@
   \fancyhead[L]{\docclasseupper{} --- \etablissement}
   \fancyhead[C]{\docnbr--\doctitle}
   \fancyfoot[C]{\thepage/%
-    \the\numexpr%
-    \getpagerefnumber{corfirstpage}-1\relax
+    \getpagerefnumber{subjectlastpage}
   }
   \fancyhead[R]{Exercices}
 }
@@ -306,6 +305,7 @@
 
 \AtEndDocument{%
   \tcbstoprecording%
+  \label{subjectlastpage}%
   \clearpage\label{corfirstpage}%
   \ifhandout%
   \else%

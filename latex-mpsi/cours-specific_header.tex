@@ -4,11 +4,15 @@
 \newcounter{semainecounter}
 \usepackage{pdftexcmds}
 \usepackage{environ}
+\usepackage{xpatch}
 
 \usepackage[newfloat]{minted}
 \tcbuselibrary{minted}
 
 \makeatletter
+\let\protected@iwrite\protected@write
+\xpatchcmd{\protected@iwrite}{\write}{\immediate\write}{}{}
+
 \def\tcb@null@two#1#2{}
 \newtcblisting{pythoncode}[2][]{%
   before skip=1em,
@@ -207,29 +211,20 @@
   \printdbginfo{}%
 }
 
-\long\def\protected@iwrite#1#2#3{%
-      \begingroup
-       \let\thepage\relax
-       #2%
-       \let\protect\@unexpandable@protect
-       \edef\reserved@a{\immediate\write#1{#3}}%
-       \reserved@a
-      \endgroup
-      \if@nobreak\ifvmode\nobreak\fi\fi
-}
-
 \long\def\exandtdsheetnbr#1#2#3{%
   \def\temp{#2}
   \ifnum #2<10\def\temp{0#2}\fi
-  \immediate\protected@iwrite\tcb@colle@out
+  \protected@iwrite\tcb@colle@out
   {\let\label\@gobble \let\index\@gobble \let\glossary\@gobble}%
   {\string\exandtdsheetnbr{#1}{\temp}{#3}%
   }}
 
 
 \long\def\tcb@colle#1#2{%
-  \immediate\protected@iwrite\tcb@colle@out
-  {\let\label\@gobble \let\index\@gobble \let\glossary\@gobble}%
+  \def\showlineno{ line \the\inputlineno}
+  \message{*a*a*a*a*: line \showlineno, \doctitle(\arabic{chapter})}
+  \protected@iwrite\tcb@colle@out{%
+    \let\label\@gobble \let\index\@gobble \let\glossary\@gobble}%
   {\string\mycontentsline{%
       \thesemainecounter%
     }{%
@@ -314,7 +309,7 @@
   \def\tcbenvname{colle}%
   \def\questype{qcours}%
   \gdef\questype{qcours}%
-  \immediate\protected@iwrite\tcb@colle@out
+  \protected@iwrite\tcb@colle@out
   {\let\label\@gobble \let\index\@gobble \let\glossary\@gobble}%
   {\string\mycontentsline{%
       \thesemainecounter%
@@ -368,16 +363,16 @@
     envname={#2},%
     nameref={##2},%
     code={\tcb@theo@label{#5}{##3}},%
-    ##1,%
-    writerecords
+    ##1%
+    % writerecords
   }%
   \@@newtcolorbox[#1,no counter,list inside=]{#2*}[2][]{#4,%
     title={\tcb@theo@title{#3}{\@empty}{##2}},%
     description text={##2},%
     progcolle text={##2},%
     envname={#2},%
-    ##1,%
-    writerecords
+    ##1%
+    % writerecords
   }%
 }
 \makeatother

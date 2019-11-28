@@ -1,5 +1,23 @@
 \usepackage[a4paper,includeheadfoot,top=1.2cm,bottom=1.0cm,left=1.2cm,right=1.2cm]{geometry}
 \input{header_common}
+\renewcommand{\onlyprogcolle}[1]{#1}
+\usepackage[newfloat]{minted}
+\tcbuselibrary{minted}
+\newtcblisting{pythoncode}[2][]{%
+  before skip=1em,
+  after skip=1em,
+  title={\ifx\relax#2\relax Code\else #2\fi},
+  halign title=center,
+  boxsep=1mm,
+  left=0mm,
+  right=0mm,
+  breakable,
+  listing engine=minted,
+  listing only,
+  minted language={python},
+  minted options={breaklines, autogobble},
+  #1
+}
 \usepackage[titles]{tocloft}
 \setlength\cftbeforetoctitleskip{1em}
 \setlength\cftaftertoctitleskip{1em}
@@ -14,16 +32,19 @@
 
 \def\tcbexercice#1#2#3{%
   \pgfkeys{#3}% sets \extypevalue and more
-  \ifnum\exsheetpart=\exsheetpart
-  \listcsxadd{ex-\extypevalue}{{#1}{#2}{\exsheetpart}}
-  \fi
+  \ifnum\exsheetpart=\progcolleexsheetpart%
+  \def\tmp{colle}%
+  \ifx\extypevalue\tmp%
+  \listcsxadd{ex-\progcolleexsheetype}{{#1}{#2}{\exsheetpart}}%
+  \fi%
+  \fi%
 }%
 \def\tcbexerciceavecsolution#1#2#3{}%
 
 \def\exandtdsheetnbr#1#2#3{%
-  \def\exsheetype{#1}
-  \def\exsheetnbr{#2}
-  \def\exsheetpart{#3}
+  \gdef\progcolleexsheetype{#1}
+  \gdef\progcolleexsheetnbr{#2}
+  \gdef\progcolleexsheetpart{#3}
   \input{Solutions/#1-#2.records}
 }%
 \makeatother
@@ -58,13 +79,14 @@
 \def\processexcolle@aux#1#2#3{%
   \setcounter{exnbr}{#1}
   \def\exex{ex}%
-  \ifx\exex\exsheetype%
+  \ifx\exex\progcolleexsheetype%
   \def\temptemp{d'exercice}%
   \else%
-  \temptemp{de td}%
+  \def\temptemp{de td}%
   \fi%
-  \begin{exercice}{(de la fiche \temptemp{}
-      \number\exsheetnbr\relax):~}{}
+  \begin{exercice}{
+      (de la fiche \temptemp{}):~
+    }{}
   \input{#2}%    
   \end{exercice}
 }%
@@ -276,7 +298,7 @@
   source/name/minestelecom/.code={\def\sourcename{Mines-Télécom}},
   source/name/minesponts/.code={\def\sourcename{Mines-Ponts}},
   source/year/.code={\def\sourceyear{#1}},
-  exsheetpart/.code={\def\exsheetpart{#1}},
+  exsheetpart/.code={\gdef\exsheetpart{#1}},
 %   exsheetpart/.default=1,
 %   exsheetpart=1
 }
@@ -394,7 +416,14 @@
   \end{listedesqcours}
   \fi
   \begin{listedesexercices}
-    \forlistcsloop{\processexcolle}{ex-colle}%
+    \ifcsname ex-ex\endcsname
+    \def\progcolleexsheetype{ex}
+    \forlistcsloop{\processexcolle}{ex-ex}%
+    \fi
+    \ifcsname ex-td\endcsname
+    \def\progcolleexsheetype{td}
+    \forlistcsloop{\processexcolle}{ex-td}%
+    \fi
   \end{listedesexercices}  
 }{%
     \begin{center}

@@ -24,6 +24,7 @@
 \usepackage{xstring}
 \usepackage{xparse}
 
+\newcommand{\onlyprogcolle}[1]{}
 \newif\ifhandout
 \ifcsname handout\endcsname
 \handouttrue%
@@ -803,7 +804,7 @@
 \newcommand\KDelta[1]{\KroneckerDelta{#1}}
 \newcommand\transposeRight[1]{#1^{T}}
 \newcommand\transposeLeft[1]{\prescript{t}{}{#1}}
-\newcommand\transpose[1]{\prescript{t}{}{#1}}
+\newcommand\transpose[1]{\transposeRight{#1}}
 
 \newcommand{\fullfunction}[6][t]{
   \begin {array}[#1]{rcl}

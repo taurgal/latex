@@ -6,6 +6,7 @@
 % \input{venndiagram2}
 \usepackage[newfloat]{minted}
 \tcbuselibrary{minted}
+\def\pyt#1{\mintinline{python}{#1}}
 
 \usepackage{transparent}
 
@@ -43,6 +44,41 @@
   #1
 }
 
+\tcbset{
+  crossedout/.style={
+    overlay={
+      \path[draw=red!50!white,line width=1mm] (title.south east) --
+      ($ (frame.south west) +(0,0.15)$);
+      \path[draw=red!50!white,line width=1mm]
+      ($ (frame.south east) +(0,0.15)$)--
+      (title.south west);
+    },
+    overlay middle and last={
+      \path[draw=red!50!white,line width=1mm] (frame.north east) --
+      ($ (frame.south west) +(0,0.15)$);
+      \path[draw=red!50!white,line width=1mm] (frame.north west) --
+      ($ (frame.south east) +(0,0.15)$);
+    },
+  }
+}
+\newtcblisting{crossedpythoncode}[2][]{%
+  enhanced,
+  before skip=1em,
+  after skip=1em,
+  title={\ifx\relax#2\relax Code bogué\else #2\fi},
+  colbacktitle=red!40!white,
+  halign title=center,
+  boxsep=1mm,
+  left=0mm,
+  right=0mm,
+  breakable,
+  listing engine=minted,
+  listing only,
+  minted language={python},
+  minted options={breaklines, autogobble},
+  crossedout,
+  #1
+}
 
 \newtcblisting{sqlcode}[2][]{%
   before skip=1em,
@@ -553,8 +589,32 @@ xpos=0,ypos=0]{Lycée militaire d'Autun}
 \pretocmd{\@part}{\gdef\currparttitle{#1}}{}{}
 \makeatother
 
-
-
-
 \newcommand{\upperRomannumeral}[1]{\uppercase\expandafter{\romannumeral#1}}
 
+\usepackage{algpseudocode}
+\algrenewcommand\algorithmicend{\textbf{fin}}
+\algrenewcommand\algorithmicdo{\textbf{faire}}
+\algrenewcommand\algorithmicwhile{\textbf{tant que}}
+% 
+\algnewcommand\algorithmicto{\textbf{à}}
+\algrenewcommand\algorithmicfor{\textbf{pour}}
+\algnewcommand\algorithmicallantde{\textbf{allant de}}
+\algrenewtext{For}[3]%
+{\algorithmicfor{} #1 \algorithmicallantde{} #2 \algorithmicto{} #3 \algorithmicdo}
+\algrenewtext{For}[3]%
+{\algorithmicfor{} #1 \algorithmicallantde{} #2 \algorithmicto{} #3 \algorithmicdo}
+\algblockdefx[ForEach]{ForEach}{EndForEach}[2]{\textbf{pour} #1 \textbf{ dans } #2}{\textbf{fin pour}}
+% 
+\algrenewcommand\algorithmicforall{\textbf{pour tout}}
+\algrenewcommand\algorithmicloop{\textbf{boucle}}
+\algrenewcommand\algorithmicrepeat{\textbf{répéter}}
+\algrenewcommand\algorithmicuntil{\textbf{jusqu'à}}
+\algrenewcommand\algorithmicprocedure{\textbf{procédure}}
+\algrenewcommand\algorithmicfunction{\textbf{fonction}}
+\algrenewcommand\algorithmicif{\textbf{si}}
+\algrenewcommand\algorithmicthen{\textbf{alors}}
+\algrenewcommand\algorithmicelse{\textbf{sinon}}
+\algrenewcommand\algorithmicrequire{\textbf{Entrées:}}
+\algrenewcommand\algorithmicensure{\textbf{Sortie:}}
+\algrenewcommand\algorithmicreturn{\State \textbf{retourner}}
+\algrenewcommand\textproc{\textsc}

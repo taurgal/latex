@@ -22,16 +22,15 @@
   after skip=1em,
   title={\ifx\relax#2\relax\else #2\fi},
   halign title=center,
-  boxsep=1mm,
-  left=0mm,
-  right=0mm,
+  boxsep=0mm,
+  left=1mm,
+  right=1mm,
   breakable,
   listing engine=minted,
   listing only,
   minted language={python},
-  minted options={autogobble=true},
-  in listing = true,
-  #1
+  minted options={autogobble},
+  in listing=true
 }
 
 \newtcblisting{sqlcode}[2][]{%
@@ -47,7 +46,7 @@
   listing only,
   minted language={sql},
   % minted options={breaklines=true, autogobble=true, stripnl=true},
-  in listing = true,
+  in listing=true,
   #1}
 
 

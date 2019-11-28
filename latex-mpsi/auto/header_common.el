@@ -273,6 +273,7 @@
     '("keystroke" 1)
     '("myll" 1)
     '("rom" 1)
+    '("onlyprogcolle" 1)
     "iddots"
     "derivative"
     "etablissement"

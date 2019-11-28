@@ -1,8 +1,10 @@
 (TeX-add-style-hook
- "ex-specific_header"
+ "dsinfo-specific_header"
  (lambda ()
+   (TeX-add-to-alist 'LaTeX-provided-class-options
+                     '(("article" "french" "twoside")))
    (TeX-add-to-alist 'LaTeX-provided-package-options
-                     '(("geometry" "a4paper" "includeheadfoot" "headsep=1em" "top=1.2cm" "bottom=1.2cm" "left=1.2cm" "right=1.2cm" "footskip=0pt")))
+                     '(("geometry" "a4paper" "includeheadfoot" "top=1.2cm" "bottom=1.2cm" "left=1.2cm" "right=1.2cm") ("minted" "newfloat")))
    (add-to-list 'LaTeX-verbatim-environments-local "minted")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "path")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
@@ -12,35 +14,28 @@
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
    (add-to-list 'LaTeX-verbatim-macros-with-delims-local "path")
    (TeX-run-style-hooks
+    "latex2e"
     "header_common"
-    "process_filename_type_classe_nbr_descr"
+    "process_filename_type_classe_nbr_date"
+    "article"
+    "art10"
     "geometry"
-    "fontawesome"
-    "refcount"
     "minted"
-    "catchfile")
+    "pgfornament"
+    "amsthm")
    (TeX-add-symbols
-    '("makesamewidth" ["argument"] 1)
-    '("setupperandlowerfromfile" 1)
-    '("iflabelexists" 3)
-    '("tcbexercice" 3)
-    '("tcbexerciceavecsolution" 3)
-    "extypevalue"
-    "extypechar"
-    "exdiffchar"
-    "sourcename"
-    "sourceyear"
-    "exsheetpart"
-    "tcblower")
+    '("upperRomannumeral" 1)
+    '("tcbsolution" 2))
    (LaTeX-add-labels
-    "subjectlastpage"
     "corfirstpage"
     "TrueLastPage")
    (LaTeX-add-environments
     "tcbverbatimwrite")
    (LaTeX-add-counters
     "corpage")
-   (LaTeX-add-lengths
-    "stextwidth"))
+   (LaTeX-add-tcbuselibraries
+    "minted")
+   (LaTeX-add-amsthm-newtheorems
+    "remarque"))
  :latex)
 

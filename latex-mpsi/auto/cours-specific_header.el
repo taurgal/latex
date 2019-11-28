@@ -16,6 +16,7 @@
     "geometry"
     "pdftexcmds"
     "environ"
+    "xpatch"
     "minted")
    (TeX-add-symbols
     '("upperRomannumeral" 1)
@@ -32,10 +33,9 @@
     "tcbcollerecord"
     "printdbginfo"
     "filename"
-    "thepage"
-    "protect"
     "exandtdsheetnbr"
     "temp"
+    "showlineno"
     "mytheoremname"
     "tcbcollerecorddata"
     "exsheetslist"
@@ -48,8 +48,7 @@
     "currsectitle"
     "currssectitle")
    (LaTeX-add-environments
-    "colle"
-    '("nscenter" LaTeX-env-args ["argument"] 0))
+    "colle")
    (LaTeX-add-counters
     "semainecounter")
    (LaTeX-add-tcbuselibraries

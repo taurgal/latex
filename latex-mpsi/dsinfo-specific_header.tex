@@ -7,11 +7,105 @@
 \usepackage{pgfornament}
 \usepackage{amsthm}
 
+\newif\ifpotpourri%
+\IfEndWith{\jobname}{\detokenize{potpourri}}{%
+\message{********* POTPOURRI}
+\potpourritrue}{
+\message{********* DS}
+\potpourrifalse}%
+\ifpotpourri
+\fancypagestyle{DS}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \fancyhead[L]{Potpourri}
+  \fancyhead[R]{Potpourri}
+  \fancyfoot[R]{\thepage/%
+    \the\numexpr%
+    \getpagerefnumber{corfirstpage}-1\relax
+  }
+  \fancyfoot[L]{Pot pourri}
+}
+\fancypagestyle{DSfirstpage}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \fancyhead[L]{Potpourri}
+  \fancyhead[R]{Potpourri}
+  \fancyfoot[R]{\thepage/%
+    \the\numexpr%
+    \getpagerefnumber{corfirstpage}-1\relax
+  }
+  \fancyfoot[L]{Pot pourri}
+}
+\fancypagestyle{excor}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \fancyhead[L]{Pot pourri}
+  \fancyhead[C]{Pot pourri}
+  \fancyfoot[R]{%
+    \the\numexpr%
+    \thepage-\getpagerefnumber{corfirstpage}+1\relax%
+    /%
+    \the\numexpr%
+    \getpagerefnumber{TrueLastPage}-\getpagerefnumber{corfirstpage}+1
+    \relax%
+  }
+  \fancyfoot[L]{Correction du Pot pourri}
+}
+\else
 \input{process_filename_type_classe_nbr_date}
+\fancypagestyle{DSinfo}{
+  \setdate{\docyear}{\docmonth}{\docday}
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \fancyhead[L]{\docclasseupper{} --- \etablissement}
+  \fancyhead[R]{DS du \MakeLowercase{\datedayname}~\datedate}
+  \fancyfoot[R]{\thepage/\pageref{LastPage}}
+  \fancyfoot[L]{Devoir surveillé d'informatique~\no\docnbr}
+}
+\pagestyle{DSinfo}
+\fancypagestyle{DSinfofirstpage}{
+  \setdate{\docyear}{\docmonth}{\docday}
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \fancyhead[L]{\docclasseupper{} --- \etablissement}
+  \fancyhead[R]{DS du \MakeLowercase{\datedayname}~\datedate}
+  \fancyfoot[R]{\thepage/\pageref{LastPage}}
+  \fancyfoot[L]{Devoir surveillé d'informatique~\no\docnbr}
+}
+\thispagestyle{DSinfofirstpage}
+
+\newcounter{corpage}
+\fancypagestyle{excor}{
+  \setdate{\docyear}{\docmonth}{\docday}
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0.4pt}
+
+  \fancyhead[L]{\docclasseupper{} --- \etablissement}
+  \fancyhead[C]{\doctitle}
+  \fancyfoot[R]{%
+    \the\numexpr%
+    \thepage-\getpagerefnumber{corfirstpage}+1\relax%
+    /%
+    \the\numexpr%
+    \getpagerefnumber{TrueLastPage}-\getpagerefnumber{corfirstpage}+1
+    \relax%
+  }
+  \fancyfoot[L]{Correction du devoir surveillé
+    d'informatique~\no\docnbr}
+}
+\fi
 
 \newcommand\tcbsolution[2]{%
   \IfFileExists{#2}{\par\pagebreak[3]\tcbsolutionb{#1}{#2}}{}%
 }
+\newcommand\tcbcommentaires[1]{%
+  \IfFileExists{#1}{%
+    \pagebreak[3]
+    \tcbcommentairesb{#1}
+    \pagebreak[3]
+  }{}%
+}
+
 
 \newif\ifinlisting
 \makeatletter
@@ -148,50 +242,16 @@
   phantomlabel={solution@#1},
   attach title to upper={\par}
 }{\input{#2}}
-
+\NewTotalTColorBox{\tcbcommentairesb}{m}{%
+  blank,
+  coltitle=ocre,
+  breakable,
+  fonttitle=\bfseries,
+  title={Commentaires:},
+  attach title to upper=\par,
+}{\input{#1}
+\pagebreak[3]}
 \everymath{\displaystyle}
-
-\fancypagestyle{DSinfo}{
-  \setdate{\docyear}{\docmonth}{\docday}
-  \fancyhf{}
-  \renewcommand{\headrulewidth}{0.4pt}
-  \fancyhead[L]{\docclasseupper{} --- \etablissement}
-  \fancyhead[R]{DS du \MakeLowercase{\datedayname}~\datedate}
-  \fancyfoot[R]{\thepage/\pageref{LastPage}}
-  \fancyfoot[L]{Devoir surveillé d'informatique~\no\docnbr}
-}
-\pagestyle{DSinfo}
-\fancypagestyle{DSinfofirstpage}{
-  \setdate{\docyear}{\docmonth}{\docday}
-  \fancyhf{}
-  \renewcommand{\headrulewidth}{0.4pt}
-  \fancyhead[L]{\docclasseupper{} --- \etablissement}
-  \fancyhead[R]{DS du \MakeLowercase{\datedayname}~\datedate}
-  \fancyfoot[R]{\thepage/\pageref{LastPage}}
-  \fancyfoot[L]{Devoir surveillé d'informatique~\no\docnbr}
-}
-\thispagestyle{DSinfofirstpage}
-
-\newcounter{corpage}
-\fancypagestyle{excor}{
-  \setdate{\docyear}{\docmonth}{\docday}
-  \fancyhf{}
-  \renewcommand{\headrulewidth}{0.4pt}
-
-  \fancyhead[L]{\docclasseupper{} --- \etablissement}
-  \fancyhead[C]{\doctitle}
-  \fancyfoot[R]{%
-    \the\numexpr%
-    \thepage-\getpagerefnumber{corfirstpage}+1\relax%
-    /%
-    \the\numexpr%
-    \getpagerefnumber{TrueLastPage}-\getpagerefnumber{corfirstpage}+1
-    \relax%
-  }
-  \fancyfoot[L]{Correction du devoir surveillé
-    d'informatique~\no\docnbr}
-}
-
 
 \newcommand{\upperRomannumeral}[1]{\uppercase\expandafter{\romannumeral#1}}
 \AtBeginDocument{
@@ -202,7 +262,11 @@
       every node/.style={inner sep=10pt}]
       \node[align=center] (vecbox) {
         \LARGE{INFORMATIQUE}\\
+        \ifpotpourri
+        Pot pourri
+        \else
         Devoir en temps surveillé~\no\docnbr{}
+        \fi
       };%
       \path  (vecbox.south west) to [ornament=88,
       options/.append style={yshift=1pt}] (vecbox.south east);
@@ -234,6 +298,25 @@
   before skip=1em, after skip=1em, left=0pt, right=0pt,
   fonttitle=\bfseries%
 }{ex}
+\newtcbtheorem{commentaires}{Commentaires}{%
+  description delimiters={\og}{\fg},
+  theorem style=plain,
+  upperbox=invisible,
+  saveto=Solutions/\jobname-commentaire.tex,
+  record={\string\tcbcommentaires{%
+      Solutions/\jobname-commentaire.tex%
+    }
+  },
+  % code={\tcbset{label={ex-\thetcbcounter}}},%
+  detach title,
+  terminator sign={:~},
+  separator sign none,
+  breakable, blank, new/crefname={commentaire}{commentaires},
+  new/Crefname={Commentaire}{Commentaires}, description
+  delimiters={\og}{\fg}, fonttitle=\bfseries,coltitle=ocre, enhanced,%
+  before skip=1em, after skip=1em, left=0pt, right=0pt,
+  fonttitle=\bfseries%
+}{ex}
 
 \theoremstyle{definition}
 \newtheorem{remarque}{Remarque}
@@ -248,7 +331,11 @@
       every node/.style={inner sep=10pt}]
       \node[align=center] (vecbox) {
         \LARGE{INFORMATIQUE}\\
+        \ifpotpourri
+        Correction du Pot pourri
+        \else
         Correction du devoir surveillé d'informatique~\no\docnbr{}
+        \fi
       };%
       \path  (vecbox.south west) to [ornament=88,
       options/.append style={yshift=1pt}] (vecbox.south east);

@@ -101,6 +101,13 @@
     \pagebreak[3]
   }{}%
 }
+\newcommand\tcbcommentaires[1]{%
+  \IfFileExists{#1}{%
+    \pagebreak[3]
+    \tcbcommentairesb{#1}
+    \pagebreak[3]
+  }{}%
+}
 
 \NewTotalTColorBox{\tcbsolutionb}{mm}{%
   blank,
@@ -111,6 +118,15 @@
   phantomlabel={solution@#1},
   attach title to upper=\par,
 }{\input{#2}
+  \pagebreak[3]}
+\NewTotalTColorBox{\tcbcommentairesb}{m}{%
+  blank,
+  coltitle=ocre,
+  breakable,
+  fonttitle=\bfseries,
+  title={Commentaires:},
+  attach title to upper=\par,
+}{\input{#1}
 \pagebreak[3]}
 \everymath{\displaystyle}
 
@@ -236,6 +252,26 @@
   before skip=1em, after skip=1em, left=0pt, right=0pt,
   fonttitle=\bfseries%
 }{ex}
+\newtcbtheorem{commentaires}{Commentaires}{%
+  description delimiters={\og}{\fg},
+  theorem style=plain,
+  upperbox=invisible,
+  saveto=Solutions/\jobname-commentaire.tex,
+  record={\string\tcbcommentaires{%
+      Solutions/\jobname-commentaire.tex%
+    }
+  },
+  % code={\tcbset{label={ex-\thetcbcounter}}},%
+  detach title,
+  terminator sign={:~},
+  separator sign none,
+  breakable, blank, new/crefname={commentaire}{commentaires},
+  new/Crefname={Commentaire}{Commentaires}, description
+  delimiters={\og}{\fg}, fonttitle=\bfseries,coltitle=ocre, enhanced,%
+  before skip=1em, after skip=1em, left=0pt, right=0pt,
+  fonttitle=\bfseries%
+}{ex}
+\usepackage{environ}
 
 \AtEndDocument{%
   \tcbstoprecording%

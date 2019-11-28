@@ -32,7 +32,7 @@
   \leavevmode%
   \tikz (0,0) \node[inner sep=0pt, anchor=base]%(mytitle\thetcbcounter)
   {\llap{\smash{\rotatebox[origin=c]{90}{\small\extypechar\exdiffchar}~}}%
-    \color {tcbcol@title}%
+    \color {tcbcoltitle}%
     \kvtcb@fonttitle%
     \kvtcb@haligntitle%
     \kvtcb@before@title%
@@ -95,26 +95,6 @@
 \newcommand\tcbsolution[2]{%
   \IfFileExists{#2}{\tcbsolutionb{#1}{#2}}{}%
 }
-
-\makeatletter{}
-\renewcommand\tcbtitle{%
-  \ifx\tcbtitletext\@empty%
-  \else%
-  \leavevmode%
-  \tikz (0,0) \node[inner sep=0pt, anchor=base]%(mytitle\thetcbcounter)
-  {\llap{\smash{\rotatebox[origin=c]{90}{\small\extypechar\exdiffchar}~}}%
-    \color {tcbcol@title}%
-    \kvtcb@fonttitle%
-    \kvtcb@haligntitle%
-    \kvtcb@before@title%
-    \tcbtitletext%
-    \pgfkeys{/tcb/source/.print}%
-    \kvtcb@after@title%
-    :%
-  };
-  \fi
-}
-\makeatother{}
 
 \def\extypechar{\relax}
 \def\exdiffchar{\relax}
