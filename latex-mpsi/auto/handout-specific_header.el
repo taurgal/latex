@@ -40,7 +40,6 @@
     "currsectitle"
     "currssectitle")
    (LaTeX-add-environments
-    '("nscenter" LaTeX-env-args ["argument"] 0)
     "qcours")
    (LaTeX-add-counters
     "semainecounter")

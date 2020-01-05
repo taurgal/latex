@@ -25,6 +25,7 @@
     "amsthm")
    (TeX-add-symbols
     '("upperRomannumeral" 1)
+    '("tcbcommentaires" 1)
     '("tcbsolution" 2))
    (LaTeX-add-labels
     "corfirstpage"
