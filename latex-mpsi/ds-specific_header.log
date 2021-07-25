@@ -1,125 +1,181 @@
-This is LuaTeX, Version 1.10.0 (TeX Live 2019/Arch Linux)  (format=lualatex 2019.9.6)  8 OCT 2019 14:18
+This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Arch Linux)  (format=lualatex 2020.7.22)  26 OCT 2020 08:48
  restricted system commands enabled.
  file:line:error style messages enabled.
-**ds-specific_header.tex
-(./ds-specific_header.tex
-LaTeX2e <2018-12-01>
-Lua module: luaotfload-main 2019-02-14 2.96 luaotfload entry point
-Lua module: luaotfload-init 2019-02-14 2.96 luaotfload submodule / initializatio
-n
-Lua module: lualibs 2019-02-14 2.64 ConTeXt Lua standard libraries.
-Lua module: lualibs-extended 2019-02-14 2.64 ConTeXt Lua libraries -- extended c
-ollection.
-Lua module: luaotfload-log 2019-02-14 2.96 luaotfload submodule / logging
-Lua module: luaotfload-parsers 2019-02-14 2.96 luaotfload submodule / filelist
-Lua module: luaotfload-configuration 2019-02-14 2.96 luaotfload submodule / conf
-ig file reader
-luaotfload | conf : Root cache directory is /home/taurgal/.texlive/texmf-var/lua
-tex-cache/generic/names.
-luaotfload | init : Loading fontloader “fontloader-2019-02-14.lua” from kpse
--resolved path “/usr/share/texmf-dist/tex/luatex/luaotfload/fontloader-2019-02
--14.lua”.
-Lua-only attribute luaotfload@state = 1
-Lua-only attribute luaotfload@noligature = 2
-Lua-only attribute luaotfload@syllabe = 3
-luaotfload | init : Context OpenType loader version “3.107”
+**\newif\ifhandout\handoutfalse \newif\ifwacom\wacomfalse \input ds-specific_he
+ader.tex
+Lua module: luaotfload-main 2020-05-06 3.14 luaotfload entry point
+Lua module: luaotfload-init 2020-05-06 3.14 luaotfload submodule / initialization
+Lua module: lualibs 2020-05-01 2.71 ConTeXt Lua standard libraries.
+Lua module: lualibs-extended 2020-05-01 2.71 ConTeXt Lua libraries -- extended collection.
+Lua module: luaotfload-log 2020-05-06 3.14 luaotfload submodule / logging
+Lua module: luaotfload-parsers 2020-05-06 3.14 luaotfload submodule / filelist
+Lua module: luaotfload-configuration 2020-05-06 3.14 luaotfload submodule / config file reader
+luaotfload | conf : Root cache directory is "/home/taurgal/.texlive/texmf-var/luatex-cache/generic-dev/names".
+luaotfload | init : Loading fontloader "fontloader-2020-05-06.lua" from kpse-resolved path "/usr/share/texmf-dist/tex/luatex/luaotfload/fontloader-2020-05-06.lua".
+Lua-only attribute luaotfload@noligature = 1
+Lua-only attribute luaotfload@syllabe = 2
+luaotfload | init : Context OpenType loader version 0x1.8e353f7ced917p+1
+Lua module: luaotfload-fallback 2020-05-06 3.14 luaotfload submodule / fallback
+Lua module: luaotfload-multiscript 2020-05-06 3.14 luaotfload submodule / multiscript
+Lua module: luaotfload-script 2020-05-06 3.14 luaotfload submodule / Script helpers
 Inserting `luaotfload.node_processor' at position 1 in `pre_linebreak_filter'.
 Inserting `luaotfload.node_processor' at position 1 in `hpack_filter'.
-Lua module: luaotfload-loaders 2019-02-14 2.96 luaotfload submodule / callback h
-andling
+Lua module: luaotfload-loaders 2020-05-06 3.14 luaotfload submodule / callback handling
 Inserting `luaotfload.define_font' at position 1 in `define_font'.
-Lua module: luaotfload-database 2019-02-14 2.96 luaotfload submodule / database
-Lua module: luaotfload-colors 2019-02-14 2.96 luaotfload submodule / color
-Lua-only attribute luaotfload_color_attribute = 4
-Lua module: luaotfload-resolvers 2019-02-14 2.96 luaotfload submodule / resolver
-s
-luaotfload | conf : Root cache directory is /home/taurgal/.texlive/texmf-var/lua
-tex-cache/generic/names.
-Lua module: luaotfload-features 2019-02-14 2.96 luaotfload submodule / features
-Lua module: luaotfload-letterspace 2019-02-14 2.96 luaotfload submodule / color
-Lua module: luaotfload-auxiliary 2019-02-14 2.96 luaotfload submodule / auxiliar
-y functions
-Inserting `luaotfload.aux.set_sscale_dimens' at position 1 in `luaotfload.patch_
-font'.
-Inserting `luaotfload.aux.patch_cambria_domh' at position 2 in `luaotfload.patch
-_font'.
-Inserting `luaotfload.aux.fixup_fontdata' at position 1 in `luaotfload.patch_fon
-t_unsafe'.
-Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
-'.
-Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
-.
-luaotfload | main : initialization completed in 0.244 seconds
+Lua module: luaotfload-database 2020-05-06 3.14 luaotfload submodule / database
+Lua module: luaotfload-unicode 2020-05-06 3.14 luaotfload submodule / Unicode helpers
+Lua module: luaotfload-colors 2020-05-06 3.14 luaotfload submodule / color
+Lua-only attribute luaotfload_color_attribute = 3
+Lua module: luaotfload-resolvers 2020-05-06 3.14 luaotfload submodule / resolvers
+luaotfload | conf : Root cache directory is "/home/taurgal/.texlive/texmf-var/luatex-cache/generic-dev/names".
+Lua module: luaotfload-features 2020-05-06 3.14 luaotfload submodule / features
+Lua module: luaotfload-harf-define 2020-05-06 3.14 luaotfload submodule / database
+Inserting `luaotfload.harf.strip_prefix' at position 1 in `find_opentype_file'.
+Inserting `luaotfload.harf.strip_prefix' at position 1 in `find_truetype_file'.
+Lua module: luaotfload-harf-plug 2020-05-06 3.14 luaotfload submodule / database
+Inserting `Harf pre_output_filter callback' at position 1 in `pre_output_filter'.
+Inserting `Harf wrapup_run callback' at position 1 in `wrapup_run'.
+Inserting `Harf finish_pdffile callback' at position 1 in `finish_pdffile'.
+Inserting `Harf glyph_info callback' at position 1 in `glyph_info'.
+Lua module: luaotfload-letterspace 2020-05-06 3.14 luaotfload submodule / color
+Lua module: luaotfload-embolden 2020-05-06 3.14 luaotfload submodule / color
+Lua module: luaotfload-notdef 2020-05-06 3.14 luaotfload submodule / color
+Lua module: luaotfload-suppress 2020-05-06 3.14 luaotfload submodule / suppress
+Lua module: luaotfload-szss 2020-05-06 3.14 luaotfload submodule / color
+Lua module: luaotfload-auxiliary 2020-05-06 3.14 luaotfload submodule / auxiliary functions
+Inserting `luaotfload.aux.set_sscale_dimens' at position 1 in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_font_index' at position 2 in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.patch_cambria_domh' at position 3 in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.fixup_fontdata' at position 1 in `luaotfload.patch_font_unsafe'.
+Inserting `luaotfload.aux.set_capheight' at position 4 in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_xheight' at position 5 in `luaotfload.patch_font'.
+Lua module: luaotfload-tounicode 2020-05-06 3.14 luaotfload submodule / tounicode
+Inserting `luaotfload.rewrite_fontname' at position 6 in `luaotfload.patch_font'.
+ (./ds-specific_header.tex
 (/usr/share/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2018/09/03 v1.4i Standard LaTeX document class
+Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
 (/usr/share/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
+File: size10.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
 luaotfload | db : Font names database loaded from /home/taurgal/.texlive/texmf-v
-ar/luatex-cache/generic/names/luaotfload-names.lua.gz)
-\c@part=\count80
-\c@section=\count81
-\c@subsection=\count82
-\c@subsubsection=\count83
-\c@paragraph=\count84
-\c@subparagraph=\count85
-\c@figure=\count86
-\c@table=\count87
-\abovecaptionskip=\skip41
-\belowcaptionskip=\skip42
-\bibindent=\dimen102
+ar/luatex-cache/generic-dev/names/luaotfload-names.luc)
+\c@part=\count163
+\c@section=\count164
+\c@subsection=\count165
+\c@subsubsection=\count166
+\c@paragraph=\count167
+\c@subparagraph=\count168
+\c@figure=\count169
+\c@table=\count170
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen134
 )
 (/usr/share/texmf-dist/tex/latex/geometry/geometry.sty
-Package: geometry 2018/04/16 v5.8 Page Geometry
+Package: geometry 2020/01/02 v5.9 Page Geometry
 
 (/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks14
+\KV@toks@=\toks15
 )
-(/usr/share/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
-)
-(/usr/share/texmf-dist/tex/generic/oberdiek/ifvtex.sty
-Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
-Package ifvtex Info: VTeX not detected.
-)
-(/usr/share/texmf-dist/tex/generic/ifxetex/ifxetex.sty
-Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
-)
-\Gm@cnth=\count88
-\Gm@cntv=\count89
-\c@Gm@tempcnt=\count90
-\Gm@bindingoffset=\dimen103
-\Gm@wd@mp=\dimen104
-\Gm@odd@mp=\dimen105
-\Gm@even@mp=\dimen106
-\Gm@layoutwidth=\dimen107
-\Gm@layoutheight=\dimen108
-\Gm@layouthoffset=\dimen109
-\Gm@layoutvoffset=\dimen110
-\Gm@dimlist=\toks15
+(/usr/share/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+
+(/usr/share/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
+))
+\Gm@cnth=\count171
+\Gm@cntv=\count172
+\c@Gm@tempcnt=\count173
+\Gm@bindingoffset=\dimen135
+\Gm@wd@mp=\dimen136
+\Gm@odd@mp=\dimen137
+\Gm@even@mp=\dimen138
+\Gm@layoutwidth=\dimen139
+\Gm@layoutheight=\dimen140
+\Gm@layouthoffset=\dimen141
+\Gm@layoutvoffset=\dimen142
+\Gm@dimlist=\toks16
 ) (./header_common.tex
+(/usr/share/texmf-dist/tex/lualatex/luainputenc/luainputenc.sty
+Package: luainputenc 2010/11/19 v0.973 inputenc package for LuaTeX
+
+(/usr/share/texmf-dist/tex/generic/iftex/ifluatex.sty
+Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
+)
+(/usr/share/texmf-dist/tex/generic/iftex/ifxetex.sty
+Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
+)
+(/usr/share/texmf-dist/tex/luatex/luatexbase/luatexbase.sty
+Package: luatexbase 2015/10/04 v1.3 luatexbase interface to LuaTeX 
+
+(/usr/share/texmf-dist/tex/luatex/ctablestack/ctablestack.sty
+Package: ctablestack 2015/10/01 v1.0 Catcode table stable support
+\@catcodetablestackcnt=\count174
+)
+\CatcodeTableOther=\catcodetable5
+\CatcodeTableExpl=\catcodetable6
+)
+Lua module: luainputenc 2010/05/10 0.97 Lua simple inputenc package.
+\inpenc@prehook=\toks17
+\inpenc@posthook=\toks18
+
+(/usr/share/texmf-dist/tex/lualatex/luainputenc/lutf8.def
+File: lutf8.def 2010/05/10 v0.97 UTF-8 support for luainputenc
+Now handling font encoding OML ...
+... no UTF-8 mapping file for font encoding OML
+Now handling font encoding OMS ...
+... processing UTF-8 mapping file for font encodingOMS
+
+(/usr/share/texmf-dist/tex/latex/base/omsenc.dfu
+File: omsenc.dfu 2019/11/14 v1.2k UTF-8 support for inputenc
+)
+Now handling font encoding OT1 ...
+... processing UTF-8 mapping file for font encodingOT1
+
+(/usr/share/texmf-dist/tex/latex/base/ot1enc.dfu
+File: ot1enc.dfu 2019/11/14 v1.2k UTF-8 support for inputenc
+)
+Now handling font encoding T1 ...
+... processing UTF-8 mapping file for font encodingT1
+
+(/usr/share/texmf-dist/tex/latex/base/t1enc.dfu
+File: t1enc.dfu 2019/11/14 v1.2k UTF-8 support for inputenc
+)
+Now handling font encoding TS1 ...
+... processing UTF-8 mapping file for font encodingTS1
+
+(/usr/share/texmf-dist/tex/latex/base/ts1enc.dfu
+File: ts1enc.dfu 2019/11/14 v1.2k UTF-8 support for inputenc
+)
+Now handling font encoding TU ...
+... no UTF-8 mapping file for font encoding TU
+Now handling font encoding OMX ...
+... no UTF-8 mapping file for font encoding OMX
+Now handling font encoding U ...
+... no UTF-8 mapping file for font encoding U
+))
 (/usr/share/texmf-dist/tex/latex/mathtools/mathtools.sty
-Package: mathtools 2018/01/08 v1.21 mathematical typesetting tools
+Package: mathtools 2020/03/24 v1.24 mathematical typesetting tools
 
 (/usr/share/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count91
-\calc@Bcount=\count92
-\calc@Adimen=\dimen111
-\calc@Bdimen=\dimen112
-\calc@Askip=\skip43
-\calc@Bskip=\skip44
+\calc@Acount=\count175
+\calc@Bcount=\count176
+\calc@Adimen=\dimen143
+\calc@Bdimen=\dimen144
+\calc@Askip=\skip49
+\calc@Bskip=\skip50
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count93
-\calc@Cskip=\skip45
+\calc@Ccount=\count177
+\calc@Cskip=\skip51
 )
 (/usr/share/texmf-dist/tex/latex/mathtools/mhsetup.sty
 Package: mhsetup 2017/03/31 v1.3 programming setup (MH)
 )
 (/usr/share/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2018/12/01 v2.17b AMS math features
-\@mathmargin=\skip46
+Package: amsmath 2020/01/20 v2.17e AMS math features
+\@mathmargin=\skip52
 
 For additional information on amsmath, use the `?' option.
 (/usr/share/texmf-dist/tex/latex/amsmath/amstext.sty
@@ -127,67 +183,69 @@ Package: amstext 2000/06/29 v2.01 AMS text
 
 (/usr/share/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks16
-\ex@=\dimen113
+\@emptytoks=\toks19
+\ex@=\dimen145
 ))
 (/usr/share/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen114
+\pmbraise@=\dimen146
 )
 (/usr/share/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count94
-LaTeX Info: Redefining \frac on input line 223.
-\uproot@=\count95
-\leftroot@=\count96
-LaTeX Info: Redefining \overline on input line 385.
-\classnum@=\count97
-\DOTSCASE@=\count98
-LaTeX Info: Redefining \ldots on input line 482.
-LaTeX Info: Redefining \dots on input line 485.
-LaTeX Info: Redefining \cdots on input line 606.
-\Mathstrutbox@=\box27
-\strutbox@=\box28
-\big@size=\dimen115
-LaTeX Font Info:    Redeclaring font encoding OML on input line 729.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
-\macc@depth=\count99
-\c@MaxMatrixCols=\count100
-\dotsspace@=\muskip10
-\c@parentequation=\count101
-\dspbrk@lvl=\count102
-\tag@help=\toks17
-\row@=\count103
-\column@=\count104
-\maxfields@=\count105
-\andhelp@=\toks18
-\eqnshift@=\dimen116
-\alignsep@=\dimen117
-\tagshift@=\dimen118
-\tagwidth@=\dimen119
-\totwidth@=\dimen120
-\lineht@=\dimen121
-\@envbody=\toks19
-\multlinegap=\skip47
-\multlinetaggap=\skip48
-\mathdisplay@stack=\toks20
-LaTeX Info: Redefining \[ on input line 2844.
-LaTeX Info: Redefining \] on input line 2845.
+\inf@bad=\count178
+LaTeX Info: Redefining \frac on input line 227.
+\uproot@=\count179
+\leftroot@=\count180
+LaTeX Info: Redefining \overline on input line 389.
+\classnum@=\count181
+\DOTSCASE@=\count182
+LaTeX Info: Redefining \ldots on input line 486.
+LaTeX Info: Redefining \dots on input line 489.
+LaTeX Info: Redefining \cdots on input line 610.
+\Mathstrutbox@=\box45
+\strutbox@=\box46
+\big@size=\dimen147
+LaTeX Font Info:    RedeclaringfontencodingOML on input line 733.
+LaTeX Font Info:    RedeclaringfontencodingOMS on input line 734.
+\macc@depth=\count183
+\c@MaxMatrixCols=\count184
+\dotsspace@=\muskip16
+\c@parentequation=\count185
+\dspbrk@lvl=\count186
+\tag@help=\toks20
+\row@=\count187
+\column@=\count188
+\maxfields@=\count189
+\andhelp@=\toks21
+\eqnshift@=\dimen148
+\alignsep@=\dimen149
+\tagshift@=\dimen150
+\tagwidth@=\dimen151
+\totwidth@=\dimen152
+\lineht@=\dimen153
+\@envbody=\toks22
+\multlinegap=\skip53
+\multlinetaggap=\skip54
+\mathdisplay@stack=\toks23
+LaTeX Info: Redefining \[ on input line 2859.
+LaTeX Info: Redefining \] on input line 2860.
 )
-LaTeX Info: Thecontrolsequence`\('isalreadyrobust on input line 129.
-LaTeX Info: Thecontrolsequence`\)'isalreadyrobust on input line 129.
-LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
-LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
-\g_MT_multlinerow_int=\count106
-\l_MT_multwidth_dim=\dimen122
-\origjot=\skip49
-\l_MT_shortvdotswithinadjustabove_dim=\dimen123
-\l_MT_shortvdotswithinadjustbelow_dim=\dimen124
-\l_MT_above_intertext_sep=\dimen125
-\l_MT_below_intertext_sep=\dimen126
-\l_MT_above_shortintertext_sep=\dimen127
-\l_MT_below_shortintertext_sep=\dimen128
+LaTeX Info: Thecontrolsequence`\('isalreadyrobust on input line 130.
+LaTeX Info: Thecontrolsequence`\)'isalreadyrobust on input line 130.
+LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 130.
+LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 130.
+\g_MT_multlinerow_int=\count190
+\l_MT_multwidth_dim=\dimen154
+\origjot=\skip55
+\l_MT_shortvdotswithinadjustabove_dim=\dimen155
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen156
+\l_MT_above_intertext_sep=\dimen157
+\l_MT_below_intertext_sep=\dimen158
+\l_MT_above_shortintertext_sep=\dimen159
+\l_MT_below_shortintertext_sep=\dimen160
+\xmathstrut@box=\box47
+\xmathstrut@dim=\dimen161
 )
 (/usr/share/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
@@ -196,849 +254,122 @@ Package: amssymb 2013/01/14 v3.01 AMS font symbols
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
-(/usr/share/texmf-dist/tex/generic/oberdiek/ifluatex.sty
-Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX detected.
-)
-(/usr/share/texmf-dist/tex/latex/unicode-math/unicode-math.sty
-(/usr/share/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2019-04-06 L3 programming layer (loader) 
-
-(/usr/share/texmf-dist/tex/latex/l3kernel/expl3-code.tex
-Package: expl3 2019-04-06 L3 programming layer (code)
-\ucharcat@table=\catcodetable5
-\c_max_int=\count107
-\l_tmpa_int=\count108
-\l_tmpb_int=\count109
-\g_tmpa_int=\count110
-\g_tmpb_int=\count111
-\g__kernel_prg_map_int=\count112
-\c__ior_term_ior=\count113
-\c_log_iow=\count114
-\l_iow_line_count_int=\count115
-\l__iow_line_target_int=\count116
-\l__iow_one_indent_int=\count117
-\l__iow_indent_int=\count118
-\c_zero_dim=\dimen129
-\c_max_dim=\dimen130
-\l_tmpa_dim=\dimen131
-\l_tmpb_dim=\dimen132
-\g_tmpa_dim=\dimen133
-\g_tmpb_dim=\dimen134
-\c_zero_skip=\skip50
-\c_max_skip=\skip51
-\l_tmpa_skip=\skip52
-\l_tmpb_skip=\skip53
-\g_tmpa_skip=\skip54
-\g_tmpb_skip=\skip55
-\c_zero_muskip=\muskip11
-\c_max_muskip=\muskip12
-\l_tmpa_muskip=\muskip13
-\l_tmpb_muskip=\muskip14
-\g_tmpa_muskip=\muskip15
-\g_tmpb_muskip=\muskip16
-\l_keys_choice_int=\count119
-\l__intarray_loop_int=\count120
-\c__intarray_sp_dim=\dimen135
-\g__intarray_font_int=\count121
-\c__fp_leading_shift_int=\count122
-\c__fp_middle_shift_int=\count123
-\c__fp_trailing_shift_int=\count124
-\c__fp_big_leading_shift_int=\count125
-\c__fp_big_middle_shift_int=\count126
-\c__fp_big_trailing_shift_int=\count127
-\c__fp_Bigg_leading_shift_int=\count128
-\c__fp_Bigg_middle_shift_int=\count129
-\c__fp_Bigg_trailing_shift_int=\count130
-\g__fp_array_int=\count131
-\l__fp_array_loop_int=\count132
-\l__sort_length_int=\count133
-\l__sort_min_int=\count134
-\l__sort_top_int=\count135
-\l__sort_max_int=\count136
-\l__sort_true_max_int=\count137
-\l__sort_block_int=\count138
-\l__sort_begin_int=\count139
-\l__sort_end_int=\count140
-\l__sort_A_int=\count141
-\l__sort_B_int=\count142
-\l__sort_C_int=\count143
-\l__tl_analysis_normal_int=\count144
-\l__tl_analysis_index_int=\count145
-\l__tl_analysis_nesting_int=\count146
-\l__tl_analysis_type_int=\count147
-\l__regex_internal_a_int=\count148
-\l__regex_internal_b_int=\count149
-\l__regex_internal_c_int=\count150
-\l__regex_balance_int=\count151
-\l__regex_group_level_int=\count152
-\l__regex_mode_int=\count153
-\c__regex_cs_in_class_mode_int=\count154
-\c__regex_cs_mode_int=\count155
-\l__regex_catcodes_int=\count156
-\l__regex_default_catcodes_int=\count157
-\c__regex_catcode_L_int=\count158
-\c__regex_catcode_O_int=\count159
-\c__regex_catcode_A_int=\count160
-\c__regex_all_catcodes_int=\count161
-\l__regex_show_lines_int=\count162
-\l__regex_min_state_int=\count163
-\l__regex_max_state_int=\count164
-\l__regex_left_state_int=\count165
-\l__regex_right_state_int=\count166
-\l__regex_capturing_group_int=\count167
-\l__regex_min_pos_int=\count168
-\l__regex_max_pos_int=\count169
-\l__regex_curr_pos_int=\count170
-\l__regex_start_pos_int=\count171
-\l__regex_success_pos_int=\count172
-\l__regex_curr_char_int=\count173
-\l__regex_curr_catcode_int=\count174
-\l__regex_last_char_int=\count175
-\l__regex_case_changed_char_int=\count176
-\l__regex_curr_state_int=\count177
-\l__regex_step_int=\count178
-\l__regex_min_active_int=\count179
-\l__regex_max_active_int=\count180
-\l__regex_replacement_csnames_int=\count181
-\l__regex_match_count_int=\count182
-\l__regex_min_submatch_int=\count183
-\l__regex_submatch_int=\count184
-\l__regex_zeroth_submatch_int=\count185
-\g__regex_trace_regex_int=\count186
-\c_empty_box=\box29
-\l_tmpa_box=\box30
-\l_tmpb_box=\box31
-\g_tmpa_box=\box32
-\g_tmpb_box=\box33
-\l__box_top_dim=\dimen136
-\l__box_bottom_dim=\dimen137
-\l__box_left_dim=\dimen138
-\l__box_right_dim=\dimen139
-\l__box_top_new_dim=\dimen140
-\l__box_bottom_new_dim=\dimen141
-\l__box_left_new_dim=\dimen142
-\l__box_right_new_dim=\dimen143
-\l__box_internal_box=\box34
-\l__coffin_internal_box=\box35
-\l__coffin_internal_dim=\dimen144
-\l__coffin_offset_x_dim=\dimen145
-\l__coffin_offset_y_dim=\dimen146
-\l__coffin_x_dim=\dimen147
-\l__coffin_y_dim=\dimen148
-\l__coffin_x_prime_dim=\dimen149
-\l__coffin_y_prime_dim=\dimen150
-\c_empty_coffin=\box36
-\l__coffin_aligned_coffin=\box37
-\l__coffin_aligned_internal_coffin=\box38
-\l_tmpa_coffin=\box39
-\l_tmpb_coffin=\box40
-\g_tmpa_coffin=\box41
-\g_tmpb_coffin=\box42
-\l__coffin_bounding_shift_dim=\dimen151
-\l__coffin_left_corner_dim=\dimen152
-\l__coffin_right_corner_dim=\dimen153
-\l__coffin_bottom_corner_dim=\dimen154
-\l__coffin_top_corner_dim=\dimen155
-\l__coffin_scaled_total_height_dim=\dimen156
-\l__coffin_scaled_width_dim=\dimen157
-\c__coffin_empty_coffin=\box43
-\l__coffin_display_coffin=\box44
-\l__coffin_display_coord_coffin=\box45
-\l__coffin_display_pole_coffin=\box46
-\l__coffin_display_offset_dim=\dimen158
-\l__coffin_display_x_dim=\dimen159
-\l__coffin_display_y_dim=\dimen160
-\g__file_internal_ior=\read1
-\l__seq_internal_a_int=\count187
-\l__seq_internal_b_int=\count188
-\c__deprecation_minus_one=\count189
-)
-(/usr/share/texmf-dist/tex/latex/l3kernel/l3pdfmode.def
-File: l3pdfmode.def 2019-04-06 v L3 Experimental driver: PDF mode
-\l__driver_color_stack_int=\count190
-))
-Package: unicode-math 2019/03/04 v0.8o Unicode maths in XeLaTeX and LuaLaTeX
-
-(/usr/share/texmf-dist/tex/latex/unicode-math/unicode-math-luatex.sty
-Package: unicode-math-luatex 2019/03/04 v0.8o Unicode maths in XeLaTeX and LuaLa
-TeX
-
-(/usr/share/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-Package: xparse 2019-03-05 L3 Experimental document command parser
-\l__xparse_current_arg_int=\count191
-\g__xparse_grabber_int=\count192
-\l__xparse_m_args_int=\count193
-\l__xparse_v_nesting_int=\count194
-)
-(/usr/share/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
-Package: l3keys2e 2019-03-05 LaTeX2e option processing using LaTeX3 keys
-)
 (/usr/share/texmf-dist/tex/latex/fontspec/fontspec.sty
-Package: fontspec 2019/03/15 v2.7c Font selection for XeLaTeX and LuaLaTeX
-Lua module: fontspec 2019/03/15 2.7c Font selection for XeLaTeX and LuaLaTeX
+(/usr/share/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/share/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2020-06-03 L3 programming layer (loader) 
+
+(/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
+File: l3backend-pdfmode.def 2020-06-03 L3 backend support: PDF mode
+\l__kernel_color_stack_int=\count191
+\l__pdf_internal_box=\box48
+))
+Package: xparse 2020-05-15 L3 Experimental document command parser
+
+(/usr/share/texmf-dist/tex/latex/l3packages/xparse/xparse-generic.tex
+\l__xparse_current_arg_int=\count192
+\g__xparse_grabber_int=\count193
+\l__xparse_m_args_int=\count194
+\l__xparse_v_nesting_int=\count195
+))
+Package: fontspec 2020/02/21 v2.7i Font selection for XeLaTeX and LuaLaTeX
+Lua module: fontspec 2020/02/21 2.7i Font selection for XeLaTeX and LuaLaTeX
 (/usr/share/texmf-dist/tex/latex/fontspec/fontspec-luatex.sty
-Package: fontspec-luatex 2019/03/15 v2.7c Font selection for XeLaTeX and LuaLaTe
+Package: fontspec-luatex 2020/02/21 v2.7i Font selection for XeLaTeX and LuaLaTe
 X
-\l__fontspec_script_int=\count195
-\l__fontspec_language_int=\count196
-\l__fontspec_strnum_int=\count197
-\l__fontspec_tmp_int=\count198
-\l__fontspec_tmpa_int=\count199
-\l__fontspec_tmpb_int=\count266
-\l__fontspec_tmpc_int=\count267
-\l__fontspec_em_int=\count268
-\l__fontspec_emdef_int=\count269
-\l__fontspec_strong_int=\count270
-\l__fontspec_strongdef_int=\count271
-\l__fontspec_tmpa_dim=\dimen161
-\l__fontspec_tmpb_dim=\dimen162
-\l__fontspec_tmpc_dim=\dimen163
+\l__fontspec_script_int=\count196
+\l__fontspec_language_int=\count197
+\l__fontspec_strnum_int=\count198
+\l__fontspec_tmp_int=\count199
+\l__fontspec_tmpa_int=\count266
+\l__fontspec_tmpb_int=\count267
+\l__fontspec_tmpc_int=\count268
+\l__fontspec_em_int=\count269
+\l__fontspec_emdef_int=\count270
+\l__fontspec_strong_int=\count271
+\l__fontspec_strongdef_int=\count272
+\l__fontspec_tmpa_dim=\dimen162
+\l__fontspec_tmpb_dim=\dimen163
+\l__fontspec_tmpc_dim=\dimen164
 
 (/usr/share/texmf-dist/tex/latex/base/fontenc.sty
-Package: fontenc 2018/08/11 v2.0j Standard LaTeX package
-
-(/usr/share/texmf-dist/tex/latex/base/tuenc.def
-File: tuenc.def 2018/08/11 v2.0j Standard LaTeX file
-LaTeX Font Info:    Redeclaring font encoding TU on input line 82.
-))
-(/usr/share/texmf-dist/tex/latex/fontspec/fontspec.cfg)
-LaTeX Info: Redefining \itshape on input line 3783.
-LaTeX Info: Redefining \slshape on input line 3788.
-LaTeX Info: Redefining \scshape on input line 3793.
-LaTeX Info: Redefining \upshape on input line 3798.
-LaTeX Info: Redefining \em on input line 3828.
-LaTeX Info: Redefining \emph on input line 3853.
-))
-(/usr/share/texmf-dist/tex/latex/filehook/filehook.sty
-Package: filehook 2011/10/12 v0.5d Hooks for input files
+Package: fontenc 2020/02/11 v2.0o Standard LaTeX package
 )
-(/usr/share/texmf-dist/tex/latex/base/fix-cm.sty
-Package: fix-cm 2015/01/14 v1.1t fixes to LaTeX
-
-(/usr/share/texmf-dist/tex/latex/base/ts1enc.def
-File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
-))
-(/usr/share/texmf-dist/tex/lualatex/lualatex-math/lualatex-math.sty
-Package: lualatex-math 2019/01/21 v1.8 Patches for mathematics typesetting with 
-LuaLaTeX
-
-(/usr/share/texmf-dist/tex/latex/etoolbox/etoolbox.sty
-Package: etoolbox 2018/08/19 v2.5f e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count272
+(/usr/share/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
+(/usr/share/texmf-dist/tex/latex/atveryend/atveryend.sty
+Package: atveryend 2019-12-11 v1.11 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
 )
-Lua module: lualatex-math 2013/08/03 1.3 Patches for mathematics typesetting wit
-h LuaLaTeX
-
-Package lualatex-math Info: I'm going to patch macro \subarray.
-
-
-Package lualatex-math Info: I'm going to patch macro \frac .
-
-
-Package lualatex-math Info: I'm going to patch macro \genfrac .
-
-
-Package lualatex-math Info: I'm going to patch macro \MT_cramped_internal:Nn.
-
-)
-\g__um_fam_int=\count273
-\g__um_fonts_used_int=\count274
-\l__um_primecount_int=\count275
-\g__um_primekern_muskip=\muskip17
-
-(/usr/share/texmf-dist/tex/latex/unicode-math/unicode-math-table.tex)
-
-Package unicode-math Warning: I'm going to overwrite the following commands
-(unicode-math)                from the `mathtools' package: 
-(unicode-math)                 
-(unicode-math)                     \dblcolon, \coloneqq, \Coloneqq, \eqqcolon.
-(unicode-math)                
-(unicode-math)                 
-(unicode-math)                 Note that since I won't overwrite the other
-(unicode-math)                colon-like commands, using them will lead to
-(unicode-math)                inconsistencies.
-
-
-Package unicode-math Info: I'm going to patch macro \plainroot@.
-
-
-Package unicode-math Info: I'm going to patch macro \r@@t.
-
-))
 luaotfload | cache : Lookup cache loaded from /home/taurgal/.texlive/texmf-var/l
-uatex-cache/generic/names/luaotfload-lookup-cache.luc.
+uatex-cache/generic-dev/names/luaotfload-lookup-cache.luc.
 
-Package fontspec Info: Font family 'XITSMath(0)' created for font 'XITS Math'
-(fontspec)             with options
-(fontspec)             [Renderer=Basic,BoldItalicFont={},ItalicFont={},SmallCaps
-Font={},Script=Math,FontAdjustment={\__um_luatex_copy_fontdimens:
-(fontspec)             }].
+Package fontspec Info: Font family 'LinuxLibertineO(0)' created for font
+(fontspec)             'Linux Libertine O' with options [Ligatures=TeX].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->"XITSMath:mode=base;script=math;language=DFLT;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-(fontspec)             and font adjustment code:
-(fontspec)             \__um_luatex_copy_fontdimens: 
-(fontspec)             - 'bold' (bx/n) with NFSS spec.:
-(fontspec)             <->"XITSMath/B:mode=base;script=math;language=DFLT;"
-(fontspec)             - 'bold small caps'  (bx/sc) with NFSS spec.: 
-(fontspec)             and font adjustment code:
-(fontspec)             \__um_luatex_copy_fontdimens: 
+(fontspec)             <->"LinuxLibertineO:mode=node;script=latn;language=dflt;+
+tlig;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <->"LinuxLibertineO:mode=node;script=latn;language=dflt;+
+tlig;+smcp;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"LinuxLibertineO/B:mode=node;script=latn;language=dflt
+;+tlig;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <->"LinuxLibertineO/B:mode=node;script=latn;language=dflt
+;+tlig;+smcp;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->"LinuxLibertineO/I:mode=node;script=latn;language=dflt
+;+tlig;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->"LinuxLibertineO/I:mode=node;script=latn;language=dflt
+;+tlig;+smcp;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->"LinuxLibertineO/BI:mode=node;script=latn;language=dfl
+t;+tlig;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <->"LinuxLibertineO/BI:mode=node;script=latn;language=dfl
+t;+tlig;+smcp;"
 
 
-Package fontspec Info: Font family 'XITSMath(1)' created for font 'XITS Math'
-(fontspec)             with options
-(fontspec)             [Renderer=Basic,BoldItalicFont={},ItalicFont={},SmallCaps
-Font={},Script=Math,SizeFeatures={{Size=8.75-},{Size=6.75-8.75,Font=XITS
-(fontspec)             Math,Style=MathScript},{Size=-6.75,Font=XITS
-(fontspec)             Math,Style=MathScriptScript}},FontAdjustment={\__um_luate
-x_copy_fontdimens:
-(fontspec)             }].
+Package fontspec Info: Font family 'LinuxBiolinumO(0)' created for font 'Linux
+(fontspec)             Biolinum O' with options [Ligatures=TeX].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <8.75->"XITSMath:mode=base;script=math;language=DFLT;"<6.
-75-8.75>"XITSMath:mode=base;script=math;language=DFLT;+ssty=0;"<-6.75>"XITSMath:
-mode=base;script=math;language=DFLT;+ssty=1;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-(fontspec)             and font adjustment code:
-(fontspec)             \__um_luatex_copy_fontdimens: 
-(fontspec)             - 'bold' (bx/n) with NFSS spec.:
-(fontspec)             <->"XITSMath/B:mode=base;script=math;language=DFLT;"
-(fontspec)             - 'bold small caps'  (bx/sc) with NFSS spec.: 
-(fontspec)             and font adjustment code:
-(fontspec)             \__um_luatex_copy_fontdimens: 
-
-LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 8.
-LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/XITSMath(1)/m/n on input line 8.
-LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 8.
-LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/XITSMath(1)/bx/n on input line 8.
-
-Package fontspec Info: XITSMath scale = 1.0001.
-
-
-Package fontspec Info: XITSMath scale = 1.0001.
-
-
-Package fontspec Info: XITSMath scale = 1.0001.
-
-
-Package fontspec Info: XITSMath scale = 1.0001.
-
-
-Package fontspec Info: XITSMath/B scale = 1.0001.
-
-
-Package fontspec Info: Font family 'XITSMath(2)' created for font 'XITS Math'
-(fontspec)             with options
-(fontspec)             [Renderer=Basic,BoldItalicFont={},ItalicFont={},SmallCaps
-Font={},Script=Math,SizeFeatures={{Size=8.75-},{Size=6.75-8.75,Font=XITS
-(fontspec)             Math,Style=MathScript},{Size=-6.75,Font=XITS
-(fontspec)             Math,Style=MathScriptScript}},FontAdjustment={\__um_luate
-x_copy_fontdimens:
-(fontspec)             },ScaleAgain=1.0001,FontAdjustment={\fontdimen 8\font
-(fontspec)             =5.79999pt\relax \fontdimen 9\font =4.79999pt\relax
-(fontspec)             \fontdimen 10\font =4.79999pt\relax \fontdimen 11\font
-(fontspec)             =7.0pt\relax \fontdimen 12\font =4.79999pt\relax
-(fontspec)             \fontdimen 13\font =4.0pt\relax \fontdimen 14\font
-(fontspec)             =4.0pt\relax \fontdimen 15\font =2.75pt\relax
-(fontspec)             \fontdimen 16\font =2.5pt\relax \fontdimen 17\font
-(fontspec)             =2.5pt\relax \fontdimen 18\font =3.75pt\relax
-(fontspec)             \fontdimen 19\font =0.5pt\relax \fontdimen 22\font
-(fontspec)             =2.5pt\relax \fontdimen 20\font =0pt\relax \fontdimen
-(fontspec)             21\font =0pt\relax }].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <8.75->s*[1.0001]"XITSMath:mode=base;script=math;language
-=DFLT;"<6.75-8.75>s*[1.0001]"XITSMath:mode=base;script=math;language=DFLT;+ssty=
-0;"<-6.75>s*[1.0001]"XITSMath:mode=base;script=math;language=DFLT;+ssty=1;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-(fontspec)             and font adjustment code:
-(fontspec)             \__um_luatex_copy_fontdimens: \fontdimen 8\font
-(fontspec)             =5.79999pt\relax \fontdimen 9\font =4.79999pt\relax
-(fontspec)             \fontdimen 10\font =4.79999pt\relax \fontdimen 11\font
-(fontspec)             =7.0pt\relax \fontdimen 12\font =4.79999pt\relax
-(fontspec)             \fontdimen 13\font =4.0pt\relax \fontdimen 14\font
-(fontspec)             =4.0pt\relax \fontdimen 15\font =2.75pt\relax
-(fontspec)             \fontdimen 16\font =2.5pt\relax \fontdimen 17\font
-(fontspec)             =2.5pt\relax \fontdimen 18\font =3.75pt\relax
-(fontspec)             \fontdimen 19\font =0.5pt\relax \fontdimen 22\font
-(fontspec)             =2.5pt\relax \fontdimen 20\font =0pt\relax \fontdimen
-(fontspec)             21\font =0pt\relax 
-(fontspec)             - 'bold' (bx/n) with NFSS spec.:
-(fontspec)             <->s*[1.0001]"XITSMath/B:mode=base;script=math;language=D
-FLT;"
-(fontspec)             - 'bold small caps'  (bx/sc) with NFSS spec.: 
-(fontspec)             and font adjustment code:
-(fontspec)             \__um_luatex_copy_fontdimens: \fontdimen 8\font
-(fontspec)             =5.79999pt\relax \fontdimen 9\font =4.79999pt\relax
-(fontspec)             \fontdimen 10\font =4.79999pt\relax \fontdimen 11\font
-(fontspec)             =7.0pt\relax \fontdimen 12\font =4.79999pt\relax
-(fontspec)             \fontdimen 13\font =4.0pt\relax \fontdimen 14\font
-(fontspec)             =4.0pt\relax \fontdimen 15\font =2.75pt\relax
-(fontspec)             \fontdimen 16\font =2.5pt\relax \fontdimen 17\font
-(fontspec)             =2.5pt\relax \fontdimen 18\font =3.75pt\relax
-(fontspec)             \fontdimen 19\font =0.5pt\relax \fontdimen 22\font
-(fontspec)             =2.5pt\relax \fontdimen 20\font =0pt\relax \fontdimen
-(fontspec)             21\font =0pt\relax 
-
-LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 8.
-LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
-(Font)                  OMS/cmsy/m/n --> TU/XITSMath(2)/m/n on input line 8.
-LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 8.
-LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
-(Font)                  OMS/cmsy/b/n --> TU/XITSMath(2)/bx/n on input line 8.
-
-Package fontspec Info: XITSMath scale = 0.9999.
-
-
-Package fontspec Info: XITSMath scale = 0.9999.
-
-
-Package fontspec Info: XITSMath scale = 0.9999.
-
-
-Package fontspec Info: XITSMath scale = 0.9999.
-
-
-Package fontspec Info: XITSMath/B scale = 0.9999.
-
-
-Package fontspec Info: Font family 'XITSMath(3)' created for font 'XITS Math'
-(fontspec)             with options
-(fontspec)             [Renderer=Basic,BoldItalicFont={},ItalicFont={},SmallCaps
-Font={},Script=Math,SizeFeatures={{Size=8.75-},{Size=6.75-8.75,Font=XITS
-(fontspec)             Math,Style=MathScript},{Size=-6.75,Font=XITS
-(fontspec)             Math,Style=MathScriptScript}},FontAdjustment={\__um_luate
-x_copy_fontdimens:
-(fontspec)             },ScaleAgain=0.9999,FontAdjustment={\fontdimen 8\font
-(fontspec)             =0.65999pt\relax \fontdimen 9\font =1.5pt\relax
-(fontspec)             \fontdimen 10\font =1.5pt\relax \fontdimen 11\font
-(fontspec)             =3.0pt\relax \fontdimen 12\font =6.0pt\relax \fontdimen
-(fontspec)             13\font =0pt\relax }].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <8.75->s*[0.9999]"XITSMath:mode=base;script=math;language
-=DFLT;"<6.75-8.75>s*[0.9999]"XITSMath:mode=base;script=math;language=DFLT;+ssty=
-0;"<-6.75>s*[0.9999]"XITSMath:mode=base;script=math;language=DFLT;+ssty=1;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-(fontspec)             and font adjustment code:
-(fontspec)             \__um_luatex_copy_fontdimens: \fontdimen 8\font
-(fontspec)             =0.65999pt\relax \fontdimen 9\font =1.5pt\relax
-(fontspec)             \fontdimen 10\font =1.5pt\relax \fontdimen 11\font
-(fontspec)             =3.0pt\relax \fontdimen 12\font =6.0pt\relax \fontdimen
-(fontspec)             13\font =0pt\relax 
-(fontspec)             - 'bold' (bx/n) with NFSS spec.:
-(fontspec)             <->s*[0.9999]"XITSMath/B:mode=base;script=math;language=D
-FLT;"
-(fontspec)             - 'bold small caps'  (bx/sc) with NFSS spec.: 
-(fontspec)             and font adjustment code:
-(fontspec)             \__um_luatex_copy_fontdimens: \fontdimen 8\font
-(fontspec)             =0.65999pt\relax \fontdimen 9\font =1.5pt\relax
-(fontspec)             \fontdimen 10\font =1.5pt\relax \fontdimen 11\font
-(fontspec)             =3.0pt\relax \fontdimen 12\font =6.0pt\relax \fontdimen
-(fontspec)             13\font =0pt\relax 
-
-LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `normal' on input line 8.
-
-LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
-(Font)                  OMX/cmex/m/n --> TU/XITSMath(3)/m/n on input line 8.
-LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 8.
-LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
-(Font)                  OMX/cmex/m/n --> TU/XITSMath(3)/bx/n on input line 8.
-LaTeX Font Info:    Font shape `TU/XITSMath(2)/m/n' will be
-(Font)              scaled to size 10.00107pt on input line 8.
-LaTeX Font Info:    Font shape `TU/XITSMath(2)/m/n' will be
-(Font)              scaled to size 7.5008pt on input line 8.
-LaTeX Font Info:    Font shape `TU/XITSMath(2)/m/n' will be
-(Font)              scaled to size 6.00064pt on input line 8.
-LaTeX Font Info:    Font shape `TU/XITSMath(3)/m/n' will be
-(Font)              scaled to size 9.99893pt on input line 8.
-LaTeX Font Info:    Font shape `TU/XITSMath(3)/m/n' will be
-(Font)              scaled to size 7.49919pt on input line 8.
-LaTeX Font Info:    Font shape `TU/XITSMath(3)/m/n' will be
-(Font)              scaled to size 5.99936pt on input line 8.
-LaTeX Font Info:    Try loading font information for U+msa on input line 8.
- (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 8.
-
-(/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-(/usr/share/texmf-dist/tex/lualatex/luainputenc/luainputenc.sty
-Package: luainputenc 2010/11/19 v0.973 inputenc package for LuaTeX
-
-(/usr/share/texmf-dist/tex/luatex/luatexbase/luatexbase.sty
-Package: luatexbase 2015/10/04 v1.3 luatexbase interface to LuaTeX 
-
-(/usr/share/texmf-dist/tex/luatex/ctablestack/ctablestack.sty
-Package: ctablestack 2015/10/01 v1.0 Catcode table stable support
-\@catcodetablestackcnt=\count276
-)
-\CatcodeTableOther=\catcodetable6
-\CatcodeTableExpl=\catcodetable7
-)
-Lua module: luainputenc 2010/05/10 0.97 Lua simple inputenc package.
-\inpenc@prehook=\toks21
-\inpenc@posthook=\toks22
-
-(/usr/share/texmf-dist/tex/lualatex/luainputenc/lutf8.def
-File: lutf8.def 2010/05/10 v0.97 UTF-8 support for luainputenc
-Now handling font encoding OML ...
-... no UTF-8 mapping file for font encoding OML
-Now handling font encoding T1 ...
-... processing UTF-8 mapping file for font encodingT1
-
-(/usr/share/texmf-dist/tex/latex/base/t1enc.dfu
-File: t1enc.dfu 2018/10/05 v1.2f UTF-8 support for inputenc
-)
-Now handling font encoding OT1 ...
-... processing UTF-8 mapping file for font encodingOT1
-
-(/usr/share/texmf-dist/tex/latex/base/ot1enc.dfu
-File: ot1enc.dfu 2018/10/05 v1.2f UTF-8 support for inputenc
-)
-Now handling font encoding OMS ...
-... processing UTF-8 mapping file for font encodingOMS
-
-(/usr/share/texmf-dist/tex/latex/base/omsenc.dfu
-File: omsenc.dfu 2018/10/05 v1.2f UTF-8 support for inputenc
-)
-Now handling font encoding TU ...
-... no UTF-8 mapping file for font encoding TU
-Now handling font encoding OMX ...
-... no UTF-8 mapping file for font encoding OMX
-Now handling font encoding U ...
-... no UTF-8 mapping file for font encoding U
-Now handling font encoding TS1 ...
-... processing UTF-8 mapping file for font encodingTS1
-
-(/usr/share/texmf-dist/tex/latex/base/ts1enc.dfu
-File: ts1enc.dfu 2018/10/05 v1.2f UTF-8 support for inputenc
-)))
-
-Package fontspec Info: Font family 'TeXGyrePagella(0)' created for font 'TeX
-(fontspec)             Gyre Pagella' with options [Ligatures=TeX].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->"TeXGyrePagella:mode=node;script=latn;language=DFLT;+t
+(fontspec)             <->"LinuxBiolinumO:mode=node;script=latn;language=dflt;+t
 lig;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
-(fontspec)             <->"TeXGyrePagella:mode=node;script=latn;language=DFLT;+t
+(fontspec)             <->"LinuxBiolinumO:mode=node;script=latn;language=dflt;+t
 lig;+smcp;"
-(fontspec)             - 'bold' (bx/n) with NFSS spec.:
-(fontspec)             <->"TeXGyrePagella/B:mode=node;script=latn;language=DFLT;
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"LinuxBiolinumO/B:mode=node;script=latn;language=dflt;
 +tlig;"
-(fontspec)             - 'bold small caps'  (bx/sc) with NFSS spec.:
-(fontspec)             <->"TeXGyrePagella/B:mode=node;script=latn;language=DFLT;
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <->"LinuxBiolinumO/B:mode=node;script=latn;language=dflt;
 +tlig;+smcp;"
 (fontspec)             - 'italic' (m/it) with NFSS spec.:
-(fontspec)             <->"TeXGyrePagella/I:mode=node;script=latn;language=DFLT;
+(fontspec)             <->"LinuxBiolinumO/I:mode=node;script=latn;language=dflt;
 +tlig;"
-(fontspec)             - 'italic small caps'  (m/itsc) with NFSS spec.:
-(fontspec)             <->"TeXGyrePagella/I:mode=node;script=latn;language=DFLT;
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->"LinuxBiolinumO/I:mode=node;script=latn;language=dflt;
 +tlig;+smcp;"
-(fontspec)             - 'bold italic' (bx/it) with NFSS spec.:
-(fontspec)             <->"TeXGyrePagella/BI:mode=node;script=latn;language=DFLT
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->"LinuxBiolinumO/BI:mode=node;script=latn;language=dflt
 ;+tlig;"
-(fontspec)             - 'bold italic small caps'  (bx/itsc) with NFSS spec.:
-(fontspec)             <->"TeXGyrePagella/BI:mode=node;script=latn;language=DFLT
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <->"LinuxBiolinumO/BI:mode=node;script=latn;language=dflt
 ;+tlig;+smcp;"
 
-LaTeX Info: Redefining \rmfamily on input line 10.
-
-Package fontspec Info: Font family 'TeXGyrePagella(1)' created for font 'TeX
-(fontspec)             Gyre Pagella' with options [Renderer=Basic].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->"TeXGyrePagella:mode=base;script=latn;language=DFLT;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
-(fontspec)             <->"TeXGyrePagella:mode=base;script=latn;language=DFLT;+s
-mcp;"
-(fontspec)             - 'bold' (bx/n) with NFSS spec.:
-(fontspec)             <->"TeXGyrePagella/B:mode=base;script=latn;language=DFLT;
-"
-(fontspec)             - 'bold small caps'  (bx/sc) with NFSS spec.:
-(fontspec)             <->"TeXGyrePagella/B:mode=base;script=latn;language=DFLT;
-+smcp;"
-(fontspec)             - 'italic' (m/it) with NFSS spec.:
-(fontspec)             <->"TeXGyrePagella/I:mode=base;script=latn;language=DFLT;
-"
-(fontspec)             - 'italic small caps'  (m/itsc) with NFSS spec.:
-(fontspec)             <->"TeXGyrePagella/I:mode=base;script=latn;language=DFLT;
-+smcp;"
-(fontspec)             - 'bold italic' (bx/it) with NFSS spec.:
-(fontspec)             <->"TeXGyrePagella/BI:mode=base;script=latn;language=DFLT
-;"
-(fontspec)             - 'bold italic small caps'  (bx/itsc) with NFSS spec.:
-(fontspec)             <->"TeXGyrePagella/BI:mode=base;script=latn;language=DFLT
-;+smcp;"
-
-LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  TU/XITSMath(1)/m/n --> TU/TeXGyrePagella(1)/m/n on input
- line 10.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/TeXGyrePagella(1)/m/it on input line
- 10.
-LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/TeXGyrePagella(1)/bx/n on input line
- 10.
-
-Package fontspec Info: TeXGyreHeros scale = 0.8950376955758295.
-
-
-Package fontspec Info: TeXGyreHeros scale = 0.8950376955758295.
-
-
-Package fontspec Info: TeXGyreHeros scale = 0.8950376955758295.
-
-
-Package fontspec Info: TeXGyreHeros/B scale = 0.8685199523021018.
-
-
-Package fontspec Info: TeXGyreHeros/B scale = 0.8685199523021018.
-
-
-Package fontspec Info: TeXGyreHeros/I scale = 0.8950376955758295.
-
-
-Package fontspec Info: TeXGyreHeros/I scale = 0.8950376955758295.
-
-
-Package fontspec Info: TeXGyreHeros/BI scale = 0.8685199523021018.
-
-
-Package fontspec Info: TeXGyreHeros/BI scale = 0.8685199523021018.
-
-
-Package fontspec Info: Font family 'TeXGyreHeros(0)' created for font 'TeX
-(fontspec)             Gyre Heros' with options
-(fontspec)             [Ligatures=TeX,Scale=MatchLowercase].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->s*[0.8950376955758295]"TeXGyreHeros:mode=node;script=l
-atn;language=DFLT;+tlig;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
-(fontspec)             <->s*[0.8950376955758295]"TeXGyreHeros:mode=node;script=l
-atn;language=DFLT;+tlig;+smcp;"
-(fontspec)             - 'bold' (bx/n) with NFSS spec.:
-(fontspec)             <->s*[0.8685199523021018]"TeXGyreHeros/B:mode=node;script
-=latn;language=DFLT;+tlig;"
-(fontspec)             - 'bold small caps'  (bx/sc) with NFSS spec.:
-(fontspec)             <->s*[0.8685199523021018]"TeXGyreHeros/B:mode=node;script
-=latn;language=DFLT;+tlig;+smcp;"
-(fontspec)             - 'italic' (m/it) with NFSS spec.:
-(fontspec)             <->s*[0.8950376955758295]"TeXGyreHeros/I:mode=node;script
-=latn;language=DFLT;+tlig;"
-(fontspec)             - 'italic small caps'  (m/itsc) with NFSS spec.:
-(fontspec)             <->s*[0.8950376955758295]"TeXGyreHeros/I:mode=node;script
-=latn;language=DFLT;+tlig;+smcp;"
-(fontspec)             - 'bold italic' (bx/it) with NFSS spec.:
-(fontspec)             <->s*[0.8685199523021018]"TeXGyreHeros/BI:mode=node;scrip
-t=latn;language=DFLT;+tlig;"
-(fontspec)             - 'bold italic small caps'  (bx/itsc) with NFSS spec.:
-(fontspec)             <->s*[0.8685199523021018]"TeXGyreHeros/BI:mode=node;scrip
-t=latn;language=DFLT;+tlig;+smcp;"
-
-LaTeX Info: Redefining \sffamily on input line 10.
-
-Package fontspec Info: TeXGyreHeros scale = 0.8950376955758295.
-
-
-Package fontspec Info: TeXGyreHeros scale = 0.8950376955758295.
-
-
-Package fontspec Info: TeXGyreHeros scale = 0.8950376955758295.
-
-
-Package fontspec Info: TeXGyreHeros/B scale = 0.8685199523021018.
-
-
-Package fontspec Info: TeXGyreHeros/B scale = 0.8685199523021018.
-
-
-Package fontspec Info: TeXGyreHeros/I scale = 0.8950376955758295.
-
-
-Package fontspec Info: TeXGyreHeros/I scale = 0.8950376955758295.
-
-
-Package fontspec Info: TeXGyreHeros/BI scale = 0.8685199523021018.
-
-
-Package fontspec Info: TeXGyreHeros/BI scale = 0.8685199523021018.
-
-
-Package fontspec Info: Font family 'TeXGyreHeros(1)' created for font 'TeX
-(fontspec)             Gyre Heros' with options
-(fontspec)             [Renderer=Basic,Scale=MatchLowercase].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->s*[0.8950376955758295]"TeXGyreHeros:mode=base;script=l
-atn;language=DFLT;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
-(fontspec)             <->s*[0.8950376955758295]"TeXGyreHeros:mode=base;script=l
-atn;language=DFLT;+smcp;"
-(fontspec)             - 'bold' (bx/n) with NFSS spec.:
-(fontspec)             <->s*[0.8685199523021018]"TeXGyreHeros/B:mode=base;script
-=latn;language=DFLT;"
-(fontspec)             - 'bold small caps'  (bx/sc) with NFSS spec.:
-(fontspec)             <->s*[0.8685199523021018]"TeXGyreHeros/B:mode=base;script
-=latn;language=DFLT;+smcp;"
-(fontspec)             - 'italic' (m/it) with NFSS spec.:
-(fontspec)             <->s*[0.8950376955758295]"TeXGyreHeros/I:mode=base;script
-=latn;language=DFLT;"
-(fontspec)             - 'italic small caps'  (m/itsc) with NFSS spec.:
-(fontspec)             <->s*[0.8950376955758295]"TeXGyreHeros/I:mode=base;script
-=latn;language=DFLT;+smcp;"
-(fontspec)             - 'bold italic' (bx/it) with NFSS spec.:
-(fontspec)             <->s*[0.8685199523021018]"TeXGyreHeros/BI:mode=base;scrip
-t=latn;language=DFLT;"
-(fontspec)             - 'bold italic small caps'  (bx/itsc) with NFSS spec.:
-(fontspec)             <->s*[0.8685199523021018]"TeXGyreHeros/BI:mode=base;scrip
-t=latn;language=DFLT;+smcp;"
-
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/TeXGyreHeros(1)/m/n on input line 10
-.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/TeXGyreHeros(1)/bx/n on input line 
-10.
-
-Package fontspec Info: Inconsolata scale = 1.026257095158598.
-
-
-Package fontspec Info: Could not resolve font "Inconsolata/BI" (it probably
-(fontspec)             doesn't exist).
-
-
-Package fontspec Info: Could not resolve font "Inconsolata/I" (it probably
-(fontspec)             doesn't exist).
-
-
-Package fontspec Info: Inconsolata scale = 1.026257095158598.
-
-luaotfload | aux : font no 71 (nil) does not define feature smcp for script latn
- with language dflt
-luaotfload | aux : no font with id 71
-
-Package fontspec Info: Inconsolata/B scale = 1.004720188284519.
-
-luaotfload | aux : font no 74 (nil) does not define feature smcp for script latn
- with language dflt
-luaotfload | aux : no font with id 74
-
-Package fontspec Info: Font family 'Inconsolata(0)' created for font
-(fontspec)             'Inconsolata' with options
-(fontspec)             [WordSpace={1,0,0},HyphenChar=None,PunctuationSpace=WordS
-pace,Scale=MatchLowercase].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->s*[1.026257095158598]"Inconsolata:mode=node;script=lat
-n;language=DFLT;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-(fontspec)             and font adjustment code:
-(fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
-(fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
-(fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
-(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
-(fontspec)             - 'bold' (bx/n) with NFSS spec.:
-(fontspec)             <->s*[1.004720188284519]"Inconsolata/B:mode=node;script=l
-atn;language=DFLT;"
-(fontspec)             - 'bold small caps'  (bx/sc) with NFSS spec.: 
-(fontspec)             and font adjustment code:
-(fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
-(fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
-(fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
-(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
-
-LaTeX Info: Redefining \ttfamily on input line 11.
-
-Package fontspec Info: Inconsolata scale = 1.026257095158598.
-
-
-Package fontspec Info: Could not resolve font "Inconsolata/BI" (it probably
-(fontspec)             doesn't exist).
-
-
-Package fontspec Info: Could not resolve font "Inconsolata/I" (it probably
-(fontspec)             doesn't exist).
-
-
-Package fontspec Info: Inconsolata scale = 1.026257095158598.
-
-luaotfload | aux : font no 71 (nil) does not define feature smcp for script latn
- with language dflt
-luaotfload | aux : no font with id 71
-
-Package fontspec Info: Inconsolata/B scale = 1.004720188284519.
-
-luaotfload | aux : font no 74 (nil) does not define feature smcp for script latn
- with language dflt
-luaotfload | aux : no font with id 74
-
-Package fontspec Info: Font family 'Inconsolata(1)' created for font
-(fontspec)             'Inconsolata' with options
-(fontspec)             [Renderer=Basic,Scale=MatchLowercase].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->s*[1.026257095158598]"Inconsolata:mode=base;script=lat
-n;language=DFLT;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-(fontspec)             - 'bold' (bx/n) with NFSS spec.:
-(fontspec)             <->s*[1.004720188284519]"Inconsolata/B:mode=base;script=l
-atn;language=DFLT;"
-(fontspec)             - 'bold small caps'  (bx/sc) with NFSS spec.: 
-
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/Inconsolata(1)/m/n on input line 11.
-
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/Inconsolata(1)/bx/n on input line 11
-.
 
 (/usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
@@ -1061,17 +392,7 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
-(/usr/share/texmf-dist/tex/latex/base/fixltx2e.sty
-Package: fixltx2e 2016/12/29 v2.1a fixes to LaTeX (obsolete)
-Applying: [2015/01/01] Old fixltx2e package on input line 46.
-
-
-Package fixltx2e Warning: fixltx2e is not required with releases after 2015
-(fixltx2e)                All fixes are now in the LaTeX kernel.
-(fixltx2e)                See the latexrelease package for details.
-
-Already applied: [0000/00/00] Old fixltx2e package on input line 53.
-) (/usr/share/texmf-dist/tex/latex/doublestroke/dsfont.sty
+(/usr/local/share/texmf/tex/latex/doublestroke/dsfont.sty
 Package: dsfont 1995/08/01 v0.1 Double stroke roman fonts
 )
 (/usr/share/texmf-dist/tex/latex/bigfoot/suffix.sty
@@ -1079,32 +400,37 @@ Package: suffix 2006/07/15 1.5a Variant command support
 )
 (/usr/share/texmf-dist/tex/latex/soul/soul.sty
 Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
-\SOUL@word=\toks23
-\SOUL@lasttoken=\toks24
-\SOUL@cmds=\toks25
-\SOUL@buffer=\toks26
-\SOUL@token=\toks27
+\SOUL@word=\toks24
+\SOUL@lasttoken=\toks25
+\SOUL@cmds=\toks26
+\SOUL@buffer=\toks27
+\SOUL@token=\toks28
 \SOUL@spaceskip=\skip56
-\SOUL@ttwidth=\dimen164
-\SOUL@uldp=\dimen165
-\SOUL@ulht=\dimen166
+\SOUL@ttwidth=\dimen165
+\SOUL@uldp=\dimen166
+\SOUL@ulht=\dimen167
+)
+(/usr/share/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2019/09/21 v2.5h e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count273
 )
 (/usr/share/texmf-dist/tex/generic/xstring/xstring.sty
 (/usr/share/texmf-dist/tex/generic/xstring/xstring.tex
-\integerpart=\count277
-\decimalpart=\count278
+\integerpart=\count274
+\decimalpart=\count275
 )
 Package: xstring 2019/02/06 v1.83 String manipulations (CT)
 )
 (/usr/share/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2019/04/03 3.29 The Babel package
+Package: babel 2020/05/13 3.44 The Babel package
 
-(/usr/share/texmf-dist/tex/generic/babel/switch.def
-File: switch.def 2019/04/03 3.29 Babel switching mechanism
-)
+(/usr/share/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2020/05/13 3.44 Babel common definitions
+
 (/usr/share/texmf-dist/tex/generic/babel/luababel.def
+\bbl@readstream=\read2
 \l@dumylang=\language2
-Package babel Info: Non-standard hyphenation setup on input line 114.
+Package babel Info: Non-standard hyphenation setup on input line 117.
 \l@nohyphenation=\language3
 \l@german-x-2019-04-04=\language4
 \l@ngerman-x-2019-04-04=\language5
@@ -1117,88 +443,95 @@ Package babel Info: Non-standard hyphenation setup on input line 114.
 \l@belarusian=\language12
 \l@bulgarian=\language13
 \l@catalan=\language14
-\l@churchslavonic=\language15
-\l@coptic=\language16
-\l@croatian=\language17
-\l@czech=\language18
-\l@danish=\language19
-\l@dutch=\language20
-\l@ukenglish=\language21
-\l@usenglishmax=\language22
-\l@esperanto=\language23
-\l@estonian=\language24
-\l@ethiopic=\language25
-\l@farsi=\language26
-\l@finnish=\language27
-\l@french=\language28
-\l@friulan=\language29
-\l@galician=\language30
-\l@georgian=\language31
-\l@german=\language32
-\l@ngerman=\language33
-\l@swissgerman=\language34
-\l@monogreek=\language35
+\l@pinyin=\language15
+\l@churchslavonic=\language16
+\l@coptic=\language17
+\l@croatian=\language18
+\l@czech=\language19
+\l@danish=\language20
+\l@dutch=\language21
+\l@ukenglish=\language22
+\l@usenglishmax=\language23
+\l@esperanto=\language24
+\l@estonian=\language25
+\l@ethiopic=\language26
+\l@farsi=\language27
+\l@finnish=\language28
+\l@french=\language29
+\l@friulan=\language30
+\l@galician=\language31
+\l@georgian=\language32
+\l@german=\language33
+\l@ngerman=\language34
+\l@swissgerman=\language35
 \l@greek=\language36
-\l@hungarian=\language37
-\l@icelandic=\language38
-\l@assamese=\language39
-\l@bengali=\language40
-\l@gujarati=\language41
-\l@hindi=\language42
-\l@kannada=\language43
-\l@malayalam=\language44
-\l@marathi=\language45
-\l@oriya=\language46
-\l@panjabi=\language47
+\l@monogreek=\language37
+\l@hungarian=\language38
+\l@icelandic=\language39
+\l@assamese=\language40
+\l@bengali=\language41
+\l@gujarati=\language42
+\l@hindi=\language43
+\l@kannada=\language44
+\l@malayalam=\language45
+\l@marathi=\language46
+\l@oriya=\language47
 \l@pali=\language48
-\l@tamil=\language49
-\l@telugu=\language50
-\l@indonesian=\language51
-\l@interlingua=\language52
-\l@irish=\language53
-\l@italian=\language54
-\l@kurmanji=\language55
-\l@latin=\language56
+\l@panjabi=\language49
+\l@tamil=\language50
+\l@telugu=\language51
+\l@indonesian=\language52
+\l@interlingua=\language53
+\l@irish=\language54
+\l@italian=\language55
+\l@kurmanji=\language56
 \l@classiclatin=\language57
-\l@liturgicallatin=\language58
-\l@latvian=\language59
-\l@lithuanian=\language60
-\l@mongolian=\language61
-\l@mongolianlmc=\language62
-\l@bokmal=\language63
-\l@nynorsk=\language64
-\l@occitan=\language65
-\l@piedmontese=\language66
-\l@polish=\language67
-\l@portuguese=\language68
-\l@romanian=\language69
-\l@romansh=\language70
-\l@russian=\language71
-\l@sanskrit=\language72
-\l@serbian=\language73
-\l@serbianc=\language74
-\l@slovak=\language75
-\l@slovenian=\language76
-\l@spanish=\language77
-\l@swedish=\language78
-\l@thai=\language79
-\l@turkish=\language80
-\l@turkmen=\language81
-\l@ukrainian=\language82
-\l@uppersorbian=\language83
-\l@welsh=\language84
+\l@latin=\language58
+\l@liturgicallatin=\language59
+\l@latvian=\language60
+\l@lithuanian=\language61
+\l@macedonian=\language62
+\l@mongolian=\language63
+\l@mongolianlmc=\language64
+\l@bokmal=\language65
+\l@nynorsk=\language66
+\l@occitan=\language67
+\l@piedmontese=\language68
+\l@polish=\language69
+\l@portuguese=\language70
+\l@romanian=\language71
+\l@romansh=\language72
+\l@russian=\language73
+\l@sanskrit=\language74
+\l@serbian=\language75
+\l@serbianc=\language76
+\l@slovak=\language77
+\l@slovenian=\language78
+\l@spanish=\language79
+\l@swedish=\language80
+\l@thai=\language81
+\l@turkish=\language82
+\l@turkmen=\language83
+\l@ukrainian=\language84
+\l@uppersorbian=\language85
+\l@welsh=\language86
+\babelcatcodetablenum=\catcodetable7
+\bbl@pattcodes=\catcodetable8
 )
+\babel@savecnt=\count276
+\U@D=\dimen168
+\l@babelnohyphens=\language87
+
+(/usr/share/texmf-dist/tex/generic/babel/luababel.def
+\bbl@attr@locale=\attribute4
+))
 (/usr/share/texmf-dist/tex/generic/babel-french/french.ldf
-Language: french 2019/03/30 v3.5e French support from the babel system
-
-(/usr/share/texmf-dist/tex/generic/babel/babel.def
-File: babel.def 2019/04/03 3.29 Babel common definitions
-\babel@savecnt=\count279
-\U@D=\dimen167
-
-(/usr/share/texmf-dist/tex/generic/babel/luababel.def))
-\l@acadian = a dialect from \language\l@french 
-\FB@nonchar=\count280
+Language: french 2020/04/18 v3.5h French support from the babel system
+Package babel Info: \l@acadian = using hyphenrules for french
+(babel)             (\language29) on input line 91.
+Package babel Info: \l@canadien = using hyphenrules for french
+(babel)             (\language29) on input line 92.
+\FB@nonchar=\count277
 \FB@spacing=\attribute5
 \FB@addDPspace=\attribute6
 \FB@addGUILspace=\attribute7
@@ -1206,25 +539,25 @@ File: babel.def 2019/04/03 3.29 Babel common definitions
 \FB@dialect=\attribute9
 Package french.ldf Info: No need for active punctuation characters
 (french.ldf)             with this version of LuaTeX!
-(french.ldf)             reported on input line 249.
-\FBguill@level=\count281
-\FBold@everypar=\toks28
-\FB@Mht=\dimen168
-LaTeX Info: Redefining \degres on input line 777.
-\mc@charclass=\count282
-\mc@charfam=\count283
-\mc@charslot=\count284
-\std@mcc=\count285
-\dec@mcc=\count286
+(french.ldf)             reported on input line 254.
+\FBguill@level=\count278
+\FBold@everypar=\toks29
+\FB@Mht=\dimen169
+LaTeX Info: Redefining \degres on input line 785.
+\mc@charclass=\count279
+\mc@charfam=\count280
+\mc@charslot=\count281
+\std@mcc=\count282
+\dec@mcc=\count283
 Inserting `frenchb.french_punctuation' at position 1 in `kerning'.
-\c@FBcaption@count=\count287
-\listindentFB=\dimen169
-\descindentFB=\dimen170
-\labelindentFB=\dimen171
-\labelwidthFB=\dimen172
-\leftmarginFB=\dimen173
-\parindentFFN=\dimen174
-\FBfnindent=\dimen175
+\c@FBcaption@count=\count284
+\listindentFB=\dimen170
+\descindentFB=\dimen171
+\labelindentFB=\dimen172
+\labelwidthFB=\dimen173
+\leftmarginFB=\dimen174
+\parindentFFN=\dimen175
+\FBfnindent=\dimen176
 
 (/usr/share/texmf-dist/tex/generic/hyph-utf8/loadhyph/loadhyph-fr.tex
 UTF-8 French hyphenation patterns
@@ -1232,33 +565,34 @@ UTF-8 French hyphenation patterns
 (/usr/share/texmf-dist/tex/generic/hyph-utf8/patterns/quote/hyph-quote-fr.tex)))
 ) (/usr/share/texmf-dist/tex/latex/carlisle/scalefnt.sty)
 (/usr/share/texmf-dist/tex/latex/microtype/microtype.sty
-Package: microtype 2019/02/28 v2.7b Micro-typographical refinements (RS)
-\MT@toks=\toks29
-\MT@count=\count288
+Package: microtype 2019/11/18 v2.7d Micro-typographical refinements (RS)
+\MT@toks=\toks30
+\MT@count=\count285
 LaTeX Info: Redefining \textls on input line 790.
-\MT@outer@kern=\dimen176
-LaTeX Info: Redefining \textmicrotypecontext on input line 1336.
-\MT@listname@count=\count289
+\MT@outer@kern=\dimen177
+LaTeX Info: Redefining \textmicrotypecontext on input line 1354.
+\MT@listname@count=\count286
 
 (/usr/share/texmf-dist/tex/latex/microtype/microtype-luatex.def
-File: microtype-luatex.def 2019/02/28 v2.7b Definitions specific to luatex (RS)
-
-Module microtype Warning: overwriting function `keepligature' on input line 59
-LaTeX Info: Redefining \lsstyle on input line 681.
-LaTeX Info: Redefining \lslig on input line 681.
+File: microtype-luatex.def 2019/11/18 v2.7d Definitions specific to luatex (RS)
+Module microtype Info: overwriting function `keepligature' on input line 59
+LaTeX Info: Redefining \lsstyle on input line 695.
+LaTeX Info: Redefining \lslig on input line 695.
 \MT@outer@space=\skip57
 )
 Package microtype Info: Loading configuration file microtype.cfg.
- (/usr/share/texmf-dist/tex/latex/microtype/microtype.cfg
-File: microtype.cfg 2019/02/28 v2.7b microtype main configuration file (RS)
+
+(/usr/share/texmf-dist/tex/latex/microtype/microtype.cfg
+File: microtype.cfg 2019/11/18 v2.7d microtype main configuration file (RS)
 ))
 (/usr/share/texmf-dist/tex/latex/ellipsis/ellipsis.sty
-Package: ellipsis 2004/9/28 v1.6 ellipsis: fixes spacing around \protect \TU\tex
-tellipsis 
+Package: ellipsis 2020/05/22 v1.8 fixes spacing around ellipses (three dots)
 
 (/usr/share/texmf-dist/tex/latex/tools/xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
-))
+)
+LaTeX Info: Redefining \textellipsis on input line 77.
+)
 (/usr/share/texmf-dist/tex/latex/datenumber/datenumber.sty
 Package: datenumber 2001/08/06v0.02
 
@@ -1268,15 +602,15 @@ File: datenumberUSenglish.ldf
 (/usr/share/texmf-dist/tex/latex/datenumber/datenumberfrench.ldf
 File: datenumberfrench.ldf 
 )
-\c@@dayscnt=\count290
-\c@@startyear=\count291
-\c@datenumber=\count292
-\c@dateyear=\count293
-\c@datemonth=\count294
-\c@dateday=\count295
-\c@datedayname=\count296
-\@nom=\count297
-\@den=\count298
+\c@@dayscnt=\count287
+\c@@startyear=\count288
+\c@datenumber=\count289
+\c@dateyear=\count290
+\c@datemonth=\count291
+\c@dateday=\count292
+\c@datedayname=\count293
+\@nom=\count294
+\@den=\count295
 )
 (/usr/share/texmf-dist/tex/latex/titlecaps/titlecaps.sty
 Package: titlecaps 2015/01/30 V1.2 Routines for setting rich-text input into Tit
@@ -1288,83 +622,86 @@ Package: ifnextok 2011/06/27 v0.3 test next token (UL)
 (/usr/share/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-\c@lcword@index=\count299
-\c@word@count=\count300
-\c@lc@words=\count301
-\c@dia@count=\count302
-\c@arg@@@index=\count303
+\c@lcword@index=\count296
+\c@word@count=\count297
+\c@lc@words=\count298
+\c@dia@count=\count299
+\c@arg@@@index=\count300
 )
 (/usr/share/texmf-dist/tex/latex/siunitx/siunitx.sty
-Package: siunitx 2018/05/17 v2.7s A comprehensive (SI) units package
+Package: siunitx 2020/02/25 v2.8b A comprehensive (SI) units package
 
 (/usr/share/texmf-dist/tex/latex/tools/array.sty
-Package: array 2018/12/30 v2.4k Tabular extension package (FMi)
-\col@sep=\dimen177
-\ar@mcellbox=\box47
-\extrarowheight=\dimen178
-\NC@list=\toks30
+Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
+\col@sep=\dimen178
+\ar@mcellbox=\box49
+\extrarowheight=\dimen179
+\NC@list=\toks31
 \extratabsurround=\skip58
 \backup@length=\skip59
-\ar@cellbox=\box48
+\ar@cellbox=\box50
 )
-\l__siunitx_tmp_box=\box49
-\l__siunitx_tmp_dim=\dimen179
-\l__siunitx_tmp_int=\count304
-\l__siunitx_number_mantissa_length_int=\count305
-\l__siunitx_number_uncert_length_int=\count306
-\l__siunitx_round_int=\count307
-\l__siunitx_process_decimal_int=\count308
-\l__siunitx_process_uncertainty_int=\count309
-\l__siunitx_process_fixed_int=\count310
-\l__siunitx_process_integer_min_int=\count311
-\l__siunitx_process_precision_int=\count312
-\l__siunitx_group_min_int=\count313
-\l__siunitx_angle_marker_box=\box50
-\l__siunitx_angle_unit_box=\box51
-\l__siunitx_angle_marker_dim=\dimen180
-\l__siunitx_angle_unit_dim=\dimen181
-\l__siunitx_unit_int=\count314
-\l__siunitx_unit_denominator_int=\count315
-\l__siunitx_unit_numerator_int=\count316
-\l__siunitx_unit_prefix_int=\count317
-\l__siunitx_unit_prefix_base_int=\count318
-\l__siunitx_unit_prefix_gram_int=\count319
-\l__siunitx_number_product_int=\count320
+(/usr/share/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
+Package: l3keys2e 2020-05-15 LaTeX2e option processing using LaTeX3 keys
+)
+\l__siunitx_tmp_box=\box51
+\l__siunitx_tmp_dim=\dimen180
+\l__siunitx_tmp_int=\count301
+\l__siunitx_number_mantissa_length_int=\count302
+\l__siunitx_number_uncert_length_int=\count303
+\l__siunitx_round_int=\count304
+\l__siunitx_process_decimal_int=\count305
+\l__siunitx_process_uncertainty_int=\count306
+\l__siunitx_process_fixed_int=\count307
+\l__siunitx_process_integer_min_int=\count308
+\l__siunitx_process_precision_int=\count309
+\l__siunitx_group_min_int=\count310
+\l__siunitx_angle_marker_box=\box52
+\l__siunitx_angle_unit_box=\box53
+\l__siunitx_angle_marker_dim=\dimen181
+\l__siunitx_angle_unit_dim=\dimen182
+\l__siunitx_unit_int=\count311
+\l__siunitx_unit_denominator_int=\count312
+\l__siunitx_unit_numerator_int=\count313
+\l__siunitx_unit_prefix_int=\count314
+\l__siunitx_unit_prefix_base_int=\count315
+\l__siunitx_unit_prefix_gram_int=\count316
+\l__siunitx_number_product_int=\count317
 \c__siunitx_one_fill_skip=\skip60
 \l__siunitx_table_unit_align_skip=\skip61
-\l__siunitx_table_exponent_dim=\dimen182
-\l__siunitx_table_integer_dim=\dimen183
-\l__siunitx_table_mantissa_dim=\dimen184
-\l__siunitx_table_marker_dim=\dimen185
-\l__siunitx_table_result_dim=\dimen186
-\l__siunitx_table_uncert_dim=\dimen187
-\l__siunitx_table_fill_pre_dim=\dimen188
-\l__siunitx_table_fill_post_dim=\dimen189
-\l__siunitx_table_fill_mid_dim=\dimen190
-\l__siunitx_table_pre_box=\box52
-\l__siunitx_table_post_box=\box53
-\l__siunitx_table_mantissa_box=\box54
-\l__siunitx_table_result_box=\box55
+\l__siunitx_table_exponent_dim=\dimen183
+\l__siunitx_table_integer_dim=\dimen184
+\l__siunitx_table_mantissa_dim=\dimen185
+\l__siunitx_table_marker_dim=\dimen186
+\l__siunitx_table_result_dim=\dimen187
+\l__siunitx_table_uncert_dim=\dimen188
+\l__siunitx_table_fill_pre_dim=\dimen189
+\l__siunitx_table_fill_post_dim=\dimen190
+\l__siunitx_table_fill_mid_dim=\dimen191
+\l__siunitx_table_pre_box=\box54
+\l__siunitx_table_post_box=\box55
+\l__siunitx_table_mantissa_box=\box56
+\l__siunitx_table_result_box=\box57
 \l__siunitx_table_number_align_skip=\skip62
 \l__siunitx_table_text_align_skip=\skip63
 
 (/usr/share/texmf-dist/tex/latex/translator/translator.sty
-Package: translator 2018/01/04 v1.12 Easy translation of strings in LaTeX
+Package: translator 2019-05-31 v1.12a Easy translation of strings in LaTeX
 ))
-(/usr/share/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO)
+(/usr/share/texmf-dist/tex/latex/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-04 v0.32 Utility functions of pdfTeX for LuaTeX (HO)
 
 
-(/usr/share/texmf-dist/tex/generic/oberdiek/infwarerr.sty
-Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+(/usr/share/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
-(/usr/share/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
-Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+(/usr/share/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2019/12/15 v1.24 LaTeX kernel commands for general use (HO)
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-\pdftexcmds@toks=\toks31
+\pdftexcmds@toks=\toks32
 )
 (/usr/share/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2019/01/31 v3.10 Extensive control of page headers and footers
@@ -1380,98 +717,19 @@ Package: fancyhdr 2019/01/31 v3.10 Extensive control of page headers and footers
 \f@nch@O@orf=\skip72
 )
 (/usr/share/texmf-dist/tex/latex/base/textcomp.sty
-Package: textcomp 2018/08/11 v2.0j Standard LaTeX package
-Package textcomp Info: Sub-encoding information:
-(textcomp)               5 = only ISO-Adobe without \textcurrency
-(textcomp)               4 = 5 + \texteuro
-(textcomp)               3 = 4 + \textohm
-(textcomp)               2 = 3 + \textestimated + \textcurrency
-(textcomp)               1 = TS1 - \textcircled - \t
-(textcomp)               0 = TS1 (full)
-(textcomp)             Font families with sub-encoding setting implement
-(textcomp)             only a restricted character set as indicated.
-(textcomp)             Family '?' is the default used for unknown fonts.
-(textcomp)             See the documentation for details.
-Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
-
-(/usr/share/texmf-dist/tex/latex/base/ts1enc.def
-File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
-LaTeX Font Info:    RedeclaringfontencodingTS1 on input line 47.
-)
-LaTeX Info: Redefining \oldstylenums on input line 334.
-Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 349.
-Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 350.
-Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 351.
-Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 352.
-Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 353.
-Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 354.
-Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 355.
-Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 356.
-Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 357.
-Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 358.
-Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 359.
-Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 360.
-Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 361.
-Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 362.
-Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 363.
-Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 364.
-Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 365.
-Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 366.
-Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 367.
-Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 368.
-Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 369.
-Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 370.
-Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 371.
-Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 372.
-Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 373.
-Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 374.
-Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 375.
-Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 376.
-Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 377.
-Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 378.
-Package textcomp Info: Setting lmr sub-encoding to TS1/0 on input line 379.
-Package textcomp Info: Setting lmdh sub-encoding to TS1/0 on input line 380.
-Package textcomp Info: Setting lmss sub-encoding to TS1/0 on input line 381.
-Package textcomp Info: Setting lmssq sub-encoding to TS1/0 on input line 382.
-Package textcomp Info: Setting lmvtt sub-encoding to TS1/0 on input line 383.
-Package textcomp Info: Setting lmtt sub-encoding to TS1/0 on input line 384.
-Package textcomp Info: Setting qhv sub-encoding to TS1/0 on input line 385.
-Package textcomp Info: Setting qag sub-encoding to TS1/0 on input line 386.
-Package textcomp Info: Setting qbk sub-encoding to TS1/0 on input line 387.
-Package textcomp Info: Setting qcr sub-encoding to TS1/0 on input line 388.
-Package textcomp Info: Setting qcs sub-encoding to TS1/0 on input line 389.
-Package textcomp Info: Setting qpl sub-encoding to TS1/0 on input line 390.
-Package textcomp Info: Setting qtm sub-encoding to TS1/0 on input line 391.
-Package textcomp Info: Setting qzc sub-encoding to TS1/0 on input line 392.
-Package textcomp Info: Setting qhvc sub-encoding to TS1/0 on input line 393.
-Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 394.
-Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 395.
-Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 396.
-Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 397.
-Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 398.
-Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 399.
-Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 400.
-Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 401.
-Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 402.
-Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 403.
-Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 404.
-Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 405.
-Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 406.
-Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
-Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
-Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
+Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
 )
 (/usr/share/texmf-dist/tex/latex/titlesec/titlesec.sty
-Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
-\ttl@box=\box56
+Package: titlesec 2019/10/16 v2.13 Sectioning titles
+\ttl@box=\box58
 \beforetitleunit=\skip73
 \aftertitleunit=\skip74
-\ttl@plus=\dimen191
-\ttl@minus=\dimen192
-\ttl@toksa=\toks32
-\titlewidth=\dimen193
-\titlewidthlast=\dimen194
-\titlewidthfirst=\dimen195
+\ttl@plus=\dimen192
+\ttl@minus=\dimen193
+\ttl@toksa=\toks33
+\titlewidth=\dimen194
+\titlewidthlast=\dimen195
+\titlewidthfirst=\dimen196
 )
 (/usr/share/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
 Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
@@ -1483,36 +741,36 @@ Package: stmaryrd 1994/03/03 St Mary's Road symbol package
 LaTeX Font Info:    Overwriting symbol font `stmry' in version `bold'
 (Font)                  U/stmry/m/n --> U/stmry/b/n on input line 89.
 )
-(/usr/share/texmf-dist/tex/latex/esvect/esvect.sty
+(/usr/local/share/texmf/tex/latex/esvect/esvect.sty
 Package: esvect 
 \symesvector=\mathgroup8
 )
 (/usr/share/texmf-dist/tex/latex/numprint/numprint.sty
 Package: numprint 2012/08/20 v1.39 Print numbers (HH)
-\c@nprt@mantissa@digitsbefore=\count321
-\c@nprt@mantissa@digitsafter=\count322
-\c@nprt@exponent@digitsbefore=\count323
-\c@nprt@exponent@digitsafter=\count324
+\c@nprt@mantissa@digitsbefore=\count318
+\c@nprt@mantissa@digitsafter=\count319
+\c@nprt@exponent@digitsbefore=\count320
+\c@nprt@exponent@digitsafter=\count321
 \nprt@digitwidth=\skip75
 \nprt@sepwidth=\skip76
 \nprt@decimalwidth=\skip77
 \nprt@blockwidth=\skip78
-\nprt@digittoks=\toks33
-\nprt@pretoks=\toks34
-\nprt@posttoks=\toks35
-\nprt@thisdigit=\count325
-\nprt@curpos=\count326
-\nprt@rndpos=\count327
-\c@nprt@digitsfirstblock=\count328
-\c@nprt@blockcnt=\count329
-\c@nprt@cntprint=\count330
+\nprt@digittoks=\toks34
+\nprt@pretoks=\toks35
+\nprt@posttoks=\toks36
+\nprt@thisdigit=\count322
+\nprt@curpos=\count323
+\nprt@rndpos=\count324
+\c@nprt@digitsfirstblock=\count325
+\c@nprt@blockcnt=\count326
+\c@nprt@cntprint=\count327
 
 No configuration file `numprint.cfg' found.)
 (/usr/share/texmf-dist/tex/latex/was/icomma.sty
 Package: icomma 2002/03/10 v2.0 (WaS)
 )
-(/usr/share/texmf-dist/tex/latex/ms/ragged2e.sty
-Package: ragged2e 2009/05/21 v2.1 ragged2e Package (MS)
+(/usr/share/texmf-dist/tex/latex/ragged2e/ragged2e.sty
+Package: ragged2e 2019/07/28 v2.2 ragged2e Package (MS)
 
 (/usr/share/texmf-dist/tex/latex/ms/everysel.sty
 Package: everysel 2011/10/28 v1.2 EverySelectfont Package (MS)
@@ -1533,30 +791,28 @@ Package: everysel 2011/10/28 v1.2 EverySelectfont Package (MS)
 \JustifyingParindent=\skip92
 )
 (/usr/share/texmf-dist/tex/latex/tools/multicol.sty
-Package: multicol 2018/12/27 v1.8v multicolumn formatting (FMi)
-\c@tracingmulticols=\count331
-\mult@box=\box57
-\multicol@leftmargin=\dimen196
-\c@unbalance=\count332
-\c@collectmore=\count333
-\doublecol@number=\count334
-\multicoltolerance=\count335
-\multicolpretolerance=\count336
-\full@width=\dimen197
-\page@free=\dimen198
-\premulticols=\dimen199
-\postmulticols=\dimen256
+Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
+\c@tracingmulticols=\count328
+\mult@box=\box59
+\multicol@leftmargin=\dimen197
+\c@unbalance=\count329
+\c@collectmore=\count330
+\doublecol@number=\count331
+\multicoltolerance=\count332
+\multicolpretolerance=\count333
+\full@width=\dimen198
+\page@free=\dimen199
+\premulticols=\dimen256
+\postmulticols=\dimen257
 \multicolsep=\skip93
 \multicolbaselineskip=\skip94
-\partial@page=\box58
-\last@line=\box59
-\maxbalancingoverflow=\dimen257
-\mult@rightbox=\box60
-\mult@grightbox=\box61
-\mult@gfirstbox=\box62
-\mult@firstbox=\box63
-\@tempa=\box64
-\@tempa=\box65
+\partial@page=\box60
+\last@line=\box61
+\maxbalancingoverflow=\dimen258
+\mult@rightbox=\box62
+\mult@grightbox=\box63
+\mult@gfirstbox=\box64
+\mult@firstbox=\box65
 \@tempa=\box66
 \@tempa=\box67
 \@tempa=\box68
@@ -1572,71 +828,94 @@ Package: multicol 2018/12/27 v1.8v multicolumn formatting (FMi)
 \@tempa=\box78
 \@tempa=\box79
 \@tempa=\box80
-\c@columnbadness=\count337
-\c@finalcolumnbadness=\count338
-\last@try=\dimen258
-\multicolovershoot=\dimen259
-\multicolundershoot=\dimen260
-\mult@nat@firstbox=\box81
-\colbreak@box=\box82
-\mc@col@check@num=\count339
+\@tempa=\box81
+\@tempa=\box82
+\@tempa=\box83
+\@tempa=\box84
+\@tempa=\box85
+\@tempa=\box86
+\@tempa=\box87
+\@tempa=\box88
+\@tempa=\box89
+\@tempa=\box90
+\@tempa=\box91
+\@tempa=\box92
+\@tempa=\box93
+\@tempa=\box94
+\@tempa=\box95
+\@tempa=\box96
+\@tempa=\box97
+\@tempa=\box98
+\@tempa=\box99
+\@tempa=\box100
+\@tempa=\box101
+\@tempa=\box102
+\c@minrows=\count334
+\c@columnbadness=\count335
+\c@finalcolumnbadness=\count336
+\last@try=\dimen259
+\multicolovershoot=\dimen260
+\multicolundershoot=\dimen261
+\mult@nat@firstbox=\box103
+\colbreak@box=\box104
+\mc@col@check@num=\count337
 )
 (/usr/share/texmf-dist/tex/latex/booktabs/booktabs.sty
-Package: booktabs 2016/04/27 v1.618033 publication quality tables
-\heavyrulewidth=\dimen261
-\lightrulewidth=\dimen262
-\cmidrulewidth=\dimen263
-\belowrulesep=\dimen264
-\belowbottomsep=\dimen265
-\aboverulesep=\dimen266
-\abovetopsep=\dimen267
-\cmidrulesep=\dimen268
-\cmidrulekern=\dimen269
-\defaultaddspace=\dimen270
-\@cmidla=\count340
-\@cmidlb=\count341
-\@aboverulesep=\dimen271
-\@belowrulesep=\dimen272
-\@thisruleclass=\count342
-\@lastruleclass=\count343
-\@thisrulewidth=\dimen273
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen262
+\lightrulewidth=\dimen263
+\cmidrulewidth=\dimen264
+\belowrulesep=\dimen265
+\belowbottomsep=\dimen266
+\aboverulesep=\dimen267
+\abovetopsep=\dimen268
+\cmidrulesep=\dimen269
+\cmidrulekern=\dimen270
+\defaultaddspace=\dimen271
+\@cmidla=\count338
+\@cmidlb=\count339
+\@aboverulesep=\dimen272
+\@belowrulesep=\dimen273
+\@thisruleclass=\count340
+\@lastruleclass=\count341
+\@thisrulewidth=\dimen274
 )
 (/usr/share/texmf-dist/tex/latex/enumitem/enumitem.sty
-Package: enumitem 2019/02/04 v3.8 Customized lists
+Package: enumitem 2019/06/20 v3.9 Customized lists
 \labelindent=\skip95
-\enit@outerparindent=\dimen274
-\enit@toks=\toks36
-\enit@inbox=\box83
-\enit@count@id=\count344
-\enitdp@description=\count345
+\enit@outerparindent=\dimen275
+\enit@toks=\toks37
+\enit@inbox=\box105
+\enit@count@id=\count342
+\enitdp@description=\count343
 )
 (/usr/share/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
 (/usr/share/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
 (/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
-\pgfutil@everybye=\toks37
-\pgfutil@tempdima=\dimen275
-\pgfutil@tempdimb=\dimen276
+\pgfutil@everybye=\toks38
+\pgfutil@tempdima=\dimen276
+\pgfutil@tempdimb=\dimen277
 
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex))
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box84
+\pgfutil@abb=\box106
 
 (/usr/share/texmf-dist/tex/latex/ms/everyshi.sty
 Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
 ))
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
 (/usr/share/texmf-dist/tex/generic/pgf/pgf.revision.tex)
-Package: pgfrcs 2019/02/02 v3.1.1 (3.1.1)
+Package: pgfrcs 2020/01/08 v3.1.5b (3.1.5b)
 ))
-Package: pgf 2019/02/02 v3.1.1 (3.1.1)
+Package: pgf 2020/01/08 v3.1.5b (3.1.5b)
 
 (/usr/share/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
 (/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
@@ -1644,73 +923,75 @@ Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 (/usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: luatex.def on input line 99.
+Package graphics Info: Driver file: luatex.def on input line 105.
 )
-\Gin@req@height=\dimen277
-\Gin@req@width=\dimen278
+\Gin@req@height=\dimen278
+\Gin@req@width=\dimen279
 )
 (/usr/share/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
 (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
-Package: pgfsys 2019/02/02 v3.1.1 (3.1.1)
+Package: pgfsys 2020/01/08 v3.1.5b (3.1.5b)
 
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks38
-\pgfkeys@temptoks=\toks39
+\pgfkeys@pathtoks=\toks39
+\pgfkeys@temptoks=\toks40
 
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
-\pgfkeys@tmptoks=\toks40
+\pgfkeys@tmptoks=\toks41
 ))
-\pgf@x=\dimen279
-\pgf@y=\dimen280
-\pgf@xa=\dimen281
-\pgf@ya=\dimen282
-\pgf@xb=\dimen283
-\pgf@yb=\dimen284
-\pgf@xc=\dimen285
-\pgf@yc=\dimen286
+\pgf@x=\dimen280
+\pgf@y=\dimen281
+\pgf@xa=\dimen282
+\pgf@ya=\dimen283
+\pgf@xb=\dimen284
+\pgf@yb=\dimen285
+\pgf@xc=\dimen286
+\pgf@yc=\dimen287
+\pgf@xd=\dimen288
+\pgf@yd=\dimen289
 \w@pgf@writea=\write3
-\r@pgf@reada=\read2
-\c@pgf@counta=\count346
-\c@pgf@countb=\count347
-\c@pgf@countc=\count348
-\c@pgf@countd=\count349
-\t@pgf@toka=\toks41
-\t@pgf@tokb=\toks42
-\t@pgf@tokc=\toks43
-\pgf@sys@id@count=\count350
+\r@pgf@reada=\read3
+\c@pgf@counta=\count344
+\c@pgf@countb=\count345
+\c@pgf@countc=\count346
+\c@pgf@countd=\count347
+\t@pgf@toka=\toks42
+\t@pgf@tokb=\toks43
+\t@pgf@tokc=\toks44
+\pgf@sys@id@count=\count348
 
 (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
-File: pgf.cfg 2019/02/02 v3.1.1 (3.1.1)
+File: pgf.cfg 2020/01/08 v3.1.5b (3.1.5b)
 )
 Driver file for pgf: pgfsys-luatex.def
 
 (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-luatex.def
-File: pgfsys-luatex.def 2019/02/02 v3.1.1 (3.1.1)
+File: pgfsys-luatex.def 2020/01/08 v3.1.5b (3.1.5b)
 
 (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
-File: pgfsys-common-pdf.def 2019/02/02 v3.1.1 (3.1.1)
+File: pgfsys-common-pdf.def 2020/01/08 v3.1.5b (3.1.5b)
 )))
 (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
-File: pgfsyssoftpath.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgfsyssoftpath@smallbuffer@items=\count351
-\pgfsyssoftpath@bigbuffer@items=\count352
+File: pgfsyssoftpath.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfsyssoftpath@smallbuffer@items=\count349
+\pgfsyssoftpath@bigbuffer@items=\count350
 )
 (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
-File: pgfsysprotocol.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgfsysprotocol.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 ))
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
-Package: pgfcore 2019/02/02 v3.1.1 (3.1.1)
+Package: pgfcore 2020/01/08 v3.1.5b (3.1.5b)
 
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen287
-\pgfmath@count=\count353
-\pgfmath@box=\box85
-\pgfmath@toks=\toks44
-\pgfmath@stack@operand=\toks45
-\pgfmath@stack@operation=\toks46
+\pgfmath@dimen=\dimen290
+\pgfmath@count=\count351
+\pgfmath@box=\box107
+\pgfmath@toks=\toks45
+\pgfmath@stack@operand=\toks46
+\pgfmath@stack@operation=\toks47
 )
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex)
@@ -1723,100 +1004,102 @@ x) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex)
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex)
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics
 .code.tex))) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count354
-)) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
-File: pgfcorepoints.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgf@picminx=\dimen288
-\pgf@picmaxx=\dimen289
-\pgf@picminy=\dimen290
-\pgf@picmaxy=\dimen291
-\pgf@pathminx=\dimen292
-\pgf@pathmaxx=\dimen293
-\pgf@pathminy=\dimen294
-\pgf@pathmaxy=\dimen295
-\pgf@xx=\dimen296
-\pgf@xy=\dimen297
-\pgf@yx=\dimen298
-\pgf@yy=\dimen299
-\pgf@zx=\dimen300
-\pgf@zy=\dimen301
+\c@pgfmathroundto@lastzeros=\count352
+)) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@picminx=\dimen291
+\pgf@picmaxx=\dimen292
+\pgf@picminy=\dimen293
+\pgf@picmaxy=\dimen294
+\pgf@pathminx=\dimen295
+\pgf@pathmaxx=\dimen296
+\pgf@pathminy=\dimen297
+\pgf@pathmaxy=\dimen298
+\pgf@xx=\dimen299
+\pgf@xy=\dimen300
+\pgf@yx=\dimen301
+\pgf@yy=\dimen302
+\pgf@zx=\dimen303
+\pgf@zy=\dimen304
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
-File: pgfcorepathconstruct.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgf@path@lastx=\dimen302
-\pgf@path@lasty=\dimen303
+File: pgfcorepathconstruct.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@path@lastx=\dimen305
+\pgf@path@lasty=\dimen306
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
-File: pgfcorepathusage.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgf@shorten@end@additional=\dimen304
-\pgf@shorten@start@additional=\dimen305
+File: pgfcorepathusage.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@shorten@end@additional=\dimen307
+\pgf@shorten@start@additional=\dimen308
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
-File: pgfcorescopes.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgfpic=\box86
-\pgf@hbox=\box87
-\pgf@layerbox@main=\box88
-\pgf@picture@serial@count=\count355
+File: pgfcorescopes.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfpic=\box108
+\pgf@hbox=\box109
+\pgf@layerbox@main=\box110
+\pgf@picture@serial@count=\count353
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
-File: pgfcoregraphicstate.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgflinewidth=\dimen306
+File: pgfcoregraphicstate.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgflinewidth=\dimen309
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.t
 ex
-File: pgfcoretransformations.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgf@pt@x=\dimen307
-\pgf@pt@y=\dimen308
-\pgf@pt@temp=\dimen309
+File: pgfcoretransformations.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@pt@x=\dimen310
+\pgf@pt@y=\dimen311
+\pgf@pt@temp=\dimen312
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
-File: pgfcorequick.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgfcorequick.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
-File: pgfcoreobjects.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgfcoreobjects.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.te
 x
-File: pgfcorepathprocessing.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgfcorepathprocessing.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
-File: pgfcorearrows.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgfarrowsep=\dimen310
+File: pgfcorearrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfarrowsep=\dimen313
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
-File: pgfcoreshade.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgf@max=\dimen311
-\pgf@sys@shading@range@num=\count356
+File: pgfcoreshade.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@max=\dimen314
+\pgf@sys@shading@range@num=\count354
+\pgf@shadingcount=\count355
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
-File: pgfcoreimage.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgfcoreimage.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
-File: pgfcoreexternal.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgfexternal@startupbox=\box89
+File: pgfcoreexternal.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfexternal@startupbox=\box111
 ))
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
-File: pgfcorelayers.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgfcorelayers.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
-File: pgfcoretransparency.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgfcoretransparency.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
-File: pgfcorepatterns.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgfcorepatterns.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
-File: pgfcorerdf.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgfcorerdf.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )))
 (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
-File: pgfmoduleshapes.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgfnodeparttextbox=\box90
+File: pgfmoduleshapes.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfnodeparttextbox=\box112
 )
 (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
-File: pgfmoduleplot.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgfmoduleplot.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )
 (/usr/share/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
-Package: pgfcomp-version-0-65 2019/02/02 v3.1.1 (3.1.1)
-\pgf@nodesepstart=\dimen312
-\pgf@nodesepend=\dimen313
+Package: pgfcomp-version-0-65 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@nodesepstart=\dimen315
+\pgf@nodesepend=\dimen316
 )
 (/usr/share/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
-Package: pgfcomp-version-1-18 2019/02/02 v3.1.1 (3.1.1)
+Package: pgfcomp-version-1-18 2020/01/08 v3.1.5b (3.1.5b)
 ))
 (/usr/share/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
 (/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
@@ -1824,97 +1107,99 @@ Package: pgfcomp-version-1-18 2019/02/02 v3.1.1 (3.1.1)
 (/usr/share/texmf-dist/tex/latex/pgf/math/pgfmath.sty
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
-Package: pgffor 2019/02/02 v3.1.1 (3.1.1)
+Package: pgffor 2020/01/08 v3.1.5b (3.1.5b)
 
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
-\pgffor@iter=\dimen314
-\pgffor@skip=\dimen315
-\pgffor@stack=\toks47
-\pgffor@toks=\toks48
+\pgffor@iter=\dimen317
+\pgffor@skip=\dimen318
+\pgffor@stack=\toks48
+\pgffor@toks=\toks49
 ))
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
-Package: tikz 2019/02/02 v3.1.1 (3.1.1)
+Package: tikz 2020/01/08 v3.1.5b (3.1.5b)
 
 (/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.te
 x
-File: pgflibraryplothandlers.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgf@plot@mark@count=\count357
-\pgfplotmarksize=\dimen316
+File: pgflibraryplothandlers.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@plot@mark@count=\count356
+\pgfplotmarksize=\dimen319
 )
-\tikz@lastx=\dimen317
-\tikz@lasty=\dimen318
-\tikz@lastxsaved=\dimen319
-\tikz@lastysaved=\dimen320
-\tikzleveldistance=\dimen321
-\tikzsiblingdistance=\dimen322
-\tikz@figbox=\box91
-\tikz@figbox@bg=\box92
-\tikz@tempbox=\box93
-\tikz@tempbox@bg=\box94
-\tikztreelevel=\count358
-\tikznumberofchildren=\count359
-\tikznumberofcurrentchild=\count360
-\tikz@fig@count=\count361
+\tikz@lastx=\dimen320
+\tikz@lasty=\dimen321
+\tikz@lastxsaved=\dimen322
+\tikz@lastysaved=\dimen323
+\tikz@lastmovetox=\dimen324
+\tikz@lastmovetoy=\dimen325
+\tikzleveldistance=\dimen326
+\tikzsiblingdistance=\dimen327
+\tikz@figbox=\box113
+\tikz@figbox@bg=\box114
+\tikz@tempbox=\box115
+\tikz@tempbox@bg=\box116
+\tikztreelevel=\count357
+\tikznumberofchildren=\count358
+\tikznumberofcurrentchild=\count359
+\tikz@fig@count=\count360
  (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
-File: pgfmodulematrix.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgfmatrixcurrentrow=\count362
-\pgfmatrixcurrentcolumn=\count363
-\pgf@matrix@numberofcolumns=\count364
+File: pgfmodulematrix.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfmatrixcurrentrow=\count361
+\pgfmatrixcurrentcolumn=\count362
+\pgf@matrix@numberofcolumns=\count363
 )
-\tikz@expandcount=\count365
+\tikz@expandcount=\count364
 
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
 topaths.code.tex
-File: tikzlibrarytopaths.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: tikzlibrarytopaths.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )))
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
 matrix.code.tex
-File: tikzlibrarymatrix.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: tikzlibrarymatrix.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
 calc.code.tex
-File: tikzlibrarycalc.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: tikzlibrarycalc.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
 arrows.code.tex
-File: tikzlibraryarrows.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: tikzlibraryarrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 
 (/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.tex
-File: pgflibraryarrows.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\arrowsize=\dimen323
+File: pgflibraryarrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\arrowsize=\dimen328
 ))
 (/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
-File: pgflibraryarrows.meta.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgfarrowinset=\dimen324
-\pgfarrowlength=\dimen325
-\pgfarrowwidth=\dimen326
-\pgfarrowlinewidth=\dimen327
+File: pgflibraryarrows.meta.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfarrowinset=\dimen329
+\pgfarrowlength=\dimen330
+\pgfarrowwidth=\dimen331
+\pgfarrowlinewidth=\dimen332
 )
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
 positioning.code.tex
-File: tikzlibrarypositioning.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: tikzlibrarypositioning.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )
 (/usr/share/texmf-dist/tex/latex/tikzmark/tikzlibrarytikzmark.code.tex
-\l__sn_x_dim=\dimen328
-\l__sn_y_dim=\dimen329
-\l__sn_xa_dim=\dimen330
-\l__sn_ya_dim=\dimen331
+\l__sn_x_dim=\dimen333
+\l__sn_y_dim=\dimen334
+\l__sn_xa_dim=\dimen335
+\l__sn_ya_dim=\dimen336
 )
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
 decorations.pathreplacing.code.tex
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
 decorations.code.tex
 (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
-\pgfdecoratedcompleteddistance=\dimen332
-\pgfdecoratedremainingdistance=\dimen333
-\pgfdecoratedinputsegmentcompleteddistance=\dimen334
-\pgfdecoratedinputsegmentremainingdistance=\dimen335
-\pgf@decorate@distancetomove=\dimen336
-\pgf@decorate@repeatstate=\count366
-\pgfdecorationsegmentamplitude=\dimen337
-\pgfdecorationsegmentlength=\dimen338
+\pgfdecoratedcompleteddistance=\dimen337
+\pgfdecoratedremainingdistance=\dimen338
+\pgfdecoratedinputsegmentcompleteddistance=\dimen339
+\pgfdecoratedinputsegmentremainingdistance=\dimen340
+\pgf@decorate@distancetomove=\dimen341
+\pgf@decorate@repeatstate=\count365
+\pgfdecorationsegmentamplitude=\dimen342
+\pgfdecorationsegmentlength=\dimen343
 )
-\tikz@lib@dec@box=\box95
+\tikz@lib@dec@box=\box117
 )
 (/usr/share/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorati
 ons.pathreplacing.code.tex))
@@ -1924,39 +1209,39 @@ decorations.markings.code.tex
 ons.markings.code.tex))
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
 shapes.code.tex
-File: tikzlibraryshapes.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: tikzlibraryshapes.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
 shapes.geometric.code.tex
-File: tikzlibraryshapes.geometric.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: tikzlibraryshapes.geometric.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 
 (/usr/share/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.geomet
 ric.code.tex
-File: pgflibraryshapes.geometric.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgflibraryshapes.geometric.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 ))
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
 shapes.misc.code.tex
-File: tikzlibraryshapes.misc.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: tikzlibraryshapes.misc.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 
 (/usr/share/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.misc.c
 ode.tex
-File: pgflibraryshapes.misc.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgflibraryshapes.misc.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 ))
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
 shapes.symbols.code.tex
-File: tikzlibraryshapes.symbols.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: tikzlibraryshapes.symbols.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 
 (/usr/share/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.symbol
 s.code.tex
-File: pgflibraryshapes.symbols.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgflibraryshapes.symbols.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 ))
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
 shapes.arrows.code.tex
-File: tikzlibraryshapes.arrows.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: tikzlibraryshapes.arrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 
 (/usr/share/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.arrows
 .code.tex
-File: pgflibraryshapes.arrows.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgflibraryshapes.arrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 ))
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
 shapes.callouts.code.tex
@@ -1964,74 +1249,74 @@ shapes.callouts.code.tex
 ts.code.tex))
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
 shapes.multipart.code.tex
-File: tikzlibraryshapes.multipart.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: tikzlibraryshapes.multipart.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 
 (/usr/share/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.multip
 art.code.tex
-File: pgflibraryshapes.multipart.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgfnodepartlowerbox=\box96
-\pgfnodeparttwobox=\box97
-\pgfnodepartthreebox=\box98
-\pgfnodepartfourbox=\box99
-\pgfnodeparttwentybox=\box100
-\pgfnodepartnineteenbox=\box101
-\pgfnodeparteighteenbox=\box102
-\pgfnodepartseventeenbox=\box103
-\pgfnodepartsixteenbox=\box104
-\pgfnodepartfifteenbox=\box105
-\pgfnodepartfourteenbox=\box106
-\pgfnodepartthirteenbox=\box107
-\pgfnodeparttwelvebox=\box108
-\pgfnodepartelevenbox=\box109
-\pgfnodeparttenbox=\box110
-\pgfnodepartninebox=\box111
-\pgfnodeparteightbox=\box112
-\pgfnodepartsevenbox=\box113
-\pgfnodepartsixbox=\box114
-\pgfnodepartfivebox=\box115
+File: pgflibraryshapes.multipart.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfnodepartlowerbox=\box118
+\pgfnodeparttwobox=\box119
+\pgfnodepartthreebox=\box120
+\pgfnodepartfourbox=\box121
+\pgfnodeparttwentybox=\box122
+\pgfnodepartnineteenbox=\box123
+\pgfnodeparteighteenbox=\box124
+\pgfnodepartseventeenbox=\box125
+\pgfnodepartsixteenbox=\box126
+\pgfnodepartfifteenbox=\box127
+\pgfnodepartfourteenbox=\box128
+\pgfnodepartthirteenbox=\box129
+\pgfnodeparttwelvebox=\box130
+\pgfnodepartelevenbox=\box131
+\pgfnodeparttenbox=\box132
+\pgfnodepartninebox=\box133
+\pgfnodeparteightbox=\box134
+\pgfnodepartsevenbox=\box135
+\pgfnodepartsixbox=\box136
+\pgfnodepartfivebox=\box137
 ))) (/usr/share/texmf-dist/tex/latex/tkz-tab/tkz-tab.sty
-Package: tkz-tab 2019/01/19 v1.4e variations (ctan version) 
+Package: tkz-tab 2020/04/29 v2.12c variations (ctan version)
 
 (/usr/share/texmf-dist/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
 
 (/usr/share/texmf-dist/tex/generic/xkeyval/xkeyval.tex
 (/usr/share/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-\XKV@toks=\toks49
-\XKV@tempa@toks=\toks50
+\XKV@toks=\toks50
+\XKV@tempa@toks=\toks51
 )
-\XKV@depth=\count367
+\XKV@depth=\count366
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
 patterns.code.tex
-File: tikzlibrarypatterns.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: tikzlibrarypatterns.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 
 (/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibrarypatterns.code.tex
-File: pgflibrarypatterns.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgflibrarypatterns.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 ))
-\tkz@XF=\dimen339
-\tkz@YF=\dimen340
-\c@tkz@cnt@line=\count368
-\c@tkz@cnt@lg=\count369
-\c@tkz@cnt@cl=\count370
-\c@tkz@cnt@pred=\count371
-\c@tkz@cnt@temp=\count372
-\c@tkz@cnt@arrow=\count373
-\c@tkz@cnt@zone=\count374
-\c@tkz@cnt@lgnext=\count375
-\c@tkz@cnt@clnext=\count376
-\c@tkz@cnt@pair=\count377
-\c@tkz@cnt@impair=\count378
-\c@tkz@cnt@aw=\count379
+\tkz@XF=\dimen344
+\tkz@YF=\dimen345
+\c@tkz@cnt@line=\count367
+\c@tkz@cnt@lg=\count368
+\c@tkz@cnt@cl=\count369
+\c@tkz@cnt@pred=\count370
+\c@tkz@cnt@temp=\count371
+\c@tkz@cnt@arrow=\count372
+\c@tkz@cnt@zone=\count373
+\c@tkz@cnt@lgnext=\count374
+\c@tkz@cnt@clnext=\count375
+\c@tkz@cnt@pair=\count376
+\c@tkz@cnt@impair=\count377
+\c@tkz@cnt@aw=\count378
 ) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
-Package: tcolorbox 2019/03/02 version 4.20 text color boxes
+Package: tcolorbox 2020/04/28 version 4.30 text color boxes
 
 (/usr/share/texmf-dist/tex/latex/tools/verbatim.sty
-Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks51
-\verbatim@line=\toks52
-\verbatim@in@stream=\read3
+Package: verbatim 2019/11/10 v1.5r LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks52
+\verbatim@line=\toks53
+\verbatim@in@stream=\read4
 )
 (/usr/share/texmf-dist/tex/latex/environ/environ.sty
 Package: environ 2014/05/04 v0.3 A new way to define environments
@@ -2039,36 +1324,36 @@ Package: environ 2014/05/04 v0.3 A new way to define environments
 (/usr/share/texmf-dist/tex/latex/trimspaces/trimspaces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 ))
-\tcb@titlebox=\box116
-\tcb@upperbox=\box117
-\tcb@lowerbox=\box118
-\tcb@phantombox=\box119
-\c@tcbbreakpart=\count380
-\c@tcblayer=\count381
-\tcolorbox@number=\count382
-\tcb@temp=\box120
-\tcb@temp=\box121
-\tcb@temp=\box122
-\tcb@temp=\box123
+\tcb@titlebox=\box138
+\tcb@upperbox=\box139
+\tcb@lowerbox=\box140
+\tcb@phantombox=\box141
+\c@tcbbreakpart=\count379
+\c@tcblayer=\count380
+\c@tcolorbox@number=\count381
+\tcb@temp=\box142
+\tcb@temp=\box143
+\tcb@temp=\box144
+\tcb@temp=\box145
 \tcb@out=\write4
 \tcb@record@out=\write5
 
 (/usr/share/texmf-dist/tex/latex/tcolorbox/tcbskins.code.tex
-Library (tcolorbox): 'tcbskins.code.tex' version '4.20'
-\tcb@waterbox=\box124
+Library (tcolorbox): 'tcbskins.code.tex' version '4.30'
+\tcb@waterbox=\box146
 (/usr/share/texmf-dist/tex/latex/tcolorbox/tcbskinsjigsaw.code.tex
-Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '4.20'
+Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '4.30'
 )) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcbtheorems.code.tex
-Library (tcolorbox): 'tcbtheorems.code.tex' version '4.20'
+Library (tcolorbox): 'tcbtheorems.code.tex' version '4.30'
 ) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcbbreakable.code.tex
-Library (tcolorbox): 'tcbbreakable.code.tex' version '4.20'
-\tcb@testbox=\box125
-\tcb@totalupperbox=\box126
-\tcb@totallowerbox=\box127
+Library (tcolorbox): 'tcbbreakable.code.tex' version '4.30'
+\tcb@testbox=\box147
+\tcb@totalupperbox=\box148
+\tcb@totallowerbox=\box149
 ) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcbxparse.code.tex
-Library (tcolorbox): 'tcbxparse.code.tex' version '4.20'
+Library (tcolorbox): 'tcbxparse.code.tex' version '4.30'
 ))
-\c@tmp=\count383
+\c@tmp=\count382
 \symyhlargesymbols=\mathgroup9
  (/usr/share/texmf-dist/tex/latex/adjustbox/adjustbox.sty
 Package: adjustbox 2019/01/04 v1.2 Adjusting TeX boxes (trim, clip, ...)
@@ -2082,12 +1367,12 @@ Package: trimclip 2018/04/08 v1.1 Trim and clip general TeX material
 
 (/usr/share/texmf-dist/tex/latex/collectbox/collectbox.sty
 Package: collectbox 2012/05/17 v0.4b Collect macro arguments as boxes
-\collectedbox=\box128
+\collectedbox=\box150
 )
-\tc@llx=\dimen341
-\tc@lly=\dimen342
-\tc@urx=\dimen343
-\tc@ury=\dimen344
+\tc@llx=\dimen346
+\tc@lly=\dimen347
+\tc@urx=\dimen348
+\tc@ury=\dimen349
 
 (/usr/share/texmf-dist/tex/latex/adjustbox/tc-pgf.def
 File: tc-pgf.def 2019/01/04 v2.2 trimclip fall-back clipping driver using PGF
@@ -2095,58 +1380,50 @@ File: tc-pgf.def 2019/01/04 v2.2 trimclip fall-back clipping driver using PGF
 Package trimclip Info: No clipping driver 'tc-luatex.def' available.
 (trimclip)             Using fall-back PGF driver.
 )
-\adjbox@Width=\dimen345
-\adjbox@Height=\dimen346
-\adjbox@Depth=\dimen347
-\adjbox@Totalheight=\dimen348
-\adjbox@pwidth=\dimen349
-\adjbox@pheight=\dimen350
-\adjbox@pdepth=\dimen351
-\adjbox@ptotalheight=\dimen352
+\adjbox@Width=\dimen350
+\adjbox@Height=\dimen351
+\adjbox@Depth=\dimen352
+\adjbox@Totalheight=\dimen353
+\adjbox@pwidth=\dimen354
+\adjbox@pheight=\dimen355
+\adjbox@pdepth=\dimen356
+\adjbox@ptotalheight=\dimen357
 
 (/usr/share/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
 Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
-\c@checkoddpage=\count384
+\c@checkoddpage=\count383
 )
 (/usr/share/texmf-dist/tex/latex/varwidth/varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
-\@vwid@box=\box129
-\sift@deathcycles=\count385
-\@vwid@loff=\dimen353
-\@vwid@roff=\dimen354
+\@vwid@box=\box151
+\sift@deathcycles=\count384
+\@vwid@loff=\dimen358
+\@vwid@roff=\dimen359
 ))
 (/usr/share/texmf-dist/tex/latex/pgfplots/pgfplots.sty
 (/usr/share/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
-Package: pgfplots 2018/03/28 v1.16 Data Visualization (1.16)
+Package: pgfplots 2020/02/29 v1.17 Data Visualization (1.17)
 
 (/usr/share/texmf-dist/tex/generic/pgfplots/pgfplots.code.tex
 (/usr/share/texmf-dist/tex/generic/pgfplots/pgfplotscore.code.tex
 Package pgfplots info on input line 124: Initializing with LUA version Lua 5.3
-\pgfplots@luabackend@table=\catcodetable8
-\t@pgfplots@toka=\toks53
-\t@pgfplots@tokb=\toks54
-\t@pgfplots@tokc=\toks55
-\pgfplots@tmpa=\dimen355
-\c@pgfplots@coordindex=\count386
-\c@pgfplots@scanlineindex=\count387
+\pgfplots@luabackend@table=\catcodetable9
+\t@pgfplots@toka=\toks54
+\t@pgfplots@tokb=\toks55
+\t@pgfplots@tokc=\toks56
+\pgfplots@tmpa=\dimen360
+\c@pgfplots@coordindex=\count385
+\c@pgfplots@scanlineindex=\count386
 
 (/usr/share/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric.code.tex))
 (/usr/share/texmf-dist/tex/generic/pgfplots/libs/pgfplotslibrary.code.tex)
 (/usr/share/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_l
 oader.code.tex
 (/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.code.tex)
-Package pgfplots: loading complementary arithmetics for your pgf version...
-
-(/usr/share/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_p
-gflibraryfpu.code.tex)
-(/usr/share/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_p
-gfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count388
-)
 (/usr/share/texmf-dist/tex/generic/pgf/libraries/luamath/pgflibraryluamath.code
 .tex)
-Package pgfplots info on input line 275: luamath library shipped with pgf 3.1.1 
-is up-to-date
+Package pgfplots info on input line 290: luamath library shipped with pgf 3.1.5b
+ is up-to-date
 ) (/usr/share/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.code.tex
 Package pgfplots info on input line 82: Found new luatex: initializing lua comma
 nds instead of write18 (shell-escape)
@@ -2157,21 +1434,21 @@ nds instead of write18 (shell-escape)
 ext.code.tex)
 (/usr/share/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsarray.code.te
 x
-\c@pgfplotsarray@tmp=\count389
+\c@pgfplotsarray@tmp=\count387
 )
 (/usr/share/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsmatrix.code.t
 ex)
 (/usr/share/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstableshared.code.t
 ex
-\c@pgfplotstable@counta=\count390
-\t@pgfplotstable@a=\toks56
+\c@pgfplotstable@counta=\count388
+\t@pgfplotstable@a=\toks57
 )
 (/usr/share/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsdeque.code.te
 x) (/usr/share/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.code.tex
 (/usr/share/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.data.code.tex)) (/usr/share/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.verb.code.tex)
 (/usr/share/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplots.surfshading
 .code.tex
-\c@pgfplotslibrarysurf@no=\count391
+\c@pgfplotslibrarysurf@no=\count389
 
 (/usr/share/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots.surfshading.
 pgfsys-luatex.def)))
@@ -2191,35 +1468,35 @@ pgfsys-luatex.def)))
 decorations.pathmorphing.code.tex
 (/usr/share/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorati
 ons.pathmorphing.code.tex))
-\pgfplots@numplots=\count392
-\pgfplots@xmin@reg=\dimen356
-\pgfplots@xmax@reg=\dimen357
-\pgfplots@ymin@reg=\dimen358
-\pgfplots@ymax@reg=\dimen359
-\pgfplots@zmin@reg=\dimen360
-\pgfplots@zmax@reg=\dimen361
+\pgfplots@numplots=\count390
+\pgfplots@xmin@reg=\dimen361
+\pgfplots@xmax@reg=\dimen362
+\pgfplots@ymin@reg=\dimen363
+\pgfplots@ymax@reg=\dimen364
+\pgfplots@zmin@reg=\dimen365
+\pgfplots@zmax@reg=\dimen366
 )
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
 plotmarks.code.tex
-File: tikzlibraryplotmarks.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: tikzlibraryplotmarks.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 
 (/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmarks.code.tex
-File: pgflibraryplotmarks.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgflibraryplotmarks.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 ))) (/usr/share/texmf-dist/tex/latex/tools/tabularx.sty
-Package: tabularx 2016/02/03 v2.11b `tabularx' package (DPC)
-\TX@col@width=\dimen362
-\TX@old@table=\dimen363
-\TX@old@col=\dimen364
-\TX@target=\dimen365
-\TX@delta=\dimen366
-\TX@cols=\count393
-\TX@ftn=\toks57
+Package: tabularx 2020/01/15 v2.11c `tabularx' package (DPC)
+\TX@col@width=\dimen367
+\TX@old@table=\dimen368
+\TX@old@col=\dimen369
+\TX@target=\dimen370
+\TX@delta=\dimen371
+\TX@cols=\count391
+\TX@ftn=\toks58
 )
 (/usr/share/texmf-dist/tex/latex/oberdiek/stackrel.sty
 Package: stackrel 2016/05/16 v1.3 Adding subscript option to stackrel (HO)
 
-(/usr/share/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+(/usr/share/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 ))
 (/usr/share/texmf-dist/tex/latex/oberdiek/centernot.sty
 Package: centernot 2016/05/16 v1.4 Centers the not symbol horizontally (HO)
@@ -2229,136 +1506,151 @@ Package: marvosym 2011/07/20 v2.2 Martin Vogel's Symbols font definitions
 )
 (/usr/share/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count394
-\float@exts=\toks58
-\float@box=\box130
-\@float@everytoks=\toks59
-\@floatcapt=\box131
+\c@float@type=\count392
+\float@exts=\toks59
+\float@box=\box152
+\@float@everytoks=\toks60
+\@floatcapt=\box153
 )
-\@float@every@algorithm=\toks60
-\c@algorithm=\count395
+\@float@every@algorithm=\toks61
+\c@algorithm=\count393
 
 (/usr/share/texmf-dist/tex/latex/caption/caption.sty
-Package: caption 2018/10/06 v3.3-154 Customizing captions (AR)
+Package: caption 2020/05/10 v3.4j Customizing captions (AR)
 
 (/usr/share/texmf-dist/tex/latex/caption/caption3.sty
-Package: caption3 2018/09/12 v1.8c caption3 kernel (AR)
-Package caption3 Info: TeX engine: e-TeX on input line 64.
-\captionmargin=\dimen367
-\captionmargin@=\dimen368
-\captionwidth=\dimen369
-\caption@tempdima=\dimen370
-\caption@indent=\dimen371
-\caption@parindent=\dimen372
-\caption@hangindent=\dimen373
+Package: caption3 2020/05/10 v1.11 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 61.
+\captionmargin=\dimen372
+\captionmargin@=\dimen373
+\captionwidth=\dimen374
+\caption@tempdima=\dimen375
+\caption@indent=\dimen376
+\caption@parindent=\dimen377
+\caption@hangindent=\dimen378
+Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count396
-\c@ContinuedFloat=\count397
+\c@caption@flags=\count394
+\c@continuedfloat=\count395
 Package caption Info: float package is loaded.
 )
 (/usr/share/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2018/11/30 v6.88e Hypertext links for LaTeX
+Package: hyperref 2020-05-15 v7.00e Hypertext links for LaTeX
 
-(/usr/share/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
-Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
-
-(/usr/share/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
-Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
-Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
-Package hobsub Info: Skipping package `infwarerr' (already loaded).
-Package hobsub Info: Skipping package `ltxcmds' (already loaded).
-Package hobsub Info: Skipping package `ifluatex' (already loaded).
-Package hobsub Info: Skipping package `ifvtex' (already loaded).
-Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
-Package hobsub Info: Skipping package `ifpdf' (already loaded).
-Package hobsub Info: Skipping package `etexcmds' (already loaded).
-Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
-Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
-Package: luatex-loader 2016/05/16 v0.6 Lua module loader (HO)
-
-(/usr/share/texmf-dist/scripts/oberdiek/oberdiek.luatex.lua)
-Package hobsub Info: Skipping package `pdftexcmds' (already loaded).
-Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
-Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO)
-
-Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
-Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+(/usr/share/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
 )
-Package hobsub Info: Skipping package `hobsub' (already loaded).
-Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
-Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
-Package: xcolor-patch 2016/05/16 xcolor patch
-Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
-Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
-Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
-Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+(/usr/share/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
 )
-(/usr/share/texmf-dist/tex/latex/oberdiek/auxhook.sty
-Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+(/usr/share/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
 )
-(/usr/share/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+(/usr/share/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
 )
-\@linkdim=\dimen374
-\Hy@linkcounter=\count398
-\Hy@pagecounter=\count399
+(/usr/share/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+)
+(/usr/share/texmf-dist/tex/latex/auxhook/auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+)
+(/usr/share/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
+)
+\@linkdim=\dimen379
+\Hy@linkcounter=\count396
+\Hy@pagecounter=\count397
 
 (/usr/share/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2018/11/30 v6.88e Hyperref: PDFDocEncoding definition (HO)
+File: pd1enc.def 2020-05-15 v7.00e Hyperref: PDFDocEncoding definition (HO)
 NowhandlingfontencodingPD1...
 ...noUTF-8mappingfileforfontencodingPD1
 )
-\Hy@SavedSpaceFactor=\count400
-
-(/usr/share/texmf-dist/tex/latex/latexconfig/hyperref.cfg
-File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+(/usr/share/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-Package hyperref Info: Option `draft' set `true' on input line 4393.
-Package hyperref Info: Hyper figures OFF on input line 4519.
-Package hyperref Info: Link nesting OFF on input line 4524.
-Package hyperref Info: Hyper index ON on input line 4527.
-Package hyperref Info: Plain pages OFF on input line 4534.
-Package hyperref Info: Backreferencing OFF on input line 4539.
+\Hy@SavedSpaceFactor=\count398
+Package hyperref Info: Option `draft' set `true' on input line 4338.
+Package hyperref Info: Option `bookmarks' set `true' on input line 4338.
+Package hyperref Info: Hyper figures OFF on input line 4464.
+Package hyperref Info: Link nesting OFF on input line 4469.
+Package hyperref Info: Hyper index ON on input line 4472.
+Package hyperref Info: Plain pages OFF on input line 4479.
+Package hyperref Info: Backreferencing OFF on input line 4484.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4772.
-\c@Hy@tempcnt=\count401
+Package hyperref Info: Bookmarks ON on input line 4717.
+\c@Hy@tempcnt=\count399
 
 (/usr/share/texmf-dist/tex/latex/url/url.sty
-\Urlmuskip=\muskip18
+\Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-LaTeX Info: Redefining \url on input line 5125.
-\XeTeXLinkMargin=\dimen375
-\Fld@menulength=\count402
-\Field@Width=\dimen376
-\Fld@charsize=\dimen377
-Package hyperref Info: Hyper figures OFF on input line 6380.
-Package hyperref Info: Link nesting OFF on input line 6385.
-Package hyperref Info: Hyper index ON on input line 6388.
-Package hyperref Info: backreferencing OFF on input line 6395.
-Package hyperref Info: Link coloring OFF on input line 6400.
-Package hyperref Info: Link coloring with OCG OFF on input line 6405.
-Package hyperref Info: PDF/A mode OFF on input line 6410.
-LaTeX Info: Redefining \ref on input line 6450.
-LaTeX Info: Redefining \pageref on input line 6454.
-\Hy@abspage=\count403
-\c@Item=\count404
-\c@Hfootnote=\count405
+LaTeX Info: Redefining \url on input line 5076.
+\XeTeXLinkMargin=\dimen380
+
+(/usr/share/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(/usr/share/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
+
+))
+\Fld@menulength=\count400
+\Field@Width=\dimen381
+\Fld@charsize=\dimen382
+Package hyperref Info: Hyper figures OFF on input line 6347.
+Package hyperref Info: Link nesting OFF on input line 6352.
+Package hyperref Info: Hyper index ON on input line 6355.
+Package hyperref Info: backreferencing OFF on input line 6362.
+Package hyperref Info: Link coloring OFF on input line 6367.
+Package hyperref Info: Link coloring with OCG OFF on input line 6372.
+Package hyperref Info: PDF/A mode OFF on input line 6377.
+LaTeX Info: Redefining \ref on input line 6417.
+LaTeX Info: Redefining \pageref on input line 6421.
+
+(/usr/share/texmf-dist/tex/generic/atbegshi/atbegshi.sty
+Package: atbegshi 2019/12/05 v1.19 At begin shipout hook (HO)
+)
+\Hy@abspage=\count401
+\c@Item=\count402
+\c@Hfootnote=\count403
 )
 Package hyperref Info: Driver (autodetected): hluatex.
 
 (/usr/share/texmf-dist/tex/latex/hyperref/hluatex.def
-File: hluatex.def 2018/11/30 v6.88e Hyperref driver for luaTeX
-\Fld@listcount=\count406
-\c@bookmark@seq@number=\count407
+File: hluatex.def 2020-05-15 v7.00e Hyperref driver for luaTeX
 
-(/usr/share/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
-Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
+(/usr/share/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2020-05-15 v7.00e Hyperref: PDF Unicode definition (HO)
+NowhandlingfontencodingPU...
+...noUTF-8mappingfileforfontencodingPU
+)
+(/usr/share/texmf-dist/tex/generic/stringenc/stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
+
+)
+\Fld@listcount=\count404
+\c@bookmark@seq@number=\count405
+
+(/usr/share/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+
+(/usr/share/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
-2.
+6.
 )
 \Hy@SectionHShift=\skip96
 )
+(/usr/share/texmf-dist/tex/latex/bookmark/bookmark.sty
+Package: bookmark 2019/12/03 v1.28 PDF bookmarks (HO)
+
+(/usr/share/texmf-dist/tex/latex/bookmark/bkm-pdftex.def
+File: bkm-pdftex.def 2019/12/03 v1.28 bookmark driver for pdfTeX (HO)
+\BKM@id=\count406
+))
 (/usr/share/texmf-dist/tex/latex/cleveref/cleveref.sty
 Package: cleveref 2018/03/27 v0.21.4 Intelligent cross-referencing
 Package cleveref Info: `hyperref' support loaded on input line 2370.
@@ -2374,10 +1666,10 @@ LaTeX Info: Redefining \labelcref on input line 2370.
 LaTeX Info: Redefining \labelcpageref on input line 2370.
 )
 (/usr/share/texmf-dist/tex/latex/diagbox/diagbox.sty
-Package: diagbox 2016/12/28 v2.2 Making table heads with diagonal lines
+Package: diagbox 2020/02/09 v2.3 Making table heads with diagonal lines
 
 (/usr/share/texmf-dist/tex/latex/pict2e/pict2e.sty
-Package: pict2e 2016/02/05 v0.3b Improved picture commands (HjG,RN,JT)
+Package: pict2e 2019/08/20 v0.3c Improved picture commands (HjG,RN,JT)
 
 (/usr/share/texmf-dist/tex/latex/pict2e/pict2e.cfg
 File: pict2e.cfg 2016/02/05 v0.1u pict2e configuration for teTeX/TeXLive
@@ -2388,1011 +1680,964 @@ Package pict2e Info: Driver file for pict2e: p2e-luatex.def on input line 121.
 (/usr/share/texmf-dist/tex/latex/pict2e/p2e-luatex.def
 File: p2e-luatex.def 2016/02/05 v0.1u Driver-dependant file (RN,HjG,JT)
 )
-\pIIe@GRAPH=\toks61
-\@arclen=\dimen378
-\@arcrad=\dimen379
-\@tempdimd=\dimen380
+\pIIe@GRAPH=\toks62
+\@arclen=\dimen383
+\@arcrad=\dimen384
+\@tempdimd=\dimen385
 )
-(/usr/share/texmf-dist/tex/latex/fp/fp.sty
-Package: fp 1995/04/02
-
-`Fixed Point Package', Version 0.8, April 2, 1995 (C) Michael Mehlich
-(/usr/share/texmf-dist/tex/latex/fp/defpattern.sty
-Package: defpattern 1994/10/12
-\actioncount=\count408
-)
-(/usr/share/texmf-dist/tex/latex/fp/fp-basic.sty
-Package: fp-basic 1996/05/13
-\FP@xs=\count409
-\FP@xia=\count410
-\FP@xib=\count411
-\FP@xfa=\count412
-\FP@xfb=\count413
-\FP@rega=\count414
-\FP@regb=\count415
-\FP@regs=\count416
-\FP@times=\count417
-)
-(/usr/share/texmf-dist/tex/latex/fp/fp-addons.sty
-Package: fp-addons 1995/03/15
-)
-(/usr/share/texmf-dist/tex/latex/fp/fp-snap.sty
-Package: fp-snap 1995/04/05
-)
-(/usr/share/texmf-dist/tex/latex/fp/fp-exp.sty
-Package: fp-exp 1995/04/03
-)
-(/usr/share/texmf-dist/tex/latex/fp/fp-trigo.sty
-Package: fp-trigo 1995/04/14
-)
-(/usr/share/texmf-dist/tex/latex/fp/fp-pas.sty
-Package: fp-pas 1994/08/29
-)
-(/usr/share/texmf-dist/tex/latex/fp/fp-random.sty
-Package: fp-random 1995/02/23
-\FPseed=\count418
-)
-(/usr/share/texmf-dist/tex/latex/fp/fp-eqn.sty
-Package: fp-eqn 1995/04/03
-)
-(/usr/share/texmf-dist/tex/latex/fp/fp-upn.sty
-Package: fp-upn 1996/10/21
-)
-(/usr/share/texmf-dist/tex/latex/fp/fp-eval.sty
-Package: fp-eval 1995/04/03
-))
-\diagbox@boxa=\box132
-\diagbox@boxb=\box133
-\diagbox@boxm=\box134
-\diagbox@wd=\dimen381
-\diagbox@ht=\dimen382
-\diagbox@insepl=\dimen383
-\diagbox@insepr=\dimen384
-\diagbox@outsepl=\dimen385
-\diagbox@outsepr=\dimen386
+\diagbox@boxa=\box154
+\diagbox@boxb=\box155
+\diagbox@boxm=\box156
+\diagbox@wd=\dimen386
+\diagbox@ht=\dimen387
+\diagbox@insepl=\dimen388
+\diagbox@insepr=\dimen389
+\diagbox@outsepl=\dimen390
+\diagbox@outsepr=\dimen391
 ))
 (/home/taurgal/texmf/tex/latex/pgfornament/pgfornament.sty
 (/usr/share/texmf-dist/tex/latex/pgfopts/pgfopts.sty
 Package: pgfopts 2014/07/10 v2.1a LaTeX package options with pgfkeys
-\pgfopts@list@add@a@toks=\toks62
-\pgfopts@list@add@b@toks=\toks63
+\pgfopts@list@add@a@toks=\toks63
+\pgfopts@list@add@b@toks=\toks64
 )
 Package: pgfornament 2014/05/31 v0.11 vector ornaments
 
 (/home/taurgal/texmf/tex/latex/pgfornament/pgflibraryvectorian.code.tex))
 (/usr/share/texmf-dist/tex/latex/amscls/amsthm.sty
-Package: amsthm 2017/10/31 v2.20.4
-\thm@style=\toks64
-\thm@bodyfont=\toks65
-\thm@headfont=\toks66
-\thm@notefont=\toks67
-\thm@headpunct=\toks68
+Package: amsthm 2020/05/29 v2.20.6
+\thm@style=\toks65
+\thm@bodyfont=\toks66
+\thm@headfont=\toks67
+\thm@notefont=\toks68
+\thm@headpunct=\toks69
 \thm@preskip=\skip97
 \thm@postskip=\skip98
 \thm@headsep=\skip99
-\dth@everypar=\toks69
+\dth@everypar=\toks70
 ) ********* DS
 (./process_filename_type_classe_nbr_date.tex)
 (/usr/share/texmf-dist/tex/latex/mathtools/empheq.sty
 Package: empheq 2017/03/31 v2.15 Emphasizing equations
-\l_EQ_equationtype_int=\count419
-\l_EQ_alignmentmode_int=\count420
-\l_EQ_totalwidth_dim=\dimen387
-\l_EQ_displaywidth_dim=\dimen388
-\l_EQ_temp_linewidth_dim=\dimen389
-\EmphEqdelimitershortfall=\dimen390
-\EmphEqdelimiterfactor=\count421
-\g_EQ_toptag_height_dim=\dimen391
-\g_EQ_bottomtag_depth_dim=\dimen392
-\g_EQ_toprow_height_dim=\dimen393
-\g_EQ_bottomrow_depth_dim=\dimen394
-\g_EQ_widesttag_dim=\dimen395
-\EQ_mathdisplay_box=\box135
-\EQ_tag_box=\box136
-\g_EQ_temprow_int=\count422
+\l_EQ_equationtype_int=\count407
+\l_EQ_alignmentmode_int=\count408
+\l_EQ_totalwidth_dim=\dimen392
+\l_EQ_displaywidth_dim=\dimen393
+\l_EQ_temp_linewidth_dim=\dimen394
+\l_EQ_linewidth_dim=\dimen395
+\EmphEqdelimitershortfall=\dimen396
+\EmphEqdelimiterfactor=\count409
+\g_EQ_toptag_height_dim=\dimen397
+\g_EQ_bottomtag_depth_dim=\dimen398
+\g_EQ_toprow_height_dim=\dimen399
+\g_EQ_bottomrow_depth_dim=\dimen400
+\g_EQ_widesttag_dim=\dimen401
+\EQ_mathdisplay_box=\box157
+\EQ_tag_box=\box158
+\g_EQ_temprow_int=\count410
 )
 (/usr/share/texmf-dist/tex/latex/fancybox/fancybox.sty
 Package: fancybox 2010/05/15 1.4
 
 Style option: `fancybox' v1.4 <2010/05/15> (tvz)
-\@fancybox=\box137
-\shadowsize=\dimen396
-\@Sbox=\box138
-\do@VerbBox=\toks70
-\the@fancyput=\toks71
-\this@fancyput=\toks72
-\EndVerbatimTokens=\toks73
+\@fancybox=\box159
+\shadowsize=\dimen402
+\@Sbox=\box160
+\do@VerbBox=\toks71
+\the@fancyput=\toks72
+\this@fancyput=\toks73
+\EndVerbatimTokens=\toks74
 \Verbatim@Outfile=\write6
-\Verbatim@Infile=\read4
+\Verbatim@Infile=\read5
 )
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing = inserted for \ifnum.
+./ds-specific_header.tex:156: Missing = inserted for \ifnum.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 I was expecting to see `<', `=', or `>'. Didn't.
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
 
-./ds-specific_header.tex:128: LaTeX Error: Missing \begin{document}.
+./ds-specific_header.tex:156: LaTeX Error: Missing \begin{document}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing = inserted for \ifnum.
+./ds-specific_header.tex:156: Missing = inserted for \ifnum.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 I was expecting to see `<', `=', or `>'. Didn't.
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing = inserted for \ifnum.
+./ds-specific_header.tex:156: Missing = inserted for \ifnum.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 I was expecting to see `<', `=', or `>'. Didn't.
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing = inserted for \ifnum.
+./ds-specific_header.tex:156: Missing = inserted for \ifnum.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 I was expecting to see `<', `=', or `>'. Didn't.
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing = inserted for \ifnum.
+./ds-specific_header.tex:156: Missing = inserted for \ifnum.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 I was expecting to see `<', `=', or `>'. Didn't.
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing = inserted for \ifnum.
+./ds-specific_header.tex:156: Missing = inserted for \ifnum.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 I was expecting to see `<', `=', or `>'. Didn't.
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \gdef 
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing = inserted for \ifnum.
+./ds-specific_header.tex:156: Missing = inserted for \ifnum.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 I was expecting to see `<', `=', or `>'. Didn't.
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing = inserted for \ifnum.
+./ds-specific_header.tex:156: Missing = inserted for \ifnum.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 I was expecting to see `<', `=', or `>'. Didn't.
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing = inserted for \ifnum.
+./ds-specific_header.tex:156: Missing = inserted for \ifnum.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 I was expecting to see `<', `=', or `>'. Didn't.
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing = inserted for \ifnum.
+./ds-specific_header.tex:156: Missing = inserted for \ifnum.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 I was expecting to see `<', `=', or `>'. Didn't.
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Package datenumber: invalid date: \docyear /\docm
+./ds-specific_header.tex:156: Package datenumber: invalid date: \docyear /\docm
 onth /\docday .
 \setmydatenumber ...se \errmessage {\@errmessage }
                                                   \fi \ifnum \the@startyear ...
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 This error message was generated by an \errmessage
 command, so I can't give any explicit help.
 Pretend that you're Hercule Poirot: Examine all clues,
 and deduce the truth by order and method.
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing = inserted for \ifnum.
+./ds-specific_header.tex:156: Missing = inserted for \ifnum.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 I was expecting to see `<', `=', or `>'. Didn't.
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Package datenumber: datenumber < startyear (\docy
+./ds-specific_header.tex:156: Package datenumber: datenumber < startyear (\docy
 ear  < 2000).
 \setmydatenumber ...rtyear (#2 < \the@startyear )}
                                                   \fi \setcounter {@dayscnt}...
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 (That was another \errmessage.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing = inserted for \ifnum.
+./ds-specific_header.tex:156: Missing = inserted for \ifnum.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 I was expecting to see `<', `=', or `>'. Didn't.
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
 look up `weird error' in the index to The TeXbook.)
 
-./ds-specific_header.tex:128: Missing number, treated as zero.
+./ds-specific_header.tex:156: Missing number, treated as zero.
 <to be read again> 
 \
-l.128 \pagestyle{DS}
+l.156 \pagestyle{DS}
                   
 (That makes 100 errors; please try again.)
 
 Here is how much of LuaTeX's memory you used:
- 62544 strings out of 494300
+ 53231 strings out of 480885
  100000,1977958 words of node,token memory allocated
- 2546 words of node memory still in use:
-   7 hlist, 1 vlist, 2 rule, 1 local_par, 1 dir, 31 glue, 4 kern, 1 penalty, 228
- glyph, 43 attribute, 83 glue_spec, 13 attribute_list, 1 temp, 2 if_stack, 2 wri
-te, 1 pdf_colorstack nodes
-   avail lists: 1:11,2:32,3:8,4:5,5:4,6:4,8:3,9:2,10:4,11:2,12:3
- 64472 multiletter control sequences out of 65536+600000
- 75 fonts using 20766279 bytes
- 81i,1n,136p,1029b,446s stack positions out of 5000i,500n,10000p,200000b,100000s
-./ds-specific_header.tex:128:  ==> Fatal error occurred, no output PDF file prod
+ 2499 words of node memory still in use:
+   5 hlist, 1 rule, 1 local_par, 1 dir, 31 glue, 3 kern, 1 penalty, 229 glyph, 4
+1 attribute, 82 glue_spec, 11 attribute_list, 1 temp, 2 if_stack, 2 write, 1 pdf
+_colorstack nodes
+   avail lists: 1:8,2:33,3:7,4:6,5:4,6:5,8:2,9:2,10:5,11:2,12:5
+ 69109 multiletter control sequences out of 65536+600000
+ 48 fonts using 11623955 bytes
+ 83i,0n,138p,1003b,245s stack positions out of 5000i,500n,10000p,200000b,100000s
+./ds-specific_header.tex:156:  ==> Fatal error occurred, no output PDF file prod
 uced!

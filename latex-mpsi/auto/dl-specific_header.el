@@ -26,13 +26,18 @@
     "empheq")
    (TeX-add-symbols
     '("upperRomannumeral" 1)
-    '("tcbsolution" 2))
+    '("tcbsolution" 2)
+    "pyt"
+    "preconsigneds")
    (LaTeX-add-labels
-    "corfirstpage"
-    "TrueLastPage")
+    "corfirstpage")
    (LaTeX-add-environments
     "tcbverbatimwrite"
     '("nscenter" LaTeX-env-args ["argument"] 0))
+   (LaTeX-add-pagestyles
+    "DL"
+    "DLfirstpage"
+    "excor")
    (LaTeX-add-counters
     "corpage")
    (LaTeX-add-tcbuselibraries

@@ -2,11 +2,12 @@
 % \RequirePackage{expl3}
 % \RequirePackage{xparse}
 % \RequirePackage{tabularx}
-
 \newcounter{expri}%
 \newcounter{ttblcurrexprind}%
 \newif\ifheaderinmathmode
 \newif\ifbodyinmathmode
+\newif\ifhidetruthtableanswer
+\hidetruthtableanswertrue
 
 \makeatletter{}
 % Boolean operator and checking functions
@@ -225,7 +226,7 @@
   \pgfkeysgetvalue{%%
     /truthtbl/evalexpr \thettblcurrexprind/.@cmd}{\mymyfun}%
   \xdef\tmpaa{\expandafter\mymyfun\truthtable@currargs\pgfeov}%
-  \ifhandout
+  \ifhidetruthtableanswer
   \if\tmpaa V\relax%
   \g@addto@macro\truthtable@endofline{&\hphantom{V}}%
   \else%

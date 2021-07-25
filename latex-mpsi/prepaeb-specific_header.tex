@@ -31,6 +31,10 @@ footskip=0pt,right=1.2cm,footskip=1cm]{geometry}
 \usepackage{pgfornament}
 \usepackage{amsthm}
 \input{process_filename_type_classe_descr}
+\message{!!********************}
+\message{\doctype}
+\message{********************!!}
+\def\doctype{prepaeb}
 
 \titleformat{\section}
   {\normalfont\sffamily\large\bfseries\centering}
@@ -106,13 +110,35 @@ footskip=0pt,right=1.2cm,footskip=1cm]{geometry}
   theorem style=theoremlike%
 }{prop}
 
-\newtcbtheorem[]{exercice}{Exercice}{%
-  new/crefname={exercice}{exercices},%
-  new/Crefname={Exercice}{Exercices},%
-  theorem style=exercicelike%
-}{ex}
+\newcommand*{\fakebreak}{\par\vspace{\textheight minus \textheight}\pagebreak}
+\makeatletter%
 
-\AtBeginDocument{
+\newtcbtheorem{exercice}{Exercice}{%
+  description delimiters={\og}{\fg},
+  theorem style=plain,
+  lowerbox=ignored,
+  savelowerto=Solutions/\jobname-sol-\thetcbcounter.tex,
+  record={\string\tcbsolution{%
+      \thetcbcounter%
+    }{%
+      Solutions/\jobname-sol-\thetcbcounter.tex%
+    }
+  },
+  code={\tcbset{label={ex-\thetcbcounter}}},%
+  detach title,
+  terminator sign={:~},
+  separator sign none,
+  breakable, blank, new/crefname={exercice}{exercices},
+  new/Crefname={Exercice}{Exercices}, description
+  delimiters={\og}{\fg}, fonttitle=\bfseries,coltitle=ocre, enhanced,%
+  before skip=1em, after skip=1em, left=0pt, right=0pt,
+  fonttitle=\bfseries%
+}{ex}
+\makeatother%
+
+\AfterEndPreamble{
+  \pagenumbering{arabic}
+  \tcbstartrecording[Solutions/\doctype.records]%
 \begin{center}
   \begin{tikzpicture}[
     every node/.style={inner sep=10pt}]
@@ -126,3 +152,33 @@ footskip=0pt,right=1.2cm,footskip=1cm]{geometry}
 \bigskip{}
 }
 
+\fancypagestyle{excor}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \fancyhead[L]{Pot pourri}
+  \fancyhead[C]{Pot pourri}
+  \fancyfoot[R]{%
+    \the\numexpr%
+    \thepage-\getpagerefnumber{LastPage}\relax%
+    /%
+    \the\numexpr%
+    \getpagerefnumber{VeryLastPage}-\getpagerefnumber{LastPage}
+    \relax%
+  }
+  \fancyfoot[L]{Correction}
+}
+
+\AtEndDocument{%
+  \tcbstoprecording%
+  \label{subjectlastpage}%
+  % \clearpage\label{corfirstpage}%
+  % \ifhandout%
+  % \else%
+  % \ifwacom%
+  % \else%
+  % \pagestyle{excor}%
+  % \tcbinputrecords%
+  % \fi
+  % \fi
+  % \label{TrueLastPage}%
+}

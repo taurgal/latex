@@ -1,8 +1,8 @@
-This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Arch Linux)  (format=lualatex 2020.10.31)  5 NOV 2020 09:45
+This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Arch Linux)  (format=lualatex 2020.10.31)  8 DEC 2020 14:39
  restricted system commands enabled.
  file:line:error style messages enabled.
-**\newif\ifhandout\handoutfalse \newif\ifwacom\wacomfalse \input progcolle-spec
-ific_header.tex
+**\newif\ifhandout\handouttrue \newif\ifwacom\wacomfalse \input header_common.t
+ex
 Lua module: luaotfload-main 2020-05-06 3.14 luaotfload entry point
 Lua module: luaotfload-init 2020-05-06 3.14 luaotfload submodule / initialization
 Lua module: lualibs 2020-05-01 2.71 ConTeXt Lua standard libraries.
@@ -51,21 +51,7 @@ Inserting `luaotfload.aux.set_capheight' at position 4 in `luaotfload.patch_font
 Inserting `luaotfload.aux.set_xheight' at position 5 in `luaotfload.patch_font'.
 Lua module: luaotfload-tounicode 2020-05-06 3.14 luaotfload submodule / tounicode
 Inserting `luaotfload.rewrite_fontname' at position 6 in `luaotfload.patch_font'.
- (./progcolle-specific_header.tex
-
-./progcolle-specific_header.tex:1: LaTeX Error: \usepackage before \documentcla
-ss.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1 ...p=1.2cm,bottom=1.0cm,left=1.2cm,right=1.2cm]{
-                                                  geometry}
-\usepackage may only appear in the document preamble, i.e.,
-between \documentclass and \begin{document}.
-
-(./header_common.tex
+ (./header_common.tex
 
 ./header_common.tex:1: LaTeX Error: \usepackage before \documentclass.
 
@@ -172,8 +158,8 @@ l.9 \usepackage[normalem]{
 between \documentclass and \begin{document}.
 
 ./header_common.tex:11: Undefined control sequence.
-l.11 \setmainfont
-               {Linux Libertine O}
+l.11 \defaultfontfeatures
+                       [EBGaramond]{Ligatures=TeX,Numbers={Lining,Proportion...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -187,14 +173,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.11 \setmainfont{L
-                 inux Libertine O}
+l.11 \defaultfontfeatures[
+                        EBGaramond]{Ligatures=TeX,Numbers={Lining,Proportion...
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 ./header_common.tex:12: Undefined control sequence.
-l.12 \setsansfont
-               {Linux Biolinum O}
+l.12 \setmainfont
+               [
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -202,43 +188,9 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 11--13
-[]Linux
+Overfull \hbox (20.0pt too wide) in paragraph at lines 11--19
+[][EBGaramond]Ligatures=TeX,Numbers=Lining,Proportional
  []
-
-./header_common.tex:17: Extra \else.
-l.17 \else
-        %
-I'm ignoring this; it doesn't match any \if.
-
-
-./header_common.tex:18: LaTeX Error: \usepackage before \documentclass.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.18   \usepackage[utf8]{
-                       inputenc}%
-\usepackage may only appear in the document preamble, i.e.,
-between \documentclass and \begin{document}.
-
-./header_common.tex:19: Extra \fi.
-l.19 \fi
-      
-I'm ignoring this; it doesn't match any \if.
-
-
-./header_common.tex:20: LaTeX Error: \usepackage before \documentclass.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.20 \usepackage{
-               xcolor}
-\usepackage may only appear in the document preamble, i.e.,
-between \documentclass and \begin{document}.
 
 
 ./header_common.tex:21: LaTeX Error: \usepackage before \documentclass.
@@ -247,70 +199,41 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.21 \usepackage{
-               dsfont}
+l.21 \usepackage[math-style=french,warnings-off={
+                                               mathtools-colon,mathtools-ove...
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
 
-./header_common.tex:22: LaTeX Error: \usepackage before \documentclass.
+./header_common.tex:21: LaTeX Error: Missing \begin{document}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.22 \usepackage{
-               suffix}
-\usepackage may only appear in the document preamble, i.e.,
-between \documentclass and \begin{document}.
+l.21 ...off={mathtools-colon,mathtools-overbracket}]
+                                                  {unicode-math}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+./header_common.tex:22: Undefined control sequence.
+l.22 \setmathfont
+               [StylisticSet={2}]{Garamond-Math.otf}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
 
-./header_common.tex:23: LaTeX Error: \usepackage before \documentclass.
+Overfull \hbox (20.0pt too wide) in paragraph at lines 21--23
+[]]unicode-
+ []
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.23 \usepackage{
-               soul}
-\usepackage may only appear in the document preamble, i.e.,
-between \documentclass and \begin{document}.
-
-
-./header_common.tex:25: LaTeX Error: \usepackage before \documentclass.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.25 \usepackage{
-               expl3}
-\usepackage may only appear in the document preamble, i.e.,
-between \documentclass and \begin{document}.
-
-
-./header_common.tex:26: LaTeX Error: \usepackage before \documentclass.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.26 \usepackage{
-               etoolbox}
-\usepackage may only appear in the document preamble, i.e.,
-between \documentclass and \begin{document}.
-
-
-./header_common.tex:27: LaTeX Error: \usepackage before \documentclass.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.27 \usepackage{
-               xstring}
-\usepackage may only appear in the document preamble, i.e.,
-between \documentclass and \begin{document}.
+./header_common.tex:27: Extra \else.
+l.27 \else
+        %
+I'm ignoring this; it doesn't match any \if.
 
 
 ./header_common.tex:28: LaTeX Error: \usepackage before \documentclass.
@@ -319,13 +242,114 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.28 \usepackage{
+l.28   \usepackage[utf8]{
+                       inputenc}%
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+./header_common.tex:29: Extra \fi.
+l.29 \fi
+      
+I'm ignoring this; it doesn't match any \if.
+
+
+./header_common.tex:30: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.30 \usepackage{
+               xcolor}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./header_common.tex:31: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.31 \usepackage{
+               dsfont}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./header_common.tex:32: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.32 \usepackage{
+               suffix}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./header_common.tex:33: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.33 \usepackage{
+               soul}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./header_common.tex:35: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.35 \usepackage{
+               expl3}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./header_common.tex:36: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.36 \usepackage{
+               etoolbox}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./header_common.tex:37: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.37 \usepackage{
+               xstring}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./header_common.tex:38: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.38 \usepackage{
                xparse}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
-./header_common.tex:36: Undefined control sequence.
-l.36 \DeclareDocumentCommand
+./header_common.tex:46: Undefined control sequence.
+l.46 \DeclareDocumentCommand
                           \derivative{ s o m g d() }
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -333,8 +357,8 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:36: Undefined control sequence.
-l.36 \DeclareDocumentCommand\derivative
+./header_common.tex:46: Undefined control sequence.
+l.46 \DeclareDocumentCommand\derivative
                                      { s o m g d() }
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -343,19 +367,19 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-./header_common.tex:36: LaTeX Error: Missing \begin{document}.
+./header_common.tex:46: LaTeX Error: Missing \begin{document}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.36 \DeclareDocumentCommand\derivative{ s
+l.46 \DeclareDocumentCommand\derivative{ s
                                          o m g d() }
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-./header_common.tex:43: Undefined control sequence.
-l.43 	\IfBooleanTF
+./header_common.tex:53: Undefined control sequence.
+l.53 	\IfBooleanTF
                 {#1}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -363,17 +387,17 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:43: You can't use `macro parameter character #' in horizonta
+./header_common.tex:53: You can't use `macro parameter character #' in horizonta
 l mode.
-l.43 	\IfBooleanTF{#
+l.53 	\IfBooleanTF{#
                   1}
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn''t ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
-./header_common.tex:46: Undefined control sequence.
-l.46 	\IfNoValueTF
+./header_common.tex:56: Undefined control sequence.
+l.56 	\IfNoValueTF
                 {#4}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -381,17 +405,17 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:46: You can't use `macro parameter character #' in horizonta
+./header_common.tex:56: You can't use `macro parameter character #' in horizonta
 l mode.
-l.46 	\IfNoValueTF{#
+l.56 	\IfNoValueTF{#
                   4}
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn''t ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
-./header_common.tex:48: Undefined control sequence.
-l.48 		\IfNoValueTF
+./header_common.tex:58: Undefined control sequence.
+l.58 		\IfNoValueTF
                  {#5}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -399,17 +423,17 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:48: You can't use `macro parameter character #' in horizonta
+./header_common.tex:58: You can't use `macro parameter character #' in horizonta
 l mode.
-l.48 		\IfNoValueTF{#
+l.58 		\IfNoValueTF{#
                    5}
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn''t ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
-./header_common.tex:49: Undefined control sequence.
-l.49 		{\fractype
+./header_common.tex:59: Undefined control sequence.
+l.59 		{\fractype
                {\diffd \IfNoValueTF{#2}{}{^{#2}}}{\diffd #3\IfNoValueTF{#2}{...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -418,19 +442,19 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-./header_common.tex:49: LaTeX Error: \mathrm allowed only in math mode.
+./header_common.tex:59: LaTeX Error: \mathrm allowed only in math mode.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.49 		{\fractype{\diffd
+l.59 		{\fractype{\diffd
                        \IfNoValueTF{#2}{}{^{#2}}}{\diffd #3\IfNoValueTF{#2}{...
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-./header_common.tex:49: Undefined control sequence.
-l.49 		{\fractype{\diffd \IfNoValueTF
+./header_common.tex:59: Undefined control sequence.
+l.59 		{\fractype{\diffd \IfNoValueTF
                                    {#2}{}{^{#2}}}{\diffd #3\IfNoValueTF{#2}{...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -438,38 +462,38 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:49: You can't use `macro parameter character #' in horizonta
+./header_common.tex:59: You can't use `macro parameter character #' in horizonta
 l mode.
-l.49 		{\fractype{\diffd \IfNoValueTF{#
+l.59 		{\fractype{\diffd \IfNoValueTF{#
                                      2}{}{^{#2}}}{\diffd #3\IfNoValueTF{#2}{...
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn''t ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
-./header_common.tex:49: Missing $ inserted.
+./header_common.tex:59: Missing $ inserted.
 <inserted text> 
 $
-l.49 		{\fractype{\diffd \IfNoValueTF{#2}{}{^
+l.59 		{\fractype{\diffd \IfNoValueTF{#2}{}{^
                                            {#2}}}{\diffd #3\IfNoValueTF{#2}{...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 49.
+(Font)              <7> on input line 59.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 49.
-./header_common.tex:49: You can't use `macro parameter character #' in math mode
+(Font)              <5> on input line 59.
+./header_common.tex:59: You can't use `macro parameter character #' in math mode
 .
-l.49 		{\fractype{\diffd \IfNoValueTF{#2}{}{^{#
+l.59 		{\fractype{\diffd \IfNoValueTF{#2}{}{^{#
                                              2}}}{\diffd #3\IfNoValueTF{#2}{...
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn''t ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
-./header_common.tex:49: Extra }, or forgotten $.
-l.49 		{\fractype{\diffd \IfNoValueTF{#2}{}{^{#2}}
+./header_common.tex:59: Extra }, or forgotten $.
+l.59 		{\fractype{\diffd \IfNoValueTF{#2}{}{^{#2}}
                                                 }{\diffd #3\IfNoValueTF{#2}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -477,8 +501,8 @@ you forgot something else, as in `\hbox{$x}'. In such cases
 the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
-./header_common.tex:49: Extra }, or forgotten $.
-l.49 		{\fractype{\diffd \IfNoValueTF{#2}{}{^{#2}}}
+./header_common.tex:59: Extra }, or forgotten $.
+l.59 		{\fractype{\diffd \IfNoValueTF{#2}{}{^{#2}}}
                                                  {\diffd #3\IfNoValueTF{#2}{...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -486,17 +510,17 @@ you forgot something else, as in `\hbox{$x}'. In such cases
 the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
-./header_common.tex:49: You can't use `macro parameter character #' in math mode
+./header_common.tex:59: You can't use `macro parameter character #' in math mode
 .
-l.49 ...e{\diffd \IfNoValueTF{#2}{}{^{#2}}}{\diffd #
+l.59 ...e{\diffd \IfNoValueTF{#2}{}{^{#2}}}{\diffd #
                                                   3\IfNoValueTF{#2}{}{^{#2}}}}
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn''t ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
-./header_common.tex:49: Undefined control sequence.
-l.49 ...oValueTF{#2}{}{^{#2}}}{\diffd #3\IfNoValueTF
+./header_common.tex:59: Undefined control sequence.
+l.59 ...oValueTF{#2}{}{^{#2}}}{\diffd #3\IfNoValueTF
                                                   {#2}{}{^{#2}}}}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -504,26 +528,26 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:49: You can't use `macro parameter character #' in math mode
+./header_common.tex:59: You can't use `macro parameter character #' in math mode
 .
-l.49 ...alueTF{#2}{}{^{#2}}}{\diffd #3\IfNoValueTF{#
+l.59 ...alueTF{#2}{}{^{#2}}}{\diffd #3\IfNoValueTF{#
                                                   2}{}{^{#2}}}}
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn''t ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
-./header_common.tex:49: You can't use `macro parameter character #' in math mode
+./header_common.tex:59: You can't use `macro parameter character #' in math mode
 .
-l.49 ...2}{}{^{#2}}}{\diffd #3\IfNoValueTF{#2}{}{^{#
+l.59 ...2}{}{^{#2}}}{\diffd #3\IfNoValueTF{#2}{}{^{#
                                                   2}}}}
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn''t ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
-./header_common.tex:49: Extra }, or forgotten $.
-l.49 ...^{#2}}}{\diffd #3\IfNoValueTF{#2}{}{^{#2}}}}
+./header_common.tex:59: Extra }, or forgotten $.
+l.59 ...^{#2}}}{\diffd #3\IfNoValueTF{#2}{}{^{#2}}}}
                                                   
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -531,8 +555,8 @@ you forgot something else, as in `\hbox{$x}'. In such cases
 the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
-./header_common.tex:50: Undefined control sequence.
-l.50 		{\fractype
+./header_common.tex:60: Undefined control sequence.
+l.60 		{\fractype
                {\diffd \IfNoValueTF{#2}{}{^{#2}}}{\diffd #3\IfNoValueTF{#2}{...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -540,8 +564,8 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:50: Undefined control sequence.
-l.50 		{\fractype{\diffd \IfNoValueTF
+./header_common.tex:60: Undefined control sequence.
+l.60 		{\fractype{\diffd \IfNoValueTF
                                    {#2}{}{^{#2}}}{\diffd #3\IfNoValueTF{#2}{...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -549,35 +573,35 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:50: You can't use `macro parameter character #' in math mode
+./header_common.tex:60: You can't use `macro parameter character #' in math mode
 .
-l.50 		{\fractype{\diffd \IfNoValueTF{#
+l.60 		{\fractype{\diffd \IfNoValueTF{#
                                      2}{}{^{#2}}}{\diffd #3\IfNoValueTF{#2}{...
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn''t ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
-./header_common.tex:50: You can't use `macro parameter character #' in math mode
+./header_common.tex:60: You can't use `macro parameter character #' in math mode
 .
-l.50 		{\fractype{\diffd \IfNoValueTF{#2}{}{^{#
+l.60 		{\fractype{\diffd \IfNoValueTF{#2}{}{^{#
                                              2}}}{\diffd #3\IfNoValueTF{#2}{...
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn''t ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
-./header_common.tex:50: You can't use `macro parameter character #' in math mode
+./header_common.tex:60: You can't use `macro parameter character #' in math mode
 .
-l.50 ...e{\diffd \IfNoValueTF{#2}{}{^{#2}}}{\diffd #
+l.60 ...e{\diffd \IfNoValueTF{#2}{}{^{#2}}}{\diffd #
                                                   3\IfNoValueTF{#2}{}{^{#2}}...
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn''t ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
-./header_common.tex:50: Undefined control sequence.
-l.50 ...oValueTF{#2}{}{^{#2}}}{\diffd #3\IfNoValueTF
+./header_common.tex:60: Undefined control sequence.
+l.60 ...oValueTF{#2}{}{^{#2}}}{\diffd #3\IfNoValueTF
                                                   {#2}{}{^{#2}}} \argopen(#5...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -585,26 +609,26 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:50: You can't use `macro parameter character #' in math mode
+./header_common.tex:60: You can't use `macro parameter character #' in math mode
 .
-l.50 ...alueTF{#2}{}{^{#2}}}{\diffd #3\IfNoValueTF{#
+l.60 ...alueTF{#2}{}{^{#2}}}{\diffd #3\IfNoValueTF{#
                                                   2}{}{^{#2}}} \argopen(#5\a...
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn''t ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
-./header_common.tex:50: You can't use `macro parameter character #' in math mode
+./header_common.tex:60: You can't use `macro parameter character #' in math mode
 .
-l.50 ...2}{}{^{#2}}}{\diffd #3\IfNoValueTF{#2}{}{^{#
+l.60 ...2}{}{^{#2}}}{\diffd #3\IfNoValueTF{#2}{}{^{#
                                                   2}}} \argopen(#5\argclose)}
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn''t ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
-./header_common.tex:50: Undefined control sequence.
-l.50 ...\diffd #3\IfNoValueTF{#2}{}{^{#2}}} \argopen
+./header_common.tex:60: Undefined control sequence.
+l.60 ...\diffd #3\IfNoValueTF{#2}{}{^{#2}}} \argopen
                                                   (#5\argclose)}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -612,17 +636,17 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:50: You can't use `macro parameter character #' in math mode
+./header_common.tex:60: You can't use `macro parameter character #' in math mode
 .
-l.50 ...iffd #3\IfNoValueTF{#2}{}{^{#2}}} \argopen(#
+l.60 ...iffd #3\IfNoValueTF{#2}{}{^{#2}}} \argopen(#
                                                   5\argclose)}
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn''t ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
-./header_common.tex:50: Undefined control sequence.
-l.50 ...NoValueTF{#2}{}{^{#2}}} \argopen(#5\argclose
+./header_common.tex:60: Undefined control sequence.
+l.60 ...NoValueTF{#2}{}{^{#2}}} \argopen(#5\argclose
                                                   )}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -630,8 +654,8 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:51: Extra }, or forgotten $.
-l.51 	}
+./header_common.tex:61: Extra }, or forgotten $.
+l.61 	}
      
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -639,8 +663,8 @@ you forgot something else, as in `\hbox{$x}'. In such cases
 the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
-./header_common.tex:52: Undefined control sequence.
-l.52 	{\fractype
+./header_common.tex:62: Undefined control sequence.
+l.62 	{\fractype
               {\diffd \IfNoValueTF{#2}{}{^{#2}} #3}{\diffd #4\IfNoValueTF{#2...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -648,8 +672,8 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:52: Undefined control sequence.
-l.52 	{\fractype{\diffd \IfNoValueTF
+./header_common.tex:62: Undefined control sequence.
+l.62 	{\fractype{\diffd \IfNoValueTF
                                   {#2}{}{^{#2}} #3}{\diffd #4\IfNoValueTF{#2...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -657,44 +681,44 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:52: You can't use `macro parameter character #' in math mode
+./header_common.tex:62: You can't use `macro parameter character #' in math mode
 .
-l.52 	{\fractype{\diffd \IfNoValueTF{#
+l.62 	{\fractype{\diffd \IfNoValueTF{#
                                     2}{}{^{#2}} #3}{\diffd #4\IfNoValueTF{#2...
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn''t ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
-./header_common.tex:52: You can't use `macro parameter character #' in math mode
+./header_common.tex:62: You can't use `macro parameter character #' in math mode
 .
-l.52 	{\fractype{\diffd \IfNoValueTF{#2}{}{^{#
+l.62 	{\fractype{\diffd \IfNoValueTF{#2}{}{^{#
                                             2}} #3}{\diffd #4\IfNoValueTF{#2...
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn''t ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
-./header_common.tex:52: You can't use `macro parameter character #' in math mode
+./header_common.tex:62: You can't use `macro parameter character #' in math mode
 .
-l.52 	{\fractype{\diffd \IfNoValueTF{#2}{}{^{#2}} #
+l.62 	{\fractype{\diffd \IfNoValueTF{#2}{}{^{#2}} #
                                                  3}{\diffd #4\IfNoValueTF{#2...
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn''t ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
-./header_common.tex:52: You can't use `macro parameter character #' in math mode
+./header_common.tex:62: You can't use `macro parameter character #' in math mode
 .
-l.52 ...diffd \IfNoValueTF{#2}{}{^{#2}} #3}{\diffd #
+l.62 ...diffd \IfNoValueTF{#2}{}{^{#2}} #3}{\diffd #
                                                   4\IfNoValueTF{#2}{}{^{#2}}}}
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn''t ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
-./header_common.tex:52: Undefined control sequence.
-l.52 ...lueTF{#2}{}{^{#2}} #3}{\diffd #4\IfNoValueTF
+./header_common.tex:62: Undefined control sequence.
+l.62 ...lueTF{#2}{}{^{#2}} #3}{\diffd #4\IfNoValueTF
                                                   {#2}{}{^{#2}}}}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -702,26 +726,26 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:52: You can't use `macro parameter character #' in math mode
+./header_common.tex:62: You can't use `macro parameter character #' in math mode
 .
-l.52 ...eTF{#2}{}{^{#2}} #3}{\diffd #4\IfNoValueTF{#
+l.62 ...eTF{#2}{}{^{#2}} #3}{\diffd #4\IfNoValueTF{#
                                                   2}{}{^{#2}}}}
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn''t ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
-./header_common.tex:52: You can't use `macro parameter character #' in math mode
+./header_common.tex:62: You can't use `macro parameter character #' in math mode
 .
-l.52 ...}{^{#2}} #3}{\diffd #4\IfNoValueTF{#2}{}{^{#
+l.62 ...}{^{#2}} #3}{\diffd #4\IfNoValueTF{#2}{}{^{#
                                                   2}}}}
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn''t ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
-./header_common.tex:53: Extra }, or forgotten $.
-l.53 }
+./header_common.tex:63: Extra }, or forgotten $.
+l.63 }
     
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -729,33 +753,33 @@ you forgot something else, as in `\hbox{$x}'. In such cases
 the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
-./header_common.tex:55: Missing $ inserted.
+./header_common.tex:65: Missing $ inserted.
 <inserted text> 
 $
-l.55 
+l.65 
    
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Overfull \hbox (132.4726pt too wide) in paragraph at lines 36--55
+Overfull \hbox (132.4726pt too wide) in paragraph at lines 46--65
 []somgd()145d2$[][][][][]$ 
  []
 
 
-./header_common.tex:56: LaTeX Error: \usepackage before \documentclass.
+./header_common.tex:66: LaTeX Error: \usepackage before \documentclass.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.56 \usepackage[french]{
+l.66 \usepackage[french]{
                        babel}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
-./header_common.tex:57: Undefined control sequence.
-l.57 \frenchbsetup
+./header_common.tex:67: Undefined control sequence.
+l.67 \frenchbsetup
                 {og = «, fg = »}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -764,43 +788,43 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-./header_common.tex:57: LaTeX Error: Missing \begin{document}.
+./header_common.tex:67: LaTeX Error: Missing \begin{document}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.57 \frenchbsetup{o
+l.67 \frenchbsetup{o
                   g = «, fg = »}
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-./header_common.tex:58: LaTeX Error: \usepackage before \documentclass.
+./header_common.tex:68: LaTeX Error: \usepackage before \documentclass.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.58 \usepackage[activate={
-                         true,nocompatibility},final,tracking=true]{microtype}
+l.68 \usepackage[activate={
+                         true,nocompatibility},final,tracking=true,bebal=tru...
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
 
-./header_common.tex:71: LaTeX Error: \usepackage before \documentclass.
+./header_common.tex:81: LaTeX Error: \usepackage before \documentclass.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.71 \usepackage{
+l.81 \usepackage{
                ellipsis}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
-./header_common.tex:72: Undefined control sequence.
-l.72 \definecolor
+./header_common.tex:82: Undefined control sequence.
+l.82 \definecolor
                {ocre}{RGB}{243,102,25}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -808,8 +832,8 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:73: Undefined control sequence.
-l.73 \definecolor
+./header_common.tex:83: Undefined control sequence.
+l.83 \definecolor
                {teal}{RGB}{243,102,25}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -817,8 +841,8 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:74: Undefined control sequence.
-l.74 \definecolor
+./header_common.tex:84: Undefined control sequence.
+l.84 \definecolor
                {lightgreen}{RGB}{50,200,50}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -827,88 +851,25 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-./header_common.tex:75: LaTeX Error: \usepackage before \documentclass.
+./header_common.tex:85: LaTeX Error: \usepackage before \documentclass.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.75 \usepackage{
+l.85 \usepackage{
                datenumber}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
-./header_common.tex:76: Undefined control sequence.
-l.76 \setstartyear
+./header_common.tex:86: Undefined control sequence.
+l.86 \setstartyear
                 {2000}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
-
-
-./header_common.tex:77: LaTeX Error: \usepackage before \documentclass.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.77 \usepackage{
-               titlecaps}
-\usepackage may only appear in the document preamble, i.e.,
-between \documentclass and \begin{document}.
-
-
-./header_common.tex:83: LaTeX Error: \usepackage before \documentclass.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.83 \usepackage{
-               siunitx}
-\usepackage may only appear in the document preamble, i.e.,
-between \documentclass and \begin{document}.
-
-./header_common.tex:84: Undefined control sequence.
-l.84 \sisetup
-           {locale = FR, binary-units=true}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-./header_common.tex:85: Undefined control sequence.
-l.85 \DeclareSIUnit
-                  \shortbit  { b }
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-./header_common.tex:85: Undefined control sequence.
-l.85 \DeclareSIUnit \shortbit
-                             { b }
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-./header_common.tex:86: LaTeX Error: \usepackage before \documentclass.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.86 \usepackage{
-               pdftexcmds}
-\usepackage may only appear in the document preamble, i.e.,
-between \documentclass and \begin{document}.
 
 
 ./header_common.tex:87: LaTeX Error: \usepackage before \documentclass.
@@ -918,64 +879,25 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.87 \usepackage{
-               fancyhdr}
+               titlecaps}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
 
-./header_common.tex:88: LaTeX Error: \usepackage before \documentclass.
+./header_common.tex:93: LaTeX Error: \usepackage before \documentclass.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 \usepackage{
-               textcomp}
+l.93 \usepackage{
+               siunitx}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
-
-
-./header_common.tex:90: LaTeX Error: \usepackage before \documentclass.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.90 \usepackage[explicit]{
-                         titlesec}
-\usepackage may only appear in the document preamble, i.e.,
-between \documentclass and \begin{document}.
-
-./header_common.tex:91: Undefined control sequence.
-l.91 \definecolor
-               {titlebgdark}{RGB}{0,163,243}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-./header_common.tex:92: Undefined control sequence.
-l.92 \definecolor
-               {titlebglight}{RGB}{191,233,251}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-./header_common.tex:93: Undefined control sequence.
-l.93 \definecolor
-               {othertitlebgdark}{RGB}{0,243,163}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
 ./header_common.tex:94: Undefined control sequence.
-l.94 \definecolor
-               {othertitlebglight}{RGB}{191,251,233}
+l.94 \sisetup
+           {locale = FR, binary-units=true}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -983,22 +905,46 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ./header_common.tex:95: Undefined control sequence.
-l.95 \definecolor
-               {CoverLeftBarColor}{RGB}{191,233,251}
+l.95 \DeclareSIUnit
+                  \shortbit  { b }
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:96: Undefined control sequence.
-l.96 \definecolor
-               {CoverUpperBarColor}{RGB}{0,163,243}
+./header_common.tex:95: Undefined control sequence.
+l.95 \DeclareSIUnit \shortbit
+                             { b }
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
+
+
+./header_common.tex:96: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.96 \usepackage{
+               pdftexcmds}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./header_common.tex:97: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.97 \usepackage{
+               fancyhdr}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
 
 
 ./header_common.tex:98: LaTeX Error: \usepackage before \documentclass.
@@ -1008,19 +954,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.98 \usepackage{
-               mathrsfs}
-\usepackage may only appear in the document preamble, i.e.,
-between \documentclass and \begin{document}.
-
-
-./header_common.tex:99: LaTeX Error: \usepackage before \documentclass.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.99 \usepackage{
-               stmaryrd}
+               textcomp}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
@@ -1031,34 +965,64 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.100 \usepackage{
-                esvect}
+l.100 \usepackage[explicit]{
+                          titlesec}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
+./header_common.tex:101: Undefined control sequence.
+l.101 \definecolor
+                {titlebgdark}{RGB}{0,163,243}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-./header_common.tex:106: LaTeX Error: \usepackage before \documentclass.
+./header_common.tex:102: Undefined control sequence.
+l.102 \definecolor
+                {titlebglight}{RGB}{191,233,251}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.106 \usepackage[np]{
-                    numprint}
-\usepackage may only appear in the document preamble, i.e.,
-between \documentclass and \begin{document}.
+./header_common.tex:103: Undefined control sequence.
+l.103 \definecolor
+                {othertitlebgdark}{RGB}{0,243,163}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
+./header_common.tex:104: Undefined control sequence.
+l.104 \definecolor
+                {othertitlebglight}{RGB}{191,251,233}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-./header_common.tex:107: LaTeX Error: \usepackage before \documentclass.
+./header_common.tex:105: Undefined control sequence.
+l.105 \definecolor
+                {CoverLeftBarColor}{RGB}{191,233,251}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.107 \usepackage{
-                icomma}
-\usepackage may only appear in the document preamble, i.e.,
-between \documentclass and \begin{document}.
+./header_common.tex:106: Undefined control sequence.
+l.106 \definecolor
+                {CoverUpperBarColor}{RGB}{0,163,243}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
 
 ./header_common.tex:108: LaTeX Error: \usepackage before \documentclass.
@@ -1067,8 +1031,20 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.108 \usepackage[newcommands]{
-                             ragged2e}
+l.108 \usepackage{
+                mathrsfs}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./header_common.tex:109: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.109 \usepackage{
+                stmaryrd}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
@@ -1080,36 +1056,84 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.110 \usepackage{
+                esvect}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./header_common.tex:116: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.116 \usepackage[np]{
+                    numprint}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./header_common.tex:117: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.117 \usepackage{
+                icomma}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./header_common.tex:118: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.118 \usepackage[newcommands]{
+                             ragged2e}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+./header_common.tex:120: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.120 \usepackage{
                 multicol}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
 
-./header_common.tex:111: LaTeX Error: \usepackage before \documentclass.
+./header_common.tex:121: LaTeX Error: \usepackage before \documentclass.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.111 \usepackage{
+l.121 \usepackage{
                 booktabs}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
 
-./header_common.tex:115: LaTeX Error: \usepackage before \documentclass.
+./header_common.tex:125: LaTeX Error: \usepackage before \documentclass.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.115 \usepackage{
+l.125 \usepackage{
                 enumitem}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
-./header_common.tex:116: Undefined control sequence.
-l.116 \setlist
+./header_common.tex:126: Undefined control sequence.
+l.126 \setlist
             [itemize,1]{label={\textbullet}}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1117,8 +1141,8 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:119: Undefined control sequence.
-l.119 \enitkv@key
+./header_common.tex:129: Undefined control sequence.
+l.129 \enitkv@key
                {}{nbcols}{%
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1126,8 +1150,8 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:120: Undefined control sequence.
-l.120   \ifnumcomp
+./header_common.tex:130: Undefined control sequence.
+l.130   \ifnumcomp
                 {#1}{=}{1}{}{%
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1135,51 +1159,51 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:120: You can't use `macro parameter character #' in horizont
+./header_common.tex:130: You can't use `macro parameter character #' in horizont
 al mode.
-l.120   \ifnumcomp{#
+l.130   \ifnumcomp{#
                   1}{=}{1}{}{%
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn''t ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
-./header_common.tex:123: Illegal parameter number in definition of \enit@before
+./header_common.tex:133: Illegal parameter number in definition of \enit@before
 .
 <to be read again> 
 1
-l.123       \begin{multicols}{#1
+l.133       \begin{multicols}{#1
                               }}%
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
 
-./header_common.tex:130: LaTeX Error: \usepackage before \documentclass.
+./header_common.tex:140: LaTeX Error: \usepackage before \documentclass.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.130 \usepackage{
+l.140 \usepackage{
                 pageslts}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
 
-./header_common.tex:132: LaTeX Error: \usepackage before \documentclass.
+./header_common.tex:142: LaTeX Error: \usepackage before \documentclass.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.132 \usepackage{
+l.142 \usepackage{
                 tikz}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
-./header_common.tex:133: Undefined control sequence.
-l.133 \usetikzlibrary
+./header_common.tex:143: Undefined control sequence.
+l.143 \usetikzlibrary
                    {matrix,calc,arrows,arrows.meta,positioning,tikzmark,deco...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1187,8 +1211,8 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:134: Undefined control sequence.
-l.134 \tikzset
+./header_common.tex:144: Undefined control sequence.
+l.144 \tikzset
             {>=latex}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1197,19 +1221,19 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-./header_common.tex:147: LaTeX Error: \usepackage before \documentclass.
+./header_common.tex:157: LaTeX Error: \usepackage before \documentclass.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.147 \usepackage{
+l.157 \usepackage{
                 tkz-tab}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
-./header_common.tex:148: Undefined control sequence.
-l.148 \tikzset
+./header_common.tex:158: Undefined control sequence.
+l.158 \tikzset
             {t style/.style = {style = solid}}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1217,8 +1241,8 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:149: Undefined control sequence.
-l.149 \presetkeys
+./header_common.tex:159: Undefined control sequence.
+l.159 \presetkeys
                     [TAB] {tbs} {nocadre  = true}{}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1227,19 +1251,19 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-./header_common.tex:151: LaTeX Error: \usepackage before \documentclass.
+./header_common.tex:161: LaTeX Error: \usepackage before \documentclass.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.151 \usepackage[skins,theorems,breakable,xparse]{
+l.161 \usepackage[skins,theorems,breakable,xparse]{
                                                  tcolorbox}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
-./header_common.tex:152: Undefined control sequence.
-l.152 \tcbset
+./header_common.tex:162: Undefined control sequence.
+l.162 \tcbset
            {
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1250,19 +1274,19 @@ and I'll forget about whatever was undefined.
 \c@tmp=\count163
 \symyhlargesymbols=\mathgroup4
 
-./header_common.tex:214: LaTeX Error: \usepackage before \documentclass.
+./header_common.tex:224: LaTeX Error: \usepackage before \documentclass.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.214 \usepackage{
+l.224 \usepackage{
                 adjustbox}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
-./header_common.tex:219: Undefined control sequence.
-l.219 \DeclareListParser
+./header_common.tex:229: Undefined control sequence.
+l.229 \DeclareListParser
                       {\doscsvlist}{;}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1270,8 +1294,8 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:219: Undefined control sequence.
-l.219 \DeclareListParser{\doscsvlist
+./header_common.tex:229: Undefined control sequence.
+l.229 \DeclareListParser{\doscsvlist
                                   }{;}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1280,19 +1304,19 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-./header_common.tex:261: LaTeX Error: \usepackage before \documentclass.
+./header_common.tex:271: LaTeX Error: \usepackage before \documentclass.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.261 \usepackage{
+l.271 \usepackage{
                 pgfplots}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
-./header_common.tex:262: Undefined control sequence.
-l.262 \pgfplotsset
+./header_common.tex:272: Undefined control sequence.
+l.272 \pgfplotsset
                 {%
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1300,8 +1324,8 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:266: Undefined control sequence.
-l.266 \pgfplotsset
+./header_common.tex:276: Undefined control sequence.
+l.276 \pgfplotsset
                 {%
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1310,19 +1334,19 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-./header_common.tex:298: LaTeX Error: \usepackage before \documentclass.
+./header_common.tex:308: LaTeX Error: \usepackage before \documentclass.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.298 \usepackage{
+l.308 \usepackage{
                 tabularx}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
-./header_common.tex:299: Undefined control sequence.
-l.299 \definecolor
+./header_common.tex:309: Undefined control sequence.
+l.309 \definecolor
                 {graycell}{gray}{0.75}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1330,8 +1354,8 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:300: Undefined control sequence.
-l.300 \definecolor
+./header_common.tex:310: Undefined control sequence.
+l.310 \definecolor
                 {graycol}{gray}{0.75}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1339,8 +1363,8 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:302: Undefined control sequence.
-l.302 \newcolumntype
+./header_common.tex:312: Undefined control sequence.
+l.312 \newcolumntype
                   {M}{>{\Centering$}X<{$}}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1348,8 +1372,8 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:302: Undefined control sequence.
-l.302 \newcolumntype{M}{>{\Centering
+./header_common.tex:312: Undefined control sequence.
+l.312 \newcolumntype{M}{>{\Centering
                                   $}X<{$}}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1357,10 +1381,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:302: Extra }, or forgotten $.
+./header_common.tex:312: Extra }, or forgotten $.
 <recently read> }
  
-l.302 \newcolumntype{M}{>{\Centering$}
+l.312 \newcolumntype{M}{>{\Centering$}
                                     X<{$}}
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -1368,10 +1392,10 @@ you forgot something else, as in `\hbox{$x}'. In such cases
 the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
-./header_common.tex:302: Missing } inserted.
+./header_common.tex:312: Missing } inserted.
 <inserted text> 
 }
-l.302 \newcolumntype{M}{>{\Centering$}X<{$
+l.312 \newcolumntype{M}{>{\Centering$}X<{$
                                         }}
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1379,8 +1403,8 @@ With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-./header_common.tex:303: Undefined control sequence.
-l.303 \newcolumntype
+./header_common.tex:313: Undefined control sequence.
+l.313 \newcolumntype
                   {L}{>{\RaggedRight}X<{}}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1388,8 +1412,8 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:303: Undefined control sequence.
-l.303 \newcolumntype{L}{>{\RaggedRight
+./header_common.tex:313: Undefined control sequence.
+l.313 \newcolumntype{L}{>{\RaggedRight
                                     }X<{}}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1397,8 +1421,8 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:304: Undefined control sequence.
-l.304 \newcolumntype
+./header_common.tex:314: Undefined control sequence.
+l.314 \newcolumntype
                   {R}{>{\RaggedLeft}X<{}}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1406,8 +1430,8 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:304: Undefined control sequence.
-l.304 \newcolumntype{R}{>{\RaggedLeft
+./header_common.tex:314: Undefined control sequence.
+l.314 \newcolumntype{R}{>{\RaggedLeft
                                    }X<{}}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1415,8 +1439,8 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:305: Undefined control sequence.
-l.305 \newcolumntype
+./header_common.tex:315: Undefined control sequence.
+l.315 \newcolumntype
                   {C}{>{\Centering}X<{}}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1424,8 +1448,8 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:305: Undefined control sequence.
-l.305 \newcolumntype{C}{>{\Centering
+./header_common.tex:315: Undefined control sequence.
+l.315 \newcolumntype{C}{>{\Centering
                                   }X<{}}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1433,8 +1457,8 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:306: Undefined control sequence.
-l.306 \newcolumntype
+./header_common.tex:316: Undefined control sequence.
+l.316 \newcolumntype
                   {G}{>{\columncolor{graycol}}c<{}}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1442,144 +1466,9 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:306: Undefined control sequence.
-l.306 \newcolumntype{G}{>{\columncolor
+./header_common.tex:316: Undefined control sequence.
+l.316 \newcolumntype{G}{>{\columncolor
                                     {graycol}}c<{}}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-./header_common.tex:309: Undefined control sequence.
-l.309 \DeclareMathOperator
-                        {\Arg}{Arg}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-./header_common.tex:309: Undefined control sequence.
-l.309 \DeclareMathOperator{\Arg
-                             }{Arg}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-./header_common.tex:310: Undefined control sequence.
-l.310 \DeclareMathOperator
-                        {\len}{len}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-./header_common.tex:310: Undefined control sequence.
-l.310 \DeclareMathOperator{\len
-                             }{len}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-./header_common.tex:312: Undefined control sequence.
-l.312 \DeclareMathOperator
-                        {\arg}{arg}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-./header_common.tex:313: Undefined control sequence.
-l.313 \DeclareMathOperator
-                        {\sgn}{sgn}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-./header_common.tex:313: Undefined control sequence.
-l.313 \DeclareMathOperator{\sgn
-                             }{sgn}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-./header_common.tex:314: Undefined control sequence.
-l.314 \DeclareMathOperator
-                        {\cotan}{cotan}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-./header_common.tex:314: Undefined control sequence.
-l.314 \DeclareMathOperator{\cotan
-                               }{cotan}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-./header_common.tex:315: Undefined control sequence.
-l.315 \DeclareMathOperator
-                        {\arccotan}{arccotan}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-./header_common.tex:315: Undefined control sequence.
-l.315 \DeclareMathOperator{\arccotan
-                                  }{arccotan}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-./header_common.tex:317: Undefined control sequence.
-l.317 \DeclareMathOperator
-                        {\Ker}{Ker}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-./header_common.tex:317: Undefined control sequence.
-l.317 \DeclareMathOperator{\Ker
-                             }{Ker}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-./header_common.tex:318: Undefined control sequence.
-l.318 \DeclareMathOperator
-                        {\im}{Im}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-./header_common.tex:318: Undefined control sequence.
-l.318 \DeclareMathOperator{\im
-                            }{Im}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1588,7 +1477,7 @@ and I'll forget about whatever was undefined.
 
 ./header_common.tex:319: Undefined control sequence.
 l.319 \DeclareMathOperator
-                        {\coker}{Coker}
+                        {\Arg}{Arg}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1596,8 +1485,8 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ./header_common.tex:319: Undefined control sequence.
-l.319 \DeclareMathOperator{\coker
-                               }{Coker}
+l.319 \DeclareMathOperator{\Arg
+                             }{Arg}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1606,7 +1495,7 @@ and I'll forget about whatever was undefined.
 
 ./header_common.tex:320: Undefined control sequence.
 l.320 \DeclareMathOperator
-                        {\Mat}{Mat}
+                        {\len}{len}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1614,26 +1503,17 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ./header_common.tex:320: Undefined control sequence.
-l.320 \DeclareMathOperator{\Mat
-                             }{Mat}
+l.320 \DeclareMathOperator{\len
+                             }{len}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./header_common.tex:321: Undefined control sequence.
-l.321 \DeclareMathOperator
-                        {\cov}{Cov}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-./header_common.tex:321: Undefined control sequence.
-l.321 \DeclareMathOperator{\cov
-                             }{Cov}
+./header_common.tex:322: Undefined control sequence.
+l.322 \DeclareMathOperator
+                        {\arg}{arg}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1642,7 +1522,7 @@ and I'll forget about whatever was undefined.
 
 ./header_common.tex:323: Undefined control sequence.
 l.323 \DeclareMathOperator
-                        {\Vect}{Vect}
+                        {\sgn}{sgn}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1650,8 +1530,8 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ./header_common.tex:323: Undefined control sequence.
-l.323 \DeclareMathOperator{\Vect
-                              }{Vect}
+l.323 \DeclareMathOperator{\sgn
+                             }{sgn}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1660,7 +1540,7 @@ and I'll forget about whatever was undefined.
 
 ./header_common.tex:324: Undefined control sequence.
 l.324 \DeclareMathOperator
-                        {\rg}{rg}
+                        {\cotan}{cotan}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1668,8 +1548,8 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ./header_common.tex:324: Undefined control sequence.
-l.324 \DeclareMathOperator{\rg
-                            }{rg}
+l.324 \DeclareMathOperator{\cotan
+                               }{cotan}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1678,7 +1558,7 @@ and I'll forget about whatever was undefined.
 
 ./header_common.tex:325: Undefined control sequence.
 l.325 \DeclareMathOperator
-                        {\tr}{Tr}
+                        {\arccotan}{arccotan}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1686,26 +1566,8 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ./header_common.tex:325: Undefined control sequence.
-l.325 \DeclareMathOperator{\tr
-                            }{Tr}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-./header_common.tex:326: Undefined control sequence.
-l.326 \DeclareMathOperator
-                        {\diag}{diag}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-./header_common.tex:326: Undefined control sequence.
-l.326 \DeclareMathOperator{\diag
-                              }{diag}
+l.325 \DeclareMathOperator{\arccotan
+                                  }{arccotan}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1714,7 +1576,7 @@ and I'll forget about whatever was undefined.
 
 ./header_common.tex:327: Undefined control sequence.
 l.327 \DeclareMathOperator
-                        {\Sp}{Sp}
+                        {\Ker}{Ker}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1722,19 +1584,181 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ./header_common.tex:327: Undefined control sequence.
-l.327 \DeclareMathOperator{\Sp
+l.327 \DeclareMathOperator{\Ker
+                             }{Ker}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./header_common.tex:328: Undefined control sequence.
+l.328 \DeclareMathOperator
+                        {\im}{Im}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./header_common.tex:328: Undefined control sequence.
+l.328 \DeclareMathOperator{\im
+                            }{Im}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./header_common.tex:329: Undefined control sequence.
+l.329 \DeclareMathOperator
+                        {\coker}{Coker}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./header_common.tex:329: Undefined control sequence.
+l.329 \DeclareMathOperator{\coker
+                               }{Coker}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./header_common.tex:330: Undefined control sequence.
+l.330 \DeclareMathOperator
+                        {\Mat}{Mat}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./header_common.tex:330: Undefined control sequence.
+l.330 \DeclareMathOperator{\Mat
+                             }{Mat}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./header_common.tex:331: Undefined control sequence.
+l.331 \DeclareMathOperator
+                        {\cov}{Cov}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./header_common.tex:331: Undefined control sequence.
+l.331 \DeclareMathOperator{\cov
+                             }{Cov}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./header_common.tex:333: Undefined control sequence.
+l.333 \DeclareMathOperator
+                        {\Vect}{Vect}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./header_common.tex:333: Undefined control sequence.
+l.333 \DeclareMathOperator{\Vect
+                              }{Vect}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./header_common.tex:334: Undefined control sequence.
+l.334 \DeclareMathOperator
+                        {\rg}{rg}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./header_common.tex:334: Undefined control sequence.
+l.334 \DeclareMathOperator{\rg
+                            }{rg}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./header_common.tex:335: Undefined control sequence.
+l.335 \DeclareMathOperator
+                        {\tr}{Tr}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./header_common.tex:335: Undefined control sequence.
+l.335 \DeclareMathOperator{\tr
+                            }{Tr}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./header_common.tex:336: Undefined control sequence.
+l.336 \DeclareMathOperator
+                        {\diag}{diag}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./header_common.tex:336: Undefined control sequence.
+l.336 \DeclareMathOperator{\diag
+                              }{diag}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./header_common.tex:337: Undefined control sequence.
+l.337 \DeclareMathOperator
+                        {\Sp}{Sp}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./header_common.tex:337: Undefined control sequence.
+l.337 \DeclareMathOperator{\Sp
                             }{Sp}
 (That makes 100 errors; please try again.)
 
 Here is how much of LuaTeX's memory you used:
- 107 strings out of 480885
+ 101 strings out of 480885
  100000,319454 words of node,token memory allocated
- 12003 words of node memory still in use:
-   37 hlist, 3 local_par, 1 dir, 4 math, 17 glue, 4 kern, 4 penalty, 1523 glyph,
- 136 attribute, 39 glue_spec, 136 attribute_list, 1 temp nodes
-   avail lists: 3:45,4:5,5:4,8:41,9:1,10:4
- 17833 multiletter control sequences out of 65536+600000
+ 13666 words of node memory still in use:
+   41 hlist, 6 disc, 4 local_par, 1 dir, 4 math, 37 glue, 4 kern, 7 penalty, 172
+1 glyph, 141 attribute, 39 glue_spec, 141 attribute_list, 1 temp nodes
+   avail lists: 3:45,4:21,5:4,8:41,9:1,10:20
+ 17832 multiletter control sequences out of 65536+600000
  35 fonts using 3811323 bytes
- 21i,5n,19p,238b,94s stack positions out of 5000i,500n,10000p,200000b,100000s
-./header_common.tex:327:  ==> Fatal error occurred, no output PDF file produced!
+ 18i,5n,17p,203b,94s stack positions out of 5000i,500n,10000p,200000b,100000s
+./header_common.tex:337:  ==> Fatal error occurred, no output PDF file produced!
 

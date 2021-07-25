@@ -88,7 +88,8 @@
 
 
 \newcommand{\upperRomannumeral}[1]{\uppercase\expandafter{\romannumeral#1}}
-\AtBeginDocument{
+\AfterEndPreamble{
+  \pagenumbering{arabic}
   \tcbstartrecording%
   \everymath{\displaystyle}
   \begin{center}
@@ -149,14 +150,6 @@
   \def\@@percentchar{\@percentchar\@percentchar\@percentchar}
   \immediate\write\tcb@out
     {%
-	 \@@percentchar\space Local{} Variables:^^J%
-	 \@@percentchar\space mode: latex^^J%
-	 \@@percentchar\space TeX-source-correlate-orig-linenbr: %
-     \beginputlineno ^^J%
-	 \@@percentchar\space TeX-source-correlate-jobname: %
-     "\jobname"^^J%
-     \@@percentchar\space TeX-master: "\jobname"^^J%
-	 \@@percentchar\space End:^^J%
    }
   \immediate\closeout\tcb@out
   \@esphack%
@@ -187,8 +180,12 @@
 
 \AtEndDocument{%
   \tcbstoprecording%
+  \label{subjectlastpage}%
   \clearpage\label{corfirstpage}%
-  \pagestyle{excor}%
+  \ifhandout%
+  \else%
+  \ifwacom%
+  \else%
   \begin{center}
     \begin{tikzpicture}[
       every node/.style={inner sep=10pt}]
@@ -204,5 +201,7 @@
   \end{center}
   \bigskip{}
   \tcbinputrecords%
+  \fi
+  \fi
   \label{TrueLastPage}%
 }

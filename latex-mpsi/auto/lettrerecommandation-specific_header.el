@@ -2,7 +2,7 @@
  "lettrerecommandation-specific_header"
  (lambda ()
    (TeX-add-to-alist 'LaTeX-provided-class-options
-                     '(("lettre" "12pt" "a4paper" "origdate")))
+                     '(("lettre" "12pt" "a4paper" "origdate" "french" "final")))
    (TeX-add-to-alist 'LaTeX-provided-package-options
                      '(("numprint" "np")))
    (TeX-run-style-hooks
@@ -10,6 +10,7 @@
     "process_filename_type_classe_nom_prenom"
     "lettre"
     "lettre12"
+    "graphicx"
     "expl3"
     "xparse"
     "numprint"))

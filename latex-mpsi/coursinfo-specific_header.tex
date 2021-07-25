@@ -4,18 +4,61 @@
 \usepackage{transparent}
 \def\correction#1{\textcolor{white}{#1}}
 % \input{venndiagram2}
+\usepackage{attachfile2}
 \usepackage[newfloat]{minted}
 \tcbuselibrary{minted}
 \def\pyt#1{\mintinline{python}{#1}}
 
+\usepackage{menukeys}
 \usepackage{transparent}
-
+\usepackage{eso-pic}
 \newcommand\voidformatter[1]{}
 
-\newtcblisting{pythoncode}[2][]{%
+\newtcbinputlisting{pythonfile}[3][]{%
+  listing file={#2},%
+  before skip=1em,%
+  after skip=1em,%
+  title={\ifx\relax#2\relax Code\else #3\fi%
+    \hfill\smash{\raisebox{-0.2\height}{\attachfile{#2}}}},%
+  halign title=center,%
+  boxsep=1mm,%
+  left=0mm,%
+  right=0mm,%
+  breakable,%
+  listing engine=minted,%
+  listing only,%
+  colbacktitle=white,%
+  coltitle=black,%
+  collower=white,%
+  minted language={python},%
+  minted options={breaklines,autogobble},%
+  #1
+}
+\newcounter{pythoncodecounter}
+\setcounter{pythoncodecounter}{0}
+\newenvironment{pythoncode}[2][]{
+  \stepcounter{pythoncodecounter}
+  \def\tcblistingoption{#1}
+  \def\savedtitle{#2}
+  \edef\tmpfilename{\jobname-\the\value{pythoncodecounter}.py}
+  \tcbset{listing file={\tmpfilename}}
+  \tcboutputlisting}{%
+  \endtcboutputlisting
+  \expandafter\pythonfile%
+  \expandafter[\tcblistingoption]{\tmpfilename}{\savedtitle}%
+}
+\attachfilesetup{
+  color=1 0 0,
+  description={Python code},
+  mimetype={text/x-python},
+  print=false 
+}
+
+
+\newtcblisting{essaipythoncode}{%
   before skip=1em,
   after skip=1em,
-  title={\ifx\relax#2\relax Code\else #2\fi},
+  title={Essai essai},
   halign title=center,
   boxsep=1mm,
   left=0mm,
@@ -23,10 +66,14 @@
   breakable,
   listing engine=minted,
   listing only,
+  colbacktitle=white,
+  coltitle=black,
+  collower=white,
   minted language={python},
   minted options={breaklines, autogobble},
-  #1
+  saveto=esespo.py
 }
+
 
 \newtcblisting{pythoninterp}[2][]{%
   before skip=1em,
@@ -38,6 +85,9 @@
   right=0mm,
   breakable,
   listing engine=minted,
+  colbacktitle=white,
+  coltitle=black,
+  collower=white,
   listing only,
   minted language={pycon},
   minted options={breaklines, autogobble},
@@ -61,23 +111,39 @@
     },
   }
 }
-\newtcblisting{crossedpythoncode}[2][]{%
-  enhanced,
-  before skip=1em,
-  after skip=1em,
-  title={\ifx\relax#2\relax Code bogué\else #2\fi},
-  colbacktitle=red!40!white,
-  halign title=center,
-  boxsep=1mm,
-  left=0mm,
-  right=0mm,
-  breakable,
-  listing engine=minted,
-  listing only,
-  minted language={python},
-  minted options={breaklines, autogobble},
-  crossedout,
+\newtcbinputlisting{crossedpythonfile}[3][]{%
+  listing file={#2},%%
+  enhanced,%
+  before skip=1em,%
+  after skip=1em,%
+  title={\ifx\relax#2\relax Code\else #3\fi%
+    \hfill\smash{\raisebox{-0.2\height}{\attachfile{#2}}}},%%
+  colbacktitle=red!40!white,%
+  halign title=center,%
+  boxsep=1mm,%
+  left=0mm,%
+  right=0mm,%
+  breakable,%
+  listing engine=minted,%
+  colbacktitle=white,%
+  coltitle=black,%
+  collower=white,%
+  listing only,%
+  minted language={python},%
+  minted options={breaklines, autogobble},%
+  crossedout,%
   #1
+}
+\newenvironment{crossedpythoncode}[2][]{
+  \stepcounter{pythoncodecounter}
+  \def\tcblistingoption{#1}
+  \def\savedtitle{#2}
+  \edef\tmpfilename{\jobname-\the\value{pythoncodecounter}.py}
+  \tcbset{listing file={\tmpfilename}}
+  \tcboutputlisting}{%
+  \endtcboutputlisting
+  \expandafter\crossedpythonfile%
+  \expandafter[\tcblistingoption]{\tmpfilename}{\savedtitle}%
 }
 
 \newtcblisting{sqlcode}[2][]{%
@@ -90,6 +156,9 @@
   right=0mm,
   breakable,
   listing engine=minted,
+  colbacktitle=white,
+  coltitle=black,
+  collower=white,
   listing only,
   minted language={sql},
   minted options={breaklines, autogobble},
@@ -97,14 +166,13 @@
 }
 
 
-\usepackage[printwatermark]{xwatermark}
-\newwatermark[
-allpages,
-fontfamily=bch,
-color=gray!25,
-angle=45,scale=2.5,
-xpos=0,ypos=0]{Lycée militaire d'Autun}
-
+\AddToShipoutPictureFG{%
+  \begin{tikzpicture}[overlay,remember picture]%
+    \path (current page.south west) -- (current page.north east)%
+    node[midway,scale=8,sloped,opacity=0.1] {Lycée militaire
+      d'Autun};%
+  \end{tikzpicture}%
+}
 
 \newcommand\fileregexnbrchapname{(cours|coursinfo|ex)_(mpsi)_(\d{2})_(.*)}
 
@@ -450,6 +518,12 @@ xpos=0,ypos=0]{Lycée militaire d'Autun}
   before lower={\textcolor{lightgreen}{Solution \thetcbcounter:}~}
 }{exer}
 
+\newtcbtheorem[number within=section]{enpython}{En python}{%
+  new/crefname={enpython}{exercice},%
+  new/Crefname={En python}{En python},%
+  theorem style=exercicelike,%
+}{enpython}
+
 \newtcbtheorem[number within=section]{remarque}{Remarque}{%
   new/crefname={remarque}{remarques},%
   new/Crefname={Remarques}{Remarques},%
@@ -516,7 +590,7 @@ xpos=0,ypos=0]{Lycée militaire d'Autun}
     outer arc=0pt,
     leftrule=0pt,
     rightrule=0pt,
-    fontupper=\color{white}\sffamily\bfseries\huge,
+    fontupper=\color{black}\sffamily\bfseries\huge,
     enlarge left by=-1in-\hoffset-\oddsidemargin,
     enlarge right by=%
     -\paperwidth+1in+\hoffset+\oddsidemargin+\textwidth,
@@ -535,7 +609,7 @@ xpos=0,ypos=0]{Lycée militaire d'Autun}
       minimum height=1.7cm,
       align=center,
       font=%
-      \color{white}\sffamily\bfseries\fontsize{30}{36}\selectfont
+      \color{black}\sffamily\bfseries\fontsize{30}{36}\selectfont
       ]
       (chapname)
       at ([xshift=-4cm]frame.north east)
@@ -565,7 +639,7 @@ xpos=0,ypos=0]{Lycée militaire d'Autun}
     remember as=title,
     leftrule=0pt,
     rightrule=0pt,
-    fontupper=\color{white}\sffamily\bfseries\huge,
+    fontupper=\color{black}\sffamily\bfseries\huge,
     enlarge left by=-1in-\hoffset-\oddsidemargin,
     enlarge right by=%
     -\paperwidth+1in+\hoffset+\oddsidemargin+\textwidth,
@@ -580,6 +654,7 @@ xpos=0,ypos=0]{Lycée militaire d'Autun}
 }
 \titlespacing*{\chapter}{0pt}{0pt}{40pt}
 
+\makeatletter
 \apptocmd{\ttl@straight@i}{%
   \ifstrequal{#1}{section}{%
     \global\let\currsectitle\ttl@savetitle }{}%
@@ -618,3 +693,7 @@ xpos=0,ypos=0]{Lycée militaire d'Autun}
 \algrenewcommand\algorithmicensure{\textbf{Sortie:}}
 \algrenewcommand\algorithmicreturn{\State \textbf{retourner}}
 \algrenewcommand\textproc{\textsc}
+
+\AtBeginDocument{%
+  \pagenumbering{arabic}
+}

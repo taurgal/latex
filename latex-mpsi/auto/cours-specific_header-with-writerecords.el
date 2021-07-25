@@ -1,5 +1,5 @@
 (TeX-add-style-hook
- "cours-specific_header"
+ "cours-specific_header-with-writerecords"
  (lambda ()
    (TeX-add-to-alist 'LaTeX-provided-package-options
                      '(("geometry" "a4paper" "includeheadfoot" "top=1.2cm" "bottom=1.0cm" "left=1.2cm" "right=1.2cm") ("minted" "newfloat")))
@@ -10,31 +10,44 @@
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "href")
    (add-to-list 'LaTeX-verbatim-macros-with-delims-local "path")
    (TeX-run-style-hooks
     "header_common"
-    "truthtable2"
     "geometry"
     "pdftexcmds"
     "environ"
-    "xpatch"
     "minted")
    (TeX-add-symbols
     '("upperRomannumeral" 1)
     '("ZeroRoman" 1)
     '("inputchapter" 1)
-    "pyt"
+    '("mpsisetsemainedecolle" 1)
+    '("mpsifinsemainedecolle" 1)
+    "tcbstartcollerecording"
+    "tcbstopcollerecording"
+    "descriptiontext"
+    "progcolletext"
+    "tcbcollerecord"
     "printdbginfo"
     "filename"
+    "thepage"
+    "protect"
+    "exandtdsheetnbr"
+    "temp"
     "mytheoremname"
+    "tcbcollerecorddata"
+    "exsheetslist"
+    "tdsheetslist"
+    "tcbenvname"
+    "questype"
+    "label"
+    "index"
+    "glossary"
     "currsectitle"
     "currssectitle")
    (LaTeX-add-environments
+    "colle"
     '("nscenter" LaTeX-env-args ["argument"] 0))
-   (LaTeX-add-pagestyles
-    "cours"
-    "plain")
    (LaTeX-add-counters
     "semainecounter")
    (LaTeX-add-xparse-macros

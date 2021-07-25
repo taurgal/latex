@@ -1,8 +1,6 @@
 \input{ex-specific_header}
 
 \usepackage{menukeys}
-% \usepackage[newfloat]{minted}
-\tcbuselibrary{minted}
 
 \newif\ifinlisting
 \tcbset{%
@@ -32,6 +30,7 @@
   minted options={autogobble},
   in listing=true
 }
+
 
 \newtcblisting{sqlcode}[2][]{%
   before skip=0.5em,

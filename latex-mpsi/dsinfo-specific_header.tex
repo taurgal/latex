@@ -14,6 +14,7 @@
 \message{********* DS}
 \potpourrifalse}%
 \ifpotpourri
+
 \fancypagestyle{DS}{
   \fancyhf{}
   \renewcommand{\headrulewidth}{0.4pt}
@@ -46,7 +47,7 @@
     \thepage-\getpagerefnumber{corfirstpage}+1\relax%
     /%
     \the\numexpr%
-    \getpagerefnumber{TrueLastPage}-\getpagerefnumber{corfirstpage}+1
+    \getpagerefnumber{VeryLastPage}-\getpagerefnumber{corfirstpage}+1
     \relax%
   }
   \fancyfoot[L]{Correction du Pot pourri}
@@ -59,7 +60,7 @@
   \renewcommand{\headrulewidth}{0.4pt}
   \fancyhead[L]{\docclasseupper{} --- \etablissement}
   \fancyhead[R]{DS du \MakeLowercase{\datedayname}~\datedate}
-  \fancyfoot[R]{\thepage/\pageref{LastPage}}
+  \fancyfoot[R]{\thepage/\pageref{VeryLastPage}}
   \fancyfoot[L]{Devoir surveillé d'informatique~\no\docnbr}
 }
 \pagestyle{DSinfo}
@@ -69,7 +70,7 @@
   \renewcommand{\headrulewidth}{0.4pt}
   \fancyhead[L]{\docclasseupper{} --- \etablissement}
   \fancyhead[R]{DS du \MakeLowercase{\datedayname}~\datedate}
-  \fancyfoot[R]{\thepage/\pageref{LastPage}}
+  \fancyfoot[R]{\thepage/\pageref{VeryLastPage}}
   \fancyfoot[L]{Devoir surveillé d'informatique~\no\docnbr}
 }
 \thispagestyle{DSinfofirstpage}
@@ -87,7 +88,7 @@
     \thepage-\getpagerefnumber{corfirstpage}+1\relax%
     /%
     \the\numexpr%
-    \getpagerefnumber{TrueLastPage}-\getpagerefnumber{corfirstpage}+1
+    \getpagerefnumber{VeryLastPage}-\getpagerefnumber{corfirstpage}+1
     \relax%
   }
   \fancyfoot[L]{Correction du devoir surveillé
@@ -255,6 +256,7 @@
 
 \newcommand{\upperRomannumeral}[1]{\uppercase\expandafter{\romannumeral#1}}
 \AtBeginDocument{
+  \pagenumbering{arabic}
   \tcbstartrecording%
   \everymath{\displaystyle}
   \begin{center}
@@ -325,6 +327,10 @@
 \AtEndDocument{%
   \tcbstoprecording%
   \clearpage\label{corfirstpage}%
+  \ifhandout%
+  \else%
+  \ifwacom%
+  \else%
   \pagestyle{excor}%
   \begin{center}
     \begin{tikzpicture}[
@@ -343,7 +349,7 @@
       options/.append style={yshift=1pt}] (vecbox.north east);
     \end{tikzpicture}
   \end{center}
-  \bigskip{}
-  \tcbinputrecords{}%
-  \label{TrueLastPage}
+  \tcbinputrecords%
+  \fi
+  \fi
 }

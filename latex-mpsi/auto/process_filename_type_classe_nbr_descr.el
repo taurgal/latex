@@ -1,5 +1,5 @@
 (TeX-add-style-hook
- "exinfo-specific_header"
+ "process_filename_type_classe_nbr_descr"
  (lambda ()
    (LaTeX-add-environments
     '("nscenter" LaTeX-env-args ["argument"] 0)))

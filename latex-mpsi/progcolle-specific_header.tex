@@ -1,6 +1,8 @@
 \usepackage[a4paper,includeheadfoot,top=1.2cm,bottom=1.0cm,left=1.2cm,right=1.2cm]{geometry}
 \input{header_common}
 \renewcommand{\onlyprogcolle}[1]{#1}
+\renewcommand{\altprogcolle}[2]{#2}
+\renewcommand{\onlyprogcollephantom}[1]{#1}
 \usepackage[newfloat]{minted}
 \tcbuselibrary{minted}
 \newtcblisting{pythoncode}[2][]{%
@@ -225,7 +227,7 @@
     au \docenddayname{}
     \docendday/\docendmonth/\docendyear
   }
-  \fancyfoot[R]{\thepage/\pageref{LastPage}}
+  \fancyfoot[R]{\thepage/\pageref{VeryLastPage}}
 }
 
 \pagestyle{progcolle}
@@ -331,7 +333,6 @@
   \listcsxadd{type-\questype}{#8}%
 }%
 \makeatother{}
-
 % Important if you use amsmath!
 \show\leqslant
 \makeatletter
@@ -344,6 +345,8 @@
   \robustify\set
   \robustify\inlinefunction
   \robustify\fullfunctioninline
+  \robustify\inlinemapsto
+  \robustify\inlinemapstonamed
   \robustify\cnset
   \robustify\substack
   \robustify\vcolwithname
@@ -392,7 +395,8 @@
 }
 
 
-\AtBeginDocument{
+\AfterEndPreamble{
+  \pagenumbering{arabic}  
   \begin{progcolletitle}
     Du~\docstartdayname~\docstartday~\docstartmonthname{}
     au~\docenddayname~\docendday~\docendmonthname{}.
@@ -432,9 +436,8 @@
   }
 }
 
-\AtEndDocument{
-  \begin{center}
-    \textbf{--FIN--}
-  \end{center}
-  \label{LastPage}
-}
+% \AtEndDocument{
+%   \begin{center}
+%     \textbf{--FIN--}
+%   \end{center}
+% }

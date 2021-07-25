@@ -3,6 +3,8 @@
  (lambda ()
    (TeX-add-to-alist 'LaTeX-provided-package-options
                      '(("geometry" "a4paper" "includeheadfoot" "top=1.0cm" "bottom=1.0cm" "left=1.2cm" "headsep=0pt" "footskip=0pt" "right=1.2cm" "footskip=1cm") ("minted" "newfloat")))
+   (add-to-list 'LaTeX-verbatim-environments-local "minted")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "href")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
@@ -19,8 +21,14 @@
     "minted"
     "pgfornament"
     "amsthm")
-   (LaTeX-add-environments
-    '("nscenter" LaTeX-env-args ["argument"] 0))
+   (TeX-add-symbols
+    "fakebreak"
+    "doctype")
+   (LaTeX-add-labels
+    "subjectlastpage")
+   (LaTeX-add-pagestyles
+    "cours"
+    "excor")
    (LaTeX-add-tcbuselibraries
     "minted")
    (LaTeX-add-amsthm-newtheorems

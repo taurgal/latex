@@ -1,11 +1,19 @@
-\usepackage[a4paper,includeheadfoot,headsep=1em,top=1.2cm,bottom=1.2cm,left=1.2cm,right=1.2cm,footskip=0pt]{geometry}
+\ifwacom
+\documentclass[french,twoside,draft]{article}
+\usepackage[a4paper,includeheadfoot,headsep=1em,top=1.2cm,bottom=1.2cm
+,left=1.2cm,right=1.2cm,footskip=0pt]{geometry}
+\else
+\documentclass[french,twoside]{article}
+\usepackage[a4paper,includeheadfoot,headsep=1em,top=1.2cm,bottom=1.2cm
+,left=1.2cm,right=1.2cm,footskip=0pt]{geometry}
+\fi
 \input{header_common}
 \setlength{\columnsep}{3em}
 \usepackage{fontawesome}
 \usepackage{refcount}
 
-\usepackage[newfloat]{minted}
-\tcbuselibrary{minted}
+\usepackage{minted}
+\usepackage{catchfile}
 
 \input{process_filename_type_classe_nbr_descr}
 
@@ -25,31 +33,40 @@
   \makebox[\stextwidth][#1]{#2}%
 }
 
+\newif\ifinlisting
+\inlistingfalse
+
 \makeatletter{}
 \renewcommand\tcbtitle{%
   \ifx\tcbtitletext\@empty%
   \else%
   \leavevmode%
-  \tikz (0,0) \node[inner sep=0pt, anchor=base]%(mytitle\thetcbcounter)
-  {\llap{\smash{\rotatebox[origin=c]{90}{\small\extypechar\exdiffchar}~}}%
-    \color {tcbcoltitle}%
+  \tikz (0,0) \node[inner sep=0pt, anchor=base]%
+  (mytitle\thetcbcounter) {%
+    \llap{\smash{\rotatebox[origin=c]{90}{%
+          \small\extypechar\exdiffchar}~}}%
+    \color{tcbcoltitle}%
     \kvtcb@fonttitle%
     \kvtcb@haligntitle%
     \kvtcb@before@title%
-    \tcbtitletext%
+    \@ifundefined{r@sol-\thetcbcounter}{%
+      \tcbtitletext}{%
+      \hyperref[sol-\thetcbcounter]{\tcbtitletext}}%
     \pgfkeys{/tcb/source/.print}%
     \kvtcb@after@title%
     :%
-  };
-  \fi
+  };%
+  \fi%
 }
 \makeatother{}
 
 \def\extypechar{\relax}
+\def\extypevalue{none}
 \def\exdiffchar{\relax}
+\gdef\exdiffvalue{none}
 \def\sourcename{\relax}
 \def\sourceyear{\relax}
-
+\def\exsheetpart{1}
 
 \pgfkeysdef{/tcb/source/.print}{%
   \if\relax\sourcename%
@@ -67,20 +84,56 @@
 
 \tcbset{%
   type/.is choice,
-  type/classic/.code={\def\extypechar{\Heart}},
-  type/fun/.code={\def\extypechar{\Football}},
-  type/important/.code={\def\extypechar{\faStarO}},
-  type/training/.code={\def\extypechar{\Bicycle}},
+  type/.default=none,
+  type/none/.code={\def\extypechar{}\def\extypevalue{none}},
+  type/classic/.code={\def\extypechar{\Heart}\def\extypevalue{classic}},
+  type/fun/.code={\def\extypechar{\Football}\def\extypevalue{fun}},
+  type/important/.code={\def\extypechar{\faStarO}\def\extypevalue{important}},
+  type/training/.code={\def\extypechar{\Bicycle}\def\extypevalue{training}},
+  type/CCP/.code={\def\extypechar{CCP}\def\extypevalue{CCP}},
+  type/colle/.code={\def\extypevalue{colle}\def\extypechar{
+\tikz[y=0.016pt, x=0.016pt, inner sep=0pt, outer sep=0pt]{
+\path[fill] (208,-352) .. controls (205.61,-352) and
+  (203.22,-352.35) .. (200.94,-353.09) .. controls (187.98,-357.3) and
+  (174.35,-360) .. (160,-360) .. controls (145.65,-360) and
+  (132.02,-357.3) .. (119.05,-353.09) .. controls (116.77,-352.35) and
+  (114.39,-352) .. (112,-352) .. controls (49.94,-352) and
+  (-0.33,-402.48) .. (0,-464.62) .. controls (0.14,-490.88) and
+  (21.73,-512) .. (48,-512) -- (272,-512) .. controls
+  (298.27,-512) and (319.86,-490.88) .. (320,-464.62) .. controls
+  (320.33,-402.48) and (270.06,-352) .. (208,-352) --
+  cycle(160,-320) .. controls (213.02,-320) and
+  (256,-277.02) .. (256,-224) .. controls (256,-170.98) and
+  (213.02,-128) .. (160,-128) .. controls (106.98,-128) and
+  (64,-170.98) .. (64,-224) .. controls (64,-277.02) and
+  (106.98,-320) .. (160,-320) -- cycle(592,0) --
+  (208,0) .. controls (181.53,0) and (160,-22.25) ..
+  (160,-49.59) -- (160,-96) .. controls (183.42,-96) and
+  (205.1,-102.78) .. (224,-113.8) -- (224,-64) --
+  (576,-64) -- (576,-352) -- (512,-352) --
+  (512,-288) -- (384,-288) -- (384,-352) --
+  (307.76,-352) .. controls (326.86,-368.69) and (340.88,-390.73) ..
+  (347.45,-416) -- (592,-416) .. controls (618.47,-416) and
+  (640,-393.75) .. (640,-366.41) -- (640,-49.59) .. controls
+  (640,-22.25) and (618.47,0) .. (592,0) -- cycle;
+}}
+  },
+  colle/.style={/tcb/type=colle,exsheetpart=#1},
+  type/Centrale/.code={\def\extypechar{\makesamewidth[c]{Cent.}}},
+  type/Mines/.code={\def\extypechar{\makesamewidth[c]{Mines}}},
   %
   difficulty/.is choice,
+  difficulty/.default=none,
+  difficulty/none/.code={\def\exdiffchar{}\gdef\exdiffvalue{none}},
   difficulty/easy/.code={\def\exdiffchar{%
-      \makesamewidth[c]{}%
+      \makesamewidth[c]{\faHandPeaceO}\gdef\exdiffvalue{easy}%
     }},
   difficulty/hard/.code={\def\exdiffchar{%
-      \makesamewidth[c]{\Lightning}%
+      \makesamewidth[c]{\Lightning}\gdef\exdiffvalue{hard}%
     }},
   difficulty/vhard/.code={\def\exdiffchar{%
       \makesamewidth[c]{\Lightning\!\Lightning}%
+      \gdef\exdiffvalue{vhard}
     }},
   %
   source/name/.is choice,
@@ -89,63 +142,157 @@
   source/name/ccp/.code={\def\sourcename{CCP}},
   source/name/minestelecom/.code={\def\sourcename{Mines-Télécom}},
   source/name/minesponts/.code={\def\sourcename{Mines-Ponts}},
-  source/year/.code={\def\sourceyear{#1}}
+  source/year/.code={\def\sourceyear{#1}},
+  exsheetpart/.code={\def\exsheetpart{#1}},
+  exsheetpart/.default=1,
+  exsheetpart=1
 }
 
-\newcommand\tcbsolution[2]{%
-  \IfFileExists{#2}{\tcbsolutionb{#1}{#2}}{}%
+
+
+\newcommand\tcbexerciceavecsolution[3]{%
+  \begin{tcbexercicebox}{}{}
+    \input{#2}
+  \end{tcbexercicebox}
 }
-
-\def\extypechar{\relax}
-\def\exdiffchar{\relax}
-\def\sourcename{\relax}
-\def\sourceyear{\relax}
-
-
-\newtcbtheorem{exercice}{Exercice}{%
-  description delimiters={\og}{\fg},
-  theorem style=plain,
-  lowerbox=ignored,
-  savelowerto=Solutions/\jobname-sol-\thetcbcounter.tex,
-  record={\string\tcbsolution{%
-      \thetcbcounter%
-    }{%
-      Solutions/\jobname-sol-\thetcbcounter.tex%
-    }
-  },
-  code={\tcbset{label={ex-\thetcbcounter}}},%
-  detach title,
-  terminator sign none,
-  separator sign none,
-  breakable, blank, new/crefname={exercice}{exercices},
-  new/Crefname={Exercice}{Exercices}, description
-  delimiters={\og}{\fg}, fonttitle=\bfseries,coltitle=ocre, enhanced,%
-  before skip=1em, after skip=1em, left=0pt, right=0pt,
-  fonttitle=\bfseries%
-}{ex}
-
-\NewTotalTColorBox{\tcbsolutionb}{mm}{%
-  blank,
-  coltitle=ocre,
-  breakable,
-  fonttitle=\bfseries,
-  title={Solution of Exercise~\ref{ex-#1} (ex-#1):},
-  phantomlabel={solution@#1},
-  attach title to upper=\par,
-}{\input{#2}}
+\newcommand\tcbexercice[3]{}
 
 \makeatletter{}
-\renewcommand{\new@tcbtheorem}[5][]{%
-  \@@newtcolorbox[auto counter,#1]{#2}[3][]{#4,%
-    title={\tcb@theo@title{#3}{\thetcbcounter}{##2}},%
-    list entry={\protect\numberline{\thetcbcounter}##2},%
-    nameref={##2},%
-    ##1}%
-  \@@newtcolorbox[#1,no counter,list inside=]{#2*}[2][]{#4,%
-    title={\tcb@theo@title{#3}{\@empty}{##2}},%
-    ##1}%
+\def\tcbverbatimwrite#1{%
+  \@bsphack
+  \immediate\openout\tcb@out #1
+  \edef\beginputlineno{\the\inputlineno}
+  \tcb@verbatim@begin@hook%
+  \let\do\@makeother\dospecials
+  \tcb@verbatim@change@percent\catcode`\^^M\active \catcode`\^^I=12
+  \def\verbatim@processline{%
+    \immediate\write\tcb@out
+      {\the\verbatim@line}}%
+  \verbatim@start}%'
+
+
+\def\endtcbverbatimwrite{%
+  \tcb@verbatim@end@hook%
+  \def\@@percentchar{\@percentchar\@percentchar\@percentchar}
+  \ifinlisting
+  \else
+  \immediate\write\tcb@out%
+  {%
+    \@@percentchar\space Local Variables:^^J%
+    \@@percentchar\space mode: latex^^J%
+    \@@percentchar\space TeX-source-correlate-orig-linenbr: %
+    \beginputlineno ^^J%
+    \@@percentchar\space TeX-source-correlate-jobname: %
+    "\jobname"^^J%
+    \@@percentchar\space TeX-master: "\jobname"^^J%
+    \@@percentchar\space End:^^J%
+  }
+  \fi
+  \immediate\closeout\tcb@out
+  \@esphack%
 }
 \makeatother{}
+
+\newcommand*{\fakebreak}{\par\vspace{\textheight minus \textheight}\pagebreak}
+\makeatletter%
+\newtcbtheorem{exercice}{Exercice}{%
+  description delimiters={\og}{\fg}, theorem style=plain,
+  lowerbox=ignored,
+  code={\tcbset{label={exer-\thetcbcounter}}},%
+  % height fill={%
+  %   \ifwacom%
+  %   true%
+  %   \else%
+  %   false \fi},
+  after upper={\ifwacom%
+    \par\noindent\hfil\rule{0.5\textwidth}{.4pt}\hfil%
+    \par\noindent\hfil\rule{0.5\textwidth}{.4pt}\hfil%
+    \par\noindent\hfil\rule{0.5\textwidth}{.4pt}\hfil%
+    \fakebreak~\fakebreak~\fakebreak%
+    \fi%
+  },
+  before={\pagebreak[4]},
+  saveto=Solutions/\doctype-\docnbr-both-\thetcbcounter.tex,
+  record={\string\tcbexercice{%
+      \thetcbcounter%
+    }{%
+      Solutions/\doctype-\docnbr-both-\thetcbcounter.tex%
+    }{%
+      /tcb/type=\extypevalue, /tcb/difficulty=\exdiffvalue,
+      /tcb/exsheetpart=\exsheetpart } }, before lower={%
+    \tcb@record{\string\tcbexerciceavecsolution{%
+        \thetcbcounter%
+      }{%
+        Solutions/\doctype-\docnbr-both-\thetcbcounter.tex%
+      }{%
+        /tcb/type=\extypevalue, /tcb/difficulty=\exdiffvalue,
+        /tcb/exsheetpart=\exsheetpart } }%
+  }, detach title,%
+  separator sign none,%
+  terminator sign none,%
+  breakable, blank,%
+  % new/crefname={exercice}{exercices},%
+  % new/Crefname={Exercice}{Exercices},%
+  description delimiters={\og}{\fg},%
+  fonttitle=\bfseries,%
+  coltitle=ocre,%
+  enhanced,%
+  after skip=1em, left=0pt, right=0pt,%
+  before={%
+    \message{MSG A111}
+    \ifnum\lastnodetype=-1\relax%
+    \message{MSG A122}
+    \else%
+    \message{MSG A133}
+      \par%
+      \ifvmode\tcbdimto\tcb@prevdepth{\prevdepth}\nointerlineskip%
+      \ifwacom\fakebreak%
+      \else\addvspace{\glueexpr1em-\parskip}\fi%
+        \def\tcb@undo@before{\addvspace{-\glueexpr#1+\tcb@prevdepth}}%
+      \fi%
+    \fi%
+    \message{MSG B222}
+    \lineskip\z@skip\noindent%
+    \message{MSG C222}
+    },
+  fonttitle=\bfseries
+}{exer}
+\makeatother%
+
+\makeatletter
+\newcommand{\iflabelexists}[3]{\@ifundefined{r@#1}{#3}{#2}}
+\makeatother
+
+\makeatletter
+\long\def\my@setupperandlowerparts#1\tcblower#2\tcblower#3\myterminator{%
+  \gdef\upperpart{#1}%
+  \show\upperpart
+  \if\relax#2\relax
+  \gdef\lowerpart{}%
+  \else
+  \gdef\lowerpart{#2}%
+  \fi
+}
+\newcommand\setupperandlowerfromfile[1]{%
+  \CatchFileDef{\filec}{#1}{}%
+  {
+    \def\tcblower{\noexpand\tcblower}
+\expandafter\my@setupperandlowerparts\filec\tcblower\tcblower\myterminator%
+  }
+}
+\makeatother
+
+\newtcbtheorem{tcbexercicebox}{Solution et correction}{%
+  blank,%
+  coltitle=ocre,%
+  breakable,%
+  fonttitle=\bfseries,%
+  % title={\hypertarget{sol-\exnbr}{Solution}\label{sol-\exnbr} de %
+  %   l'exercice~\ref{exer-\exnbr}},%
+  before lower={\textcolor{ocre}{Solution:}\par},%
+  attach title to upper=\par
+}{sol}
+
 
 \everymath{\displaystyle}
 
@@ -154,10 +301,10 @@
   \fancyhf{}
   \renewcommand{\headrulewidth}{0.4pt}
   \fancyhead[L]{\docclasseupper{} --- \etablissement}
-  \fancyhead[C]{\doctitle}
-  \fancyfoot[C]{\thepage/%
-    \the\numexpr%
-    \getpagerefnumber{corfirstpage}-1\relax
+  \fancyhead[C]{\docnbr--\doctitle}
+  \fancyfoot[C]{\ifwacom\else
+    \thepage/1
+    \fi%
   }
   \fancyhead[R]{Exercices}
 }
@@ -170,7 +317,7 @@
   \fancyhf{}
   \renewcommand{\headrulewidth}{0.4pt}
   \fancyhead[L]{\docclasseupper{} --- \etablissement}
-  \fancyhead[C]{\doctitle}
+  \fancyhead[C]{\docnbr--\doctitle}
   \fancyfoot[C]{%
     \the\numexpr%
     \thepage-\getpagerefnumber{corfirstpage}+1\relax%
@@ -179,17 +326,24 @@
     \getpagerefnumber{TrueLastPage}-\getpagerefnumber{corfirstpage}+1
     \relax%
   }
-  \fancyhead[R]{Corrections des exercices}
+  \fancyhead[R]{Correction des exercices}
 }
 
 \AtBeginDocument{%
-  \tcbstartrecording%
+  \tcbstartrecording[Solutions/\doctype-\docnbr.records]%
 }
 
 \AtEndDocument{%
+  \label{subjectlastpage}%
   \tcbstoprecording%
   \clearpage\label{corfirstpage}%
+  \ifhandout%
+  \else%
+  \ifwacom%
+  \else%
   \pagestyle{excor}%
   \tcbinputrecords%
+  \fi
+  \fi
   \label{TrueLastPage}%
 }

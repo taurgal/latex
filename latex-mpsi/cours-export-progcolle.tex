@@ -1,0 +1,251 @@
+\usepackage{xpatch}
+\makeatletter
+\let\protected@iwrite\protected@write
+\xpatchcmd{\protected@iwrite}{\write}{\immediate\write}{}{}
+\def\tcb@null@two#1#2{}
+
+\def\descriptiontext{}
+\def\progcolletext{}
+\def\tcbenvname{}
+\def\questype{}
+
+\newwrite\tcb@colle@out
+
+\newcommand\mpsifinsemainedecolle[1]{
+  \def\tdsheetslist{Z}
+  \def\exsheetslist{Z}
+  \tcbset{#1}
+  \message{ici A}
+  \ifx Z\tdsheetslist\relax%
+  \errmessage{SPECIFIER UNE LISTE DE FICHES DE TD MEME VIDE!}%
+  \fi%
+  \ifx Z\exsheetslist\relax%
+  \errmessage{SPECIFIER UNE LISTE DE FICHES DE EX MEME VIDE!}%
+  \fi%
+  \message{ici B}
+  \foreach \exsheetnbr/\sheetpart in \exsheetslist
+  {\exandtdsheetnbr{ex}{\exsheetnbr}{\sheetpart}}%
+  \message{ici C}
+  \foreach \tdsheetnbr/\sheetpart in \tdsheetslist
+  {\exandtdsheetnbr{td}{\tdsheetnbr}{\sheetpart}}%
+  \message{ici D}
+  \ifx\tcbcollerecord\tcb@null@two%
+  \global\let\tcbcollerecord\tcb@colle
+  \else%
+  \immediate\closeout\tcb@colle@out%
+  \fi%
+  \message{ici D}
+  \message{Avant en semaine \thesemainecounter}
+  \stepcounter{semainecounter}%
+  \message{Passage en semaine \thesemainecounter}
+  \message{JUSTE BEFORE???}
+  \ifnum\value{semainecounter}<10
+  \message{JUSTE AFTER???}
+  \xdef\tcb@colle@file{Colles/colle-0\arabic{semainecounter}.records}
+  \else
+  \message{JUSTE AFTER???}
+  \xdef\tcb@colle@file{Colles/colle-\arabic{semainecounter}.records}
+  \fi
+  \immediate\openout\tcb@colle@out\tcb@colle@file\relax%
+}
+
+\newcommand\mpsisetsemainedecolle[1]{
+  \message{IN: **********************}
+  \if\relax\detokenize{#1}\relax
+    \relax
+    \message{**: D}
+  \else
+    \message{**: E}
+    \ifnum\value{semainecounter}=\numexpr#1\relax
+      \message{**: F}
+      \message{Nous sommes déjà en semaine \thesemainecounter}
+    \else
+      \message{**: G}
+      \message{Passage en semaine #1}
+      \setcounter{semainecounter}{#1}%
+      \ifnum\value{semainecounter}<10
+        \xdef\tcb@colle@file{%
+          Colles/colle-0\arabic{semainecounter}.records}
+      \else
+        \xdef\tcb@colle@file{%
+          Colles/colle-\arabic{semainecounter}.records}
+      \fi
+      \message{**: H}
+      \ifx\tcbcollerecord\tcb@null@two
+        \global\let\tcbcollerecord\tcb@colle
+      \else
+        \immediate\closeout\tcb@colle@out
+      \fi
+      \immediate\openout\tcb@colle@out\tcb@colle@file%
+    \fi
+  \fi
+  \message{OUT: **********************: \tcb@colle@file}
+}
+%
+\newcommand\tcbstartcollerecording{%
+  \global\let\tcbcollerecord\tcb@null@two  
+  \setcounter{semainecounter}{0}
+  \mpsisetsemainedecolle{1}
+}
+
+\newcommand{\tcbstopcollerecording}{%
+  \ifx\tcbcollerecord\tcb@null@two%
+  \else%
+  \immediate\closeout\tcb@colle@out%
+  \fi%
+}
+\long\def\exandtdsheetnbr#1#2#3{%
+  \message{ici C11 #1 #2 #3}
+  \def\temp{#2}
+  \ifnum #2<10\def\temp{0#2}\fi
+  \protected@iwrite\tcb@colle@out
+  {\let\label\@gobble \let\index\@gobble \let\glossary\@gobble}%
+  {\string\exandtdsheetnbr{#1}{\temp}{#3}%
+  }}
+
+
+\long\def\tcb@colle#1#2{%
+  \def\showlineno{ line \the\inputlineno}
+  \message{*a*a*a*a*: line \showlineno, \doctitle(\arabic{chapter})}
+  \protected@iwrite\tcb@colle@out{%
+    \let\label\@gobble \let\index\@gobble \let\glossary\@gobble}%
+  {\string\mycontentsline{%
+      \thesemainecounter%
+    }{%
+      \arabic{chapter}%
+    }{%
+      \doctitle
+    }{%
+      \arabic{section}%
+    }{%
+      \thesection%
+    }{%
+      \tcbenvname%
+    }{%
+      #1%
+    }{%
+      #2%
+    }%
+  }}
+\makeatother
+\newif\ifnowrite
+\def\tcbcollerecorddata{}
+
+\tcbset{%
+  exsheets/.code={\def\exsheetslist{#1}},%
+  exsheets/.default={},%
+  exsheets={},
+  %
+  tdsheets/.code={\def\tdsheetslist{#1}},%
+  tdsheets/.default={},%
+  tdsheets={}
+}
+
+\tcbset{%
+  nowrite/.is if=nowrite,%
+  nowrite/.default=true,%
+  nowrite=false,%
+  ptcours/.default={%
+    \descriptiontext%
+  },%
+  ptcours/.code={%
+    \ifnowrite%
+    \else%
+    \if\relax\detokenize{#1}\relax%
+    \else%
+    \tcbcollerecord{ptcours}{#1}%
+    \fi%
+    \fi%
+  }%
+}
+
+
+\tcbset{%
+  nowrite/.is if=nowrite,%
+  nowrite/.default=false,%
+  nowrite=false,%
+  qcours/.default={%
+    \descriptiontext%
+  },%
+  qcours/.code={%
+    \def\questype{qcours}%
+    \gdef\questype{qcours}%
+    \ifnowrite%
+    \else%
+    \tcbcollerecord{qcours}{#1}%
+    \fi%
+  }%
+}
+
+\makeatletter
+\def\colle{%
+  \def\tcbenvname{colle}%
+  \def\questype{qcours}%
+  \gdef\questype{qcours}%
+  \protected@iwrite\tcb@colle@out
+  {\let\label\@gobble \let\index\@gobble \let\glossary\@gobble}%
+  {\string\mycontentsline{%
+      \thesemainecounter%
+    }{%
+      \arabic{chapter}%
+    }{%
+      \doctitle
+    }{%
+      \arabic{section}%
+    }{%
+      \thesection%
+    }{%
+      \tcbenvname%
+    }{%
+      \questype%
+    }%
+  }%
+  \@bsphack
+  \immediate\write\tcb@colle@out{\@charlb}%
+  % \immediate\openout\tcb@colle@out #1
+  \tcb@verbatim@begin@hook%
+  \let\do\@makeother\dospecials%
+  \tcb@verbatim@change@percent\catcode`\^^M\active \catcode`\^^I=12%
+  \def\verbatim@processline{%
+    \immediate\write\tcb@colle@out
+      {\the\verbatim@line}}%
+  \verbatim@start}%'
+\def\endcolle{%
+  \tcb@verbatim@end@hook%
+  \immediate\write\tcb@colle@out{\@charrb}%
+  % \immediate\closeout\tcb@colle@out
+  \@esphack%
+  \par%
+}
+\makeatother{}
+
+
+% Define progcolle and description text key
+\tcbset{
+  description text/.code={\gdef\descriptiontext{#1}},%
+  progcolle text/.store in=\progcolletext,%
+}
+
+% Store progcolle and description at theorem creation
+\makeatletter
+\renewcommand{\new@tcbtheorem}[5][]{%
+  \@@newtcolorbox[auto counter,#1]{#2}[3][]{#4,%
+    title={\tcb@theo@title{#3}{\thetcbcounter}{##2}},%
+    list entry={\protect\numberline{\thetcbcounter}##2},%
+    description text={##2},%
+    envname={#2},%
+    nameref={##2},%
+    code={\tcb@theo@label{#5}{##3}},%
+    ##1%
+    % writerecords
+  }%
+  \@@newtcolorbox[#1,no counter,list inside=]{#2*}[2][]{#4,%
+    title={\tcb@theo@title{#3}{\@empty}{##2}},%
+    description text={##2},%
+    progcolle text={##2},%
+    envname={#2},%
+    ##1%
+    % writerecords
+  }%
+}
+\makeatother

@@ -7,7 +7,7 @@
 \tl_new:N \g_adam_spaced_jobnbr
 \tl_new:N \g_adam_spaced_jobclasse_upper
 \tl_new:N \g_adam_spaced_jobdescr
-
+\message{***** 1}
 \seq_new:N \g_adam_job_name_seq
 % rescan \jobname
 \tl_gset_rescan:Nnx \g_adam_spaced_job_name_tl { } { \c_sys_jobname_str }
@@ -24,6 +24,7 @@
 \tl_gset:Nn \g_adam_spaced_jobdescr {
   \seq_use:Nn \g_adam_job_name_seq {~}
 }
+\message{***** 2}
 
 \NewExpandableDocumentCommand{\doctitle}{}
  {
@@ -42,11 +43,13 @@
  {
   \tl_to_str:N \g_adam_spaced_jobnbr
  }
+\message{***** 3}
 
 \NewExpandableDocumentCommand{\docclasseupper}{}
  {
   \tl_to_str:N \g_adam_spaced_jobclasse_upper
  }
+\message{***** 4}
 
 \NewExpandableDocumentCommand{\spacedfilename}{}
  {

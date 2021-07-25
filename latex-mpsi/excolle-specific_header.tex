@@ -6,12 +6,21 @@
 \renewcommand\cfttoctitlefont{\large\bfseries}
 \renewcommand\cftaftertoctitle{}
 \cftpagenumbersoff{section}
+\message{*- ********* BEG}
+\message{\jobname}
+\message{*- ********* END}
 \newif\ifexcolleall
 \IfEndWith{\jobname}{\detokenize{all}}{%
-  \excollealltrue\message{*******! OK }}{%
-  \excolleallfalse\message{*******! BAD }}
+  \excollealltrue\message{*******! OK }
+}{%
+  \IfEndWith{\jobname}{\detokenize{all_handout}}{%
+    \excollealltrue\message{*******! OK }
+  }{%
+    \excolleallfalse\message{*******! BAD }
+  }
+}
 \ifexcolleall
-  \input{process_filename_type_classe_nbr_datespan}
+\input{process_filename_type_classe_nbr_datespan}
 \IfBeginWith{\jobname}{\detokenize{excolle}}{%
   \def\docclasseupper{MP}}{%
   \def\docclasseupper{MPSI}}
@@ -31,7 +40,6 @@
     }
     \fancyhead[R]{Corrections des exercices}
   }
-
   \fancypagestyle{sujetscolle}{
     \fancyhf{}
     \renewcommand{\headrulewidth}{0.4pt}

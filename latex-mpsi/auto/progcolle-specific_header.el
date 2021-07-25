@@ -45,9 +45,8 @@
     "ptcourschapnbr"
     "qcourschapnbr"
     "progcolleexsheetype")
-   (LaTeX-add-labels
-    "LastPage")
    (LaTeX-add-environments
+    '("nscenter" LaTeX-env-args ["argument"] 0)
     '("listedesqcoursunchap" 1)
     '("listedesptcoursunchap" 1)
     "mytcbitemizeleftbar"

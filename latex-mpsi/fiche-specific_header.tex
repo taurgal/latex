@@ -143,6 +143,7 @@ footskip=0pt,right=1.2cm,footskip=1cm]{geometry}
 
 
 \AtBeginDocument{
+  \pagenumbering{arabic}
 \begin{center}
   \begin{tikzpicture}[
     every node/.style={inner sep=10pt}]
@@ -156,6 +157,6 @@ footskip=0pt,right=1.2cm,footskip=1cm]{geometry}
 \bigskip{}
 }
 \AtEndDocument{
-\vspace*{\fill}
+\vspace{\fill}
 }
 \makeatother

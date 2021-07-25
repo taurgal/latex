@@ -86,6 +86,7 @@
 \provideboolean{isCoursall}
 \provideboolean{isProgColle}
 \provideboolean{isFiche}
+\provideboolean{isTD}
 \setboolean{isDS}{false}
 \setboolean{isDScor}{false}
 \setboolean{isDL}{false}
@@ -95,6 +96,7 @@
 \setboolean{isCoursall}{false}
 \setboolean{isProgColle}{false}
 \setboolean{isFiche}{false}
+\setboolean{isTD}{false}
 
 \def\doctype{}
 \def\docclasse{}
@@ -310,7 +312,13 @@
 \input{fiche-specific_header}
 \relax
 \else
+\ifnum\pdf@strcmp{\doctype}{td}=0
+\setboolean{isTD}{true}
+\input{td-specific_header}
+\relax
+\else
 \PackageError{Versatile header for mpsi}{Filename prefix should be dl, ds, dscor, ex, progcolle or fiche}{}%
+\fi
 \fi
 \fi
 \fi

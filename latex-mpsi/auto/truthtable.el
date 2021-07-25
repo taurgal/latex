@@ -1,10 +1,9 @@
 (TeX-add-style-hook
- "truthtable2"
+ "truthtable"
  (lambda ()
    (TeX-add-symbols
-    "argind"
+    "X"
     "tnot"
-    "tneg"
     "tand"
     "tor"
     "txor"
@@ -12,9 +11,7 @@
     "timplies"
     "tequiv"
     "commatoamp"
-    "doit"
-    "drawtruthtable"
     "drawthruthtable"
-    "tmp"))
+    "pp"))
  :plain-tex)
 

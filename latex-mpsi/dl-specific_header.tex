@@ -4,8 +4,12 @@
 \input{header_common}
 \usepackage[newfloat]{minted}
 \tcbuselibrary{minted}
+\def\pyt#1{\mintinline{python}{#1}}
 \usepackage{pgfornament}
 \usepackage{amsthm}
+
+\def\preconsigneds{%
+}
 
 \input{process_filename_type_classe_nbr_date}
 
@@ -130,7 +134,7 @@
     \thepage-\getpagerefnumber{corfirstpage}+1\relax%
     /%
     \the\numexpr%
-    \getpagerefnumber{TrueLastPage}-\getpagerefnumber{corfirstpage}+1
+    \getpagerefnumber{VeryLastPage}-\getpagerefnumber{corfirstpage}+1
     \relax%
   }
   \fancyfoot[L]{Correction du devoir en temps libre~\no\docnbr}
@@ -138,7 +142,8 @@
 
 
 \newcommand{\upperRomannumeral}[1]{\uppercase\expandafter{\romannumeral#1}}
-\AtBeginDocument{
+\AfterEndPreamble{
+  \pagenumbering{arabic}
   \tcbstartrecording%
   \everymath{\displaystyle}
   \begin{center}
@@ -154,6 +159,31 @@
       options/.append style={yshift=1pt}] (vecbox.north east);
     \end{tikzpicture}
   \end{center}
+  \ifx\relax\preconsigneds\relax
+  \else
+  \begin{center}
+    \begin{minipage}{0.9\linewidth}
+      \itshape{}%
+      \preconsigneds
+    \end{minipage}
+  \end{center}
+  \fi
+  \begin{center}
+    \begin{minipage}{0.9\linewidth}
+      \itshape%
+      
+    \end{minipage}
+  \end{center}
+  \ifx\relax\consigneds\relax
+  sds
+  \else
+  \begin{center}
+    \begin{minipage}{0.9\linewidth}
+      \itshape{}%
+      \consigneds
+    \end{minipage}
+  \end{center}
+  \fi
   \bigskip{}
 }
 
@@ -186,6 +216,10 @@
 \AtEndDocument{%
   \tcbstoprecording%
   \clearpage\label{corfirstpage}%
+  \ifhandout%
+  \else%
+  \ifwacom%
+  \else%
   \pagestyle{excor}%
   \begin{center}
     \begin{tikzpicture}[
@@ -202,5 +236,6 @@
   \end{center}
   \bigskip{}
   \tcbinputrecords%
-  \label{TrueLastPage}%
+  \fi
+  \fi
 }

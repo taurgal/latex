@@ -1,38 +1,21 @@
-\documentclass[french,twoside]{article}
-\usepackage{pdftexcmds}
-\newif\ifistd
-\input{process_filename_type_classe_nbr_descr}
-\makeatletter
-\ifnum\pdf@strcmp{\doctype}{ex}=0
-\istdfalse
-\usepackage[a4paper,includeheadfoot,headsep=1em,top=1.2cm,bottom=1.2cm
-,left=1.2cm,right=1.2cm,footskip=0pt,landscape,twocolumn]{geometry}
-\else
-\ifnum\pdf@strcmp{\doctype}{exinfo}=0
-\istdfalse
-\usepackage[a4paper,includeheadfoot,headsep=1em,top=1.2cm,bottom=1.2cm
-,left=1.2cm,right=1.2cm,footskip=0pt,landscape,twocolumn]{geometry}
-\else
-\ifnum\pdf@strcmp{\doctype}{exbeforeMPSI}=0
-\istdfalse
-\usepackage[a4paper,includeheadfoot,headsep=1em,top=1.2cm,bottom=1.2cm
-,left=1.2cm,right=1.2cm,footskip=0pt,landscape,twocolumn]{geometry}
-\fi
-\else
+\ifwacom
+\documentclass[french,twoside,draft]{article}
 \usepackage[a4paper,includeheadfoot,headsep=1em,top=1.2cm,bottom=1.2cm
 ,left=1.2cm,right=1.2cm,footskip=0pt]{geometry}
-\istdtrue
+\else
+\documentclass[french,twoside,draft,twocolumn,landscape]{article}
+\usepackage[a4paper,includeheadfoot,headsep=1em,top=1.2cm,bottom=1.2cm
+,left=1.2cm,right=1.2cm,footskip=0pt]{geometry}
 \fi
-\fi
-\makeatother
 \input{header_common}
 \setlength{\columnsep}{3em}
 \usepackage{fontawesome}
 \usepackage{refcount}
-\usepackage[newfloat]{minted}
-\tcbuselibrary{minted}
+
+\usepackage{minted}
 \usepackage{catchfile}
 
+\input{process_filename_type_classe_nbr_descr}
 
 \setlist[enumerate]{nosep,%
   topsep=6pt plus 2pt minus 2pt,
@@ -214,8 +197,7 @@
 \makeatletter%
 \newtcbtheorem{exercice}{Exercice}{%
   description delimiters={\og}{\fg}, theorem style=plain,
-  lowerbox=ignored,
-  code={\tcbset{label={exer-\thetcbcounter}}},%
+  lowerbox=ignored, code={\tcbset{label={exer-\thetcbcounter}}},%
   % height fill={%
   %   \ifwacom%
   %   true%
@@ -226,7 +208,6 @@
     \fakebreak~\fakebreak~\fakebreak%
     \fi%
   },
-  before={\pagebreak[4]},
   saveto=Solutions/\doctype-\docnbr-both-\thetcbcounter.tex,
   record={\string\tcbexercice{%
       \thetcbcounter%
@@ -306,15 +287,14 @@
 
 \everymath{\displaystyle}
 
+
 \fancypagestyle{ex}{
   \fancyhf{}
   \renewcommand{\headrulewidth}{0.4pt}
   \fancyhead[L]{\docclasseupper{} --- \etablissement}
   \fancyhead[C]{\docnbr--\doctitle}
-  \fancyfoot[C]{\ifwacom\else
-    \thepage/\the\numexpr%
-    \getpagerefnumber{LastPage}\relax
-    \fi%
+  \fancyfoot[C]{\ifwacom\else\thepage/%
+    \getpagerefnumber{subjectlastpage}\fi%
   }
   \fancyhead[R]{Exercices}
 }
@@ -330,23 +310,23 @@
   \fancyhead[C]{\docnbr--\doctitle}
   \fancyfoot[C]{%
     \the\numexpr%
-    \thepage-\getpagerefnumber{LastPage}\relax%
+    \thepage-\getpagerefnumber{corfirstpage}+1\relax%
     /%
     \the\numexpr%
-    \getpagerefnumber{VeryLastPage}-\getpagerefnumber{LastPage}
+    \getpagerefnumber{TrueLastPage}-\getpagerefnumber{corfirstpage}+1
     \relax%
   }
   \fancyhead[R]{Correction des exercices}
 }
 
 \AtBeginDocument{%
-  \pagenumbering{arabic}
   \tcbstartrecording[Solutions/\doctype-\docnbr.records]%
 }
 
 \AtEndDocument{%
   \tcbstoprecording%
-  \clearpage%
+  \label{subjectlastpage}%
+  \clearpage\label{corfirstpage}%
   \ifhandout%
   \else%
   \ifwacom%
@@ -355,4 +335,5 @@
   \tcbinputrecords%
   \fi
   \fi
+  \label{TrueLastPage}%
 }

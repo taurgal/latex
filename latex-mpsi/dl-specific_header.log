@@ -1,7 +1,7 @@
-This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Arch Linux)  (format=lualatex 2020.7.22)  30 OCT 2020 15:02
+This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Arch Linux)  (format=lualatex 2020.7.22)  30 OCT 2020 13:56
  restricted system commands enabled.
  file:line:error style messages enabled.
-**\newif\ifhandout\handoutfalse \newif\ifwacom\wacomfalse \input ex-specific_he
+**\newif\ifhandout\handoutfalse \newif\ifwacom\wacomfalse \input dl-specific_he
 ader.tex
 Lua module: luaotfload-main 2020-05-06 3.14 luaotfload entry point
 Lua module: luaotfload-init 2020-05-06 3.14 luaotfload submodule / initialization
@@ -51,7 +51,7 @@ Inserting `luaotfload.aux.set_capheight' at position 4 in `luaotfload.patch_font
 Inserting `luaotfload.aux.set_xheight' at position 5 in `luaotfload.patch_font'.
 Lua module: luaotfload-tounicode 2020-05-06 3.14 luaotfload submodule / tounicode
 Inserting `luaotfload.rewrite_fontname' at position 6 in `luaotfload.patch_font'.
- (./ex-specific_header.tex
+ (./dl-specific_header.tex
 (/usr/share/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
 (/usr/share/texmf-dist/tex/latex/base/size10.clo
@@ -793,11 +793,6 @@ Package: everysel 2011/10/28 v1.2 EverySelectfont Package (MS)
 (/usr/share/texmf-dist/tex/latex/tools/multicol.sty
 Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
 \c@tracingmulticols=\count328
-
-
-Package multicol Warning: May not work with the twocolumn option on input line 1
-41.
-
 \mult@box=\box59
 \multicol@leftmargin=\dimen197
 \c@unbalance=\count329
@@ -864,7 +859,8 @@ Package multicol Warning: May not work with the twocolumn option on input line 1
 \mult@nat@firstbox=\box103
 \colbreak@box=\box104
 \mc@col@check@num=\count337
-) (/usr/share/texmf-dist/tex/latex/booktabs/booktabs.sty
+)
+(/usr/share/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \heavyrulewidth=\dimen262
 \lightrulewidth=\dimen263
@@ -1742,39 +1738,6 @@ File: p2e-luatex.def 2016/02/05 v0.1u Driver-dependant file (RN,HjG,JT)
 \diagbox@outsepl=\dimen390
 \diagbox@outsepr=\dimen391
 ))
-(/usr/local/share/texmf/tex/latex/fontawesome/fontawesome.sty
-Package: fontawesome 2016/05/15 v4.6.3.1 font awesome icons
-
-(/usr/local/share/texmf/tex/latex/fontawesome/fontawesomesymbols-generic.tex)
-luaotfload | aux : font no 50 (nil) defines no feature for script latn
-luaotfload | aux : font no 50 (nil) defines no feature for script dflt
-
-Package fontspec Info: Could not resolve font "FontAwesome/BI" (it probably
-(fontspec)             doesn't exist).
-
-
-Package fontspec Info: Could not resolve font "FontAwesome/B" (it probably
-(fontspec)             doesn't exist).
-
-
-Package fontspec Info: Could not resolve font "FontAwesome/I" (it probably
-(fontspec)             doesn't exist).
-
-
-Package fontspec Info: Font family 'FontAwesome(0)' created for font
-(fontspec)             'FontAwesome' with options [].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->"FontAwesome:mode=node;language=dflt;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-
-
-(/usr/local/share/texmf/tex/latex/fontawesome/fontawesomesymbols-xeluatex.tex)) (/usr/share/texmf-dist/tex/latex/refcount/refcount.sty
-Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
-)
 (/usr/share/texmf/tex/latex/minted/minted.sty
 Package: minted 2017/07/19 v2.5 Yet another Pygments shim for LaTeX
 
@@ -1853,53 +1816,963 @@ Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 \FrameRule=\dimen405
 \FrameSep=\dimen406
 )
+(/usr/share/texmf-dist/tex/latex/newfloat/newfloat.sty
+Package: newfloat 2019/09/02 v1.1l Defining new floating environments (AR)
+)
 \minted@appexistsfile=\read6
 \minted@bgbox=\box163
 \minted@code=\write7
 \c@minted@FancyVerbLineTemp=\count432
 \c@minted@pygmentizecounter=\count433
-\@float@every@listing=\toks64
+Package newfloat Info: New float `listing' with options `fileext=lol,placement=t
+bp' on input line 1151.
 \c@listing=\count434
+Package newfloat Info: float type `listing'=8 on input line 1151.
 )
-runsystem(mkdir -p _minted-ex-specific_header)...(Command execution disabled via
+runsystem(mkdir -p _minted-dl-specific_header)...(Command execution disabled via
  shell_escape='p')
 
 
-./ex-specific_header.tex:16: Package minted Error: You must invoke LaTeX with t
-he -shell-escape flag.
+./dl-specific_header.tex:6: Package minted Error: You must invoke LaTeX with th
+e -shell-escape flag.
 
 See the minted package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.16 \usepackage
-              {catchfile}
+l.6 \tcbuselibrary
+                {minted}
 Pass the -shell-escape flag to LaTeX. Refer to the minted.sty documentation for
  more information.
 
-(./process_filename_type_classe_nbr_descr.tex *****1 *****2 *****3 *****4)
-\stextwidth=\skip99
-LaTeX Font Info:    Trying to load font information for U+mvs on input line 31.
-
-(/usr/share/texmf-dist/tex/latex/marvosym/umvs.fd)
-\c@tcb@cnt@exercice=\count435
-\c@tcb@cnt@tcbexercicebox=\count436
-\c@corpage=\count437
+(/usr/share/texmf-dist/tex/latex/tcolorbox/tcbminted.code.tex
+Library (tcolorbox): 'tcbminted.code.tex' version '4.30'
+(/usr/share/texmf-dist/tex/latex/tcolorbox/tcblistingscore.code.tex
+Library (tcolorbox): 'tcblistingscore.code.tex' version '4.30'
+(/usr/share/texmf-dist/tex/latex/tcolorbox/tcbprocessing.code.tex
+Library (tcolorbox): 'tcbprocessing.code.tex' version '4.30'
 )
-! Emergency stop.
-<*> ...wacom\wacomfalse \input ex-specific_header.tex
+\c@tcblisting=\count435
+)) (/home/taurgal/texmf/tex/latex/pgfornament/pgfornament.sty
+(/usr/share/texmf-dist/tex/latex/pgfopts/pgfopts.sty
+Package: pgfopts 2014/07/10 v2.1a LaTeX package options with pgfkeys
+\pgfopts@list@add@a@toks=\toks64
+\pgfopts@list@add@b@toks=\toks65
+)
+Package: pgfornament 2014/05/31 v0.11 vector ornaments
+
+(/home/taurgal/texmf/tex/latex/pgfornament/pgflibraryvectorian.code.tex))
+(/usr/share/texmf-dist/tex/latex/amscls/amsthm.sty
+Package: amsthm 2020/05/29 v2.20.6
+\thm@style=\toks66
+\thm@bodyfont=\toks67
+\thm@headfont=\toks68
+\thm@notefont=\toks69
+\thm@headpunct=\toks70
+\thm@preskip=\skip99
+\thm@postskip=\skip100
+\thm@headsep=\skip101
+\dth@everypar=\toks71
+)
+(./process_filename_type_classe_nbr_date.tex)
+(/usr/share/texmf-dist/tex/latex/mathtools/empheq.sty
+Package: empheq 2017/03/31 v2.15 Emphasizing equations
+\l_EQ_equationtype_int=\count436
+\l_EQ_alignmentmode_int=\count437
+\l_EQ_totalwidth_dim=\dimen407
+\l_EQ_displaywidth_dim=\dimen408
+\l_EQ_temp_linewidth_dim=\dimen409
+\l_EQ_linewidth_dim=\dimen410
+\EmphEqdelimitershortfall=\dimen411
+\EmphEqdelimiterfactor=\count438
+\g_EQ_toptag_height_dim=\dimen412
+\g_EQ_bottomtag_depth_dim=\dimen413
+\g_EQ_toprow_height_dim=\dimen414
+\g_EQ_bottomrow_depth_dim=\dimen415
+\g_EQ_widesttag_dim=\dimen416
+\EQ_mathdisplay_box=\box164
+\EQ_tag_box=\box165
+\g_EQ_temprow_int=\count439
+)
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing = inserted for \ifnum.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+I was expecting to see `<', `=', or `>'. Didn't.
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+
+./dl-specific_header.tex:111: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
                                                   
-*** (job aborted, no legal \end found)
+l.111 \pagestyle{DL}
+                  
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
 
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing = inserted for \ifnum.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+I was expecting to see `<', `=', or `>'. Didn't.
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing = inserted for \ifnum.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+I was expecting to see `<', `=', or `>'. Didn't.
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing = inserted for \ifnum.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+I was expecting to see `<', `=', or `>'. Didn't.
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing = inserted for \ifnum.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+I was expecting to see `<', `=', or `>'. Didn't.
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing = inserted for \ifnum.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+I was expecting to see `<', `=', or `>'. Didn't.
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\gdef 
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing = inserted for \ifnum.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+I was expecting to see `<', `=', or `>'. Didn't.
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing = inserted for \ifnum.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+I was expecting to see `<', `=', or `>'. Didn't.
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing = inserted for \ifnum.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+I was expecting to see `<', `=', or `>'. Didn't.
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing = inserted for \ifnum.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+I was expecting to see `<', `=', or `>'. Didn't.
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Package datenumber: invalid date: \docyear /\docm
+onth /\docday .
+\setmydatenumber ...se \errmessage {\@errmessage }
+                                                  \fi \ifnum \the@startyear ...
+l.111 \pagestyle{DL}
+                  
+This error message was generated by an \errmessage
+command, so I can't give any explicit help.
+Pretend that you're Hercule Poirot: Examine all clues,
+and deduce the truth by order and method.
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing = inserted for \ifnum.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+I was expecting to see `<', `=', or `>'. Didn't.
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Package datenumber: datenumber < startyear (\docy
+ear  < 2000).
+\setmydatenumber ...rtyear (#2 < \the@startyear )}
+                                                  \fi \setcounter {@dayscnt}...
+l.111 \pagestyle{DL}
+                  
+(That was another \errmessage.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing = inserted for \ifnum.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+I was expecting to see `<', `=', or `>'. Didn't.
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./dl-specific_header.tex:111: Missing number, treated as zero.
+<to be read again> 
+\
+l.111 \pagestyle{DL}
+                  
+(That makes 100 errors; please try again.)
 
 Here is how much of LuaTeX's memory you used:
- 56646 strings out of 480885
- 100000,1977958 words of node,token memory allocated 673 words of node memory still in use:
-   4 hlist, 1 rule, 1 dir, 3 glue, 3 kern, 1 penalty, 2 glyph, 29 attribute, 83 
-glue_spec, 9 attribute_list, 3 write, 1 pdf_colorstack nodes
-   avail lists: 1:8,2:57,3:7,4:6,5:5,6:5,7:5,8:2,9:3,10:5,11:2,12:5
- 72441 multiletter control sequences out of 65536+600000
- 52 fonts using 12026539 bytes
+ 55792 strings out of 480885
+ 100000,1977958 words of node,token memory allocated
+ 2521 words of node memory still in use:
+   5 hlist, 1 rule, 1 local_par, 1 dir, 31 glue, 3 kern, 1 penalty, 229 glyph, 4
+7 attribute, 83 glue_spec, 12 attribute_list, 1 temp, 2 if_stack, 3 write, 1 pdf
+_colorstack nodes
+   avail lists: 1:8,2:33,3:7,4:6,5:3,6:5,8:2,9:2,10:5,11:2,12:5
+ 71569 multiletter control sequences out of 65536+600000
+ 48 fonts using 11623955 bytes
  83i,0n,138p,1003b,245s stack positions out of 5000i,500n,10000p,200000b,100000s
-!  ==> Fatal error occurred, no output PDF file produced!
+./dl-specific_header.tex:111:  ==> Fatal error occurred, no output PDF file prod
+uced!

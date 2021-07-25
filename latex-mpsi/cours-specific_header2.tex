@@ -3,34 +3,14 @@
 \usepackage{environ}
 \usepackage{transparent}
 \def\correction#1{\textcolor{white}{#1}}
-\input{truthtable2}
-\ifhandout
-\hidetruthtableanswertrue
-\else
-\hidetruthtableanswerfalse
-\fi
 \input{venndiagram2}
 \usepackage[newfloat]{minted}
 \usepackage{comment}
+\usepackage{pdftexcmds}
 \excludecomment{colle}
 \tcbuselibrary{minted}
-\def\pyt#1{\mintinline{python}{#1}}
 
 \usepackage{transparent}
-
-\ifhandout%
-\newcommand\mpsifinsemainedecolle[1]{}
-\newcommand\mpsisetsemainedecolle[1]{}
-\newcommand\tcbstartcollerecording{\mpsifinsemainedecolle}
-\newcommand{\tcbstopcollerecording}{%
-  \ifx\tcbcollerecord\tcb@null%
-  \else%
-  \immediate\closeout\tcb@colle@out%
-  \fi%
-}
-\else%
-\input{cours-export-progcolle}
-\fi%
 
 \newcommand\voidformatter[1]{}
 
@@ -50,6 +30,13 @@
   #1
 }
 
+\usepackage[printwatermark]{xwatermark}
+\newwatermark[
+allpages,
+fontfamily=bch,
+color=gray!25,
+angle=45,scale=2.5,
+xpos=0,ypos=0]{Lycée militaire d'Autun}
 
 
 \newcommand\fileregexnbrchapname{(cours|coursinfo|ex)_(mpsi)_(\d{2})_(.*)}
@@ -61,10 +48,24 @@
 \newwrite\tcb@colle@out
 
 
+\newcommand\mpsifinsemainedecolle[1]{
+}
+
+\newcommand\mpsisetsemainedecolle[1]{
+}
 
 \global\let\tcbcollerecord\tcb@null%
+\newcommand\tcbstartcollerecording{%
+  \mpsifinsemainedecolle
+}
 
 
+\newcommand{\tcbstopcollerecording}{%
+  \ifx\tcbcollerecord\tcb@null%
+  \else%
+  \immediate\closeout\tcb@colle@out%
+  \fi%
+}
 
 \def\printdbginfo{\message{Le chapitre \thechapter \docnbr \doctitle a
     été compilé avec succès. La prochaine semaine de colle est la
@@ -135,74 +136,92 @@
 }
 \ExplSyntaxOff
 
+\makeatletter
 \newcommand\inputchapter[1]{%
   % \tcbstoprecording % NO!
-  \def\filename{#1}%
-  \rescanchapname{#1}[_]
-  \setcounter{chapter}{\docnbr}
-  \addtocounter{chapter}{-1}
+  \ifcsname onlychapter\endcsname%
+  \message{ !!!!!!: 1}
+  \catcode`\_=11
+  \ifnum\pdf@strcmp{\jobname}{#1_handout}=0%
+  \catcode`\_=8
+  \message{ !!!!!!: 2}
+  \message{ terterterterterterterterterterterterterter }%
+  \message{GOOD CHAPTER FOUND #1}%
+  \message{ terterterterterterterterterterterterterter }%
+  \def\filename{#1}%%
+  \rescanchapname{#1}[_]%
+  \setcounter{chapter}{\docnbr}%
+  \addtocounter{chapter}{-1}%
   \chapter{\doctitle}%
   \input{#1}%
   \printdbginfo{}%
+  \fi
+  \ifnum\pdf@strcmp{\jobname}{#1}=0%
+  \catcode`\_=8
+  \message{ !!!!!!: 2}
+  \message{ terterterterterterterterterterterterterter }%
+  \message{GOOD CHAPTER FOUND \onlychapter #1}%
+  \message{ terterterterterterterterterterterterterter }%
+  \def\filename{#1}%%
+  \rescanchapname{#1}[_]%
+  \setcounter{chapter}{\docnbr}%
+  \addtocounter{chapter}{-1}%
+  \chapter{\doctitle}%
+  \input{#1}%
+  \printdbginfo{}%
+  \else%
+  \message{ terterterterterterterterterterterterterter }%
+  \message{WRONG CHAPTER \onlychapter #1}%
+  \message{ terterterterterterterterterterterterterter }%
+  \fi%
+  \else %
+  \catcode`\_=8
+  \def\filename{#1}%%
+  \rescanchapname{#1}[_]%
+  \setcounter{chapter}{\docnbr}%
+  \addtocounter{chapter}{-1}%
+  \chapter{\doctitle}%
+  \input{#1}%
+  \printdbginfo{}%
+  \fi
 }
-\def\mytheoremname{}
-\tcbset{%
-  name/.store in=\mytheoremname,
-  envname/.code={\gdef\tcbenvname{#1}},%
-  writerecords/.code={%
-    \ifnowrite
-    \else
-    \tcbcollerecorddata
-    \fi
-  }
-}
-
-\newlength{\mytheohang}
-\newlength{\negmytheohang}
-\setlength{\mytheohang}{0.3cm}
-\setlength{\negmytheohang}{-\mytheohang}
+\makeatother
 
 \tcbset{%
-  theorem style/indented/.style={
-    left skip=\mytheohang,%
-    before title=\hspace{\negmytheohang},%    
-  },
   theorem style/theoremlike/.style={%
-    separator sign={\ifx\mytheoremname\empty\else%
-      ~(\mytheoremname)\fi},
-%    separator sign none,%
-    % description delimiters={\og}{\fg},%
-    description formatter=\voidformatter,
-    terminator sign colon,%
-    attach title to upper={\ },%
-    %
-    before lower={%
-      \hspace{\negmytheohang}\textcolor{red}{Preuve:~}%
-      \ifhandout\LARGE\else\fi},%
-    collower/.expanded=\ifhandout white\else black\fi,
-    breakable=true,%
-    blank,%
-    fonttitle=\bfseries,%
-    coltitle=ocre,%
-    enhanced,%
-    theorem style/indented%
-  },%
-  theorem style/theoremlikewithproof/.style={%
     separator sign none,%
     % description delimiters={\og}{\fg},%
     description formatter=\voidformatter,
     terminator sign colon,%
     theorem name,%
     attach title to upper={\ },%
-    before lower={%
-      \hspace{\negmytheohang}\textcolor{red}{Preuve:~}},%
     %
+    before lower={\textcolor{red}{Preuve:}~},
+    % collower=white,
     breakable=true,%
     blank,%
     fonttitle=\bfseries,%
     coltitle=ocre,%
     enhanced,%
-    theorem style/indented%
+    left=0pt,%
+    right=0pt%
+  },
+    theorem style/theoremlikewithproof/.style={%
+    separator sign none,%
+    % description delimiters={\og}{\fg},%
+    description formatter=\voidformatter,
+    terminator sign colon,%
+    theorem name,%
+    attach title to upper={\ },%
+    %
+    before lower={\textcolor{red}{Preuve:}~},
+    breakable=true,%
+    blank,%
+    fonttitle=\bfseries,%
+    coltitle=ocre,%
+    enhanced,%
+    left=0pt,%
+    right=0pt%
   },
   theorem style/definitionlike/.style={%
     separator sign none,%
@@ -211,8 +230,7 @@
     terminator sign colon,%
     theorem name,%
     attach title to upper={\ },%
-    theorem style/indented,%
-    % 
+    %
     breakable=true,%
     blank,%
     fonttitle=\bfseries,%
@@ -220,11 +238,6 @@
     enhanced,%
     left=0pt,%
     right=0pt%
-  },%
-  theorem style/definitiontwocolslike/.style={%
-    theorem style/definitionlike,
-    sidebyside=true,
-    sidebyside align={top seam}
   },%
   theorem style/exercicelike/.style={%
     separator sign none,%
@@ -235,22 +248,11 @@
     attach title to upper={\ },%
     breakable=true,%
     blank,%
-    before lower={%
-      \hspace{\negmytheohang}\textcolor{red}{Preuve:~}%
-      \ifhandout\LARGE\else\fi},%
-    collower/.expanded=\ifhandout white\else black\fi,
     fonttitle=\bfseries,%
     coltitle=brown,%
-    enhanced,%
-    theorem style/indented
+    enhanced%
   },%
-  theorem style/exercicetwocolslike/.style={%
-    theorem style/exercicelike,
-    sidebyside=true,
-    sidebyside align={top seam},
-    before lower={}
-  },
-  theorem style/savoirfairestyle/.style={%
+    theorem style/savoirfairestyle/.style={%
     separator sign none,%
     % description delimiters={\og}{\fg},%
     description formatter=\voidformatter,
@@ -262,9 +264,9 @@
     fonttitle=\bfseries,%
     coltitle=red,%
     enhanced,%
-    before lower={\hspace{\negmytheohang}Preuve:~},
-    after lower={\hfill{}\square},
-    theorem style/indented
+    lowerbox=visible,
+    before lower={Preuve:~},
+    after lower={\hfill{}\square}
   }%
 }
 
@@ -347,6 +349,7 @@
   new/Crefname={Proposition}{Propositions},%
   theorem style=theoremlike,%
   % ptcours
+  % collower=white
 }{prop}
 
 \newtcbtheorem[number within=section]{corollairewithproof}{Corollaire}{%
@@ -368,6 +371,7 @@
   new/Crefname={Proposition}{Propositions},%
   theorem style=theoremlikewithproof,%
   % ptcours
+  % collower=white
 }{prop}
 
 
@@ -393,13 +397,6 @@
   % ptcours
 }{def}
 
-\newtcbtheorem[number within=section]{definitiontwocols}{Définition}{%
-  new/crefname={definition}{definitions},%
-  new/Crefname={Definition}{Definitions},%
-  theorem style=definitiontwocolslike,%
-  % ptcours
-}{def}
-
 \newtcbtheorem[number within=section]{notation}{Notation}{%
   new/crefname={notation}{notations},%
   new/Crefname={Notation}{Notations},%
@@ -412,6 +409,7 @@
   new/Crefname={Exercices}{Exercices},%
   theorem style=exercicelike,%
   % nowrite,
+  before lower={\textcolor{lightgreen}{Solution \thetcbcounter:}~}
 }{exer}
 
 \newtcbtheorem[number within=section]{remarque}{Remarque}{%
@@ -420,25 +418,12 @@
   theorem style=exercicelike,%
   % nowrite
 }{rmq}
-\newtcbtheorem[number within=section]{remarquetwocols}{Remarque}{%
-  new/crefname={remarque}{remarques},%
-  new/Crefname={Remarques}{Remarques},%
-  theorem style=exercicetwocolslike,%
-  % nowrite
-}{rmq}
 
 
 \newtcbtheorem[number within=section]{exemple}{Exemple}{%
   new/crefname={exemple}{exemples},%
   new/Crefname={Exemples}{Exemples},%
   theorem style=exercicelike,%
-  % nowrite
-}{exem}
-
-\newtcbtheorem[number within=section]{exempletwocols}{Exemple}{%
-  new/crefname={exemple}{exemples},%
-  new/Crefname={Exemples}{Exemples},%
-  theorem style=exercicetwocolslike,%
   % nowrite
 }{exem}
 
@@ -479,7 +464,6 @@
 
 \renewcommand*\thechapter{\Roman{chapter}}
 \renewcommand*\thesection{\Roman{section}}
-\def\boxrulewidth{0.08cm}
 \titleformat{name=\chapter}[display]
 {\normalfont\huge\bfseries}
 {}
@@ -487,14 +471,14 @@
 {%
   \begin{tcolorbox}[
     enhanced,
-    colback=white,
-    boxrule=\boxrulewidth,
+    colback=titlebgdark,
+    boxrule=0.25cm,
     colframe=titlebglight,
     arc=0pt,
     outer arc=0pt,
     leftrule=0pt,
     rightrule=0pt,
-    fontupper=\color{black}\sffamily\bfseries\huge,
+    fontupper=\color{white}\sffamily\bfseries\huge,
     enlarge left by=-1in-\hoffset-\oddsidemargin,
     enlarge right by=%
     -\paperwidth+1in+\hoffset+\oddsidemargin+\textwidth,
@@ -505,15 +489,15 @@
     bottom=0.6cm,
     overlay={
       \node[
-      fill=white,
+      fill=titlebgdark,
       draw=titlebglight,
-      line width=\boxrulewidth,
+      line width=0.15cm,
       inner sep=0pt,
-      minimum width=1.7cm,
+      text width=1.7cm,
       minimum height=1.7cm,
       align=center,
       font=%
-      \color{black}\sffamily\bfseries\fontsize{30}{36}\selectfont
+      \color{white}\sffamily\bfseries\fontsize{30}{36}\selectfont
       ]
       (chapname)
       at ([xshift=-4cm]frame.north east)
@@ -543,7 +527,7 @@
     remember as=title,
     leftrule=0pt,
     rightrule=0pt,
-    fontupper=\color{black}\sffamily\bfseries\huge,
+    fontupper=\color{white}\sffamily\bfseries\huge,
     enlarge left by=-1in-\hoffset-\oddsidemargin,
     enlarge right by=%
     -\paperwidth+1in+\hoffset+\oddsidemargin+\textwidth,
@@ -569,9 +553,6 @@
 \makeatother
 \newcommand{\upperRomannumeral}[1]{\uppercase\expandafter{\romannumeral#1}}
 
-\AtBeginDocument{
-  \pagenumbering{arabic}
-}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: t

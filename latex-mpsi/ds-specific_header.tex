@@ -3,6 +3,17 @@
 \input{header_common}
 \usepackage{pgfornament}
 \usepackage{amsthm}
+\usepackage{atveryend}
+
+\def\preconsigneds{%
+  Les calculatrices ne sont pas autorisées. Un grand soin devra être
+  apporté à la rédaction et à la présentation. Si vous constatez ce
+  qui vous semble être une erreur d'énoncé, signalez-le et poursuivez
+  votre composition en expliquant les raisons des initiatives que vous
+  serez amenés à prendre. Rappelons que toute tentative de recherche,
+  même infructueuse, sera prise en considération. Enfin les exercices
+  sont indépendants et peuvent être traités dans un ordre quelconque.
+}
 
 \newif\ifpotpourri%
 \IfEndWith{\jobname}{\detokenize{potpourri}}{%
@@ -18,18 +29,7 @@
   \fancyhead[R]{Potpourri}
   \fancyfoot[R]{\thepage/%
     \the\numexpr%
-    \getpagerefnumber{corfirstpage}-1\relax
-  }
-  \fancyfoot[L]{Pot pourri}
-}
-\fancypagestyle{DSfirstpage}{
-  \fancyhf{}
-  \renewcommand{\headrulewidth}{0.4pt}
-  \fancyhead[L]{Potpourri}
-  \fancyhead[R]{Potpourri}
-  \fancyfoot[R]{\thepage/%
-    \the\numexpr%
-    \getpagerefnumber{corfirstpage}-1\relax
+    \getpagerefnumber{LastPage}\relax
   }
   \fancyfoot[L]{Pot pourri}
 }
@@ -40,13 +40,24 @@
   \fancyhead[C]{Pot pourri}
   \fancyfoot[R]{%
     \the\numexpr%
-    \thepage-\getpagerefnumber{corfirstpage}+1\relax%
+    \thepage-\getpagerefnumber{LastPage}\relax%
     /%
     \the\numexpr%
-    \getpagerefnumber{TrueLastPage}-\getpagerefnumber{corfirstpage}+1
+    \getpagerefnumber{VeryLastPage}-\getpagerefnumber{LastPage}
     \relax%
   }
   \fancyfoot[L]{Correction du Pot pourri}
+}
+\fancypagestyle{DSfirstpage}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \fancyhead[L]{}
+  \fancyhead[R]{Pot pourri}
+  \fancyfoot[R]{\thepage/%
+    \the\numexpr%
+    \getpagerefnumber{LastPage}\relax
+  }
+  \fancyfoot[L]{Pot pourri}
 }
 \else
 \input{process_filename_type_classe_nbr_date}
@@ -58,7 +69,7 @@
   \fancyhead[R]{DS du \MakeLowercase{\datedayname}~\datedate}
   \fancyfoot[R]{\thepage/%
     \the\numexpr%
-    \getpagerefnumber{corfirstpage}-1\relax
+    \getpagerefnumber{LastPage}\relax
   }
   \fancyfoot[L]{Devoir surveillé~\no\docnbr}
 }
@@ -70,7 +81,7 @@
   \fancyhead[R]{DS du \MakeLowercase{\datedayname}~\datedate}
   \fancyfoot[R]{\thepage/%
     \the\numexpr%
-    \getpagerefnumber{corfirstpage}-1\relax
+    \getpagerefnumber{LastPage}\relax
   }
   \fancyfoot[L]{Devoir surveillé~\no\docnbr}
 }
@@ -83,10 +94,10 @@
   \fancyhead[C]{\doctitle}
   \fancyfoot[R]{%
     \the\numexpr%
-    \thepage-\getpagerefnumber{corfirstpage}+1\relax%
+    \thepage-\getpagerefnumber{LastPage}\relax%
     /%
     \the\numexpr%
-    \getpagerefnumber{TrueLastPage}-\getpagerefnumber{corfirstpage}+1
+    \getpagerefnumber{VeryLastPage}-\getpagerefnumber{LastPage}
     \relax%
   }
   \fancyfoot[L]{Correction du devoir surveillé~\no\docnbr}
@@ -117,7 +128,8 @@
   title={Exercise~\ref{ex-#1}:},
   phantomlabel={solution@#1},
   attach title to upper=\par,
-}{\input{#2}
+}{
+  \input{#2}
   \pagebreak[3]}
 \NewTotalTColorBox{\tcbcommentairesb}{m}{%
   blank,
@@ -146,7 +158,8 @@
 \newcounter{corpage}
 
 \newcommand{\upperRomannumeral}[1]{\uppercase\expandafter{\romannumeral#1}}
-\AtBeginDocument{
+\AfterEndPreamble{
+  \pagenumbering{arabic}
   \tcbstartrecording%
   \everymath{\displaystyle}
   \begin{center}
@@ -169,17 +182,19 @@
     \end{tikzpicture}
   \end{center}
   \bigskip{}
+  \ifx\relax\preconsigneds\relax
+  \else
+  \begin{center}
+    \begin{minipage}{0.9\linewidth}
+      \itshape{}%
+      \preconsigneds
+    \end{minipage}
+  \end{center}
+  \fi
   \begin{center}
     \begin{minipage}{0.9\linewidth}
       \itshape%
-      Les calculatrices ne sont pas autorisées. Un grand soin devra
-      être apporté à la rédaction et à la présentation. Si vous
-      constatez ce qui vous semble être une erreur d'énoncé,
-      signalez-le et poursuivez votre composition en expliquant les
-      raisons des initiatives que vous serez amenés à prendre.
-      Rappelons que toute tentative de recherche, même infructueuse,
-      sera prise en considération. Enfin les exercices sont
-      indépendants et peuvent être traités dans un ordre quelconque.
+      
     \end{minipage}
   \end{center}
   \ifx\relax\consigneds\relax
@@ -212,15 +227,6 @@
   \def\@@percentchar{\@percentchar\@percentchar\@percentchar}
   \immediate\write\tcb@out
     {%
-	 \@@percentchar\space Local
-     \@@percentchar\space Variables:^^J%
-	 \@@percentchar\space mode: latex^^J%
-	 \@@percentchar\space TeX-source-correlate-orig-linenbr: %
-     \beginputlineno ^^J%
-	 \@@percentchar\space TeX-source-correlate-jobname: %
-     "\jobname"^^J%
-     \@@percentchar\space TeX-master: "\jobname"^^J%
-	 \@@percentchar\space End:^^J%
    }
   \immediate\closeout\tcb@out
   \@esphack%
@@ -275,7 +281,11 @@
 
 \AtEndDocument{%
   \tcbstoprecording%
-  \clearpage\label{corfirstpage}%
+  \clearpage%
+  \ifhandout%
+  \else%
+  \ifwacom%
+  \else%
   \pagestyle{excor}%
   \begin{center}
     \begin{tikzpicture}[
@@ -296,5 +306,6 @@
   \end{center}
   \bigskip{}
   \tcbinputrecords%
-  \label{TrueLastPage}%
+  \fi
+  \fi
 }

@@ -2,25 +2,27 @@
  "header_common"
  (lambda ()
    (TeX-add-to-alist 'LaTeX-provided-package-options
-                     '(("luainputenc" "utf8") ("inputenc" "utf8") ("babel" "french") ("microtype" "activate={true,nocompatibility}" "final" "tracking=true") ("titlesec" "explicit") ("numprint" "np") ("ragged2e" "newcommands") ("tcolorbox" "skins" "theorems" "breakable" "xparse")))
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "path")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
+                     '(("luainputenc" "utf8") ("ulem" "normalem") ("inputenc" "utf8") ("babel" "french") ("microtype" "activate={true,nocompatibility}" "final" "tracking=true" "babel=true") ("titlesec" "explicit") ("numprint" "np") ("ragged2e" "newcommands") ("tcolorbox" "skins" "theorems" "breakable" "xparse") ("hyperref" "bookmarks=true")))
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "href")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "path")
    (add-to-list 'LaTeX-verbatim-macros-with-delims-local "path")
    (TeX-run-style-hooks
+    "luainputenc"
     "mathtools"
     "amssymb"
     "amsmath"
     "ifluatex"
+    "fontspec"
+    "atveryend"
+    "ulem"
     "unicode-math"
-    "luainputenc"
     "inputenc"
     "xcolor"
-    "fixltx2e"
-    "fontspec"
     "dsfont"
     "suffix"
     "soul"
@@ -47,6 +49,7 @@
     "multicol"
     "booktabs"
     "enumitem"
+    "pageslts"
     "tikz"
     "tkz-tab"
     "tcolorbox"
@@ -59,6 +62,7 @@
     "float"
     "caption"
     "hyperref"
+    "bookmark"
     "cleveref"
     "diagbox")
    (TeX-add-symbols
@@ -69,24 +73,25 @@
     '("coord" ["argument"] 1)
     '("inlineseqlimit" ["argument"] 2)
     '("inlinelimit" ["argument"] 4)
-    '("inlinemapsto" ["argument"] 2)
     '("fullfunction" ["argument"] 5)
     '("zeromatrix" ["argument"] 0)
     '("identitymatrix" ["argument"] 0)
     '("vcol" ["argument"] 1)
+    '("cycle" ["argument"] 1)
     '("vcolwithname" ["argument"] 2)
     '("opctransv" ["argument"] 3)
     '("opltransv" ["argument"] 3)
     '("lo" ["argument"] 1)
     '("BO" ["argument"] 1)
-    '("setcompr" ["argument"] 2)
-    '("vvect" ["argument"] 1)
-    '("set" ["argument"] 1)
-    '("tuple" ["argument"] 1)
     '("vcenteredinclude" ["argument"] 1)
+    '("openedball" 2)
+    '("closedball" 2)
     '("openeddisc" 2)
     '("closeddisc" 2)
     '("cercle" 2)
+    '("gradient" 1)
+    '("derlong" 2)
+    '("der" 2)
     '("derpn" 3)
     '("derp" 2)
     '("ZnZ" 1)
@@ -114,6 +119,7 @@
     '("inlineleftlimit" 4)
     '("inlinecondlimit" 5)
     '("inlinemapstonamed" 3)
+    '("inlinemapsto" 2)
     '("inlinefunction" 3)
     '("fullfunctioninline" 5)
     '("transpose" 1)
@@ -123,8 +129,10 @@
     '("pneg" 1)
     '("ppos" 1)
     '("prodsca" 2)
+    '("cmod" 1)
     '("ensparties" 1)
     '("indic" 1)
+    '("mytilde" 1)
     '("fconst" 1)
     '("matdil" 2)
     '("mattransv" 3)
@@ -154,6 +162,8 @@
     '("bod" 1)
     '("dirimg" 2)
     '("invimg" 2)
+    '("imrecip" 2)
+    '("imdir" 2)
     '("restr" 2)
     '("corestr" 2)
     '("dblrestr" 3)
@@ -258,7 +268,10 @@
     '("ppcm" 2)
     '("pgcd" 2)
     '("signature" 1)
+    '("setext" 2)
+    '("setcompr" 2)
     '("vvectnoname" 1)
+    '("vvect" 2)
     '("setclosureinRbar" 1)
     '("setclosurein" 2)
     '("subline" 2)
@@ -270,46 +283,21 @@
     '("permutbyhand" 2)
     '("glob" 1)
     '("permut" 1)
+    '("set" 1)
+    '("tuple" 1)
     '("keystroke" 1)
     '("myll" 1)
     '("rom" 1)
+    '("onlyprogcollephantom" 1)
+    '("altprogcolle" 2)
     '("onlyprogcolle" 1)
+    "lt"
+    "gt"
     "iddots"
-    "derivative"
     "etablissement"
     "scsep"
     "comsep"
     "wideparen"
-    "Arg"
-    "len"
-    "sgn"
-    "cotan"
-    "arccotan"
-    "Ker"
-    "im"
-    "coker"
-    "Mat"
-    "cov"
-    "Vect"
-    "rg"
-    "tr"
-    "diag"
-    "Sp"
-    "spectre"
-    "card"
-    "id"
-    "grad"
-    "Hom"
-    "pgcdop"
-    "ppcmop"
-    "ch"
-    "sh"
-    "comat"
-    "imv"
-    "rang"
-    "Fr"
-    "diam"
-    "supp"
     "Ox"
     "Oy"
     "Oz"
@@ -317,7 +305,6 @@
     "OIJ"
     "K"
     "quaternionsset"
-    "C"
     "R"
     "iR"
     "Q"
@@ -332,7 +319,6 @@
     "Nst"
     "DDst"
     "Kp"
-    "Cp"
     "Rp"
     "Qp"
     "DDp"
@@ -365,7 +351,6 @@
     "Zpst"
     "Npst"
     "Kmst"
-    "Cmst"
     "Rmst"
     "Qmst"
     "Zmst"
@@ -394,35 +379,17 @@
     "dv"
     "dw"
     "numberthis"
-    "fpdim"
-    "intervalle"
-    "interff"
-    "interfo"
-    "interof"
-    "interoo"
-    "interffsc"
-    "interfosc"
-    "interofsc"
-    "interoosc"
-    "iinterff"
-    "iinterfo"
-    "iinterof"
-    "iinteroo"
-    "iinterffsc"
-    "iinterfosc"
-    "iinterofsc"
-    "iinteroosc"
     "semicolon"
     "divides"
     "notdivides"
-    "ord"
     "diffd"
-    "fractype"
     "contractedauthorname"
     "nextitem"
     "tabularxcolumn"
     "arg"
+    "card"
     "ln"
+    "C"
     "Ibar"
     "IbarinRbar"
     "Irond"
@@ -451,19 +418,38 @@
     "phi"
     "varphi"
     "th")
-   (LaTeX-add-labels
-    "LastPage")
    (LaTeX-add-environments
     '("nscenter" LaTeX-env-args ["argument"] 0))
    (LaTeX-add-counters
     "tmp")
    (LaTeX-add-mathtools-DeclarePairedDelimiters
+    '("cardv" "")
     '("abs" "")
+    '("crochetmod" "")
     '("norm" "")
     '("ceil" "")
     '("floor" "")
     '("vari" "")
     '("prodscasurr" ""))
+   (LaTeX-add-xparse-macros
+    '("fpdim" "m")
+    '("intervalle" "s m m m m m")
+    '("interff" "s m m")
+    '("interfo" "s m m")
+    '("interof" "s m m")
+    '("interoo" "s m m")
+    '("interffsc" "s m m")
+    '("interfosc" "s m m")
+    '("interofsc" "s m m")
+    '("interoosc" "s m m")
+    '("iinterff" "s m m")
+    '("iinterfo" "s m m")
+    '("iinterof" "s m m")
+    '("iinteroo" "s m m")
+    '("iinterffsc" "s m m")
+    '("iinterfosc" "s m m")
+    '("iinterofsc" "s m m")
+    '("iinteroosc" "s m m"))
    (LaTeX-add-xcolor-definecolors
     "ocre"
     "teal"
